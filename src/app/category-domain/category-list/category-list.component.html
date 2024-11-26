@@ -1,0 +1,14 @@
+<div class="card-grid">
+
+    @for(c of store.categoryList();track $index){
+    @if(c.id !== 0){
+    <div>
+        <ll-category [category]="c"></ll-category>
+    </div>
+    }
+    }
+    <div>
+        <ll-safety></ll-safety>
+    </div>
+    
+</div>

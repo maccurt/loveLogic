@@ -1,0 +1,21 @@
+<ll-header-filter></ll-header-filter>
+
+@if(!store.showCategory()){
+
+<div class="business-grid">
+    @for (item of store.businessListFiltered(); track $index) {
+    <div>
+        <ll-business [business]="item"></ll-business>
+    </div>
+    }
+    <div>
+        <ll-safety></ll-safety>
+    </div>
+</div>
+
+}
+
+@if(store.showCategory()){
+
+    <ll-category-list></ll-category-list>
+}

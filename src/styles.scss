@@ -1,1 +1,192 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px;
+
+    background-color: aliceblue;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @media screen and (min-width: 576px) {}
+
+    #header {
+        text-align: center;
+        grid-area: "header";
+        border: px solid gray;
+        background-color: aliceblue;
+
+        @media screen and (min-width: 576px) {
+            text-align: left;
+            padding-left: 20px;
+        }
+    }
+
+}
+
+
+.header-grid {
+    // border: 1px solid green;
+    display: grid;
+    grid-template-columns: 100%;
+    background-color: aliceblue;
+    padding-bottom: 15px;
+
+    @media screen and (min-width: 576px) {
+        padding-bottom: 0px;
+        // border-bottom: 1px solid red;
+    }
+
+    ;
+
+    div {
+        //   border:1px dotted green;
+    }
+}
+
+.filter-container {
+    // border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 390px));
+    column-gap: 32px;
+    justify-content: center;
+    background-color: aliceblue;
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+    margin-bottom: 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    div {
+        // border: 1px dotted green;
+    }
+}
+
+.business-grid,
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 390px));
+    column-gap: 32px;
+    justify-content: center;
+    // padding-left: 20px;
+    // padding-right: 20px;
+}
+
+
+.no-decoration {
+    text-decoration: none;
+    color: black;
+}
+
+.route {
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+
+}
+
+.card {
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.instruction-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+
+//TODO this is being used in mat-card-title
+//re-think name to clarify
+.title-grid {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    width: 100%;
+}
+
+.desktop {
+    display: none;
+}
+
+
+.marketing-1 {
+    font-size: 3rem;
+    color: gray;
+}
+
+
+//anything over
+//1. resolves to true or false
+@media screen and (min-width: 576px) {
+    .desktop {
+        margin-top: 50px;
+        display: grid;
+        text-align: center;
+
+        .marketing-1 {
+            font-size: 3rem;
+            color: gray;
+        }
+
+        .marketing-2 {
+            font-size: 2.6rem;
+
+            ul {
+                li {
+                    padding-top: 16px;
+                }
+            }
+        }
+    }
+
+    .address-container {
+        min-height: 90px;
+    }
+
+}
+
+.control-container {
+    margin-top: 7px;
+
+    div,
+    select {
+        //this will force all the controls to stack (label,control,etc)
+        display: block;
+    }
+
+    label {
+        font-weight: 500;
+    }
+
+    select {
+        // margin-left: 5px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+
+    }
+}
+
+.select {
+    height: 35px;
+    width: 100%;
+    padding: 5px;
+}
+
+.ul-1 {
+    li {
+        font-size: larger;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,19 @@
+<mat-card class="category-card">
+    <mat-card-header>
+        <mat-card-title>
+            <a class="no-decoration" [href]="category().businessListUrl">{{category().name}}</a>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <span style="font-size: small;">{{category().count}} Choices</span>
+        </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content style="margin-bottom: 10px;">
+        <hr>
+        <div style="display: grid;">
+            <a (click)="categoryClick()" >
+                <img style="border:1px solid black;" width="100%" mat-card-image [src]="category().imageUrl" alt="???">
+            </a>
+        </div>
+    </mat-card-content>    
+</mat-card>

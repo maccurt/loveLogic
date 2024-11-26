@@ -1,0 +1,25 @@
+<div class="card-grid">
+
+    @for(s of locationList;track s.name){
+
+    <div>
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>
+                    <a class="route" [routerLink]="['/',s.name]">{{s.businessCount}} Options</a>
+                </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <hr>
+                <div style="font-size: x-large; font-weight: 500;min-height: 75px;">
+                    <mat-chip-set>
+                        <mat-chip><span><a [routerLink]="['/',s.name]">{{s.name}}</a></span> </mat-chip>
+                    </mat-chip-set>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    }
+    <ll-safety></ll-safety>
+</div>

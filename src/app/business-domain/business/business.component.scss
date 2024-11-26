@@ -1,0 +1,14 @@
+.business-card {
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+.address {
+    margin-top: 5px;
+}
+
+.icon-grid{
+    display: grid;    
+    column-gap: 10px;
+    grid-template-columns: repeat(auto-fit, 20px);
+}

@@ -1,0 +1,201 @@
+[
+    {
+        "id": 13,
+        "categoryId": 4,
+        "name": "High Museum of Art",
+        "url": "https://high.org/",
+        "imageUrl": "/images/HighMuseumofArt-1.png",
+        "facebookUrl": "https://www.facebook.com/HighMuseumofArt",
+        "address": {
+            "address1": "1280 Peachtree St NE ",
+            "city": "Atlanta",
+            "state": "GA",
+            "zipcode": "30309",
+            "phone": "4047334400"
+        }
+    },
+    {
+        "id": 12,
+        "categoryId": 7,
+        "name": "Night Sky Coffee Roasters",
+        "url": "https://www.nightskycoffeeroasters.com/",
+        "facebookUrl": "https://www.facebook.com/nightskycoffee",
+        "imageUrl": "/images/nightskycoffee-1.png",
+        "address": {
+            "address1": "47 N Jackson",
+            "city": "St Winder",
+            "state": "GA",
+            "zipcode": "30680",
+            "phone": "6784214057"
+        }
+    },
+    {
+        "id": 1,
+        "categoryId": 7,
+        "name": "Green Beans Coffee",
+        "url": "https://greenbeanscoffeeomaha.com/",
+        "facebookUrl": "https://www.facebook.com/GBCOmaha",
+        "imageUrl": "/images/greenbeanscoffeeomaha-1.png",
+        "address": {
+            "address1": "6831 S. 167th St",
+            "city": "Omaha",
+            "state": "NE",
+            "zipcode": "68135",
+            "phone": "4028916143"
+        }
+    },
+    {
+        "id": 2,
+        "categoryId": 7,
+        "name": "Sozo Coffeehouse",
+        "url": "https://www.sozocoffeehouse.com/",
+        "facebookUrl": "https://www.facebook.com/SozoCoffeehouse",
+        "imageUrl": "/images/sozocoffeehouse-1.png",
+        "address": {
+            "address1": "1314 Jones St",
+            "city": "Omaha",
+            "state": "NE",
+            "zipcode": "68102",
+            "phone": "4029710450"
+        }
+    },
+    {
+        "id": 3,
+        "categoryId": 2,
+        "name": "Nebraska Brewing Company",
+        "url": "https://nebraskabrewingco.com/",
+        "facebookUrl": "https://www.facebook.com/NebraskaBrewingCompany",
+        "imageUrl": "/images/nebraskabrewingco-1.png",
+        "address": {
+            "address1": "6950 S 108th St.",
+            "city": "La Vista",
+            "state": "NE",
+            "zipcode": "68128",
+            "phone": "4029347988"
+        }
+    },
+    {
+        "id": 4,
+        "categoryId": 2,
+        "name": "Kros Strain Brewing (La Vista) ",
+        "url": "https://krosstrainbrewing.com/lavista/",
+        "facebookUrl": "https://www.facebook.com/KrosStrainBeer",
+        "imageUrl": "/images/krosstrainbrewing-1.png",
+        "address": {
+            "address1": "10411 Portal Road",
+            "address2": "Suite 102",
+            "city": "Papillion",
+            "state": "NE",
+            "zipcode": "68128",
+            "phone": "4027797990"
+        }
+    },
+    {
+        "id": 5,
+        "categoryId": 2,
+        "name": "Pint Nine Brewing",
+        "url": "https://pintninebrewing.com/",
+        "facebookUrl": "https://www.facebook.com/Pint9Brewery",
+        "imageUrl": "/images/pintnine-1.png",
+        "address": {
+            "address1": "10411 Portal Road",
+            "address2": "Suite 104",
+            "city": "Papillion",
+            "state": "NE",
+            "zipcode": "68128",
+            "phone": "4023591418"
+        }
+    },
+    {
+        "id": 6,
+        "categoryId": 5,
+        "name": "Dante Omaha",
+        "url": "https://www.danteomaha.com/",
+        "imageUrl": "/images/image-2.png",
+        "urlContact": "https://www.danteomaha.com/contact/",
+        "facebookUrl": "https://www.facebook.com/Dante.Omaha/",
+        "address": {
+            "address1": "16901 Wright Plaza #173",
+            "city": "Omaha",
+            "state": "NE",
+            "zipcode": "68130",
+            "phone": "4029323078"
+        }
+    },
+    {
+        "id": 7,
+        "categoryId": 3,
+        "name": "Cellar 426 Winery",
+        "url": "https://www.cellar426.com/",
+        "imageUrl": "/images/cellar426-1.png",
+        "urlContact": "https://www.cellar426.com/contact",
+        "facebookUrl": "https://www.facebook.com/cellar426winery",
+        "address": {
+            "address1": "1402 Dennis Dean Rd.",
+            "city": "Ashland",
+            "state": "NE",
+            "zipcode": "68003",
+            "phone": "4029448109"
+        }
+    },
+    {
+        "id": 8,
+        "categoryId": 4,
+        "name": "Joslyn Art Museum",
+        "url": "https://joslyn.org/",
+        "imageUrl": "/images/joslyn-1.png",
+        "facebookUrl": "https://www.facebook.com/joslynartmuseum/",
+        "address": {
+            "address1": "2200 Dodge Street",
+            "city": "Omaha",
+            "state": "NE",
+            "zipcode": "68102",
+            "phone": "4023423300"
+        }
+    },
+    {
+        "id": 9,
+        "categoryId": 6,
+        "name": "Beercade 2",
+        "url": "https://www.beercade2.com/",
+        "imageUrl": "/images/beercade-1.png",
+        "facebookUrl": "https://www.facebook.com/profile.php?id=100063479412881",
+        "address": {
+            "address1": "1423 S 13th ST",
+            "city": "Omaha",
+            "state": "NE",
+            "zipcode": "68108",
+            "phone": "4029169795"
+        }
+    },
+    {
+        "id": 10,
+        "categoryId": 6,
+        "name": "Beercade",
+        "url": "https://www.beercadestandrews.com/",
+        "imageUrl": "/images/beercade1-1.png",
+        "facebookUrl": "https://www.facebook.com/beercade/",
+        "address": {
+            "address1": "6104 Maple St",
+            "city": "Omaha",
+            "state": "NE",
+            "zipcode": "68104",
+            "phone": "4029323392"
+        }
+    },
+    {
+        "id": 11,
+        "categoryId": 2,
+        "name": "Braselton Brewing",
+        "url": "https://www.braseltonbrewing.com/",
+        "imageUrl": "/images/braseltonbrewing-1.png",
+        "facebookUrl": "https://www.facebook.com/beercade/",
+        "address": {
+            "address1": "9859 Davis St",
+            "city": "Braselton",
+            "state": "GA",
+            "zipcode": "30517",
+            "phone": "7066840686"
+        }
+    }
+]
