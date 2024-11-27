@@ -1,12 +1,8 @@
 <form [formGroup]="form">
 
-    <div class="header-filter">
-
+    <header id="header">
         <div id="brand">
-
-            <div class="brand-grid">
-                <div id="brand-name" class="brand-name">Can We Meet To Talk?</div>
-            </div>
+            Can We Meet To Talk?
         </div>
 
         <div id="state-select">
@@ -16,6 +12,25 @@
                 }
             </select>
         </div>
+        
+    </header>
+
+    <div class="header-filter">
+
+        <!-- <div id="brand">
+
+            <div class="brand-grid">
+                <div id="brand-name" class="brand-name">Can We Meet To Talk?</div>
+            </div>
+        </div> -->
+
+        <!-- <div id="state-select">
+            <select id="location" class="select" formControlName="stateLocation">
+                @for(state of stateList; track $index){
+                <option [ngValue]="state"> {{state.name}} </option>
+                }
+            </select>
+        </div> -->
 
 
         <!-- <div id="menu">

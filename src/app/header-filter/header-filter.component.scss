@@ -1,113 +1,157 @@
-
-.header-filter {
-    border:1px solid red;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 35px 50px autofit;
-    grid-template-areas: "brand"
-        'state',
-        'filter'
-        'icons';
-    row-gap: 10px;
-    padding-top: 16px;
-
-    //desktop
-    @media screen and (min-width: 576px) {
-        grid-template-columns: 20% 80%;
-        grid-template-rows: 40px;
-        grid-template-areas: 'brand menu'
-            'filter filter'
-            'icons icons'
-    }
-
+#header {
+    border: 1px solid blue;
     background-color: aliceblue;
-    div{
-        border: 1px dotted purple;
-    }
-}
-
-
-#brand {
-
-    .brand-name {
-        font-size: x-large;
-        font-weight: 500;
-    }
-
-    grid-area: 'brand';
-    text-align: center;
-    padding-bottom: 8px;
-
-    @media screen and (min-width: 576px) {
-
-        grid-area: 'brand state';
-        padding: 0px;
-        padding-left: 24px;
-        text-align: left;
-        font-size: xx-large;
-        border: 0px;
-    }
-}
-
-.brand-grid {
-    border: 1px solid red;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 10px;
-
     grid-template-areas:
-        'name'
+        'brand'
         'state';
 
+    justify-items: center;
+    row-gap: 10px;
+    padding: 10px 10px;
+
     @media screen and (min-width: 576px) {
-        grid-template-columns: fr 1fr;
-
+        display:inline-grid;
+        justify-items: left;
+        column-gap: 2px;
+        grid-template-columns: auto auto;
         grid-template-areas:
-            'name state'
+            'brand'
+            'state';
 
+        div {
+            border: 1px solid red;
+        }
     }
 
-    #brand-name {
-        grid-area: 'name';        
+    #brand {
+        justify-items: center;
+        grid-area: 'brand';
+        font-weight: 500;
+        font-size: xx-large;
     }
 
     #state-select {
         grid-area: 'state';
 
         select {
-            width: 200px !important;
-
+            width: 200px;
         }
-    }
 
-}
-
-#menu {
-    grid-area: 'menu';
-    text-align: center;
-
-    // border-bottom: 1px solid #cccccc;
-    padding-bottom: 10px;
-
-    @media screen and (min-width: 576px) {
-        text-align: left;
-        border-bottom: 0px;
     }
 }
 
-#filter {
-    grid-area: 'filter';
-    padding: 16px 24px 5px 24px;
-    // background-color: darkgrey;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+// .header-filter {
+//     border: 1px solid red;
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-template-rows: 35px 50px autofit;
+//     grid-template-areas: "brand"
+//         'state',
+//         'filter'
+//         'icons';
+//     row-gap: 10px;
+//     padding-top: 16px;
 
-    @media screen and (min-width: 576px) {
-        grid-column-start: 1;
-        grid-column-end: span 3;
-        border-bottom: 0px;
-    }
-}
+//     //desktop
+//     @media screen and (min-width: 576px) {
+//         grid-template-columns: 20% 80%;
+//         grid-template-rows: 40px;
+//         grid-template-areas: 'brand menu'
+//             'filter filter'
+//             'icons icons'
+//     }
+
+//     background-color: aliceblue;
+
+//     div {
+//         border: 1px dotted purple;
+//     }
+// }
+
+
+// #brand {
+
+//     .brand-name {
+//         font-size: x-large;
+//         font-weight: 500;
+//     }
+
+//     grid-area: 'brand';
+//     text-align: center;
+//     padding-bottom: 8px;
+
+//     @media screen and (min-width: 576px) {
+
+//         grid-area: 'brand state';
+//         padding: 0px;
+//         padding-left: 24px;
+//         text-align: left;
+//         font-size: xx-large;
+//         border: 0px;
+//     }
+// }
+
+// .brand-grid {
+//     border: 1px solid red;
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     row-gap: 10px;
+
+//     grid-template-areas:
+//         'name'
+//         'state';
+
+//     @media screen and (min-width: 576px) {
+//         grid-template-columns: fr 1fr;
+
+//         grid-template-areas:
+//             'name state'
+
+//     }
+
+//     #brand-name {
+//         grid-area: 'name';
+//     }
+
+//     #state-select {
+//         grid-area: 'state';
+
+//         select {
+//             width: 200px !important;
+
+//         }
+//     }
+
+// }
+
+// #menu {
+//     grid-area: 'menu';
+//     text-align: center;
+
+//     // border-bottom: 1px solid #cccccc;
+//     padding-bottom: 10px;
+
+//     @media screen and (min-width: 576px) {
+//         text-align: left;
+//         border-bottom: 0px;
+//     }
+// }
+
+// #filter {
+//     grid-area: 'filter';
+//     padding: 16px 24px 5px 24px;
+//     // background-color: darkgrey;
+//     border-top: 1px solid black;
+//     border-bottom: 1px solid black;
+
+//     @media screen and (min-width: 576px) {
+//         grid-column-start: 1;
+//         grid-column-end: span 3;
+//         border-bottom: 0px;
+//     }
+// }
 
 #icons {
     grid-area: 'icon';
