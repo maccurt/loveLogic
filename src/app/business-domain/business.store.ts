@@ -15,6 +15,7 @@ interface BusinessState {
     categoryListUrl: string
     showCategory: boolean;
     categoryList: Category[],
+    compactMode: boolean
 
 };
 
@@ -27,15 +28,17 @@ const businessInitialState: BusinessState = {
     locationList: [],
     stateSelected: stateListMock[0],
     isLoading: false,
-    showCategory: false
+    showCategory: false,
+    compactMode: true
 };
 
 export const BusinessStore = signalStore(
     { providedIn: 'root' },
     withState(businessInitialState),
     withMethods((store, businessService = inject(BusinessService)) => ({
-
-
+        compact(compactMode: boolean) {
+            patchState(store, { compactMode });
+        },
         async loadAllByStateName(state: string) {
             const stateSelected = stateListMock.find((s) => {
                 return s.name.toLocaleLowerCase() === state?.toLocaleLowerCase() ||

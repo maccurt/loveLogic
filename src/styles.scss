@@ -77,8 +77,10 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(325px, 390px));
     column-gap: 32px;
     justify-content: center;
-    // padding-left: 20px;
-    // padding-right: 20px;
+    padding: 0px 8px;
+    @media screen and (min-width: 576px) {
+        padding: 0px;
+    }
 }
 
 

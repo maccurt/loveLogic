@@ -1,14 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { categroryListMock, stateListMock, StateLocation } from '../business-domain/Business';
+import { categroryListMock, stateListMock } from '../business-domain/Business';
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from '../business-domain/business/business.component';
-import { ActivatedRoute, ParamMap, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { SafetyComponent } from "../safety/safety.component";
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppStore } from '../app.store';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
 import { CategoryListComponent } from "../category-domain/category-list/category-list.component";
@@ -24,10 +25,11 @@ import { CategoryListComponent } from "../category-domain/category-list/category
     MatChipsModule,
     MatButtonModule,
     MatIconModule,
+    MatSlideToggleModule,
     RouterModule,
     HeaderFilterComponent,
     CategoryListComponent
-],
+  ],
   providers: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
@@ -38,17 +40,16 @@ export class HomePageComponent implements OnInit {
   readonly store = inject(BusinessStore);
   readonly appStore = inject(AppStore);
   readonly fb = inject(FormBuilder);
-  readonly categoryList = categroryListMock;
-  //TODO move state to service
+  readonly categoryList = categroryListMock;  
   readonly stateList = stateListMock;
-
   readonly form = this.fb.group({
-    location: this.fb.nonNullable.control<StateLocation>(this.stateList[0]),
-    categoryId: this.fb.nonNullable.control<number>(0)
+    compactMode: this.fb.nonNullable.control<boolean>(true)
   });
 
-  ngOnInit(): void {    
- 
+  ngOnInit(): void {
+    this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
+      this.store.compact(compactMode)
+    })
   }
 }
 
@@ -92,41 +93,41 @@ export class HomePageComponent implements OnInit {
 
 
 
-   // //When the category change we have to update the store to set the filteres list
-    // this.form.controls.categoryId.valueChanges.subscribe((categoryId) => {
-    //   this.store.filter(categoryId);
-    // });
+// //When the category change we have to update the store to set the filteres list
+// this.form.controls.categoryId.valueChanges.subscribe((categoryId) => {
+//   this.store.filter(categoryId);
+// });
 
-    //We we change the Location state (Nebraska, GA)
-    // this.form.controls.location.valueChanges.subscribe((locationState) => {
-    //   this.appStore.setState(locationState) //TODO why have 2 stores, is it valuable
-    //   this.router.navigate(['', locationState.name]);
-    // });
+//We we change the Location state (Nebraska, GA)
+// this.form.controls.location.valueChanges.subscribe((locationState) => {
+//   this.appStore.setState(locationState) //TODO why have 2 stores, is it valuable
+//   this.router.navigate(['', locationState.name]);
+// });
 
-    //This seems complicated. Can we simplify
-    // this.route.paramMap.subscribe((routeParms) => {
+//This seems complicated. Can we simplify
+// this.route.paramMap.subscribe((routeParms) => {
 
-    //   if (this.appStore.isStatedSelectedInParm(routeParms)) {
+//   if (this.appStore.isStatedSelectedInParm(routeParms)) {
 
-    //     this.store.loadAll(this.appStore.stateSelected()).then(() => {
+//     this.store.loadAll(this.appStore.stateSelected()).then(() => {
 
-    //       //Can we remove this to a method what is this doing?
-    //       let categoryId = 0;
-    //       const categoryParm = routeParms.get('category');
-    //       if (categoryParm !== null) {
-    //         categoryId = + categoryParm;
-    //         let cat = this.store.categoryList().find((c) => { return c.id === categoryId });
-    //         if (!cat) { categoryId = 0 };
-    //         this.form.controls.categoryId.setValue(categoryId);
-    //       }
-    //     });
+//       //Can we remove this to a method what is this doing?
+//       let categoryId = 0;
+//       const categoryParm = routeParms.get('category');
+//       if (categoryParm !== null) {
+//         categoryId = + categoryParm;
+//         let cat = this.store.categoryList().find((c) => { return c.id === categoryId });
+//         if (!cat) { categoryId = 0 };
+//         this.form.controls.categoryId.setValue(categoryId);
+//       }
+//     });
 
-    //     this.form.controls.location.setValue(this.appStore.stateSelected(), { emitEvent: false });
+//     this.form.controls.location.setValue(this.appStore.stateSelected(), { emitEvent: false });
 
-    //   }
-    //   else {
-    //     this.appStore.setState(this.stateList[0])
-    //     this.router.navigate(['', this.stateList[0].name]);
-    //   }
+//   }
+//   else {
+//     this.appStore.setState(this.stateList[0])
+//     this.router.navigate(['', this.stateList[0].name]);
+//   }
 
-    // });
+// });

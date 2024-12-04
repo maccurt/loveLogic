@@ -12,3 +12,9 @@
     column-gap: 10px;
     grid-template-columns: repeat(auto-fit, 20px);
 }
+
+.divide-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;    
+}

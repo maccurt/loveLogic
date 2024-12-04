@@ -14,4 +14,5 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class BusinessComponent {
   business = input.required<Business>();
+  compactMode = input<boolean>();
 }

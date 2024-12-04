@@ -1,21 +1,27 @@
 <ll-header-filter></ll-header-filter>
 
-@if(!store.showCategory()){
+<div class="option-grid">
+    <div>
+        <form [formGroup]="form">
+            <mat-slide-toggle formControlName="compactMode">Compact Mode</mat-slide-toggle>
+        </form>
+    </div>
+</div>
 
+@if(!store.showCategory()){
 <div class="business-grid">
     @for (item of store.businessListFiltered(); track $index) {
     <div>
-        <ll-business [business]="item"></ll-business>
+        <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
     </div>
     }
     <div>
         <ll-safety></ll-safety>
     </div>
 </div>
-
 }
 
 @if(store.showCategory()){
 
-    <ll-category-list></ll-category-list>
+<ll-category-list></ll-category-list>
 }

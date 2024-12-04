@@ -1,13 +1,11 @@
 <mat-card class="business-card">
     <mat-card-header style="margin-bottom: 10px">
         <div class="title-grid">
-
             <div>
                 <mat-card-title>
                     <a class="no-decoration" target="_blank" [href]="business().url">{{business().name}}</a>
                 </mat-card-title>
             </div>
-
             @if(business().facebookUrl){
             <div style="text-align: right;">
                 <a target="_blank" title="facebook page..." style="color:black" [href]="business().facebookUrl">
@@ -21,6 +19,53 @@
 
     @if(business().address){
 
+    @if(compactMode()){
+
+    <mat-card-content>
+        <div class="divide-grid">
+
+            <div>
+                <a target="_blank" [href]="business().url">
+                    <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl"
+                        alt="???">
+                </a>
+            </div>
+            <div>
+                <a style="text-decoration: none;color:black" target="_blank" [href]="business().googleMapUrl">
+                    <div class="address">
+                        @if(business().googleMapUrl){
+                        <div style="margin-bottom: 3px;">
+                            <a style="margin-bottom: 0px; font-size: small;" target="_blank"
+                                [href]="business().googleMapUrl">Map Directions</a>
+                        </div>
+                        }
+
+                        <div>{{business().address.address1}}</div>
+                        @if(business().address.address2){
+                        <div>{{business().address.address2}}</div>
+                        }
+                        <div>
+                            <span>{{business().address.city}} </span>,
+                            <span>{{business().address.state}} </span>
+                            <span>{{business().address.zipcode}} </span>
+                        </div>
+                        <div style="font-size: large; font-weight: 500;margin-top: 8px;">
+                            <a style="text-decoration: none; color: black;" href="tel:{{business().address.phone}}">
+                                {{business().address.phone | mask: '(000) 000-0000'}}
+        
+                            </a>
+                        </div>
+        
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </mat-card-content>
+
+    }
+    @else{
     <mat-card-content>
         <div style="display: grid;">
             <a target="_blank" [href]="business().url">
@@ -28,6 +73,10 @@
             </a>
         </div>
     </mat-card-content>
+
+    }
+
+    @if(!compactMode()){
 
     <mat-card-content>
         <hr>
@@ -51,13 +100,11 @@
                             <span>{{business().address.state}} </span>
                             <span>{{business().address.zipcode}} </span>
                         </div>
-
                     </div>
                 </a>
             </div>
             <div class="phone-container" style="align-content: center">
                 <div style="font-size: large; font-weight: 500;text-align: center;">
-                    <!-- <mat-icon aria-hidden="false" aria-label="facebook pag" fontIcon="phone"></mat-icon> -->
                     <a style="text-decoration: none; color: black;" href="tel:{{business().address.phone}}">
                         {{business().address.phone | mask: '(000) 000-0000'}}
 
@@ -68,30 +115,8 @@
         </div>
     </mat-card-content>
 
-    <!-- <mat-card-content>
-        <hr>
-        <div style="font-size: x-large;">
-            <a style="text-decoration: none; color: black;" href="tel:{{business().address.phone}}">
-                {{business().address.phone | mask: '(000) 000-0000'}}
-            </a>
-        </div>
-    </mat-card-content> -->
-
-    <!-- <mat-card-content>
-        <hr>
-        <span style="font-size: smaller;">Social Media</span>
-        <div style="margin-top: 5px;height: 25px;" class="icon-grid">
-            @if(business().facebookUrl){
-            <div>
-                <a target="_blank" title="facebook page..." style="color:black" [href]="business().facebookUrl">
-                    <div><mat-icon aria-hidden="false" aria-label="facebook pag" fontIcon="facebook"></mat-icon></div>
-                </a>
-            </div>
-            }
-
-        </div>
-
-    </mat-card-content> -->
     }
 
+
+    }
 </mat-card>
