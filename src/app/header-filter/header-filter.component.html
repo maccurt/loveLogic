@@ -1,92 +1,51 @@
 <form [formGroup]="form">
 
-    <header id="header">
-        <div id="brand">
-            Can We Meet To Talk?
-        </div>
 
-        <div id="state-select">
-            <select id="location" class="select" formControlName="stateLocation">
-                @for(state of stateList; track $index){
-                <option [ngValue]="state"> {{state.name}} </option>
-                }
-            </select>
-        </div>
-        
-    </header>
+    <div id="header-main-container">
 
-    <div class="header-filter">
+        <div class="item-1">
+            <header id="header">
+                <div id="brand">
+                    Can We Meet To Talk?
+                </div>
 
-        <!-- <div id="brand">
-
-            <div class="brand-grid">
-                <div id="brand-name" class="brand-name">Can We Meet To Talk?</div>
-            </div>
-        </div> -->
-
-        <!-- <div id="state-select">
-            <select id="location" class="select" formControlName="stateLocation">
-                @for(state of stateList; track $index){
-                <option [ngValue]="state"> {{state.name}} </option>
-                }
-            </select>
-        </div> -->
-
-
-        <!-- <div id="menu">
-
-            @if(store.showCategory()){
-
-            <button color="primary" class="show-business-list" mat-raised-button (click)="store.showCategoryToggle()">
-                Click To See All Business!<mat-icon>business</mat-icon>
-            </button> }
-
-            @if(!store.showCategory()){
-
-            <button color="primary" class="show-category-list" mat-flat-button (click)="store.showCategoryToggle()">
-                Click To See All Categories!<mat-icon>emoji_food_beverage</mat-icon>
-            </button> }
-
-        </div> -->
-
-        <!-- <div id="filter" class="filter-controls">
-            <div class="control-grid">
-                <div>
-                    <label for="location">State</label>
+                <div id="state-select">
                     <select id="location" class="select" formControlName="stateLocation">
                         @for(state of stateList; track $index){
                         <option [ngValue]="state"> {{state.name}} </option>
                         }
                     </select>
                 </div>
+            </header>
+        </div>
 
-                @if(!store.showCategory()){
-                <div>
-                    <label for="category">Category</label>
-                    <select id="category" class="select" formControlName="category">
-                        @for(c of store.categoryList(); track $index){
-                        <option [ngValue]="c"> {{c.name}} ({{c.count}}) </option>
-                        }
-                    </select>
-                </div>
-                }
-            </div>
-        </div> -->
+        <div class="item-2">
+            <div id="category-filter">
 
-        <div id="icons">
-            <div>
-                <mat-chip-listbox aria-label="Cutest dog breeds">
+                <mat-chip-listbox aria-orientation="horizontal">
                     @for(c of store.categoryList(); track $index){
+
+
+
                     @if(c.id === store.categorySelected().id){
-                    <mat-chip-option (click)="store.filter(c)" selected>{{c.name}}</mat-chip-option>
+                    <mat-chip-option class="category-chip" selected (click)="store.filter(c)">
+                        {{c.name}}
+                    </mat-chip-option>
+
                     }
-                    @if(c.id !== store.categorySelected().id){
-                    <mat-chip-option style="min-width:150px;" (click)="store.filter(c)">{{c.name}}</mat-chip-option>
+                    @else{
+                    <mat-chip-option class="category-chip" (click)="store.filter(c)">
+                        {{c.name}}
+                    </mat-chip-option>
                     }
 
                     }
                 </mat-chip-listbox>
             </div>
+
         </div>
+
     </div>
+
+
 </form>

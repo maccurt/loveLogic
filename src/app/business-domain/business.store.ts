@@ -40,7 +40,7 @@ export const BusinessStore = signalStore(
             const stateSelected = stateListMock.find((s) => {
                 return s.name.toLocaleLowerCase() === state?.toLocaleLowerCase() ||
                     s.abbreviation.toLocaleLowerCase() === state?.toLocaleLowerCase();
-            });            
+            });
 
             if (stateSelected) {
                 this.loadAll(stateSelected);
@@ -60,7 +60,11 @@ export const BusinessStore = signalStore(
                 c.businessListUrl = '/' + stateSelected.name + '/' + c.id;
             })
 
-            patchState(store, { businessList, businessListFiltered: businessList, categoryList, isLoading: false });
+            //TODO if you go back and forth to states you migh want to set it to what it was
+            //keep in mind all states do not share category, so time being set to first
+            const categorySelected = categoryList[0];
+
+            patchState(store, { categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
         },
 
         async filter(categorySelected: Category): Promise<void> {
@@ -68,7 +72,7 @@ export const BusinessStore = signalStore(
 
             if (!categorySelected) {
                 categorySelected = store.categoryList()[0]
-            }            
+            }
 
             let businessListFiltered: Business[];
 
