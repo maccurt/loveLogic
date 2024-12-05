@@ -1,5 +1,5 @@
 <mat-card class="business-card">
-    <mat-card-header style="margin-bottom: 10px">
+    <mat-card-header >        
         <div class="title-grid">
             <div>
                 <mat-card-title>
@@ -14,23 +14,25 @@
                 </a>
             </div>
             }
-        </div>
+        </div>        
     </mat-card-header>
+    
 
     @if(business().address){
 
     @if(compactMode()){
 
-    <mat-card-content>
-        <div class="divide-grid">
 
-            <div>
+    <mat-card-content>
+        <hr>
+        <div class="divide-grid">
+            <div >
                 <a target="_blank" [href]="business().url">
                     <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl"
                         alt="???">
                 </a>
             </div>
-            <div>
+            <div >
                 <a style="text-decoration: none;color:black" target="_blank" [href]="business().googleMapUrl">
                     <div class="address">
                         @if(business().googleMapUrl){
@@ -67,19 +69,18 @@
     }
     @else{
     <mat-card-content>
+        <hr>
         <div style="display: grid;">
             <a target="_blank" [href]="business().url">
                 <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl" alt="???">
             </a>
         </div>
     </mat-card-content>
-
     }
 
     @if(!compactMode()){
-
     <mat-card-content>
-        <hr>
+        
         <div style="display: grid;grid-template-columns: 50% 50%;">
             <div class="address-container">
                 <a style="text-decoration: none;color:black" target="_blank" [href]="business().googleMapUrl">

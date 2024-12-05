@@ -77,7 +77,7 @@
     {
         "id": 4,
         "categoryId": 2,
-        "name": "Kros Strain Brewing (La Vista) ",
+        "name": "Kros Strain Brewing",
         "url": "https://krosstrainbrewing.com/lavista/",
         "facebookUrl": "https://www.facebook.com/KrosStrainBeer",
         "imageUrl": "/images/krosstrainbrewing-1.png",
@@ -195,6 +195,21 @@
             "city": "Braselton",
             "state": "GA",
             "zipcode": "30517",
+            "phone": "7066840686"
+        }
+    },
+    {
+        "id": 11,
+        "categoryId": 8,
+        "name": "Los Compadres",
+        "url": "https://loscompadres-omaha.com/",
+        "imageUrl": "/images/loscompadres-1.png",
+        "facebookUrl": "https://www.facebook.com/loscompadresomaha/",
+        "address": {
+            "address1": "10904 Q St",
+            "city": "Omaha",
+            "state": "NE",
+            "zipcode": "68137",
             "phone": "7066840686"
         }
     }

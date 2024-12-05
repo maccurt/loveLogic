@@ -19,7 +19,8 @@ export const categroryListMock: Category[] = [
   { id: 4, name: 'Museum', description: mockDecriptions },
   { id: 5, name: 'Restaraunt', description: mockDecriptions },
   { id: 6, name: 'Arcade', description: mockDecriptions, imageUrl:'/images/beercade-1.png' },
-  { id: 7, name: 'Coffee', description: mockDecriptions }
+  { id: 7, name: 'Coffee', description: mockDecriptions },
+  { id: 8, name: 'Tacos', description: mockDecriptions }
 ];
 
 export class Business {
