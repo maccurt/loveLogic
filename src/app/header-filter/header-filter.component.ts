@@ -2,8 +2,9 @@ import { Component, effect, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessStore } from '../business-domain/business.store';
-import { AppStore } from '../app.store';
-import { Category, categroryListMock, stateListMock, StateLocation } from '../business-domain/Business';
+import { stateListMock, StateLocation } from '../business-domain/Business';
+import { Category } from "../business-domain/categroryListMock";
+import { categroryListMock } from "../business-domain/categroryListMock";
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
@@ -55,15 +56,24 @@ export class HeaderFilterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.paramMap.subscribe((paramMap) => {
+    this.route.paramMap.subscribe(async (paramMap) => {
       const state = paramMap.get('state');
 
       if (state) {
-        this.store.loadAllByStateName(state);
+        await this.store.loadAllByStateName(state);
       }
       else {
-        this.store.loadAll(stateListMock[0])
+       await  this.store.loadAll(stateListMock[0])
       }
+
+      this.route.queryParamMap.subscribe((query) => {
+        const categoryId = query.get('category');
+        if (categoryId) {
+          this.store.filterByCategoryId(parseInt(categoryId));
+        }
+      })
+
+
     })
 
     this.form.controls.category.valueChanges.subscribe((category) => {
@@ -76,12 +86,12 @@ export class HeaderFilterComponent implements OnInit {
 
   }
 
-  chooseStateClick():void{
-        this.dialog.open(StateListDialogComponent,{
-          
-          position:{
-          
-          }
-        })
+  chooseStateClick(): void {
+    this.dialog.open(StateListDialogComponent, {
+
+      position: {
+
+      }
+    })
   }
 }

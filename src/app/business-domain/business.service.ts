@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
-import { Business, Category, categoryAll, categroryListMock, stateListMock, StateLocation } from './Business';
+import { Business, stateListMock, StateLocation } from './Business';
+import { Category } from "./categroryListMock";
+import { categoryAll } from "./categroryListMock";
+import { categroryListMock } from "./categroryListMock";
 import countBy from 'lodash-es/countBy';
 import { sortBy } from 'lodash-es';
 import { Location } from '@angular/common';

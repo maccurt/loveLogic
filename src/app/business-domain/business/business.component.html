@@ -1,5 +1,18 @@
+<!-- @if(business().urlList){
+
+<iframe width="320" height="180" src="https://www.youtube.com/embed/ZK_kiAklIHA"
+    title="Meet the Artist: Mickalene Thomas on Her Materials and Artistic Influences" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<div [innerHTML]="business().urlList[0].iFrame ">
+    
+</div>
+
+} -->
+
 <mat-card class="business-card">
-    <mat-card-header >        
+    <mat-card-header>
         <div class="title-grid">
             <div>
                 <mat-card-title>
@@ -14,25 +27,24 @@
                 </a>
             </div>
             }
-        </div>        
+        </div>
     </mat-card-header>
-    
+
 
     @if(business().address){
 
     @if(compactMode()){
 
-
     <mat-card-content>
         <hr>
         <div class="divide-grid">
-            <div >
+            <div>
                 <a target="_blank" [href]="business().url">
                     <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl"
                         alt="???">
                 </a>
             </div>
-            <div >
+            <div>
                 <a style="text-decoration: none;color:black" target="_blank" [href]="business().googleMapUrl">
                     <div class="address">
                         @if(business().googleMapUrl){
@@ -54,10 +66,10 @@
                         <div style="font-size: large; font-weight: 500;margin-top: 8px;">
                             <a style="text-decoration: none; color: black;" href="tel:{{business().address.phone}}">
                                 {{business().address.phone | mask: '(000) 000-0000'}}
-        
+
                             </a>
                         </div>
-        
+
                     </div>
                 </a>
             </div>
@@ -80,7 +92,7 @@
 
     @if(!compactMode()){
     <mat-card-content>
-        
+
         <div style="display: grid;grid-template-columns: 50% 50%;">
             <div class="address-container">
                 <a style="text-decoration: none;color:black" target="_blank" [href]="business().googleMapUrl">
@@ -114,6 +126,11 @@
 
             </div>
         </div>
+    </mat-card-content>
+
+    
+    <mat-card-content>
+        
     </mat-card-content>
 
     }

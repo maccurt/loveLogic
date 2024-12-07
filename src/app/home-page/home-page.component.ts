@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { categroryListMock, stateListMock } from '../business-domain/Business';
+import { stateListMock } from '../business-domain/Business';
+import { categroryListMock } from "../business-domain/categroryListMock";
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from '../business-domain/business/business.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';

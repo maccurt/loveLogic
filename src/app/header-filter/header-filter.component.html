@@ -16,7 +16,7 @@
                     </select>
                 </div>
             </header>
-        </div>
+        </div>        
 
         <div class="item-2">
             <div id="category-filter">
@@ -24,16 +24,13 @@
                 <mat-chip-listbox aria-orientation="horizontal">
                     @for(c of store.categoryList(); track $index){
 
-
-
                     @if(c.id === store.categorySelected().id){
                     <mat-chip-option color="orange" class="category-chip selected" selected (click)="store.filter(c)">
                         {{c.name}}
                     </mat-chip-option>
-
                     }
                     @else{
-                    <mat-chip-option  class="category-chip" (click)="store.filter(c)">
+                    <mat-chip-option class="category-chip" (click)="store.filter(c)">
                         {{c.name}}
                     </mat-chip-option>
                     }

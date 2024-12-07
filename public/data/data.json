@@ -88,7 +88,10 @@
             "state": "NE",
             "zipcode": "68128",
             "phone": "4027797990"
-        }
+        },
+        "urlList": [
+            {"description":"See Our Beer List","value":"https://krosstrainbrewing.com/beers/"}
+        ]
     },
     {
         "id": 5,
@@ -105,6 +108,7 @@
             "zipcode": "68128",
             "phone": "4023591418"
         }
+        
     },
     {
         "id": 6,
@@ -151,7 +155,8 @@
             "state": "NE",
             "zipcode": "68102",
             "phone": "4023423300"
-        }
+        },
+        "urlList": []
     },
     {
         "id": 9,

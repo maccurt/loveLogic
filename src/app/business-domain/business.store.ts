@@ -1,6 +1,8 @@
 import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { BusinessService } from "./business.service";
-import { Business, Category, categroryListMock, stateListMock, StateLocation } from './Business';
+import { Business, stateListMock, StateLocation } from './Business';
+import { Category } from "./categroryListMock";
+import { categroryListMock } from "./categroryListMock";
 import { inject } from '@angular/core';
 import { lastValueFrom, map, takeUntil } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -44,7 +46,7 @@ export const BusinessStore = signalStore(
                 .pipe(
                     map((b) => b.matches),
                     takeUntilDestroyed()
-                ).subscribe((isMobile) => {                    
+                ).subscribe((isMobile) => {
                     patchState(state, { isMobile });
                 });
         }
@@ -82,9 +84,20 @@ export const BusinessStore = signalStore(
             //keep in mind all states do not share category, so time being set to first
             const categorySelected = categoryList[0];
 
-            patchState(store, { categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
+            patchState(store, { categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });            
         },
 
+        async filterByCategoryId(categoryId: number): Promise<void> {
+
+            const category = store.categoryList().find((c) => {
+                return c.id === categoryId;
+            })
+            
+            if (category) {
+                console.log('???',category);    
+                this.filter(category)
+            }
+        },
         async filter(categorySelected: Category): Promise<void> {
             patchState(store, { isLoading: true });
 
@@ -100,9 +113,8 @@ export const BusinessStore = signalStore(
             else {
                 businessListFiltered = store.businessList().filter((b) => {
                     return b.categoryId === categorySelected.id;
-                });
+                });                
             }
-
             patchState(store, { categorySelected, showCategory: false, businessListFiltered, isLoading: false });
         },
         showCategoryToggle() {

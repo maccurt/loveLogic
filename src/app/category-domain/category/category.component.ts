@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { Category } from '../../business-domain/Business';
+import { Category } from "../../business-domain/categroryListMock";
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
