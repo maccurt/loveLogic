@@ -43,13 +43,6 @@ body {
 
     @media screen and (min-width: 576px) {
         padding-bottom: 0px;
-        // border-bottom: 1px solid red;
-    }
-
-    ;
-
-    div {
-        //   border:1px dotted green;
     }
 }
 
@@ -64,11 +57,7 @@ body {
     border-bottom: 1px solid black;
     margin-bottom: 32px;
     padding-left: 20px;
-    padding-right: 20px;
-
-    div {
-        // border: 1px dotted green;
-    }
+    padding-right: 20px;    
 }
 
 .business-grid,
@@ -76,10 +65,13 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(325px, 390px));
     column-gap: 32px;
+    
     justify-content: center;
     padding: 0px 8px;
+
     @media screen and (min-width: 576px) {
         padding: 0px;
+        row-gap: 16px;
     }
 }
 

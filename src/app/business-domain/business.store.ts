@@ -1,8 +1,10 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { BusinessService } from "./business.service";
 import { Business, Category, categroryListMock, stateListMock, StateLocation } from './Business';
 import { inject } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, map, takeUntil } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface BusinessState {
     isLoading: boolean;
@@ -10,13 +12,12 @@ interface BusinessState {
     businessListFiltered: Business[],
     stateSelected: StateLocation,
     locationList: StateLocation[];
-    //category
     categorySelected: Category
     categoryListUrl: string
     showCategory: boolean;
     categoryList: Category[],
-    compactMode: boolean
-
+    compactMode: boolean,
+    isMobile: boolean
 };
 
 const businessInitialState: BusinessState = {
@@ -29,11 +30,25 @@ const businessInitialState: BusinessState = {
     stateSelected: stateListMock[0],
     isLoading: false,
     showCategory: false,
-    compactMode: true
+    compactMode: true,
+    isMobile: false
 };
 
 export const BusinessStore = signalStore(
     { providedIn: 'root' },
+    withHooks({
+
+        onInit(state, breakpoint = inject(BreakpointObserver)) {
+
+            breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small])
+                .pipe(
+                    map((b) => b.matches),
+                    takeUntilDestroyed()
+                ).subscribe((isMobile) => {                    
+                    patchState(state, { isMobile });
+                });
+        }
+    }),
     withState(businessInitialState),
     withMethods((store, businessService = inject(BusinessService)) => ({
         compact(compactMode: boolean) {

@@ -8,7 +8,6 @@
     </div>
 </div>
 
-@if(!store.showCategory()){
 <div class="business-grid">
     @for (item of store.businessListFiltered(); track $index) {
     <div>
@@ -19,9 +18,14 @@
         <ll-safety></ll-safety>
     </div>
 </div>
-}
 
-@if(store.showCategory()){
+<!-- @if(!store.isMobile()){
+    <div>
+        <h1>Desktop</h1>
+    </div>
+} -->
+
+<!-- @if(store.showCategory()){
 
 <ll-category-list></ll-category-list>
-}
+} -->

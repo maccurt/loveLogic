@@ -1,6 +1,5 @@
 <form [formGroup]="form">
 
-
     <div id="header-main-container">
 
         <div class="item-1">
@@ -28,13 +27,13 @@
 
 
                     @if(c.id === store.categorySelected().id){
-                    <mat-chip-option class="category-chip" selected (click)="store.filter(c)">
+                    <mat-chip-option color="orange" class="category-chip selected" selected (click)="store.filter(c)">
                         {{c.name}}
                     </mat-chip-option>
 
                     }
                     @else{
-                    <mat-chip-option class="category-chip" (click)="store.filter(c)">
+                    <mat-chip-option  class="category-chip" (click)="store.filter(c)">
                         {{c.name}}
                     </mat-chip-option>
                     }
