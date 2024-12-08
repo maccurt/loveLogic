@@ -10,7 +10,7 @@ export class Business {
   imageUrl!: string;
   googleMapUrl!: string;
   facebookUrl!: string;
-  urlList!: Url[]
+  urlList!: Url[];
 };
 export class StateLocation {
   name!: string;
@@ -20,7 +20,7 @@ export class StateLocation {
 
 export class Url {
   description!: string;
-  url!: string;
+  value!: string;
 }
 
 export const stateListMock: StateLocation[] = [

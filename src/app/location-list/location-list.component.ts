@@ -22,6 +22,6 @@ export class LocationListComponent implements OnInit {
   ngOnInit(): void {
     this.businessService.locationList().subscribe((result)=>{
       this.locationList = result;      
-    })
+    });
   }
 }

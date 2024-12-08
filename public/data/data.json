@@ -72,7 +72,13 @@
             "state": "NE",
             "zipcode": "68128",
             "phone": "4029347988"
-        }
+        },
+        "urlList": [
+            {
+                "description": "See Our Beer List",
+                "value": "https://nebraskabrewingco.com/our-beer/"
+            }
+        ]
     },
     {
         "id": 4,
@@ -90,7 +96,10 @@
             "phone": "4027797990"
         },
         "urlList": [
-            {"description":"See Our Beer List","value":"https://krosstrainbrewing.com/beers/"}
+            {
+                "description": "See Our Beer List",
+                "value": "https://krosstrainbrewing.com/beers/"
+            }
         ]
     },
     {
@@ -107,8 +116,13 @@
             "state": "NE",
             "zipcode": "68128",
             "phone": "4023591418"
-        }
-        
+        },
+        "urlList": [
+            {
+                "description": "See Our Beer List",
+                "value": "https://pintninebrewing.com/#new-page-3-section"
+            }
+        ]
     },
     {
         "id": 6,
@@ -124,7 +138,13 @@
             "state": "NE",
             "zipcode": "68130",
             "phone": "4029323078"
-        }
+        },
+        "urlList": [
+            {
+                "description": "See Our Menu",
+                "value": "https://www.danteomaha.com/menus-2/"
+            }
+        ]
     },
     {
         "id": 7,
@@ -140,7 +160,10 @@
             "state": "NE",
             "zipcode": "68003",
             "phone": "4029448109"
-        }
+        },
+        "urlList":[
+            {"description":"Our Wine List", "value":"https://www.cellar426.com/wines-cider"}
+        ]
     },
     {
         "id": 8,
@@ -171,7 +194,14 @@
             "state": "NE",
             "zipcode": "68108",
             "phone": "4029169795"
-        }
+        },
+        "urlList": [
+            {
+                "description":"See Our Beer List",
+                "value": "https://fbpage.digitalpour.com/?companyID=582a4af45e002c08f834453f&locationID=1&templateID=6121653d474b7b8dd2a8f02a"
+            }            
+        ]
+        
     },
     {
         "id": 10,
@@ -186,7 +216,13 @@
             "state": "NE",
             "zipcode": "68104",
             "phone": "4029323392"
-        }
+        },
+        "urlList": [
+            {
+                "description":"See Our Beer List",
+                "value": "https://www.beercade2.com/#draft"
+            }            
+        ]
     },
     {
         "id": 11,

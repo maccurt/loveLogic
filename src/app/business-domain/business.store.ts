@@ -4,7 +4,7 @@ import { Business, stateListMock, StateLocation } from './Business';
 import { Category } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
 import { inject } from '@angular/core';
-import { lastValueFrom, map, takeUntil } from 'rxjs';
+import { lastValueFrom, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -39,8 +39,12 @@ const businessInitialState: BusinessState = {
 export const BusinessStore = signalStore(
     { providedIn: 'root' },
     withHooks({
+        //We init the store here regardless of user options (state location,etc)
+        onInit(state, businessService = inject(BusinessService), breakpoint = inject(BreakpointObserver)) {
 
-        onInit(state, breakpoint = inject(BreakpointObserver)) {
+            businessService.locationList().subscribe((locationList) => {                
+                patchState(state, { locationList });
+            });
 
             breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small])
                 .pipe(
@@ -52,10 +56,29 @@ export const BusinessStore = signalStore(
         }
     }),
     withState(businessInitialState),
+
     withMethods((store, businessService = inject(BusinessService)) => ({
-        compact(compactMode: boolean) {
-            patchState(store, { compactMode });
+
+        async loadAll(stateSelected: StateLocation): Promise<void> {
+
+            const categoryListUrl = 'category-list/' + stateSelected.name;
+            patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
+
+            const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
+
+            const categoryList = businessService.getCategoryListWithCount(businessList);
+
+            categoryList.forEach((c) => {
+                c.businessListUrl = '/' + stateSelected.name + '/' + c.id;
+            });
+
+            //TODO if you go back and forth to states you migh want to set it to what it was
+            //keep in mind all states do not share category, so time being set to first
+            const categorySelected = categoryList[0];
+
+            patchState(store, { categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
         },
+
         async loadAllByStateName(state: string) {
             const stateSelected = stateListMock.find((s) => {
                 return s.name.toLocaleLowerCase() === state?.toLocaleLowerCase() ||
@@ -70,39 +93,21 @@ export const BusinessStore = signalStore(
             }
         },
 
-        async loadAll(stateSelected: StateLocation): Promise<void> {
-            const categoryListUrl = 'category-list/' + stateSelected.name;
-            patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
-            const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
-            const categoryList = businessService.getCategoryListWithCount(businessList);
-
-            categoryList.forEach((c) => {
-                c.businessListUrl = '/' + stateSelected.name + '/' + c.id;
-            })
-
-            //TODO if you go back and forth to states you migh want to set it to what it was
-            //keep in mind all states do not share category, so time being set to first
-            const categorySelected = categoryList[0];
-
-            patchState(store, { categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });            
-        },
-
         async filterByCategoryId(categoryId: number): Promise<void> {
 
             const category = store.categoryList().find((c) => {
                 return c.id === categoryId;
-            })
-            
+            });
+
             if (category) {
-                console.log('???',category);    
-                this.filter(category)
+                this.filter(category);
             }
         },
         async filter(categorySelected: Category): Promise<void> {
             patchState(store, { isLoading: true });
 
             if (!categorySelected) {
-                categorySelected = store.categoryList()[0]
+                categorySelected = store.categoryList()[0];
             }
 
             let businessListFiltered: Business[];
@@ -113,12 +118,15 @@ export const BusinessStore = signalStore(
             else {
                 businessListFiltered = store.businessList().filter((b) => {
                     return b.categoryId === categorySelected.id;
-                });                
+                });
             }
             patchState(store, { categorySelected, showCategory: false, businessListFiltered, isLoading: false });
         },
         showCategoryToggle() {
             patchState(store, { showCategory: !store.showCategory() });
-        }
+        },
+        compact(compactMode: boolean) {
+            patchState(store, { compactMode });
+        },
     }))
 );

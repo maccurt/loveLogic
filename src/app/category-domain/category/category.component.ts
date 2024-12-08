@@ -14,12 +14,12 @@ import { BusinessStore } from '../../business-domain/business.store';
 })
 export class CategoryComponent {
 
-  store = inject(BusinessStore)
+  store = inject(BusinessStore);
   category = input.required<Category>();
 
 
   categoryClick(){
-    this.store.filter(this.category())
+    this.store.filter(this.category());
   }
 
 }

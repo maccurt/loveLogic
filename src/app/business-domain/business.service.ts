@@ -7,7 +7,6 @@ import { categoryAll } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
 import countBy from 'lodash-es/countBy';
 import { sortBy } from 'lodash-es';
-import { Location } from '@angular/common';
 
 export class Address {
   address1!: string;
@@ -28,12 +27,10 @@ export class BusinessService {
   constructor(private readonly http: HttpClient) { }
 
   cityList():Observable<StateLocation[]>{
-
-    return of([])
+    return of([]);
   }
 
   locationList(): Observable<StateLocation[]> {
-
     return this.http.get<Business[]>(this.url).pipe(
       map((result) => {
 
@@ -42,14 +39,14 @@ export class BusinessService {
         for (const key in stateCountList) {
           const businessCount = stateCountList[key];
           const state = stateListMock.find((s) => {
-            return s.abbreviation.toLocaleLowerCase() == key.toLocaleLowerCase()
+            return s.abbreviation.toLocaleLowerCase() == key.toLocaleLowerCase();
           });
           if (state) {
             locationList.push(state);
             state.businessCount = businessCount;
           }
         }
-        return locationList
+        return locationList;
       })
     );
   }
@@ -97,7 +94,7 @@ export class BusinessService {
         //If there is no category url use the image from a business in that category
         if (!category.imageUrl) {
           const b = businessList.find((b) => {
-            return b.categoryId === category.id
+            return b.categoryId === category.id;
           });
 
           category.imageUrl = b?.imageUrl;

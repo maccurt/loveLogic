@@ -11,7 +11,7 @@
     <mat-card-content style="margin-bottom: 10px;">
         <hr>
         <div style="display: grid;">
-            <a (click)="categoryClick()" >
+            <a role="button" (click)="categoryClick()" (keyup.enter)="categoryClick()" >
                 <img style="border:1px solid black;" width="100%" mat-card-image [src]="category().imageUrl" alt="???">
             </a>
         </div>

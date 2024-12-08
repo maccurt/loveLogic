@@ -49,8 +49,8 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
-      this.store.compact(compactMode)
-    })
+      this.store.compact(compactMode);
+    });
   }
 }
 

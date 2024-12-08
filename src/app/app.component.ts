@@ -1,28 +1,18 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router, RouterModule, RouterOutlet } from '@angular/router';
-import { BusinessComponent } from './business-domain/business/business.component';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { BusinessStore } from './business-domain/business.store';
 import { MatCardModule } from '@angular/material/card';
-import { AppStore } from './app.store';
-import { filter } from 'rxjs';
-import { HeaderFilterComponent } from "./header-filter/header-filter.component";
 
 @Component({
-  selector: 'app-root',
+  selector: 'll-root',
   standalone: true,
-  imports: [RouterOutlet, BusinessComponent,
-    MatCardModule, RouterModule, HeaderFilterComponent],
+  imports: [RouterOutlet,
+    MatCardModule, RouterModule],
   providers: [BusinessStore, Router],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-
-  // appStore = inject(AppStore);
-  router = inject(Router)
-  route = inject(ActivatedRoute)
-
-  constructor() {
-    
-  }
+export class AppComponent {  
+  router = inject(Router);
+  route = inject(ActivatedRoute); 
 }
