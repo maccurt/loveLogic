@@ -76,6 +76,7 @@
         "urlList": [
             {
                 "description": "See Our Beer List",
+                "icon": "remove_red_eye",
                 "value": "https://nebraskabrewingco.com/our-beer/"
             }
         ]
@@ -98,6 +99,7 @@
         "urlList": [
             {
                 "description": "See Our Beer List",
+                "icon": "remove_red_eye",
                 "value": "https://krosstrainbrewing.com/beers/"
             }
         ]
@@ -120,6 +122,7 @@
         "urlList": [
             {
                 "description": "See Our Beer List",
+                "icon": "remove_red_eye",
                 "value": "https://pintninebrewing.com/#new-page-3-section"
             }
         ]
@@ -141,7 +144,13 @@
         },
         "urlList": [
             {
+                "description": "1/2 Price Happy Hour",
+                "icon": "access_time",
+                "value": "https://www.danteomaha.com/half-price-happy-hour/"
+            },
+            {
                 "description": "See Our Menu",
+                "icon": "remove_red_eye",
                 "value": "https://www.danteomaha.com/menus-2/"
             }
         ]
@@ -161,8 +170,12 @@
             "zipcode": "68003",
             "phone": "4029448109"
         },
-        "urlList":[
-            {"description":"Our Wine List", "value":"https://www.cellar426.com/wines-cider"}
+        "urlList": [
+            {
+                "description": "Our Wine List",
+                "icon": "remove_red_eye",
+                "value": "https://www.cellar426.com/wines-cider"
+            }
         ]
     },
     {
@@ -197,11 +210,11 @@
         },
         "urlList": [
             {
-                "description":"See Our Beer List",
+                "description": "See Our Beer List",
+                "icon": "remove_red_eye",
                 "value": "https://fbpage.digitalpour.com/?companyID=582a4af45e002c08f834453f&locationID=1&templateID=6121653d474b7b8dd2a8f02a"
-            }            
+            }
         ]
-        
     },
     {
         "id": 10,
@@ -219,9 +232,10 @@
         },
         "urlList": [
             {
-                "description":"See Our Beer List",
+                "description": "See Our Beer List",
+                "icon": "remove_red_eye",
                 "value": "https://www.beercade2.com/#draft"
-            }            
+            }
         ]
     },
     {

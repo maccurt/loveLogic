@@ -21,6 +21,7 @@ export class StateLocation {
 export class Url {
   description!: string;
   value!: string;
+  icon!:string;
 }
 
 export const stateListMock: StateLocation[] = [
