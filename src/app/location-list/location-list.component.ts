@@ -8,11 +8,10 @@ import { SafetyComponent } from "../safety/safety.component";
 import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
-  selector: 'll-location-list',
-  standalone: true,
-  imports: [MatCardModule, RouterModule, SafetyComponent,MatChipsModule],
-  templateUrl: './location-list.component.html',
-  styleUrl: './location-list.component.scss'
+    selector: 'll-location-list',
+    imports: [MatCardModule, RouterModule, SafetyComponent, MatChipsModule],
+    templateUrl: './location-list.component.html',
+    styleUrl: './location-list.component.scss'
 })
 export class LocationListComponent implements OnInit {
   store = inject(BusinessStore);

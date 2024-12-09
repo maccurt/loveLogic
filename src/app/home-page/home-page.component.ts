@@ -16,24 +16,23 @@ import { HeaderFilterComponent } from "../header-filter/header-filter.component"
 import { CategoryListComponent } from "../category-domain/category-list/category-list.component";
 
 @Component({
-  selector: 'll-home-page',
-  standalone: true,
-  imports: [
-    BusinessComponent,
-    ReactiveFormsModule,
-    SafetyComponent,
-    MatCardModule,
-    MatChipsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSlideToggleModule,
-    RouterModule,
-    HeaderFilterComponent,
-    CategoryListComponent
-  ],
-  providers: [],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss'
+    selector: 'll-home-page',
+    imports: [
+        BusinessComponent,
+        ReactiveFormsModule,
+        SafetyComponent,
+        MatCardModule,
+        MatChipsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSlideToggleModule,
+        RouterModule,
+        HeaderFilterComponent,
+        CategoryListComponent
+    ],
+    providers: [],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);

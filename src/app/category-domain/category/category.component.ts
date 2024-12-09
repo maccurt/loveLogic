@@ -6,11 +6,10 @@ import { RouterModule } from '@angular/router';
 import { BusinessStore } from '../../business-domain/business.store';
 
 @Component({
-  selector: 'll-category',
-  standalone: true,
-  imports: [MatCardModule, MatIconModule,RouterModule],
-  templateUrl: './category.component.html',
-  styleUrl: './category.component.scss'
+    selector: 'll-category',
+    imports: [MatCardModule, MatIconModule, RouterModule],
+    templateUrl: './category.component.html',
+    styleUrl: './category.component.scss'
 })
 export class CategoryComponent {
 

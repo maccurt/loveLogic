@@ -3,11 +3,10 @@ import { MatDialogTitle, MatDialogContent } from '@angular/material/dialog';
 import { BusinessStore } from '../business-domain/business.store';
 
 @Component({
-  selector: 'll-state-list-dialog',
-  standalone: true,
-  imports: [MatDialogTitle, MatDialogContent],
-  templateUrl: './state-list-dialog.component.html',
-  styleUrl: './state-list-dialog.component.scss'
+    selector: 'll-state-list-dialog',
+    imports: [MatDialogTitle, MatDialogContent],
+    templateUrl: './state-list-dialog.component.html',
+    styleUrl: './state-list-dialog.component.scss'
 })
 export class StateListDialogComponent {
 

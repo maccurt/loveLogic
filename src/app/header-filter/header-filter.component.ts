@@ -13,17 +13,16 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-  selector: 'll-header-filter',
-  standalone: true,
-  imports: [
-    RouterModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatChipsModule
-  ],
-  templateUrl: './header-filter.component.html',
-  styleUrl: './header-filter.component.scss'
+    selector: 'll-header-filter',
+    imports: [
+        RouterModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatChipsModule
+    ],
+    templateUrl: './header-filter.component.html',
+    styleUrl: './header-filter.component.scss'
 })
 export class HeaderFilterComponent implements OnInit {
   
