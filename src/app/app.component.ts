@@ -4,14 +4,14 @@ import { BusinessStore } from './business-domain/business.store';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-    selector: 'll-root',
-    imports: [RouterOutlet,
-        MatCardModule, RouterModule],
-    providers: [BusinessStore, Router],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+  selector: 'll-root',  
+  imports: [RouterOutlet,
+    MatCardModule, RouterModule],
+  providers: [BusinessStore, Router],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
-export class AppComponent {  
+export class AppComponent {
   router = inject(Router);
-  route = inject(ActivatedRoute); 
+  route = inject(ActivatedRoute);
 }

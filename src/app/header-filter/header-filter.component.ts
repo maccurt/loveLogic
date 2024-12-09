@@ -23,6 +23,7 @@ import {
     ],
     templateUrl: './header-filter.component.html',
     styleUrl: './header-filter.component.scss'
+    
 })
 export class HeaderFilterComponent implements OnInit {
   
