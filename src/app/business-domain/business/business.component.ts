@@ -3,11 +3,9 @@ import { Business } from '../Business';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaskPipe } from 'ngx-mask';
 import { MatIconModule } from '@angular/material/icon';
-import { JsonPipe } from '@angular/common';
-
 @Component({
     selector: 'll-business',
-    imports: [MatCardModule, NgxMaskPipe, MatIconModule, JsonPipe],
+    imports: [MatCardModule, NgxMaskPipe, MatIconModule],
     templateUrl: './business.component.html',
     styleUrl: './business.component.scss'
 })

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-
+import { Bulletpoint, BulletPointList } from '../business-domain/categroryListMock';
 @Component({
     selector: 'll-safety',
     imports: [MatCardModule],
@@ -8,5 +8,5 @@ import { MatCardModule } from '@angular/material/card';
     styleUrl: './safety.component.scss'
 })
 export class SafetyComponent {
-
+    list = input.required<BulletPointList>()
 }

@@ -1,18 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BusinessStore } from '../../business-domain/business.store';
 import { CategoryComponent } from "../category/category.component";
-import { SafetyComponent } from "../../safety/safety.component";
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'll-category-list',
     imports: [
-        CategoryComponent,
-        SafetyComponent,
-        MatButtonModule,
-        MatIconModule
-    ],
+    CategoryComponent,
+    MatButtonModule,
+    MatIconModule
+],
     templateUrl: './category-list.component.html',
     styleUrl: './category-list.component.scss'
 })

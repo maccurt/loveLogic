@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { stateListMock } from '../business-domain/Business';
-import { categroryListMock } from "../business-domain/categroryListMock";
+import { Bulletpoint, categroryListMock } from "../business-domain/categroryListMock";
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from '../business-domain/business/business.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -13,26 +13,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppStore } from '../app.store';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
-import { CategoryListComponent } from "../category-domain/category-list/category-list.component";
-
 @Component({
-    selector: 'll-home-page',
-    imports: [
-        BusinessComponent,
-        ReactiveFormsModule,
-        SafetyComponent,
-        MatCardModule,
-        MatChipsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatSlideToggleModule,
-        RouterModule,
-        HeaderFilterComponent,
-        CategoryListComponent
-    ],
-    providers: [],
-    templateUrl: './home-page.component.html',
-    styleUrl: './home-page.component.scss'
+  selector: 'll-home-page',
+  imports: [
+    BusinessComponent,
+    ReactiveFormsModule,
+    SafetyComponent,
+    MatCardModule,
+    MatChipsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSlideToggleModule,
+    RouterModule,
+    HeaderFilterComponent
+  ],
+  providers: [],
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
@@ -40,11 +37,13 @@ export class HomePageComponent implements OnInit {
   readonly store = inject(BusinessStore);
   readonly appStore = inject(AppStore);
   readonly fb = inject(FormBuilder);
-  readonly categoryList = categroryListMock;  
+  readonly categoryList = categroryListMock;
   readonly stateList = stateListMock;
   readonly form = this.fb.group({
     compactMode: this.fb.nonNullable.control<boolean>(true)
   });
+
+  
 
   ngOnInit(): void {
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {

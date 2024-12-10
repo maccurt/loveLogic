@@ -9,7 +9,7 @@ import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
     selector: 'll-location-list',
-    imports: [MatCardModule, RouterModule, SafetyComponent, MatChipsModule],
+    imports: [MatCardModule, RouterModule, MatChipsModule],
     templateUrl: './location-list.component.html',
     styleUrl: './location-list.component.scss'
 })

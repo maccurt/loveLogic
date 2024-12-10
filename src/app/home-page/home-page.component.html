@@ -1,31 +1,15 @@
 <ll-header-filter></ll-header-filter>
 
-<!-- <div  class="option-grid">
-    <div>
-        <form [formGroup]="form">
-            <mat-slide-toggle formControlName="compactMode">Compact Mode</mat-slide-toggle>
-        </form>
-    </div> 
-</div> -->
-
 <div class="business-grid">
     @for (item of store.businessListFiltered(); track $index) {
     <div>
         <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
     </div>
     }
-    <div>
-        <ll-safety></ll-safety>
+    <div style="margin-top:5px;">
+        @if( store.categorySelected().bulletPointList ){
+        <ll-safety [list]="store.categorySelected.bulletPointList()">
+        </ll-safety>
+        }
     </div>
 </div>
-
-<!-- @if(!store.isMobile()){
-    <div>
-        <h1>Desktop</h1>
-    </div>
-} -->
-
-<!-- @if(store.showCategory()){
-
-<ll-category-list></ll-category-list>
-} -->
