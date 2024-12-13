@@ -4,7 +4,6 @@ import { BusinessStore } from '../business-domain/business.store';
 import { StateLocation } from '../business-domain/Business';
 import { BusinessService } from '../business-domain/business.service';
 import { RouterModule } from '@angular/router';
-import { SafetyComponent } from "../safety/safety.component";
 import {MatChipsModule} from '@angular/material/chips';
 
 @Component({

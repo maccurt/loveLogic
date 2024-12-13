@@ -6,6 +6,10 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+b {
+    font-weight: 500;
+}
+
 
 .main-grid {
     display: grid;
@@ -57,7 +61,7 @@ body {
     border-bottom: 1px solid black;
     margin-bottom: 32px;
     padding-left: 20px;
-    padding-right: 20px;    
+    padding-right: 20px;
 }
 
 .business-grid,
@@ -65,7 +69,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(325px, 390px));
     column-gap: 32px;
-    
+
     justify-content: center;
     padding: 0px 8px;
 

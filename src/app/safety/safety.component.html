@@ -1,12 +1,12 @@
-<mat-card>
-    <mat-card-header>
+<mat-card  style="background-color: #ffe6ff;">
+    <mat-card-header style="background-color: #ffe6ff;">
         <mat-card-title>
             <span style="font-weight: 500;"> {{ list().title }}</span>
         </mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-        <hr>
+        <hr style="color:purple;">
         <ul class="ul-1">
             @for(b of list().list;track $index){
             <li>{{b.value}}</li>

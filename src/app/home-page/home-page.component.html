@@ -7,9 +7,13 @@
     </div>
     }
     <div style="margin-top:5px;">
-        @if( store.categorySelected().bulletPointList ){
+        <!-- @if( store.categorySelected().bulletPointList ){
         <ll-safety [list]="store.categorySelected.bulletPointList()">
         </ll-safety>
-        }
+        } -->
+
+
+        <ll-category [category]="store.categorySelected()"></ll-category>
+
     </div>
 </div>

@@ -1,16 +1,3 @@
-<!-- @if(business().urlList){
-
-<iframe width="320" height="180" src="https://www.youtube.com/embed/ZK_kiAklIHA"
-    title="Meet the Artist: Mickalene Thomas on Her Materials and Artistic Influences" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<div [innerHTML]="business().urlList[0].iFrame ">
-    
-</div>
-
-} -->
-
 <mat-card class="business-card">
     <mat-card-header>
         <div class="title-grid">
@@ -28,7 +15,6 @@
             }
         </div>
     </mat-card-header>
-
 
     @if(business().address){
 
@@ -83,7 +69,7 @@
         <hr>
         <div style="display: grid;">
             <a target="_blank" [href]="business().url">
-                <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl" alt="???">
+                <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl" alt="todo">
             </a>
         </div>
     </mat-card-content>
@@ -130,20 +116,34 @@
 
     }
 
-    <mat-card-content style="height:45px;padding-bottom: 3px;"  >
+    <mat-card-content style="height:45px;padding-bottom: 3px;">
         <hr>
-        @if(business().urlList && business().urlList.length > 0){
-        <div style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;padding: 0px;">
 
-            <a style="color:black;font-size: medium;" target="_blank" [href]="business().urlList[0].value">
+        <div
+            style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;padding: 0px;">
 
-                <div style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;">
-                    <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
-                    {{business().urlList[0].description}}
-                </div>
-            </a>
+            @if(business().urlList && business().urlList.length > 0){
+                <a style="color:black;font-size: medium;" target="_blank" [href]="business().urlList[0].value">
+                    <div style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;">
+                        <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
+                        {{business().urlList[0].description}}...
+                    </div>
+                </a>
+            }
+            @else {
+
+                <a style="color:black;font-size: medium;" target="_blank" [href]="business().url">
+                    <div style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;">
+                        <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
+                        Visit Our Website...
+                    </div>
+                </a>
+
+            }
+
+            
         </div>
-        }
+
 
     </mat-card-content>
     }
