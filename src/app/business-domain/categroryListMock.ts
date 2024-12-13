@@ -1,7 +1,7 @@
 export const safetyBulletpointList: BulletPointList = {
   title: 'Your Safety Is A Priority', list: [{ value: 'Choose a public place to meet.' }, { value: 'Provide your own transporation.' }, { value: 'Provide location to family or friends.' }]
 };
-export const mockDecriptions = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus error iure eligendi voluptates illo modi asperiores dolore dicta aspernatur quidem, ad';
+export const mockDecriptions = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus error iure eligendi ';
 
 export class Category {
   id!: number;
@@ -15,7 +15,7 @@ export class Category {
   title?: string;
 };
 
-export const categoryAll: Category = { id: 0, name: 'All', title: 'Can We Meet To Talk?', imageUrl: '/images/reading-1.png', isDefault: true, bulletPointList: safetyBulletpointList };
+export const categoryAll: Category = { id: 0, name: 'All', title: 'Can We Meet To Talk?', imageUrl: '/images/winery-2.png', isDefault: true, bulletPointList: safetyBulletpointList };
 
 export const categroryListMock: Category[] = [
   categoryAll,
@@ -41,7 +41,7 @@ export const categroryListMock: Category[] = [
       title: 'What Experience Can We Have?', list: [{ value: "Do You Enjoy Playing Video Games?" }]
     }
   },
-  { id: 7, name: 'Coffee', title: "Can we Get A Mocha and talk?", imageUrl: '/images/coffee-1.png', description: mockDecriptions, bulletPointList: safetyBulletpointList },
+  { id: 7, name: 'Coffee', title: "Can we Get A Mocha and talk?", imageUrl: '/images/coffee-2.png', description: mockDecriptions, bulletPointList: safetyBulletpointList },
   { id: 8, name: 'Tacos', title: "Can we get get some tacos and talk?", imageUrl: '/images/tacos-1.png', description: mockDecriptions, bulletPointList: safetyBulletpointList }
 ];
 
