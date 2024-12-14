@@ -3,14 +3,24 @@
     margin-bottom: 8px;
 }
 
-.icon-grid{
-    display: grid;    
+.icon-grid {
+    display: grid;
     column-gap: 10px;
     grid-template-columns: repeat(auto-fit, 20px);
 }
 
-.divide-grid{
+.divide-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 12px;    
+    column-gap: 12px;
+}
+
+
+.icon-text {
+
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    column-gap: 8px;
+    align-items: center;
+
 }

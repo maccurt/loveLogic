@@ -13,6 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppStore } from '../app.store';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
 import { CategoryComponent } from "../category-domain/category/category.component";
+import { MatSidenavModule } from '@angular/material/sidenav';
 @Component({
   selector: 'll-home-page',
   imports: [
@@ -23,6 +24,7 @@ import { CategoryComponent } from "../category-domain/category/category.componen
     MatButtonModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatSidenavModule,
     RouterModule,
     HeaderFilterComponent,
     CategoryComponent
@@ -47,5 +49,9 @@ export class HomePageComponent implements OnInit {
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
       this.store.compact(compactMode);
     });
+  }
+
+  hideBusiness(){
+    this.store.showBusinessToggle(false)
   }
 }

@@ -10,6 +10,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface BusinessState {
     isLoading: boolean;
+    businessSelected: Business,
+    showBusiness:boolean;
     businessList: Business[],
     businessListFiltered: Business[],
     stateSelected: StateLocation,
@@ -24,6 +26,8 @@ interface BusinessState {
 
 const businessInitialState: BusinessState = {
     categoryListUrl: '',
+    businessSelected: new Business(),
+    showBusiness:false,
     businessList: [],
     businessListFiltered: [],
     categoryList: categroryListMock,
@@ -42,7 +46,7 @@ export const BusinessStore = signalStore(
         //We init the store here regardless of user options (state location,etc)
         onInit(state, businessService = inject(BusinessService), breakpoint = inject(BreakpointObserver)) {
 
-            businessService.locationList().subscribe((locationList) => {                
+            businessService.locationList().subscribe((locationList) => {
                 patchState(state, { locationList });
             });
 
@@ -66,6 +70,8 @@ export const BusinessStore = signalStore(
 
             const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
 
+            const businessSelected = businessList[0];
+
             const categoryList = businessService.getCategoryListWithCount(businessList);
 
             categoryList.forEach((c) => {
@@ -76,7 +82,7 @@ export const BusinessStore = signalStore(
             //keep in mind all states do not share category, so time being set to first
             const categorySelected = categoryList[0];
 
-            patchState(store, { categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
+            patchState(store, { businessSelected, categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
         },
 
         async loadAllByStateName(state: string) {
@@ -128,5 +134,12 @@ export const BusinessStore = signalStore(
         compact(compactMode: boolean) {
             patchState(store, { compactMode });
         },
+        showBusinessToggle(showBusiness:boolean){
+            patchState(store, { showBusiness });
+        },
+        selectBusiness(businessSelected:Business){
+            patchState(store, { businessSelected });
+            this.showBusinessToggle(true);
+        }
     }))
 );

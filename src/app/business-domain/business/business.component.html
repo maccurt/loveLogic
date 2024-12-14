@@ -119,29 +119,29 @@
     <mat-card-content style="height:45px;padding-bottom: 3px;">
         <hr>
 
-        <div
-            style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;padding: 0px;">
+        <!-- style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;padding: 0px;" -->
+        <div>
 
             @if(business().urlList && business().urlList.length > 0){
-                <a style="color:black;font-size: medium;" target="_blank" [href]="business().urlList[0].value">
-                    <div style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;">
-                        <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
-                        {{business().urlList[0].description}}...
-                    </div>
-                </a>
+            <a style="color:black;font-size: medium;" target="_blank" [href]="business().urlList[0].value">
+                <div class="icon-text">
+                    <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
+                    {{business().urlList[0].description}}...
+                </div>
+            </a>
             }
             @else {
 
-                <a style="color:black;font-size: medium;" target="_blank" [href]="business().url">
-                    <div style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;">
-                        <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
-                        Visit Our Website...
-                    </div>
-                </a>
+            <a style="color:black;font-size: medium;" target="_blank" [href]="business().url">
+                <div class="icon-text">
+                    <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
+                    Visit Our Website...
+                </div>
+            </a>
 
             }
 
-            
+
         </div>
 
 
