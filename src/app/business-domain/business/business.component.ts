@@ -18,13 +18,5 @@ export class BusinessComponent {
 
   constructor() {
 
-
-    effect(()=>{
-
-      this.business().urlList;      
-      console.log('hello world');
-    })
-
-
   }
 }

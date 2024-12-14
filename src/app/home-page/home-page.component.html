@@ -1,9 +1,13 @@
 <mat-drawer-container>
-    <mat-drawer [opened]="store.showBusiness()">
+    <mat-drawer (closed)="hideBusiness()" disableClose="false" [opened]="store.showBusiness()">
 
         <div style="margin: 8px;border: 1px solid #cccccc;">
             <ll-business [compactMode]="store.compactMode()" [business]="store.businessSelected()"></ll-business>
+
+
             <button (click)="hideBusiness()"  mat-raised-button>Close</button>
+
+            <ll-category [category]="store.businessSelectedCategory()"></ll-category>
         </div>
     </mat-drawer>
 

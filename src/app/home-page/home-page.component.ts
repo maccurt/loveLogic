@@ -10,7 +10,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AppStore } from '../app.store';
+// import { AppStore } from '../app.store';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
 import { CategoryComponent } from "../category-domain/category/category.component";
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
   readonly store = inject(BusinessStore);
-  readonly appStore = inject(AppStore);
+  // readonly appStore = inject(AppStore);
   readonly fb = inject(FormBuilder);
   readonly categoryList = categroryListMock;
   readonly stateList = stateListMock;
@@ -54,4 +54,5 @@ export class HomePageComponent implements OnInit {
   hideBusiness(){
     this.store.showBusinessToggle(false)
   }
+  
 }

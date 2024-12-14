@@ -105,7 +105,6 @@
                 <div style="font-size: large; font-weight: 500;text-align: center;">
                     <a style="text-decoration: none; color: black;" href="tel:{{business().address.phone}}">
                         {{business().address.phone | mask: '(000) 000-0000'}}
-
                     </a>
                 </div>
 
@@ -113,38 +112,40 @@
         </div>
     </mat-card-content>
 
-
     }
 
-    <mat-card-content style="height:45px;padding-bottom: 3px;">
+    <mat-card-content style="padding-bottom: 3px;">
         <hr>
 
-        <!-- style="display: inline-grid;grid-template-columns: auto auto;column-gap: 8px;align-items: center;padding: 0px;" -->
-        <div>
+        <div class="link-route-grid">            
+            <div class="item item-1">
+                @if(business().urlList && business().urlList.length > 0){
+                <a style="color:black;font-size: medium;" target="_blank" [href]="business().urlList[0].value">
+                    <div class="icon-text">
+                        <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
+                        {{business().urlList[0].description}}...
+                    </div>
+                </a>
+                }
+                @else {
 
-            @if(business().urlList && business().urlList.length > 0){
-            <a style="color:black;font-size: medium;" target="_blank" [href]="business().urlList[0].value">
-                <div class="icon-text">
-                    <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
-                    {{business().urlList[0].description}}...
+                <a style="color:black;font-size: medium;" target="_blank" [href]="business().url">
+                    <div class="icon-text">
+                        <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
+                        Visit Our Website...
+                    </div>
+                </a>
+                }
+            </div>
+
+            @if(!store.showBusiness()){
+                <div class="item item-2">
+                    <button (click)="store.showSelectedBusiness(business())" mat-button-flat style="float:right"> +</button>
                 </div>
-            </a>
             }
-            @else {
-
-            <a style="color:black;font-size: medium;" target="_blank" [href]="business().url">
-                <div class="icon-text">
-                    <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
-                    Visit Our Website...
-                </div>
-            </a>
-
-            }
-
+            
 
         </div>
-
-
     </mat-card-content>
     }
 </mat-card>

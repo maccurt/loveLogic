@@ -22,5 +22,12 @@
     grid-template-columns: auto auto;
     column-gap: 8px;
     align-items: center;
+}
 
+.link-route-grid {
+    display: inline-grid;
+    width: 100%;
+    column-gap: 3px;
+    grid-template-columns: auto auto;
+    padding: 2px;
 }

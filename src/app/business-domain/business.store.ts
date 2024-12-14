@@ -10,10 +10,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface BusinessState {
     isLoading: boolean;
-    businessSelected: Business,
-    showBusiness:boolean;
+
+    //business
+    showBusiness: boolean;
     businessList: Business[],
     businessListFiltered: Business[],
+    businessSelected: Business,
+    businessSelectedCategory: Category;
     stateSelected: StateLocation,
     locationList: StateLocation[];
     categorySelected: Category
@@ -27,7 +30,8 @@ interface BusinessState {
 const businessInitialState: BusinessState = {
     categoryListUrl: '',
     businessSelected: new Business(),
-    showBusiness:false,
+    businessSelectedCategory: categroryListMock[0],
+    showBusiness: false,
     businessList: [],
     businessListFiltered: [],
     categoryList: categroryListMock,
@@ -134,11 +138,20 @@ export const BusinessStore = signalStore(
         compact(compactMode: boolean) {
             patchState(store, { compactMode });
         },
-        showBusinessToggle(showBusiness:boolean){
+        showBusinessToggle(showBusiness: boolean) {
             patchState(store, { showBusiness });
         },
-        selectBusiness(businessSelected:Business){
+        showSelectedBusiness(businessSelected: Business) {
+
             patchState(store, { businessSelected });
+
+            const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId })
+            if (businessSelectedCategory) {
+                patchState(store, { businessSelectedCategory });
+            }
+            else {
+                patchState(store, { businessSelectedCategory: categroryListMock[0] });
+            }
             this.showBusinessToggle(true);
         }
     }))
