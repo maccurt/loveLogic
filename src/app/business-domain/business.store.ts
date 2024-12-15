@@ -67,7 +67,7 @@ export const BusinessStore = signalStore(
 
     withMethods((store, businessService = inject(BusinessService)) => ({
 
-        async loadAll(stateSelected: StateLocation): Promise<void> {
+        async loadAll(stateSelected: StateLocation,businessId = 0): Promise<void> {
 
             const categoryListUrl = 'category-list/' + stateSelected.name;
             patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
@@ -87,20 +87,28 @@ export const BusinessStore = signalStore(
             const categorySelected = categoryList[0];
 
             patchState(store, { businessSelected, categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
+
+            if (businessId > 0){
+                this.showSelectedBusinessById(businessId)
+            }
         },
 
-        async loadAllByStateName(state: string) {
+        async loadAllByStateName(state: string, businessId:number) {
             const stateSelected = stateListMock.find((s) => {
                 return s.name.toLocaleLowerCase() === state?.toLocaleLowerCase() ||
                     s.abbreviation.toLocaleLowerCase() === state?.toLocaleLowerCase();
             });
 
             if (stateSelected) {
-                this.loadAll(stateSelected);
+                this.loadAll(stateSelected,businessId);
+                
             }
             else {
                 this.loadAll(stateListMock[0]); //todo this is a problem make this not use mock
             }
+
+            
+
         },
 
         async filterByCategoryId(categoryId: number): Promise<void> {
@@ -141,10 +149,17 @@ export const BusinessStore = signalStore(
         showBusinessToggle(showBusiness: boolean) {
             patchState(store, { showBusiness });
         },
+        showSelectedBusinessById(id:number){            
+
+            const businessSelected = store.businessList().find((b)=>{return b.id === id});
+            if (businessSelected){
+            
+                this.showSelectedBusiness(businessSelected)
+            }
+        },
         showSelectedBusiness(businessSelected: Business) {
 
             patchState(store, { businessSelected });
-
             const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId })
             if (businessSelectedCategory) {
                 patchState(store, { businessSelectedCategory });

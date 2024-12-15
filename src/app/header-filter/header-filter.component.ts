@@ -9,24 +9,24 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import {
-  MatDialog,  
+  MatDialog,
 } from '@angular/material/dialog';
 
 @Component({
-    selector: 'll-header-filter',
-    imports: [
-        RouterModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        MatButtonModule,
-        MatChipsModule
-    ],
-    templateUrl: './header-filter.component.html',
-    styleUrl: './header-filter.component.scss'
-    
+  selector: 'll-header-filter',
+  imports: [
+    RouterModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatChipsModule
+  ],
+  templateUrl: './header-filter.component.html',
+  styleUrl: './header-filter.component.scss'
+
 })
 export class HeaderFilterComponent implements OnInit {
-  
+
   readonly fb = inject(FormBuilder);
   readonly store = inject(BusinessStore);
   readonly route = inject(ActivatedRoute);
@@ -49,15 +49,21 @@ export class HeaderFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe(async (paramMap) => {
       const state = paramMap.get('state');
 
-      if (state) {
-        await this.store.loadAllByStateName(state);
+      let id = paramMap.get('businessId');
+      let businessId = -1;
+
+      if (id && parseInt(id) > 0) {
+        businessId = parseInt(id)
+      }      
+
+      if (state) {        
+        await this.store.loadAllByStateName(state,businessId);      
       }
       else {
-       await  this.store.loadAll(this.store.stateSelected());
+        await this.store.loadAll(this.store.stateSelected());
       }
 
       this.route.queryParamMap.subscribe((query) => {
@@ -76,5 +82,5 @@ export class HeaderFilterComponent implements OnInit {
     this.form.controls.stateLocation.valueChanges.subscribe((state) => {
       this.store.loadAll(state);
     });
-  }  
+  }
 }

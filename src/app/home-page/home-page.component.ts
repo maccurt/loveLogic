@@ -36,7 +36,7 @@ import { CategoryComponent } from "../category-domain/category/category.componen
 export class HomePageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
-  readonly store = inject(BusinessStore);  
+  readonly store = inject(BusinessStore);
   readonly fb = inject(FormBuilder);
   readonly categoryList = categroryListMock;
   readonly stateList = stateListMock;
@@ -44,14 +44,14 @@ export class HomePageComponent implements OnInit {
     compactMode: this.fb.nonNullable.control<boolean>(true)
   });
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
       this.store.compact(compactMode);
     });
   }
 
-  hideBusiness(){
+  hideBusiness() {
     this.store.showBusinessToggle(false)
   }
-  
 }
