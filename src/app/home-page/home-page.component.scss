@@ -1,6 +1,18 @@
-.option-grid{
+.option-grid {
 
     display: grid;
     grid-template-columns: 1fr;
-    padding:8px 16px;
+    padding: 8px 16px;
+    
+
+}
+
+
+
+.drawer {
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 16px;    
+    padding: 5px;
+    justify-items: center;
 }

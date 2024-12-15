@@ -1,27 +1,37 @@
-<mat-drawer-container>
+<mat-drawer-container style="height: 100vh;">
     <mat-drawer (closed)="hideBusiness()" disableClose="false" [opened]="store.showBusiness()">
 
-        <div style="margin: 8px;border: 1px solid #cccccc;">
-            <ll-business [compactMode]="store.compactMode()" [business]="store.businessSelected()"></ll-business>
+        <div class="drawer">
+            
+            <div>
+                <ll-business [compactMode]="store.compactMode()" [business]="store.businessSelected()"></ll-business>
 
-
-            <button (click)="hideBusiness()"  mat-raised-button>Close</button>
-
-            <ll-category [category]="store.businessSelectedCategory()"></ll-category>
+            </div>
+            <div >
+                <button  style="width: 100%;"  (click)="hideBusiness()" mat-flat-button>Close & See Other Option</button>
+            </div>
+            <div>
+                <ll-category [category]="store.businessSelectedCategory()"></ll-category>
+            </div>
         </div>
+
     </mat-drawer>
 
-    <ll-header-filter></ll-header-filter>
+    <mat-drawer-content>
 
-    <div class="business-grid">
-        @for (item of store.businessListFiltered(); track $index) {
-        <div>
-            <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
+        <ll-header-filter></ll-header-filter>
+        <div class="business-grid">
+            @for (item of store.businessListFiltered(); track $index) {
+            <div>
+                <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
+            </div>
+            }
+            <div style="margin-top:5px;">
+                <ll-category [category]="store.categorySelected()"></ll-category>
+            </div>
         </div>
-        }
-        <div style="margin-top:5px;">
-            <ll-category [category]="store.categorySelected()"></ll-category>
-        </div>
-    </div>
+
+
+    </mat-drawer-content>
 
 </mat-drawer-container>
