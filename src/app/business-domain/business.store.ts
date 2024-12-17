@@ -9,8 +9,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface BusinessState {
+    domainUrl: string;
     isLoading: boolean;
-
     //business
     showBusiness: boolean;
     businessList: Business[],
@@ -28,6 +28,7 @@ interface BusinessState {
 };
 
 const businessInitialState: BusinessState = {
+    domainUrl: '',
     categoryListUrl: '',
     businessSelected: new Business(),
     businessSelectedCategory: categroryListMock[0],
@@ -48,10 +49,15 @@ export const BusinessStore = signalStore(
     { providedIn: 'root' },
     withHooks({
         //We init the store here regardless of user options (state location,etc)
-        onInit(state, businessService = inject(BusinessService), breakpoint = inject(BreakpointObserver)) {
+        onInit(state,
+            businessService = inject(BusinessService),
+            breakpoint = inject(BreakpointObserver)
+        ) {
+            
+            const domainUrl = document.location.origin;
 
             businessService.locationList().subscribe((locationList) => {
-                patchState(state, { locationList });
+                patchState(state, { locationList, domainUrl });
             });
 
             breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small])
@@ -65,9 +71,13 @@ export const BusinessStore = signalStore(
     }),
     withState(businessInitialState),
 
-    withMethods((store, businessService = inject(BusinessService)) => ({
+    withMethods((
+        store,
+        businessService = inject(BusinessService),
 
-        async loadAll(stateSelected: StateLocation,businessId = 0): Promise<void> {
+    ) => ({
+
+        async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
 
             const categoryListUrl = 'category-list/' + stateSelected.name;
             patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
@@ -88,27 +98,24 @@ export const BusinessStore = signalStore(
 
             patchState(store, { businessSelected, categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
 
-            if (businessId > 0){
+            if (businessId > 0) {
                 this.showSelectedBusinessById(businessId)
             }
         },
 
-        async loadAllByStateName(state: string, businessId:number) {
+        async loadAllByStateName(state: string, businessId: number) {
             const stateSelected = stateListMock.find((s) => {
                 return s.name.toLocaleLowerCase() === state?.toLocaleLowerCase() ||
                     s.abbreviation.toLocaleLowerCase() === state?.toLocaleLowerCase();
             });
 
             if (stateSelected) {
-                this.loadAll(stateSelected,businessId);
-                
+                this.loadAll(stateSelected, businessId);
+
             }
             else {
                 this.loadAll(stateListMock[0]); //todo this is a problem make this not use mock
             }
-
-            
-
         },
 
         async filterByCategoryId(categoryId: number): Promise<void> {
@@ -149,15 +156,17 @@ export const BusinessStore = signalStore(
         showBusinessToggle(showBusiness: boolean) {
             patchState(store, { showBusiness });
         },
-        showSelectedBusinessById(id:number){            
+        showSelectedBusinessById(id: number) {
 
-            const businessSelected = store.businessList().find((b)=>{return b.id === id});
-            if (businessSelected){
-            
+            const businessSelected = store.businessList().find((b) => { return b.id === id });
+            if (businessSelected) {
                 this.showSelectedBusiness(businessSelected)
             }
         },
         showSelectedBusiness(businessSelected: Business) {
+
+
+            // businessSelected.urlAppSendTo = store.domainUrl();
 
             patchState(store, { businessSelected });
             const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId })

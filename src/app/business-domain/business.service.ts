@@ -26,7 +26,7 @@ export class BusinessService {
   url = '/data/data.json';
   constructor(private readonly http: HttpClient) { }
 
-  cityList():Observable<StateLocation[]>{
+  cityList(): Observable<StateLocation[]> {
     return of([]);
   }
 
@@ -35,7 +35,7 @@ export class BusinessService {
       map((result) => {
 
         const stateCountList = countBy(result, 'address.state');
-        const locationList: StateLocation[] = [];        
+        const locationList: StateLocation[] = [];
         for (const key in stateCountList) {
           const businessCount = stateCountList[key];
           const state = stateListMock.find((s) => {
@@ -63,6 +63,9 @@ export class BusinessService {
 
         filter.forEach((b) => {
           b.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
+
+          b.urlAppSendTo = document.location.origin + `/state/${b.address.state}/business/${b.id}`;
+
         });
 
         //Sort by name in future, add others

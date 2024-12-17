@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { stateListMock } from '../business-domain/Business';
 import { categroryListMock } from "../business-domain/categroryListMock";
@@ -13,10 +13,13 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
 import { CategoryComponent } from "../category-domain/category/category.component";
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { DOCUMENT, Location } from '@angular/common';
 
 @Component({
   selector: 'll-home-page',
   imports: [
+    ClipboardModule,
     BusinessComponent,
     ReactiveFormsModule,
     MatCardModule,
@@ -34,6 +37,8 @@ import { CategoryComponent } from "../category-domain/category/category.componen
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit {
+  
+  readonly location = inject(Location)
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
   readonly store = inject(BusinessStore);
@@ -43,6 +48,11 @@ export class HomePageComponent implements OnInit {
   readonly form = this.fb.group({
     compactMode: this.fb.nonNullable.control<boolean>(true)
   });
+
+
+  constructor(@Inject(DOCUMENT) private document: any) { 
+    
+   }
 
   ngOnInit(): void {    
 

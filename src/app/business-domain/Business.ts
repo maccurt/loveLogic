@@ -4,13 +4,15 @@ export class Business {
   id!: number;
   categoryId!: number;
   name!: string;
-  url!: string;
-  urlContact?: string;
+  
   address!: Address;
   imageUrl!: string;
   googleMapUrl!: string;
   facebookUrl!: string;
-  urlList!: Url[];
+  url!: string;
+  urlContact?: string;
+  urlList!: Url[];  
+  urlAppSendTo:string = 'aaa';
 };
 export class StateLocation {
   name!: string;

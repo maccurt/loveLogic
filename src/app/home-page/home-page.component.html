@@ -2,16 +2,31 @@
     <mat-drawer (closed)="hideBusiness()" disableClose="false" [opened]="store.showBusiness()">
 
         <div class="drawer">
-            
-            <div>
-                <ll-business [compactMode]="store.compactMode()" [business]="store.businessSelected()"></ll-business>
 
-            </div>
-            <div >
-                <button  style="width: 100%;"  (click)="hideBusiness()" mat-flat-button>Close & See Other Option</button>
-            </div>
             <div>
-                <ll-category [category]="store.businessSelectedCategory()"></ll-category>
+                <ll-business [compactMode]="false" [business]="store.businessSelected()"></ll-business>
+            </div>
+
+            <div>
+                <div class="invite-grid" style="text-align: center;">
+                    <div style="color:blue;font-size: large;font-weight: 500;padding: 8px 0px;text-align: center;"> Copy URL to Invite!</div>
+                    
+                    <div>
+                        <input disabled style="width: 90%;height: 40px;padding: 5px;"   
+                            [value]="store.businessSelected().urlAppSendTo" />
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button color="primary" mat-flat-button>Copy To Clipboard</button>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 5px;">
+                    <ll-category [category]="store.businessSelectedCategory()"></ll-category>
+                    <div style="text-align: center;">
+                        <button  (click)="hideBusiness()" mat-flat-button>Close & See Other Option</button>
+                    </div>
+                </div>
             </div>
         </div>
 
