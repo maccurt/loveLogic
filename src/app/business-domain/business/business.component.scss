@@ -17,7 +17,6 @@
 
 
 .icon-text {
-
     display: inline-grid;
     grid-template-columns: auto auto;
     column-gap: 8px;
@@ -25,9 +24,14 @@
 }
 
 .link-route-grid {
+    border: 5px solid black;
     display: inline-grid;
     width: 100%;
     column-gap: 3px;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     padding: 2px;
+
+    >div {
+        border: 2px dotted red;
+    }
 }

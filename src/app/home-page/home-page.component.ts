@@ -15,6 +15,7 @@ import { HeaderFilterComponent } from "../header-filter/header-filter.component"
 import { CategoryComponent } from "../category-domain/category/category.component";
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { DOCUMENT, Location } from '@angular/common';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'll-home-page',
@@ -28,6 +29,7 @@ import { DOCUMENT, Location } from '@angular/common';
     MatIconModule,
     MatSlideToggleModule,
     MatSidenavModule,
+    MatDividerModule,
     RouterModule,
     HeaderFilterComponent,
     CategoryComponent

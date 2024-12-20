@@ -13,10 +13,10 @@
     }
 
     .item-2 {
-        
-        @media screen and (min-width: 576px) {
-            justify-items: center;
-        }
+        border: 1px solid blueviolet !important; 
+        // @media screen and (min-width: 576px) {
+        //     justify-items: center;
+        // }
     }
 }
 

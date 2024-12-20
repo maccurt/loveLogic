@@ -6,29 +6,24 @@
 
 .invite-grid {
     border: 1px solid green !important;
-
     background-color: aliceblue;
     border: 1px solid #cccccc;
     display: grid;
     grid-template-columns: auto;
     row-gap: 8px;
     padding: 8px;
-
 }
-
 
 .drawer {
     display: grid;
     grid-template-columns: auto;
-    row-gap: 16px;
-    padding: 24px;
+    row-gap: 0px;
+    padding: 8px 24px;
     justify-items: center;
 
-
-}
-
-.drawer>div {
-    
-    margin: 0px !important;
-    // width: 100%;
+    .header{
+        width: 100%;
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 5px;        
+    }
 }
