@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { stateListMock } from '../business-domain/Business';
-import { categroryListMock, safetyBulletpointList as safetyBulletpointListMock } from "../business-domain/categroryListMock";
+import { categroryListMock, safetyBulletpointList_Mock as SafetyBulletpointList_Mock } from "../business-domain/categroryListMock";
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from '../business-domain/business/business.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -16,7 +16,9 @@ import { CategoryComponent } from "../category-domain/category/category.componen
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-import { SafetyComponent } from "../safety/safety.component";
+import { BusinessDrawerComponent } from "../business-domain/business-drawer/business-drawer.component";
+import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
+
 
 @Component({
   selector: 'll-home-page',
@@ -32,17 +34,20 @@ import { SafetyComponent } from "../safety/safety.component";
     MatSlideToggleModule,
     MatSidenavModule,
     MatDividerModule,
+
+    MatBottomSheetModule,
     RouterModule,
     HeaderFilterComponent,
     CategoryComponent,
-    SafetyComponent
-],
+    BusinessDrawerComponent
+  ],
   providers: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit {
-  
+
+  private bottomSheet = inject(MatBottomSheet);
   readonly location = inject(Location);
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
@@ -54,9 +59,12 @@ export class HomePageComponent implements OnInit {
     compactMode: this.fb.nonNullable.control<boolean>(true)
   });
 
-  safetyBulletPoints = safetyBulletpointListMock;
+  safetyBulletPoints = SafetyBulletpointList_Mock;
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+
+
+
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
       this.store.compact(compactMode);
     });
@@ -64,5 +72,9 @@ export class HomePageComponent implements OnInit {
 
   hideBusiness() {
     this.store.showBusinessToggle(false);
+  }
+
+  openDrawer() {
+    //this.bottomSheet.open(BottomSheetActionComponent) 
   }
 }

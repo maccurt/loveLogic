@@ -1,50 +1,13 @@
 <mat-drawer-container style="height: 100vh;">
-  <mat-drawer id="side-dra" (closed)="hideBusiness()" disableClose="false" [opened]="store.showBusiness()">
 
-    <div class="drawer-grid">
+  <mat-drawer id="side-dra" (opened)="openDrawer()" (closed)="hideBusiness()" disableClose="false"
+    [opened]="store.showBusiness()">
 
-      <div class="header">
-        <button style="float: right;" (click)="hideBusiness()" mat-min-fab>X</button>
-      </div>
-
-      <div>
-        <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
-      </div>
-
-      <div>
-
-        <div class="invite-grid">
-          <div style="text-align: center;">
-            <b>Copy & Send URL To Friend To Meet</b>
-          </div>
-          <div>
-            <div class="invite-container">
-              <button [cdkCopyToClipboard]="store.businessSelected().urlAppSendTo"
-                mat-icon-button><mat-icon>content_copy</mat-icon></button>
-
-              <textarea rows="2" disabled style="width: 100%"
-                [value]="store.businessSelected().urlAppSendTo"></textarea>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div>
-        <ll-safety [list]="safetyBulletPoints"></ll-safety>
-      </div>
-
-      <div>
-        <div style="text-align: center;">
-          <button color="warn" (click)="hideBusiness()" mat-raised-button>Close & See Other
-            Options</button>
-        </div>
-      </div>
-
-    </div>
+    <ll-business-drawer></ll-business-drawer>
   </mat-drawer>
 
   <mat-drawer-content>
+
     <ll-header-filter></ll-header-filter>
     <div class="business-grid">
       @for (item of store.businessListFiltered(); track $index) {
@@ -57,6 +20,15 @@
       </div>
     </div>
 
-  </mat-drawer-content>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
 
+    <button type="button" class="btn btn-link">Link</button>
+  </mat-drawer-content>
 </mat-drawer-container>
