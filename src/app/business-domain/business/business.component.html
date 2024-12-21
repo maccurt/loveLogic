@@ -139,8 +139,8 @@
             </div>
 
             @if(!detailMode()){
-            <div >
-                <a class="action-link"  (click)="store.showSelectedBusiness(business())"  style="float: right;"> <mat-icon>open_in_new</mat-icon></a>                
+            <div>
+                <button color="success" mat-icon-button (click)="store.showSelectedBusiness(business())" style="float: right;" ><mat-icon style="color:green">open_in_new</mat-icon></button>                
             </div>
             }
 

@@ -1,4 +1,4 @@
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Business } from '../Business';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaskPipe } from 'ngx-mask';
@@ -15,11 +15,6 @@ export class BusinessComponent {
   business = input.required<Business>();
   compactMode = input<boolean>();
   detailMode = input<boolean>(false);
-  public readonly store = inject(BusinessStore);
-
-  constructor() {
-
-  }
-
+  public readonly store = inject(BusinessStore);  
   
 }

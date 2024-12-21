@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { stateListMock } from '../business-domain/Business';
 import { categroryListMock, safetyBulletpointList as safetyBulletpointListMock } from "../business-domain/categroryListMock";
@@ -14,7 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
 import { CategoryComponent } from "../category-domain/category/category.component";
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { CommonModule, DOCUMENT, Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { SafetyComponent } from "../safety/safety.component";
 
@@ -54,15 +54,9 @@ export class HomePageComponent implements OnInit {
     compactMode: this.fb.nonNullable.control<boolean>(true)
   });
 
-  safetyBulletPoints = safetyBulletpointListMock
-
-
-  constructor(@Inject(DOCUMENT) private document: any) { 
-    
-   }
+  safetyBulletPoints = safetyBulletpointListMock;
 
   ngOnInit(): void {    
-
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
       this.store.compact(compactMode);
     });

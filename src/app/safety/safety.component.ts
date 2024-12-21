@@ -1,6 +1,6 @@
-import { Component, input, OnInit, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { BulletPointList, safetyBulletpointList } from '../business-domain/categroryListMock';
+import { BulletPointList } from '../business-domain/categroryListMock';
 @Component({
     selector: 'll-safety',
     imports: [MatCardModule],
@@ -9,6 +9,6 @@ import { BulletPointList, safetyBulletpointList } from '../business-domain/categ
 })
 export class SafetyComponent  {
     
-    list = input.required<BulletPointList>()
+    list = input.required<BulletPointList>();
 
 }
