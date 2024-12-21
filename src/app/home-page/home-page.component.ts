@@ -14,12 +14,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
 import { CategoryComponent } from "../category-domain/category/category.component";
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { DOCUMENT, Location } from '@angular/common';
+import { CommonModule, DOCUMENT, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'll-home-page',
   imports: [
+    CommonModule,
     ClipboardModule,
     BusinessComponent,
     ReactiveFormsModule,

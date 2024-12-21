@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class BusinessComponent {
   business = input.required<Business>();
   compactMode = input<boolean>();
+  detailMode = input<boolean>(false)
   public readonly store = inject(BusinessStore)
 
   constructor() {

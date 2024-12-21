@@ -27,3 +27,15 @@
         padding-bottom: 5px;        
     }
 }
+
+mat-drawer{
+    width: 100%;
+    @media screen and (min-width: 576px) {
+        width: 400px;
+    }
+}
+
+
+.mat-drawer.mat-drawer-side {
+    width: 500px;
+}

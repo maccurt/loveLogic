@@ -120,7 +120,7 @@
 
             <div>
                 @if(business().urlList && business().urlList.length > 0){
-                <a style="color:black;font-size: medium;" target="_blank" [href]="business().urlList[0].value">
+                <a target="_blank" [href]="business().urlList[0].value">
                     <div class="icon-text">
                         <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
                         {{business().urlList[0].description}}...
@@ -129,7 +129,7 @@
                 }
                 @else {
 
-                <a style="color:black;font-size: medium;" target="_blank" [href]="business().url">
+                <a target="_blank" [href]="business().url">
                     <div class="icon-text">
                         <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
                         Visit Our Website...
@@ -138,21 +138,9 @@
                 }
             </div>
 
-            <div>
-                <!-- <a mat-mini-fab routerLink=".">
-                    <mat-icon>favorite</mat-icon>                    
-                  </a> -->
-
-                  <a mat-mini-fab   routerLink=".">
-                    <mat-icon>favorite</mat-icon>                    
-                    See Our Beer List
-                  </a>
-            </div>
-
-            @if(!store.showBusiness()){
+            @if(!detailMode()){
             <div >
-                <button (click)="store.showSelectedBusiness(business())" mat-icon-button
-                    style="float:right"><mat-icon>open_in_new</mat-icon></button>
+                <a class="action-link"  (click)="store.showSelectedBusiness(business())"  style="float: right;"> <mat-icon>open_in_new</mat-icon></a>                
             </div>
             }
 
