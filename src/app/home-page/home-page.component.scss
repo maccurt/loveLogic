@@ -1,40 +1,75 @@
-.option-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 8px 16px;
-}
+// .option-grid {
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     padding: 8px 16px;
+// }
 
-.invite-grid {
-    border: 1px solid green !important;
-    background-color: aliceblue;
-    border: 1px solid #cccccc;
+.drawer-grid {
+
     display: grid;
     grid-template-columns: auto;
     row-gap: 8px;
-    padding: 8px;
-}
+    padding: 4px;
 
-.drawer {
-    display: grid;
-    grid-template-columns: auto;
-    row-gap: 0px;
-    padding: 8px 24px;
     justify-items: center;
+    margin: 8px;
 
-    .header{
+    >div {
+        //make all the children 100% width
+        width: 100%;
+        margin-bottom: 8px;
+        // border: 1px dotted red;
+    }
+
+    .header {
         width: 100%;
         border-bottom: 1px solid #cccccc;
-        padding-bottom: 5px;        
+        padding-bottom: 8px;
+        padding-right: 8px;
     }
 }
 
-mat-drawer{
+.invite-grid {
+    display: grid;
+    background-color: aliceblue;
+    border: 1px solid #cccccc;
+    grid-template-columns: auto;
+    row-gap: 8px;
     width: 100%;
+    margin-top: 8px;
+
+    >div {
+        padding: 8px 8px;
+        // border: 1px dotted red;
+    }
+
+
+    textarea {
+        width: 100%;
+        /* This includes padding and border in the width */
+        box-sizing: border-box;
+        resize: none;
+        padding-top: 8px;
+        margin-left: 4px;
+        padding-left: 3px;
+    }
+
+    .invite-container {
+        // border: 1px solid #cccccc;
+        display: flex;
+        align-items: center;
+
+
+    }
+}
+
+mat-drawer {
+    width: 100%;
+
     @media screen and (min-width: 576px) {
         width: 400px;
     }
 }
-
 
 .mat-drawer.mat-drawer-side {
     width: 500px;

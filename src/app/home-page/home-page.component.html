@@ -1,54 +1,62 @@
+<mat-drawer-container style="height: 100vh;">
+  <mat-drawer id="side-dra" (closed)="hideBusiness()" disableClose="false" [opened]="store.showBusiness()">
 
-  <mat-drawer-container style="height: 100vh;">
-    <mat-drawer id="side-dra"  (closed)="hideBusiness()" disableClose="false" [opened]="store.showBusiness()">
+    <div class="drawer-grid">
 
-      <div class="drawer">
+      <div class="header">
+        <button style="float: right;" (click)="hideBusiness()" mat-min-fab>X</button>
+      </div>
 
-        <div class="header">
-          <button style="float: right;" (click)="hideBusiness()" mat-min-fab>X</button>
-        </div>
+      <div>
+        <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
+      </div>
 
-        <div>
-          <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
-        </div>
+      <div>
 
-        <div>
-          <div class="invite-grid" style="text-align: center;">
-            <div>
-              <input disabled style="width: 90%;padding: 5px;" [value]="store.businessSelected().urlAppSendTo" />
-            </div>
-
-            <div style="text-align: center;">
-              <button [cdkCopyToClipboard]="store.businessSelected().urlAppSendTo" mat-flat-button>Copy URL To Clipboard
-                To Invite</button>
-            </div>
+        <div class="invite-grid">
+          <div style="text-align: center;">
+            <b>Copy & Send URL To Friend To Meet</b>
           </div>
+          <div>
+            <div class="invite-container">
+              <button [cdkCopyToClipboard]="store.businessSelected().urlAppSendTo"
+                mat-icon-button><mat-icon>content_copy</mat-icon></button>
 
-          <div style="margin-bottom: 5px;">
-            <ll-category [category]="store.businessSelectedCategory()"></ll-category>
-            <div style="text-align: center;">
-              <button color="warn" (click)="hideBusiness()" mat-raised-button>Close & See Other
-                Options</button>
+              <textarea rows="2" disabled style="width: 100%"
+                [value]="store.businessSelected().urlAppSendTo"></textarea>
             </div>
           </div>
         </div>
-      </div>
-    </mat-drawer>
 
-    <mat-drawer-content>
-      <ll-header-filter></ll-header-filter>
-      <div class="business-grid">
-        @for (item of store.businessListFiltered(); track $index) {
-        <div>
-          <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
-        </div>
-        }
-        <div style="margin-top:5px;">
-          <ll-category [category]="store.categorySelected()"></ll-category>
+      </div>
+
+      <div>
+        <ll-safety [list]="safetyBulletPoints"></ll-safety>
+      </div>
+
+      <div>
+        <div style="text-align: center;">
+          <button color="warn" (click)="hideBusiness()" mat-raised-button>Close & See Other
+            Options</button>
         </div>
       </div>
 
-    </mat-drawer-content>
+    </div>
+  </mat-drawer>
 
-  </mat-drawer-container>
+  <mat-drawer-content>
+    <ll-header-filter></ll-header-filter>
+    <div class="business-grid">
+      @for (item of store.businessListFiltered(); track $index) {
+      <div>
+        <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
+      </div>
+      }
+      <div style="margin-top:5px;">
+        <ll-category [category]="store.categorySelected()"></ll-category>
+      </div>
+    </div>
 
+  </mat-drawer-content>
+
+</mat-drawer-container>

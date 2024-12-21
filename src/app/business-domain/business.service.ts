@@ -51,20 +51,19 @@ export class BusinessService {
     );
   }
 
-
-
   businessList(stateCode: string): Observable<Business[]> {
     return this.http.get<Business[]>(this.url).pipe(
       map((result) => {
 
         const filter = result.filter((b) => {
           return b.address.state.toLocaleLowerCase() === stateCode.toLocaleLowerCase();
-        });
+        });        
 
         filter.forEach((b) => {
           b.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
 
-          b.urlAppSendTo = document.location.origin + `/state/${b.address.state}/business/${b.id}`;
+          b.urlAppSendTo = document.location.host + `/state/${b.address.state}/business/${b.id}`;
+
 
         });
 

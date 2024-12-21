@@ -1,7 +1,7 @@
 import { Component, Inject, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { stateListMock } from '../business-domain/Business';
-import { categroryListMock } from "../business-domain/categroryListMock";
+import { categroryListMock, safetyBulletpointList as safetyBulletpointListMock } from "../business-domain/categroryListMock";
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from '../business-domain/business/business.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -16,6 +16,7 @@ import { CategoryComponent } from "../category-domain/category/category.componen
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule, DOCUMENT, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
+import { SafetyComponent } from "../safety/safety.component";
 
 @Component({
   selector: 'll-home-page',
@@ -33,15 +34,16 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDividerModule,
     RouterModule,
     HeaderFilterComponent,
-    CategoryComponent
-  ],
+    CategoryComponent,
+    SafetyComponent
+],
   providers: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit {
   
-  readonly location = inject(Location)
+  readonly location = inject(Location);
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
   readonly store = inject(BusinessStore);
@@ -51,6 +53,8 @@ export class HomePageComponent implements OnInit {
   readonly form = this.fb.group({
     compactMode: this.fb.nonNullable.control<boolean>(true)
   });
+
+  safetyBulletPoints = safetyBulletpointListMock
 
 
   constructor(@Inject(DOCUMENT) private document: any) { 
@@ -65,6 +69,6 @@ export class HomePageComponent implements OnInit {
   }
 
   hideBusiness() {
-    this.store.showBusinessToggle(false)
+    this.store.showBusinessToggle(false);
   }
 }

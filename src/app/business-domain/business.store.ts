@@ -99,7 +99,7 @@ export const BusinessStore = signalStore(
             patchState(store, { businessSelected, categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
 
             if (businessId > 0) {
-                this.showSelectedBusinessById(businessId)
+                this.showSelectedBusinessById(businessId);
             }
         },
 
@@ -158,9 +158,9 @@ export const BusinessStore = signalStore(
         },
         showSelectedBusinessById(id: number) {
 
-            const businessSelected = store.businessList().find((b) => { return b.id === id });
+            const businessSelected = store.businessList().find((b) => { return b.id === id; });
             if (businessSelected) {
-                this.showSelectedBusiness(businessSelected)
+                this.showSelectedBusiness(businessSelected);
             }
         },
         showSelectedBusiness(businessSelected: Business) {
@@ -169,7 +169,7 @@ export const BusinessStore = signalStore(
             // businessSelected.urlAppSendTo = store.domainUrl();
 
             patchState(store, { businessSelected });
-            const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId })
+            const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
             if (businessSelectedCategory) {
                 patchState(store, { businessSelectedCategory });
             }

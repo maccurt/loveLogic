@@ -26,7 +26,6 @@ import {
 
 })
 export class HeaderFilterComponent implements OnInit {
-
   readonly fb = inject(FormBuilder);
   readonly store = inject(BusinessStore);
   readonly route = inject(ActivatedRoute);
@@ -52,11 +51,11 @@ export class HeaderFilterComponent implements OnInit {
     this.route.paramMap.subscribe(async (paramMap) => {
       const state = paramMap.get('state');
 
-      let id = paramMap.get('businessId');
+      const id = paramMap.get('businessId');
       let businessId = -1;
 
       if (id && parseInt(id) > 0) {
-        businessId = parseInt(id)
+        businessId = parseInt(id);
       }      
 
       if (state) {        

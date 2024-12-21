@@ -18,5 +18,5 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   router = inject(Router);
   route = inject(ActivatedRoute);
-  store = inject(BusinessStore)
+  store = inject(BusinessStore);
 }
