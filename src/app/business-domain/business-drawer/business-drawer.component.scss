@@ -1,6 +1,6 @@
 .no-scroll-container {
     overflow: hidden;
-    height: 90vh;
+    height: 85vh;
 
     .scroll-container {
         height: 100%;
@@ -10,17 +10,18 @@
 }
 
 .action-bottom {
-    height: 10vh;    
-    display: flex;
-    border-top: 1px solid #cccccc;
+    height: 10vh;
     align-items: center;    
-    justify-content: center;
-    // position: absolute;
-    // bottom: 0px;    
-    // text-align: center;
-    
-    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
 
+    >button {
+        margin-top: 8px;
+    }
 }
 
 .drawer-grid {
@@ -51,29 +52,12 @@
     display: grid;
     background-color: aliceblue;
     border: 1px solid #cccccc;
-    grid-template-columns: auto;
-    row-gap: 8px;
-    width: 100%;
-    margin-top: 8px;
-
-    >div {
-        padding: 8px 8px;
-        // border: 1px dotted red;
-    }
-
+    grid-template-columns: auto;    
+    width: 100%;        
     textarea {
         width: 100%;
         /* This includes padding and border in the width */
         box-sizing: border-box;
         resize: none;
-        padding-top: 8px;
-        margin-left: 4px;
-        padding-left: 3px;
-    }
-
-    .invite-container {
-        // border: 1px solid #cccccc;
-        display: flex;
-        align-items: center;
-    }
+    }    
 }

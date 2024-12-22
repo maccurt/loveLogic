@@ -1,50 +1,39 @@
-<div>
-
-  <div class="no-scroll-container" style="overflow: hidden;">
-
-    <div class="scroll-container">
-      <div class="drawer-grid">
-
-        <!-- <div class="header">
-      <button style="float: right;" (click)="hideBusiness()" mat-min-fab>X</button>
-    </div> -->
-
-        <div>
-          <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
-        </div>
+<div class="no-scroll-container" style="overflow: hidden;">
+  <div cdkScrollable class="scroll-container">
+    <div class="drawer-grid">
+      <div>
+        <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
+      </div>
 
 
-        <div>
-          <div class="invite-grid">
-            <div style="text-align: center;">
-              <b>Copy & Send URL To Friend To Meet</b>
-            </div>
-            <div>
-              <div class="invite-container">
-                <button [cdkCopyToClipboard]="store.businessSelected().urlAppSendTo"
-                  mat-icon-button><mat-icon>content_copy</mat-icon></button>
+      <div>
+        <div class="invite-grid">
 
-                <textarea rows="2" disabled style="width: 100%"
-                  [value]="store.businessSelected().urlAppSendTo"></textarea>
-              </div>
+
+          <div style="display: flex;align-items: center;justify-content: center;margin-top: 8px;">
+            <button [cdkCopyToClipboard]="store.businessSelected().urlAppSendTo"
+              mat-icon-button><mat-icon>content_copy</mat-icon></button>
+            <b>Copy & Send URL To Friend To Meet</b>
+          </div>
+          <div>
+            <div style="margin:16px;">
+              <textarea rows="1" disabled style="width: 100%;text-align: center;"
+                [value]="store.businessSelected().urlAppSendTo"></textarea>
             </div>
           </div>
-
         </div>
 
-        <div>
-          <ll-safety [list]="safetyBulletPointList"></ll-safety>
-        </div>        
-
       </div>
+
+      <!-- <div>
+          <ll-safety [list]="safetyBulletPointList"></ll-safety>
+        </div> -->
+
     </div>
   </div>
+</div>
 
-
-  
-  <div class="action-bottom" >    
-    <button (click)="hideBusiness()" mat-flat-button>Close & See Other
-      Options</button>
-  </div>
-
+<div class="action-bottom">
+  <button (click)="hideBusiness()" mat-flat-button>Close & See Other
+    Options</button>
 </div>
