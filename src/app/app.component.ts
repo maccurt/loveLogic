@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     MatCardModule,
     RouterModule],
-  providers: [BusinessStore, Router],
+  //Why do you provide the business store, what makes it global
+  providers: [Router],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

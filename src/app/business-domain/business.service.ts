@@ -107,8 +107,7 @@ export class BusinessService {
         //TODO fix error
         const buinessWithNoCategory = businessList.filter((b) => {
           return b.categoryId === parseInt(key);
-        });
-        console.log('business with no error', buinessWithNoCategory);
+        });       
       }
     }
 

@@ -7,6 +7,8 @@ import { inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BottomSheetActionComponent } from '../bottom-sheet-action/bottom-sheet-action.component';
 
 interface BusinessState {
     domainUrl: string;
@@ -53,7 +55,7 @@ export const BusinessStore = signalStore(
             businessService = inject(BusinessService),
             breakpoint = inject(BreakpointObserver)
         ) {
-            
+
             const domainUrl = document.location.origin;
 
             businessService.locationList().subscribe((locationList) => {
@@ -74,6 +76,7 @@ export const BusinessStore = signalStore(
     withMethods((
         store,
         businessService = inject(BusinessService),
+        bottomSheet = inject(MatBottomSheet)
 
     ) => ({
 
@@ -154,6 +157,7 @@ export const BusinessStore = signalStore(
             patchState(store, { compactMode });
         },
         showBusinessToggle(showBusiness: boolean) {
+
             patchState(store, { showBusiness });
         },
         showSelectedBusinessById(id: number) {
@@ -165,8 +169,19 @@ export const BusinessStore = signalStore(
         },
         showSelectedBusiness(businessSelected: Business) {
 
-
-            // businessSelected.urlAppSendTo = store.domainUrl();
+            //TODO remove this if we are not going to use it
+            this.showBottomSheet(businessSelected);
+            // patchState(store, { businessSelected });
+            // const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
+            // if (businessSelectedCategory) {
+            //     patchState(store, { businessSelectedCategory });
+            // }
+            // else {
+            //     patchState(store, { businessSelectedCategory: categroryListMock[0] });
+            // }
+            // this.showBusinessToggle(true);
+        },
+        showBottomSheet(businessSelected: Business) {
 
             patchState(store, { businessSelected });
             const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
@@ -176,7 +191,15 @@ export const BusinessStore = signalStore(
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
             }
-            this.showBusinessToggle(true);
+
+            bottomSheet.open(BottomSheetActionComponent);
+        },
+        closeBusiness() {
+            //TODO you need to do something
+            //should you be setting some state here?
+            //should the business be selected
+            //refactor all this                        
+            bottomSheet.dismiss();
         }
     }))
 );

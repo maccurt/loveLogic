@@ -1,63 +1,26 @@
-.no-scroll-container {
-    overflow: hidden;
-    height: 85vh;
-
-    .scroll-container {
-        height: 100%;
-
-        overflow: auto;
-    }
-}
-
-.action-bottom {
-    height: 10vh;
-    align-items: center;    
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    text-align: center;
-
-    >button {
-        margin-top: 8px;
-    }
-}
-
 .drawer-grid {
+    grid-template-columns: 1fr;
     display: grid;
-    grid-template-columns: auto;
+    column-gap: 16px;
     row-gap: 8px;
-    padding: 4px;
+    padding: 5px;    
 
-    justify-items: center;
-    margin: 8px;
-
-    >div {
-        //make all the children 100% width
-        width: 100%;
-        margin-bottom: 8px;
-        // border: 1px dotted red;
+    @media screen and (min-width: 576px) {        
+        grid-template-columns: 1fr 1fr;        
     }
 
-    .header {
-        width: 100%;
-        border-bottom: 1px solid #cccccc;
-        padding-bottom: 8px;
-        padding-right: 8px;
-    }
-}
 
-.invite-grid {
-    display: grid;
-    background-color: aliceblue;
-    border: 1px solid #cccccc;
-    grid-template-columns: auto;    
-    width: 100%;        
-    textarea {
-        width: 100%;
-        /* This includes padding and border in the width */
-        box-sizing: border-box;
-        resize: none;
-    }    
+    .invite-grid {
+        display: grid;
+        background-color: aliceblue;
+        border: 1px solid #cccccc;
+        grid-template-columns: auto;        
+    
+        textarea {
+            width: 100%;
+            /* This includes padding and border in the width */
+            box-sizing: border-box;
+            resize: none;
+        }
+    }
 }
