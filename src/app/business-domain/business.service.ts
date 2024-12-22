@@ -103,12 +103,12 @@ export class BusinessService {
         }
 
       }
-      else {
-        //TODO fix error
-        const buinessWithNoCategory = businessList.filter((b) => {
-          return b.categoryId === parseInt(key);
-        });       
-      }
+      // else {
+      //   //TODO fix error
+      //   const buinessWithNoCategory = businessList.filter((b) => {
+      //     return b.categoryId === parseInt(key);
+      //   });       
+      // }
     }
 
     //order by name

@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { BusinessStore } from '../business-domain/business.store';
-import { BusinessComponent } from "../business-domain/business/business.component";
 import { BusinessDrawerComponent } from "../business-domain/business-drawer/business-drawer.component";
 import { MatButtonModule } from '@angular/material/button';
 
@@ -12,12 +11,5 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './bottom-sheet-action.component.scss'
 })
 export class BottomSheetActionComponent {
-
-  public readonly store = inject(BusinessStore);
-
-  constructor() {
-
-    
-  }
-
+  public readonly store = inject(BusinessStore);  
 }
