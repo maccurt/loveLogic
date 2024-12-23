@@ -1,34 +1,17 @@
-<mat-drawer-container style="height: 100vh;">
 
-  <mat-drawer id="side-dra" (opened)="openDrawer()" (closed)="hideBusiness()" disableClose="false"
-    [opened]="store.showBusiness()">
+<ll-header-filter></ll-header-filter>
 
-    <ll-business-drawer></ll-business-drawer>
-  </mat-drawer>
+@if(store.businessSelected()){
+  <h1>{{store.businessSelected().name}}</h1>
+}
 
-  <mat-drawer-content>
-
-    <ll-header-filter></ll-header-filter>
-    <div class="business-grid">
-      @for (item of store.businessListFiltered(); track $index) {
-      <div>
-        <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
-      </div>
-      }
-      <div style="margin-top:5px;">
-        <ll-category [category]="store.categorySelected()"></ll-category>
-      </div>
-    </div>
-
-    <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-secondary">Secondary</button>
-    <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-light">Light</button>
-    <button type="button" class="btn btn-dark">Dark</button>
-
-    <button type="button" class="btn btn-link">Link</button>
-  </mat-drawer-content>
-</mat-drawer-container>
+<div class="business-grid">
+  @for (item of store.businessListFiltered(); track $index) {
+  <div>
+    <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
+  </div>
+  }
+  <div style="margin-top:5px;">
+    <ll-category [category]="store.categorySelected()"></ll-category>
+  </div>
+</div>

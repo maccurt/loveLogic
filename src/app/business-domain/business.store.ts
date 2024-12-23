@@ -165,16 +165,11 @@ export const BusinessStore = signalStore(
 
             const businessSelected = store.businessList().find((b) => { return b.id === id; });
             if (businessSelected) {
-                this.showSelectedBusiness(businessSelected);
+                this.showBusiness(businessSelected);
             }
         },
-        
-        showSelectedBusiness(businessSelected: Business) {        
-            this.showBottomSheet(businessSelected);        
-        },
-        
-        showBottomSheet(businessSelected: Business) {
 
+        showBusiness(businessSelected: Business) {
             patchState(store, { businessSelected });
             const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
             if (businessSelectedCategory) {
@@ -183,15 +178,22 @@ export const BusinessStore = signalStore(
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
             }
-
-            bottomSheet.open(BottomSheetActionComponent);
+            this.openBottomSheet();
         },
-        closeBusiness() {
-            //TODO you need to do something
-            //should you be setting some state here?
-            //should the business be selected
-            //refactor all this                        
+
+        openBottomSheet() {
+            const ref = bottomSheet.open(BottomSheetActionComponent, {
+                //don't all the backdrop touch to close the screen
+                disableClose: true
+            });
+
+            ref.afterDismissed().subscribe(() => {
+                patchState(store, { businessSelected: undefined });
+            });
+        },
+        closeBottomSheet() {
             bottomSheet.dismiss();
+            patchState(store, { businessSelected: undefined });
         }
     }))
 );

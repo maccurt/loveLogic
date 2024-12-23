@@ -1,4 +1,4 @@
-.drawer-grid {
+.business-detail-grid {
     grid-template-columns: 1fr;
     display: grid;
     column-gap: 16px;
@@ -7,8 +7,8 @@
 
     @media screen and (min-width: 576px) {        
         grid-template-columns: 1fr 1fr;        
+        width:  50vw;
     }
-
 
     .invite-grid {
         display: grid;

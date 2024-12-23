@@ -16,7 +16,6 @@ import { CategoryComponent } from "../category-domain/category/category.componen
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-import { BusinessDrawerComponent } from "../business-domain/business-drawer/business-drawer.component";
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 
@@ -34,13 +33,11 @@ import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-s
     MatSlideToggleModule,
     MatSidenavModule,
     MatDividerModule,
-
     MatBottomSheetModule,
     RouterModule,
     HeaderFilterComponent,
-    CategoryComponent,
-    BusinessDrawerComponent
-  ],
+    CategoryComponent
+],
   providers: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
@@ -62,19 +59,12 @@ export class HomePageComponent implements OnInit {
   safetyBulletPoints = SafetyBulletpointList_Mock;
 
   ngOnInit(): void {
-
-
-
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
       this.store.compact(compactMode);
     });
   }
 
-  hideBusiness() {
-    this.store.showBusinessToggle(false);
-  }
-
-  openDrawer() {
-    //this.bottomSheet.open(BottomSheetActionComponent) 
-  }
+  // hideBusiness() {
+  //   this.store.showBusinessToggle(false);
+  // }  
 }

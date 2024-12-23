@@ -8,16 +8,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
-  selector: 'll-business-drawer',
+  selector: 'll-business-detail',
   imports: [BusinessComponent,
     ClipboardModule,
     MatIconModule,
     MatButtonModule,
     ScrollingModule],
-  templateUrl: './business-drawer.component.html',
-  styleUrl: './business-drawer.component.scss'
+  templateUrl: './business-detail.component.html',
+  styleUrl: './business-detail.component.scss'
 })
-export class BusinessDrawerComponent {
+export class BusinessDetailComponent {
   public safetyBulletPointList = safetyBulletpointList_Mock;
   public readonly store = inject(BusinessStore);
 
