@@ -101,14 +101,7 @@ export class BusinessService {
 
           category.imageUrl = b?.imageUrl;
         }
-
-      }
-      // else {
-      //   //TODO fix error
-      //   const buinessWithNoCategory = businessList.filter((b) => {
-      //     return b.categoryId === parseInt(key);
-      //   });       
-      // }
+      }      
     }
 
     //order by name
@@ -116,7 +109,6 @@ export class BusinessService {
     categoryList.unshift(all);
     return categoryList;
   }
-
 
   googleMapSearchUrl(name: string, address: Address): string {
     const addressList: string[] = [];

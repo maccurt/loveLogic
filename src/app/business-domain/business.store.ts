@@ -160,6 +160,7 @@ export const BusinessStore = signalStore(
 
             patchState(store, { showBusiness });
         },
+
         showSelectedBusinessById(id: number) {
 
             const businessSelected = store.businessList().find((b) => { return b.id === id; });
@@ -167,20 +168,11 @@ export const BusinessStore = signalStore(
                 this.showSelectedBusiness(businessSelected);
             }
         },
-        showSelectedBusiness(businessSelected: Business) {
-
-            //TODO remove this if we are not going to use it
-            this.showBottomSheet(businessSelected);
-            // patchState(store, { businessSelected });
-            // const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
-            // if (businessSelectedCategory) {
-            //     patchState(store, { businessSelectedCategory });
-            // }
-            // else {
-            //     patchState(store, { businessSelectedCategory: categroryListMock[0] });
-            // }
-            // this.showBusinessToggle(true);
+        
+        showSelectedBusiness(businessSelected: Business) {        
+            this.showBottomSheet(businessSelected);        
         },
+        
         showBottomSheet(businessSelected: Business) {
 
             patchState(store, { businessSelected });
