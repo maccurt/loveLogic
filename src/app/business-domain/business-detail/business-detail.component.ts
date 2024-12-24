@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { safetyBulletpointList_Mock } from '../categroryListMock';
 import { MatButtonModule } from '@angular/material/button';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'll-business-detail',
@@ -13,7 +15,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ClipboardModule,
     MatIconModule,
     MatButtonModule,
-    ScrollingModule],
+    MatListModule,
+    MatDividerModule
+  ],
   templateUrl: './business-detail.component.html',
   styleUrl: './business-detail.component.scss'
 })

@@ -184,11 +184,14 @@ export const BusinessStore = signalStore(
         openBottomSheet() {
             const ref = bottomSheet.open(BottomSheetActionComponent, {
                 //don't all the backdrop touch to close the screen
-                disableClose: true
+                disableClose: true,
+                panelClass:'detail-bottom-sheet'
             });
 
             ref.afterDismissed().subscribe(() => {
-                patchState(store, { businessSelected: undefined });
+                patchState(store, { 
+                    businessSelected: undefined,                    
+                 });
             });
         },
         closeBottomSheet() {

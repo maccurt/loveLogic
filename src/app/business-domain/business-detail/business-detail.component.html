@@ -1,21 +1,54 @@
-
 <div class="business-detail-grid">
+
   <div>
     <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
   </div>
-  <div>
-    <div class="invite-grid">
-      <div style="display: flex;align-items: center;justify-content: center;margin-top: 8px;">
-        <button [cdkCopyToClipboard]="store.businessSelected().urlAppSendTo"
-          mat-icon-button><mat-icon>content_copy</mat-icon></button>
-        <b>Copy & Send URL To Friend To Meet</b>
+
+  <!-- <div>
+    <div class="icon-text-hint">
+      <div class="icon">
+        <button [cdkCopyToClipboard]="store.businessSelected().urlInvite"
+          mat-icon-button><mat-icon>content_copy</mat-icon>
+        </button>
       </div>
-      <div>
-        <div style="margin:16px;">
-          <textarea rows="1" disabled style="width: 100%;text-align: center;"
-            [value]="store.businessSelected().urlAppSendTo"></textarea>
-        </div>
+      <div class="text">
+        {{store.businessSelected().urlInvite}}
+      </div>
+      <div class="hint">
+        Click icon to copy invite to clipboard
+      </div>
+    </div>
+  </div> -->
+
+  <div>
+    <div class="icon-text-hint">
+      <div class="icon">
+        <button mat-icon-button>
+          <mat-icon style="color:blue">content_copy</mat-icon>
+        </button>
+        <!-- <button [cdkCopyToClipboard]="store.businessSelected().urlInvite" mat-mini-fab><mat-icon>content_copy</mat-icon>
+        </button> -->
+      </div>
+      <div class="text">
+        {{store.businessSelected().urlInvite}}
+      </div>
+      <div class="hint">
+        Click icon to copy invite to clipboard
       </div>
     </div>
   </div>
+
+  <!-- <div>
+    <mat-list>
+      <mat-list-item><span style="font-size:medium;">{{store.businessSelected().urlInvite}}</span></mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>Item 2</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Item 3</mat-list-item>
+    </mat-list>
+  </div> -->
+
+
+
 </div>

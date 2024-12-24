@@ -16,6 +16,17 @@
 }
 
 
+.detail-table{
+    border: 1px solid black;
+    width: 100%;
+    td {
+        border: 1px solid #cccccc;
+    }
+
+
+}
+
+
 .icon-text {
     display: inline-grid;
     grid-template-columns: auto auto;
@@ -26,18 +37,90 @@
 .link-route-grid {
 
     a {
-        color:black;
+        color: black;
         font-size: medium;
     }
 
-    a.action-link{
-        color:green;
+    a.action-link {
+        color: green;
     }
-    
+
     display: inline-grid;
     width: 100%;
     column-gap: 3px;
-    grid-template-columns: auto auto ;
-     padding: 2px;
-    align-items: center;    
+    grid-template-columns: auto auto;
+    padding: 2px;
+    align-items: center;
+}
+
+.i-c-l-2 {
+    display: grid;    
+    border: 1px solid blue;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+
+    .icon {        
+        background-color: gold;
+        grid-row:  1/span 2;
+        
+    }
+    >div {
+        // display: flex;     
+        border: 1px dotted red;
+    }
+
+
+
+}
+
+.icon-text-hint {
+    // border: 1px solid red;
+    grid-template-columns: 1fr auto;
+    grid-row: 25px;
+    display: grid;
+    grid-template-areas: 'i t t'
+        'i h h';
+
+    >div {
+        // display: flex;
+        align-items: center;
+        border: 1px dotted red;
+    }
+
+    .icon {
+        grid-area: i;
+        // background-color: gold;
+    }
+
+    .text {
+        grid-area: t;
+        font-weight: 500;
+        // background-color: red;
+    }
+}
+
+.hint {
+    grid-area: h;
+    font-family: 'Courier New', Courier, monospace;
+    color: gray;
+    font-size: medium;
+}
+
+.icon-link-text {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+
+    >div {
+        // display: flex;
+        align-items: center;
+        border: 1px dotted red;
+    }
+
+    .hint {
+        font-size: smaller;
+        font-family: 'Times New Roman', Times, serif;
+        color: grey;
+    }
+
+
 }

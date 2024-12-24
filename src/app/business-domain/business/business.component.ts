@@ -5,9 +5,21 @@ import { NgxMaskPipe } from 'ngx-mask';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessStore } from '../business.store';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { CdkCopyToClipboard } from '@angular/cdk/clipboard';
+import { MatChipsModule } from '@angular/material/chips';
 @Component({
   selector: 'll-business',
-  imports: [MatCardModule, NgxMaskPipe, MatIconModule, MatButtonModule],
+  imports: [
+    MatCardModule,
+    NgxMaskPipe,
+    MatIconModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatListModule,
+    MatChipsModule,
+    CdkCopyToClipboard],
   templateUrl: './business.component.html',
   styleUrl: './business.component.scss'
 })

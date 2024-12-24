@@ -62,7 +62,9 @@ export class BusinessService {
         filter.forEach((b) => {
           b.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
 
-          b.urlAppSendTo = document.location.host + `/state/${b.address.state}/business/${b.id}`;
+          //TODO move this toa central spot
+          //b.urlInvite = document.location.host + `/state/${b.address.state}/business/${b.id}`;
+          b.urlInvite = document.location.host + `/${b.address.state}/${b.id}`;
 
 
         });

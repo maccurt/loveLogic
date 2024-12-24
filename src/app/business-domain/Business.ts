@@ -12,7 +12,7 @@ export class Business {
   url!: string;
   urlContact?: string;
   urlList!: Url[];  
-  urlAppSendTo = 'aaa';
+  urlInvite = 'aaa';
 };
 export class StateLocation {
   name!: string;

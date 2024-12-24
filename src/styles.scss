@@ -1,4 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+.icon-text-hint {
+
+    display: grid;
+    column-gap: 2px;
+    grid-template-columns: auto 10fr;    
+    grid-template-areas:
+        "i t"
+        "h h";
+
+    margin-bottom: 5px;
+    // border-bottom: 1px solid gray;
+    // border-top: 1px solid gray;
+    border-radius: 4%;
+    border: 1px solid #cccccc;
+    padding: 8px 0px 0px 8px;
+
+    >div {
+        // border: 1px solid green;
+    }
+
+    .icon {
+        padding-top: 3px;
+        grid-area: i;
+
+        button {
+            border: 1px solid blue;
+            
+        }
+
+    }
+
+    .text {
+        grid-area: t;
+        padding-top: 10px;
+        padding-left: 10px;
+        font-size: larger;
+    }
+
+    .hint {
+        grid-area: h;
+        font-size: small;
+        color: #666666;
+        padding-left: 8px;
+    }
+
+    .link-text {
+        word-break: break-all;
+        font-size: medium;
+    }
+}
+
+.test-2 {
+    width: 400px;
+    border: 1px solid green;
+}
+
+
 html,
 body {
     height: 100%;
@@ -188,3 +245,19 @@ b {
         margin-bottom: 8px;
     }
 }
+
+
+.detail-bottom-sheet {
+    background-color: gray !important;
+
+}
+
+
+
+
+//X-Small	None	<576px
+// Small	sm	≥576px
+// Medium	md	≥768px
+// Large	lg	≥992px
+// Extra large	xl	≥1200px
+// Extra extra large	xxl	≥1400px
