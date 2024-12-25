@@ -1,10 +1,10 @@
-import { Address } from "./business.service";
+import { Address } from "../address/Adress";
 
 export class Business {
   id!: number;
   categoryId!: number;
   name!: string;
-  
+    
   address!: Address;
   imageUrl!: string;
   googleMapUrl!: string;

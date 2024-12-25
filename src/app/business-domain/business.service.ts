@@ -7,16 +7,9 @@ import { categoryAll } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
 import countBy from 'lodash-es/countBy';
 import { sortBy } from 'lodash-es';
+import { Address } from '../address/Adress';
 
-export class Address {
-  address1!: string;
-  address2?: string;
-  state!: string;
-  city!: string;
-  zipcode!: string;
-  phone!: string;
 
-}
 @Injectable({
   providedIn: 'root'
 
@@ -60,7 +53,10 @@ export class BusinessService {
         });
 
         filter.forEach((b) => {
+          //TODO remove this from here
           b.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
+
+          b.address.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
 
           //TODO move this toa central spot
           //b.urlInvite = document.location.host + `/state/${b.address.state}/business/${b.id}`;

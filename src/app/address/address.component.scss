@@ -1,0 +1,28 @@
+.address {
+    // border: 1px solid red;
+
+    .address-info {
+        // border: 1px solid blue;
+        min-height: 60px;
+        font-size: .9rem;        
+    }
+
+    .none {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .google {
+        margin-bottom: 0px;
+        font-size: small;
+    
+    }
+    
+    .phone {
+        font-size: medium;
+        font-weight: 500;
+        a{
+            text-decoration: none; color: black;
+        }
+    }
+}

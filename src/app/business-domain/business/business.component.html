@@ -1,9 +1,9 @@
-<mat-card class="mat-card-1"> 
+<mat-card class="mat-card-1">
 
     @if(business().address){
 
     @if(compactMode()){
-    
+
     <mat-card-content>
 
         <div class="title-header-grid">
@@ -23,7 +23,7 @@
                 }
             </div>
         </div>
-        <hr>        
+        <hr>
 
         <div class="divide-grid">
             <div>
@@ -33,33 +33,7 @@
                 </a>
             </div>
             <div>
-                <a style="text-decoration: none;color:black" target="_blank" [href]="business().googleMapUrl">
-                    <div class="address">
-                        @if(business().googleMapUrl){
-                        <div style="margin-bottom: 3px;">
-                            <a style="margin-bottom: 0px; font-size: small;" target="_blank"
-                                [href]="business().googleMapUrl">Map Directions</a>
-                        </div>
-                        }
-
-                        <div>{{business().address.address1}}</div>
-                        @if(business().address.address2){
-                        <div>{{business().address.address2}}</div>
-                        }
-                        <div>
-                            <span>{{business().address.city}} </span>,
-                            <span>{{business().address.state}} </span>
-                            <span>{{business().address.zipcode}} </span>
-                        </div>
-                        <div style="font-size: large; font-weight: 500;margin-top: 8px;">
-                            <a style="text-decoration: none; color: black;" href="tel:{{business().address.phone}}">
-                                {{business().address.phone | mask: '(000) 000-0000'}}
-
-                            </a>
-                        </div>
-
-                    </div>
-                </a>
+                <ll-address [address]="business().address"></ll-address>
             </div>
         </div>
 

@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { CdkCopyToClipboard } from '@angular/cdk/clipboard';
 import { MatChipsModule } from '@angular/material/chips';
+import { AddressComponent } from "../../address/address.component";
 @Component({
   selector: 'll-business',
   imports: [
@@ -19,7 +20,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatDividerModule,
     MatListModule,
     MatChipsModule,
-    CdkCopyToClipboard],
+    AddressComponent
+],
   templateUrl: './business.component.html',
   styleUrl: './business.component.scss'
 })
