@@ -1,27 +1,30 @@
-<mat-card class="business-card">
-    <mat-card-header>
-        <div class="title-grid">
-            <div>
-                <mat-card-title>
-                    <a class="no-decoration" target="_blank" [href]="business().url">{{business().name}}</a>
-                </mat-card-title>
-            </div>
-            @if(business().facebookUrl){
-            <div style="text-align: right;">
-                <a target="_blank" title="facebook page..." style="color:black" [href]="business().facebookUrl">
-                    <div><mat-icon aria-hidden="false" aria-label="facebook pag" fontIcon="facebook"></mat-icon> </div>
-                </a>
-            </div>
-            }
-        </div>
-    </mat-card-header>
+<mat-card class="business-card" style="border: 1px solid #cccccc;padding-bottom:0px">
 
     @if(business().address){
 
     @if(compactMode()){
 
     <mat-card-content>
-        <hr>
+
+        <div class="title-header-grid">
+            <div>
+                <a class="no-decoration" target="_blank" [href]="business().url">{{business().name}}</a>
+            </div>
+
+            <div>
+                @if(!detailMode()){
+
+                <button color="success" mat-icon-button (click)="store.showBusiness(business())"
+                    style="float: right;"><mat-icon style="color:green">open_in_new</mat-icon></button>
+                }
+                @else {
+                <button color="success" mat-icon-button (click)="store.closeBottomSheet()"
+                    style="float: right;"><mat-icon style="color:red">close</mat-icon></button>
+                }
+
+            </div>
+        </div>
+
         <div class="divide-grid">
             <div>
                 <a target="_blank" [href]="business().url">
@@ -112,42 +115,5 @@
 
     }
 
-    <mat-card-content style="padding-bottom: 3px;">
-        <hr>
-
-        <div class="link-route-grid">
-
-            <div>
-                @if(business().urlList && business().urlList.length > 0){
-                <a target="_blank" [href]="business().urlList[0].value">
-                    <div class="icon-text">
-                        <mat-icon aria-hidden="false" aria-label="" [fontIcon]="business().urlList[0].icon"></mat-icon>
-                        {{business().urlList[0].description}}...
-                    </div>
-                </a>
-                }
-                @else {
-
-                <a target="_blank" [href]="business().url">
-                    <div class="icon-text">
-                        <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
-                        Visit Our Website...
-                    </div>
-                </a>
-                }
-            </div>
-
-            @if(!detailMode()){
-            <div>
-                <button color="success" mat-icon-button (click)="store.showBusiness(business())"
-                    style="float: right;"><mat-icon style="color:green">open_in_new</mat-icon></button>
-            </div>
-            }
-
-        </div>
-    </mat-card-content>
-    <!-- This is what shows when you are only viewing the one business -->
-    @if(detailMode()){
-    }
     }
 </mat-card>

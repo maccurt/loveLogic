@@ -5,50 +5,11 @@
   </div>
 
   <!-- <div>
-    <div class="icon-text-hint">
-      <div class="icon">
-        <button [cdkCopyToClipboard]="store.businessSelected().urlInvite"
-          mat-icon-button><mat-icon>content_copy</mat-icon>
-        </button>
-      </div>
-      <div class="text">
-        {{store.businessSelected().urlInvite}}
-      </div>
-      <div class="hint">
-        Click icon to copy invite to clipboard
-      </div>
-    </div>
+    <ll-icon-text-hint [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
   </div> -->
 
   <div>
-    <div class="icon-text-hint">
-      <div class="icon">
-        <button mat-icon-button>
-          <mat-icon style="color:blue">content_copy</mat-icon>
-        </button>
-        <!-- <button [cdkCopyToClipboard]="store.businessSelected().urlInvite" mat-mini-fab><mat-icon>content_copy</mat-icon>
-        </button> -->
-      </div>
-      <div class="text">
-        {{store.businessSelected().urlInvite}}
-      </div>
-      <div class="hint">
-        Click icon to copy invite to clipboard
-      </div>
-    </div>
+    <ll-icon-text-hint [mode]="2" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
   </div>
-
-  <!-- <div>
-    <mat-list>
-      <mat-list-item><span style="font-size:medium;">{{store.businessSelected().urlInvite}}</span></mat-list-item>
-      <mat-divider></mat-divider>
-
-      <mat-list-item>Item 2</mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>Item 3</mat-list-item>
-    </mat-list>
-  </div> -->
-
-
 
 </div>

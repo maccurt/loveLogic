@@ -185,7 +185,8 @@ export const BusinessStore = signalStore(
             const ref = bottomSheet.open(BottomSheetActionComponent, {
                 //don't all the backdrop touch to close the screen
                 disableClose: true,
-                panelClass:'detail-bottom-sheet'
+                panelClass:'detail-bottom-sheet',
+                
             });
 
             ref.afterDismissed().subscribe(() => {

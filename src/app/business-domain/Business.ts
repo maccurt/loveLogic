@@ -12,7 +12,7 @@ export class Business {
   url!: string;
   urlContact?: string;
   urlList!: Url[];  
-  urlInvite = 'aaa';
+  urlInvite!:Url;
 };
 export class StateLocation {
   name!: string;
@@ -24,6 +24,7 @@ export class Url {
   description!: string;
   value!: string;
   icon!:string;
+  hint!:string;
 }
 
 export const stateListMock: StateLocation[] = [

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
-import { Business, stateListMock, StateLocation } from './Business';
+import { Business, stateListMock, StateLocation, Url } from './Business';
 import { Category } from "./categroryListMock";
 import { categoryAll } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
@@ -57,15 +57,19 @@ export class BusinessService {
 
         const filter = result.filter((b) => {
           return b.address.state.toLocaleLowerCase() === stateCode.toLocaleLowerCase();
-        });        
+        });
 
         filter.forEach((b) => {
           b.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
 
           //TODO move this toa central spot
           //b.urlInvite = document.location.host + `/state/${b.address.state}/business/${b.id}`;
-          b.urlInvite = document.location.host + `/${b.address.state}/${b.id}`;
-
+          const inviteUrl = new Url();
+          b.urlInvite = inviteUrl
+          inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}`;
+          inviteUrl.value = inviteUrl.description;
+          inviteUrl.icon = 'content_copy';
+          inviteUrl.hint = 'click to send invite';
 
         });
 
@@ -103,7 +107,7 @@ export class BusinessService {
 
           category.imageUrl = b?.imageUrl;
         }
-      }      
+      }
     }
 
     //order by name
