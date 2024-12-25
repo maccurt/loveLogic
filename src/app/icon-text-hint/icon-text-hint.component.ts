@@ -4,9 +4,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { Url } from '../business-domain/Business';
 import { MatCardModule } from '@angular/material/card';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatListModule } from '@angular/material/list';
 @Component({
   selector: 'll-icon-text-hint',
   imports: [
+    MatListModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,

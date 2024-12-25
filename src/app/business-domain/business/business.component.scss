@@ -1,3 +1,11 @@
+.button-grid {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    column-gap: 4px;
+    width: 100%;
+}
+
 .business-card {
     margin-top: 10px;
     margin-bottom: 8px;
@@ -16,14 +24,13 @@
 }
 
 
-.detail-table{
+.detail-table {
     border: 1px solid black;
     width: 100%;
+
     td {
         border: 1px solid #cccccc;
     }
-
-
 }
 
 
@@ -54,16 +61,17 @@
 }
 
 .i-c-l-2 {
-    display: grid;    
+    display: grid;
     border: 1px solid blue;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
 
-    .icon {        
+    .icon {
         background-color: gold;
-        grid-row:  1/span 2;
-        
+        grid-row: 1/span 2;
+
     }
+
     >div {
         // display: flex;     
         border: 1px dotted red;
@@ -124,3 +132,17 @@
 
 
 }
+
+
+button.success{
+    
+    border-color: green;
+    border-radius: 12px;
+}
+
+
+button.invite{    
+    border-radius: 12px;   
+    // min-width: 300px    
+}
+

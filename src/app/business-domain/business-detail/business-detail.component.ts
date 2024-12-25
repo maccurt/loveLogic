@@ -29,5 +29,4 @@ export class BusinessDetailComponent {
   hideBusiness() {
     this.store.showBusinessToggle(false);
   }
-
 }

@@ -1,0 +1,94 @@
+<!-- this is the mode stuff removed -->
+<!-- <mat-card class="mat-card-1">
+
+    @if(business().address){
+
+    @if(compactMode()){
+
+    <mat-card-content>
+
+        <div class="title-header-grid">
+            <div>
+                <a class="no-decoration" target="_blank" [href]="business().url">{{business().name}}</a>
+            </div>
+
+            <div>
+                @if(!detailMode()){
+
+                <button color="success" mat-icon-button (click)="store.showBusiness(business())"
+                    style="float: right;"><mat-icon style="color:green">open_in_new</mat-icon></button>
+                }
+                @else {
+                <button color="success" mat-icon-button (click)="store.closeBottomSheet()"
+                    style="float: right;"><mat-icon style="color:red">close</mat-icon></button>
+                }
+            </div>
+        </div>
+        <hr>
+
+        <div class="divide-grid">
+            <div>
+                <a target="_blank" [href]="business().url">
+                    <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl"
+                        alt="???">
+                </a>
+            </div>
+            <div>
+                <ll-address [address]="business().address"></ll-address>
+            </div>
+        </div>
+
+    </mat-card-content>
+
+    }
+    @else{
+    <mat-card-content>
+        <hr>
+        <div style="display: grid;">
+            <a target="_blank" [href]="business().url">
+                <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl" alt="todo">
+            </a>
+        </div>
+    </mat-card-content>
+    }
+
+    @if(!compactMode()){
+    <mat-card-content>
+        <div style="display: grid;grid-template-columns: 50% 50%;">
+            <div class="address-container">
+                <a style="text-decoration: none;color:black" target="_blank" [href]="business().googleMapUrl">
+                    <div class="address">
+                        @if(business().googleMapUrl){
+                        <div style="margin-bottom: 3px;">
+                            <a style="margin-bottom: 0px; font-size: small;" target="_blank"
+                                [href]="business().googleMapUrl">Map Directions</a>
+                        </div>
+                        }
+
+                        <div>{{business().address.address1}}</div>
+                        @if(business().address.address2){
+                        <div>{{business().address.address2}}</div>
+                        }
+                        <div>
+                            <span>{{business().address.city}} </span>,
+                            <span>{{business().address.state}} </span>
+                            <span>{{business().address.zipcode}} </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="phone-container" style="align-content: center">
+                <div style="font-size: large; font-weight: 500;text-align: center;">
+                    <a style="text-decoration: none; color: black;" href="tel:{{business().address.phone}}">
+                        {{business().address.phone | mask: '(000) 000-0000'}}
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </mat-card-content>
+
+    }
+
+    }
+</mat-card> -->

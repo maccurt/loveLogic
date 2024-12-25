@@ -1,12 +1,16 @@
+.botton-sheet-action {
+    margin-top: 16px;
+}
 
-
-.bottom-action{
-    margin-top: 32px;
+.bottom-action-button {
+    margin-top: 16px;
+    padding: 4px;
+    padding-top: 16px;
     display: flex;
     border-top: 1px solid #cccccc;
     justify-content: center;
-    padding: 8px;
-    button{
+
+    button {
         width: 90%;
-    }    
+    }
 }
