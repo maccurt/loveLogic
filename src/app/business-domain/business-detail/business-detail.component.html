@@ -1,15 +1,15 @@
-<div class="business-detail-grid">
+<!-- TODO why do we need this if statement here, this should never happen? correct? 
+ when you close it may briefly not be selected in store when you close, etc..?? -->
+@if(store.businessSelected()){
 
+<div class="business-detail-grid">
   <div>
     <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
   </div>
 
-  <!-- <div>
-    <ll-icon-text-hint [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
-  </div> -->
-
   <div>
     <ll-icon-text-hint [mode]="2" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
   </div>
-
 </div>
+
+}
