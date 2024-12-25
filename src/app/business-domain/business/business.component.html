@@ -1,9 +1,9 @@
-<mat-card class="business-card" style="border: 1px solid #cccccc;padding-bottom:0px">
+<mat-card class="mat-card-1"> 
 
     @if(business().address){
 
     @if(compactMode()){
-
+    
     <mat-card-content>
 
         <div class="title-header-grid">
@@ -21,9 +21,9 @@
                 <button color="success" mat-icon-button (click)="store.closeBottomSheet()"
                     style="float: right;"><mat-icon style="color:red">close</mat-icon></button>
                 }
-
             </div>
         </div>
+        <hr>        
 
         <div class="divide-grid">
             <div>
