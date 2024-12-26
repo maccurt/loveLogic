@@ -9,6 +9,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { IconTextHintComponent } from "../../icon-text-hint/icon-text-hint.component";
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'll-business-detail',
@@ -17,7 +18,9 @@ import { IconTextHintComponent } from "../../icon-text-hint/icon-text-hint.compo
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    MatDividerModule, IconTextHintComponent],
+    MatDividerModule,
+    MatTabsModule,
+    IconTextHintComponent],
   templateUrl: './business-detail.component.html',
   styleUrl: './business-detail.component.scss'
 })

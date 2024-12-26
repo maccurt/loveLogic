@@ -1,4 +1,25 @@
+.in-tab-grid{        
+    min-height: 440px !important;    
+    overflow: auto;
+    overflow-y: visible;
+    overflow-x: visible;
+    
+    padding-top: 16px;    
+    display: block;   
+    border: 1px solid green; 
+    
+    > div{
+        border-top: 1px solid #cccccc;
+        border: 1px solid red;
+        padding-bottom: 16px;        
+        margin-bottom: 8px;
+        
+    }
+
+}
+
 .business-detail-grid {
+    
     grid-template-columns: 1fr;
     display: grid;
     column-gap: 16px;
@@ -9,4 +30,8 @@
     @media screen and (min-width: 577px) {
         grid-template-columns: 1fr 1fr;
     }    
+}
+
+.tab{
+    // height: 400px !important;
 }

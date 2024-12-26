@@ -2,17 +2,56 @@
  when you close it may briefly not be selected in store when you close, etc..?? -->
 @if(store.businessSelected()){
 
-<div class="business-detail-grid">
-  <div>
-    <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
-  </div>
-  <!-- <div>
-    <ll-icon-text-hint [mode]="2" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
-  </div> -->
+<mat-tab-group animationDuration="0ms">
+  
+  <mat-tab label="Send Invitation">
 
-  <div>
-    <ll-icon-text-hint [mode]="3" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
-  </div>
-</div>
+    <div class="in-tab-grid">      
+      <div>
+        <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
+      </div>
+
+      <div>
+        <ll-icon-text-hint [mode]="3" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
+      </div>
+    </div>
+
+  </mat-tab>
+
+  <mat-tab class="tab" label="Coming Soon...">
+    <div class="in-tab-grid">
+      
+    </div>
+
+    <!-- <div class="in-tab-grid">
+      <div>
+        <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
+      </div>
+
+      <div>
+        <ll-icon-text-hint [mode]="3" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
+      </div>
+      
+    </div> -->
+
+  </mat-tab>
+
+  <!-- <mat-tab label="Coming Soon...">
+    <div class="business-detail-grid">
+
+      <div>
+        <ll-business [detailMode]="true" [compactMode]="true" [business]="store.businessSelected()"></ll-business>
+      </div>
+
+      <div>
+        <ll-icon-text-hint [mode]="3" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
+      </div>
+
+    </div>
+  </mat-tab> -->
+
+</mat-tab-group>
+
+
 
 }
