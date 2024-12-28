@@ -1,25 +1,18 @@
 .in-tab-grid{        
-    min-height: 440px !important;    
-    overflow: auto;
-    overflow-y: visible;
-    overflow-x: visible;
-    
-    padding-top: 16px;    
-    display: block;   
-    border: 1px solid green; 
+    //  min-height: 450px !important;   
+     
+    // padding-top: 16px;   
+    // display: block;   
     
     > div{
         border-top: 1px solid #cccccc;
-        border: 1px solid red;
+        // border: 1px solid red;
         padding-bottom: 16px;        
-        margin-bottom: 8px;
-        
+        margin-bottom: 8px;        
     }
-
 }
 
-.business-detail-grid {
-    
+.business-detail-grid {    
     grid-template-columns: 1fr;
     display: grid;
     column-gap: 16px;
@@ -33,5 +26,5 @@
 }
 
 .tab{
-    // height: 400px !important;
+     height: 400px !important;
 }

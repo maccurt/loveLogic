@@ -9,12 +9,14 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BottomSheetActionComponent } from '../bottom-sheet-action/bottom-sheet-action.component';
+import { MatDialog } from '@angular/material/dialog';
+import { BusinessDialogComponent } from './business-dialog/business-dialog.component';
 
 interface BusinessState {
     domainUrl: string;
     isLoading: boolean;
     //business
-    showBusiness: boolean;
+    isBusinessShown: boolean;
     businessList: Business[],
     businessListFiltered: Business[],
     businessSelected: Business,
@@ -34,14 +36,14 @@ const businessInitialState: BusinessState = {
     categoryListUrl: '',
     businessSelected: new Business(),
     businessSelectedCategory: categroryListMock[0],
-    showBusiness: false,
+    isBusinessShown: false,
     businessList: [],
     businessListFiltered: [],
     categoryList: categroryListMock,
     categorySelected: categroryListMock[0],
     locationList: [],
     stateSelected: stateListMock[0],
-    isLoading: false,
+    isLoading: true,
     showCategory: false,
     compactMode: true,
     isMobile: false
@@ -76,11 +78,12 @@ export const BusinessStore = signalStore(
     withMethods((
         store,
         businessService = inject(BusinessService),
-        bottomSheet = inject(MatBottomSheet)
+        bottomSheet = inject(MatBottomSheet),
+        dialog = inject(MatDialog) //TODO remove if we are not using
 
     ) => ({
 
-        async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
+        async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {            
 
             const categoryListUrl = 'category-list/' + stateSelected.name;
             patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
@@ -158,7 +161,7 @@ export const BusinessStore = signalStore(
         },
         showBusinessToggle(showBusiness: boolean) {
 
-            patchState(store, { showBusiness });
+            patchState(store, { isBusinessShown: showBusiness });
         },
 
         showSelectedBusinessById(id: number) {
@@ -170,7 +173,7 @@ export const BusinessStore = signalStore(
         },
 
         showBusiness(businessSelected: Business) {
-            patchState(store, { businessSelected });
+
             const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
             if (businessSelectedCategory) {
                 patchState(store, { businessSelectedCategory });
@@ -178,26 +181,36 @@ export const BusinessStore = signalStore(
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
             }
-            this.openBottomSheet();
+            patchState(store, { businessSelected, isBusinessShown: true });
+
+            //this.openBottomSheet();
         },
 
         openBottomSheet() {
+
+            // const dialogRef = dialog.open(BusinessDialogComponent, {
+            //     width: '50%',
+            //     height: '50%',
+            //     maxWidth: '100vw',
+            //     maxHeight: '100vh',
+            // })
+
+            // dialogRef.updateSize('100%','100%')
+
             const ref = bottomSheet.open(BottomSheetActionComponent, {
                 //don't all the backdrop touch to close the screen
-                disableClose: true,
-                panelClass:'detail-bottom-sheet',
-                
+                // panelClass: 'detail-bottom-sheet',
             });
 
             ref.afterDismissed().subscribe(() => {
-                patchState(store, { 
-                    businessSelected: undefined,                    
-                 });
+                patchState(store, {
+                    businessSelected: undefined,
+                });
             });
         },
         closeBottomSheet() {
             bottomSheet.dismiss();
-            patchState(store, { businessSelected: undefined });
+            patchState(store, { businessSelected: undefined, isBusinessShown:false });
         }
     }))
 );

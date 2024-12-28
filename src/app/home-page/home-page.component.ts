@@ -17,7 +17,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
-
+import { IconTextHintComponent } from "../icon-text-hint/icon-text-hint.component";
 
 @Component({
   selector: 'll-home-page',
@@ -36,7 +36,8 @@ import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-s
     MatBottomSheetModule,
     RouterModule,
     HeaderFilterComponent,
-    CategoryComponent
+    CategoryComponent,
+    IconTextHintComponent
 ],
   providers: [],
   templateUrl: './home-page.component.html',
@@ -44,11 +45,10 @@ import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-s
 })
 export class HomePageComponent implements OnInit {
 
-  private bottomSheet = inject(MatBottomSheet);
+  readonly store = inject(BusinessStore);
   readonly location = inject(Location);
   readonly route = inject(ActivatedRoute);
-  readonly router = inject(Router);
-  readonly store = inject(BusinessStore);
+  readonly router = inject(Router);  
   readonly fb = inject(FormBuilder);
   readonly categoryList = categroryListMock;
   readonly stateList = stateListMock;
@@ -63,8 +63,5 @@ export class HomePageComponent implements OnInit {
       this.store.compact(compactMode);
     });
   }
-
-  // hideBusiness() {
-  //   this.store.showBusinessToggle(false);
-  // }  
+  
 }

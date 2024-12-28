@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/flex-header-footer.scss';
+
 .mat-card-1,
 .mat-card-success,
 .mat-card-2 {
@@ -237,13 +239,6 @@ b {
         margin-bottom: 8px;
     }
 }
-
-
-.detail-bottom-sheet {
-    background-color: gray !important;
-
-}
-
 
 
 

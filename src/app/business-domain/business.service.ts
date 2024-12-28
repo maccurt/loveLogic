@@ -53,20 +53,17 @@ export class BusinessService {
         });
 
         filter.forEach((b) => {
-          //TODO remove this from here
+          //TODO refactor this section and move thins to more central testable spot
           b.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
-
           b.address.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
-
-          //TODO move this toa central spot
-          //b.urlInvite = document.location.host + `/state/${b.address.state}/business/${b.id}`;
+          
           const inviteUrl = new Url();
           b.urlInvite = inviteUrl
+
           inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}`;
-          inviteUrl.value = inviteUrl.description;
+          inviteUrl.value = inviteUrl.description;          
           inviteUrl.icon = 'content_copy';
           inviteUrl.hint = 'click to send invite';
-
         });
 
         //Sort by name in future, add others

@@ -39,29 +39,28 @@
     </mat-card-content>
 
     @if(detailMode()){
-    
+
     <mat-card-actions style="border-top:1px solid green;margin-top: 8px;padding-top: 4px;">
 
+        @if(business().urlInvite){
 
         <a mat-icon-button [href]="business().url" target="_blank"><mat-icon>home</mat-icon></a>
-
-
         <button title="click to copy invite url to clip board" [cdkCopyToClipboard]="business().urlInvite.value"
             class="success" mat-icon-button><mat-icon style="color:green;">content_copy</mat-icon></button>
         <button title="click to copy invite url to clip board" [cdkCopyToClipboard]="business().urlInvite.value"
             class="success" mat-icon-button><mat-icon style="color:blue;">share</mat-icon></button>
 
+        }
+
+
         @if(business().facebookUrl){
         <a mat-icon-button [href]="business().facebookUrl" target="_blank"><mat-icon>facebook</mat-icon></a>
         }
 
-
         @if(business().address.googleMapUrl){
         <a mat-icon-button [href]="business().address.googleMapUrl" target="_blank"><mat-icon>directions</mat-icon></a>
-        }                
+        }
     </mat-card-actions>
-
     }
-
 
 </mat-card>

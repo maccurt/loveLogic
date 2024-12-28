@@ -1,12 +1,49 @@
+<mat-drawer-container class="mat-drawer-container">
+  @if(!store.isLoading()){
 
-<ll-header-filter></ll-header-filter>
-<div class="business-grid">
-  @for (item of store.businessListFiltered(); track $index) {
-  <div>
-    <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
-  </div>
+  <mat-drawer (closed)="store.showBusinessToggle(false)" mode="push" class="mat-drawe" [opened]="store.isBusinessShown()" #drawer>
+
+    <div *ngIf="store.businessSelected()" class="flex-header-footer">
+      <header>
+        <button (click)="store.showBusinessToggle(false)" mat-flat-button>Close</button>
+      </header>
+      <main>
+        <section>
+          <ll-business [detailMode]="true" [business]="store.businessSelected()"></ll-business>
+        </section>
+
+        <section>
+          <ll-icon-text-hint [mode]="3" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
+        </section>
+
+      </main>
+      <footer>
+        <!-- in the future just toggle the drawer and let the close event handle the store -->
+        <button (click)="store.showBusinessToggle(false)" mat-flat-button>Close</button>
+      </footer>
+    </div>
+
+  </mat-drawer>
+
   }
-  <div style="margin-top:5px;">
-    <ll-category [category]="store.categorySelected()"></ll-category>
-  </div>
-</div>
+
+  <mat-drawer-content>
+
+    <ll-header-filter></ll-header-filter>
+    @if(!store.isLoading()){
+
+    <div class="business-grid">
+      @for (item of store.businessListFiltered(); track $index) {
+      <div>
+        <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
+      </div>
+      }
+      <div style="margin-top:5px;">
+        <ll-category [category]="store.categorySelected()"></ll-category>
+      </div>
+    </div>
+
+    }
+
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -48,6 +48,7 @@ export class HeaderFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.route.paramMap.subscribe(async (paramMap) => {
       const state = paramMap.get('state');
 

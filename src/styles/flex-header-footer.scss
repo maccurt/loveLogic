@@ -1,0 +1,53 @@
+.mat-drawer-content {
+    margin: 0;
+    height: 100%;
+}
+
+.mat-drawer-container{
+    margin: 0;
+    //This is important it has to be height of parent not body
+    //***************
+    height: 100%;
+}
+
+.flex-header-footer {        
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* needs to take the parents height, alternative: body {display: flex} */
+    padding: 0px 8px;
+    main {
+        flex: 1;
+        /* takes the remaining height of the "container" div */
+        overflow: auto;
+        /* to scroll just the "main" div */
+        padding-top: 16px;
+    }
+
+    section {
+        //height: 100%; /* takes the visible area of the "main" div */
+        overflow: auto;
+        padding-bottom: 16px;
+    }    
+
+    header,footer {        
+        padding-top: 10px;
+        padding-bottom: 10px;        
+        text-align: center; //center button
+        
+    }
+
+    header {        
+        border-bottom: 1px solid black;    
+        margin-bottom: 15px;        
+    }
+
+    footer{
+        border-top: 1px solid black;
+        margin-top: 15px;
+        button{
+            width: 60%;
+        }
+    }
+
+}
