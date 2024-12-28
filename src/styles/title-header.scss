@@ -1,0 +1,19 @@
+.title-header-grid,
+.title-header-grid-drawer {
+    display: inline-grid;
+    grid-template-columns: 11fr 1fr;
+    align-items: center;
+    font-size: medium;
+    font-weight: 500;
+
+    >div {
+        padding: 0px;
+    }
+}
+
+.title-header-grid-drawer{
+    font-size: x-large;
+    button{
+        margin-right: 12px;
+    }
+}

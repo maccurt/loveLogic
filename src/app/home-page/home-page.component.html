@@ -1,11 +1,21 @@
 <mat-drawer-container class="mat-drawer-container">
   @if(!store.isLoading()){
 
-  <mat-drawer (closed)="store.showBusinessToggle(false)" mode="push" class="mat-drawe" [opened]="store.isBusinessShown()" #drawer>
+  <mat-drawer (closed)="store.showBusinessToggle(false)" mode="push" class="mat-drawe"
+    [opened]="store.isBusinessShown()" #drawer>
 
     <div *ngIf="store.businessSelected()" class="flex-header-footer">
       <header>
-        <button (click)="store.showBusinessToggle(false)" mat-flat-button>Close</button>
+
+        <div class="title-header-grid-drawer">
+          <div>
+            <span style="text-align: center;">Can We Meet To Talk</span>
+          </div>
+          <div>
+            <button (click)="store.showBusinessToggle(false)" mat-icon-button><mat-icon>close</mat-icon></button>
+          </div>
+        </div>
+
       </header>
       <main>
         <section>

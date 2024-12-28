@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/flex-header-footer.scss';
+@import './styles/title-header.scss';
 
 .mat-card-1,
 .mat-card-success,
@@ -22,19 +23,7 @@
     background-color: #e6ffe6;
 }
 
-.title-header-grid {
-    display: inline-grid;
-    grid-template-columns: 11fr 1fr;
-    align-items: center;
-    // border-bottom: 1px solid green;
-    // margin-bottom: 16px;
-    font-size: medium;
-    font-weight: 500;
 
-    >div {
-        padding: 0px;
-    }
-}
 
 //TODO this is being used in mat-card-title re-think name to clarify
 .title-grid {
