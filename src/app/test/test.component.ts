@@ -37,8 +37,6 @@ export class TestComponent implements OnInit {
 
   constructor() {
 
-
-
     this.store.loadAllByStateName('NE',1);
 
   }
@@ -54,8 +52,6 @@ export class TestComponent implements OnInit {
       else{
         this.showDrawer= false;
       }
-
-
 
     });
 

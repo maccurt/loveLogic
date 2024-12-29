@@ -14,6 +14,7 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      "no-multiple-empty-lines": ["warn", { "max": 1 }],
       "semi": [2, "always"],
       "@angular-eslint/directive-selector": [
         "error",

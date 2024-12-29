@@ -9,7 +9,6 @@ import countBy from 'lodash-es/countBy';
 import { sortBy } from 'lodash-es';
 import { Address } from '../address/Adress';
 
-
 @Injectable({
   providedIn: 'root'
 
@@ -89,7 +88,6 @@ export class BusinessService {
       if (category) {
         category.count = categoryCount[key];
         categoryList.push(category);
-
 
         //TODO re-factor or remove
         //If there is no category url use the image from a business in that category
