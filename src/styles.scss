@@ -1,12 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
-@import './styles/flex-header-footer.scss';
-@import './styles/title-header.scss';
+@use './styles/flex-header-footer.scss';
+@use './styles/title-header.scss';
+
 
 .mat-card-1,
 .mat-card-success,
 .mat-card-2 {
     border: 1px solid #cccccc !important;
     padding-bottom: 0px !important;
+
     hr {
         margin: 0px;
         margin-top: 4px;
@@ -19,7 +20,7 @@
     border: 1px solid #cccccc !important;
 }
 
-.mat-card-2 {    
+.mat-card-2 {
     background-color: #e6ffe6;
 }
 
