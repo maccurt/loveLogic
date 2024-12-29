@@ -9,8 +9,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BottomSheetActionComponent } from '../bottom-sheet-action/bottom-sheet-action.component';
-import { MatDialog } from '@angular/material/dialog';
-import { BusinessDialogComponent } from './business-dialog/business-dialog.component';
 
 interface BusinessState {
     domainUrl: string;
@@ -78,8 +76,7 @@ export const BusinessStore = signalStore(
     withMethods((
         store,
         businessService = inject(BusinessService),
-        bottomSheet = inject(MatBottomSheet),
-        dialog = inject(MatDialog) //TODO remove if we are not using
+        bottomSheet = inject(MatBottomSheet)       
 
     ) => ({
 

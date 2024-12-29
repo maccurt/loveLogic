@@ -16,7 +16,7 @@ import { CategoryComponent } from "../category-domain/category/category.componen
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { IconTextHintComponent } from "../icon-text-hint/icon-text-hint.component";
 
 @Component({

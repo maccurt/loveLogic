@@ -6,7 +6,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { AddressComponent } from '../address/address.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from "../business-domain/business/business.component";
@@ -31,7 +30,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TestComponent implements OnInit {
 
   store = inject(BusinessStore);
-  route = inject(ActivatedRoute)
+  route = inject(ActivatedRoute);
   showFiller = false;
 
   showDrawer = true;
@@ -40,17 +39,17 @@ export class TestComponent implements OnInit {
 
 
 
-    this.store.loadAllByStateName('NE',1)
+    this.store.loadAllByStateName('NE',1);
 
   }
   ngOnInit(): void {
     
     this.route.queryParamMap.subscribe((parm)=>{
 
-      const show = parm.get('showDrawer')
+      const show = parm.get('showDrawer');
 
       if (show){
-        this.showDrawer = true
+        this.showDrawer = true;
       }
       else{
         this.showDrawer= false;
@@ -58,7 +57,7 @@ export class TestComponent implements OnInit {
 
 
 
-    })
+    });
 
   }
 

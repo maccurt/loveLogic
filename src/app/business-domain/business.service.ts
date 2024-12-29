@@ -58,7 +58,7 @@ export class BusinessService {
           b.address.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
           
           const inviteUrl = new Url();
-          b.urlInvite = inviteUrl
+          b.urlInvite = inviteUrl;
 
           inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}`;
           inviteUrl.value = inviteUrl.description;          

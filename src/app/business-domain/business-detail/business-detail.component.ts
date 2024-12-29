@@ -5,7 +5,6 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatIconModule } from '@angular/material/icon';
 import { safetyBulletpointList_Mock } from '../categroryListMock';
 import { MatButtonModule } from '@angular/material/button';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { IconTextHintComponent } from "../../icon-text-hint/icon-text-hint.component";
@@ -26,10 +25,5 @@ import { MatTabsModule } from '@angular/material/tabs';
 })
 export class BusinessDetailComponent {
   public safetyBulletPointList = safetyBulletpointList_Mock;
-  public readonly store = inject(BusinessStore);
-
-  //TODO remove this and use the store
-  hideBusiness() {
-    this.store.showBusinessToggle(false);
-  }
+  public readonly store = inject(BusinessStore);  
 }
