@@ -23,25 +23,6 @@
     background-color: #e6ffe6;
 }
 
-
-
-//TODO this is being used in mat-card-title re-think name to clarify
-.title-grid {
-    display: inline-grid;
-    grid-template-columns: auto auto;
-    column-gap: 6px;
-    border: 1px solid red;
-    grid-template-columns: 90% 10%;
-    width: 100%;
-    align-items: center;
-
-    >div {
-        border: 1px dotted red;
-        align-items: center; //
-    }
-}
-
-
 button.amazon {
     background-color: #ff9933 !important;
     color: white;

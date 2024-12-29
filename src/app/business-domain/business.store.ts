@@ -7,8 +7,6 @@ import { inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-
 
 interface BusinessState {
     domainUrl: string;
@@ -75,9 +73,7 @@ export const BusinessStore = signalStore(
 
     withMethods((
         store,
-        businessService = inject(BusinessService),
-        bottomSheet = inject(MatBottomSheet)
-
+        businessService = inject(BusinessService)
     ) => ({
 
         async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
@@ -96,7 +92,7 @@ export const BusinessStore = signalStore(
             });
 
             //TODO if you go back and forth to states you migh want to set it to what it was
-            //keep in mind all states do not share category, so time being set to first
+            //keep in mind all states (Nebraska, GA) do not share category, so time being set to first
             const categorySelected = categoryList[0];
 
             patchState(store, { businessSelected, categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
@@ -178,8 +174,8 @@ export const BusinessStore = signalStore(
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
             }
-            patchState(store, { businessSelected, isBusinessShown: true });            
-        }       
-        
+            patchState(store, { businessSelected, isBusinessShown: true });
+        }
+
     }))
 );

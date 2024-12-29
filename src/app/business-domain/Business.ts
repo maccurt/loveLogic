@@ -7,7 +7,7 @@ export class Business {
 
   address!: Address;
   imageUrl!: string;
-  googleMapUrl!: string;
+  // googleMapUrl!: string;
   facebookUrl!: string;
   url!: string;
   urlContact?: string;

@@ -43,6 +43,16 @@ export class BusinessService {
     );
   }
 
+  setGoogleMapUrl = (b: Business) => {
+    b.address.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
+    const inviteUrl = new Url();
+    b.urlInvite = inviteUrl;
+    inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}`;
+    inviteUrl.value = inviteUrl.description;
+    inviteUrl.icon = 'content_copy';
+    inviteUrl.hint = 'click to send invite';
+  };
+
   businessList(stateCode: string): Observable<Business[]> {
     return this.http.get<Business[]>(this.url).pipe(
       map((result) => {
@@ -52,17 +62,7 @@ export class BusinessService {
         });
 
         filter.forEach((b) => {
-          //TODO refactor this section and move thins to more central testable spot
-          b.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
-          b.address.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
-
-          const inviteUrl = new Url();
-          b.urlInvite = inviteUrl;
-
-          inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}`;
-          inviteUrl.value = inviteUrl.description;
-          inviteUrl.icon = 'content_copy';
-          inviteUrl.hint = 'click to send invite';
+          this.setGoogleMapUrl(b);
         });
 
         //Sort by name in future, add others
@@ -89,15 +89,16 @@ export class BusinessService {
         category.count = categoryCount[key];
         categoryList.push(category);
 
-        //TODO re-factor or remove
-        //If there is no category url use the image from a business in that category
-        if (!category.imageUrl) {
-          const b = businessList.find((b) => {
-            return b.categoryId === category.id;
-          });
+        //if there is Image url for that category we pull one the images from the
+        //a business that has the category to represent it
+        //this in theory should never happen,
+        // if (!category.imageUrl) {
+        //   const b = businessList.find((b) => {
+        //     return b.categoryId === category.id;
+        //   });
 
-          category.imageUrl = b?.imageUrl;
-        }
+        //   category.imageUrl = b?.imageUrl;
+        // }
       }
     }
 
