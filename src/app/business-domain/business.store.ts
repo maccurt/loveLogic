@@ -8,7 +8,7 @@ import { lastValueFrom, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BottomSheetActionComponent } from '../bottom-sheet-action/bottom-sheet-action.component';
+
 
 interface BusinessState {
     domainUrl: string;
@@ -178,36 +178,8 @@ export const BusinessStore = signalStore(
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
             }
-            patchState(store, { businessSelected, isBusinessShown: true });
-
-            //this.openBottomSheet();
-        },
-
-        openBottomSheet() {
-
-            // const dialogRef = dialog.open(BusinessDialogComponent, {
-            //     width: '50%',
-            //     height: '50%',
-            //     maxWidth: '100vw',
-            //     maxHeight: '100vh',
-            // })
-
-            // dialogRef.updateSize('100%','100%')
-
-            const ref = bottomSheet.open(BottomSheetActionComponent, {
-                //don't all the backdrop touch to close the screen
-                // panelClass: 'detail-bottom-sheet',
-            });
-
-            ref.afterDismissed().subscribe(() => {
-                patchState(store, {
-                    businessSelected: undefined,
-                });
-            });
-        },
-        closeBottomSheet() {
-            bottomSheet.dismiss();
-            patchState(store, { businessSelected: undefined, isBusinessShown:false });
-        }
+            patchState(store, { businessSelected, isBusinessShown: true });            
+        }       
+        
     }))
 );
