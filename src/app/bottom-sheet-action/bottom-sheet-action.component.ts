@@ -12,5 +12,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './bottom-sheet-action.component.scss'
 })
 export class BottomSheetActionComponent {
-  public readonly store = inject(BusinessStore);  
+  public readonly store = inject(BusinessStore);
 }

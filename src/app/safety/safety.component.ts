@@ -8,7 +8,7 @@ import { BulletPointList } from '../business-domain/categroryListMock';
     styleUrl: './safety.component.scss'
 })
 export class SafetyComponent  {
-    
+
     list = input.required<BulletPointList>();
 
 }

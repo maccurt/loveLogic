@@ -41,7 +41,7 @@ export class TestComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    
+
     this.route.queryParamMap.subscribe((parm)=>{
 
       const show = parm.get('showDrawer');

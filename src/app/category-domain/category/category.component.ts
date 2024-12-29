@@ -16,5 +16,5 @@ export class CategoryComponent {
 
   store = inject(BusinessStore);
   category = input.required<Category>();
-  
+
 }

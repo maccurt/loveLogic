@@ -27,6 +27,6 @@ import { AddressComponent } from "../../address/address.component";
 export class BusinessComponent {
   business = input.required<Business>();
   compactMode = input<boolean>();
-  detailMode = input<boolean>(false);  
+  detailMode = input<boolean>(false);
   public readonly store = inject(BusinessStore);
 }

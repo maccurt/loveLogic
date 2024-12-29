@@ -25,5 +25,5 @@ import { MatTabsModule } from '@angular/material/tabs';
 })
 export class BusinessDetailComponent {
   public safetyBulletPointList = safetyBulletpointList_Mock;
-  public readonly store = inject(BusinessStore);  
+  public readonly store = inject(BusinessStore);
 }

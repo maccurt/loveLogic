@@ -48,7 +48,7 @@ export class HeaderFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.route.paramMap.subscribe(async (paramMap) => {
       const state = paramMap.get('state');
 
@@ -57,10 +57,10 @@ export class HeaderFilterComponent implements OnInit {
 
       if (id && parseInt(id) > 0) {
         businessId = parseInt(id);
-      }      
+      }
 
-      if (state) {        
-        await this.store.loadAllByStateName(state,businessId);      
+      if (state) {
+        await this.store.loadAllByStateName(state,businessId);
       }
       else {
         await this.store.loadAll(this.store.stateSelected());

@@ -48,7 +48,7 @@ export class HomePageComponent implements OnInit {
   readonly store = inject(BusinessStore);
   readonly location = inject(Location);
   readonly route = inject(ActivatedRoute);
-  readonly router = inject(Router);  
+  readonly router = inject(Router);
   readonly fb = inject(FormBuilder);
   readonly categoryList = categroryListMock;
   readonly stateList = stateListMock;
@@ -63,5 +63,5 @@ export class HomePageComponent implements OnInit {
       this.store.compact(compactMode);
     });
   }
-  
+
 }

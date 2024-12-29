@@ -76,11 +76,11 @@ export const BusinessStore = signalStore(
     withMethods((
         store,
         businessService = inject(BusinessService),
-        bottomSheet = inject(MatBottomSheet)       
+        bottomSheet = inject(MatBottomSheet)
 
     ) => ({
 
-        async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {            
+        async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
 
             const categoryListUrl = 'category-list/' + stateSelected.name;
             patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
