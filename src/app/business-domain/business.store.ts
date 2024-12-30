@@ -95,7 +95,10 @@ export const BusinessStore = signalStore(
             //keep in mind all states (Nebraska, GA) do not share category, so time being set to first
             const categorySelected = categoryList[0];
 
-            patchState(store, { businessSelected, categorySelected, businessList, businessListFiltered: businessList, categoryList, isLoading: false });
+            patchState(store, {
+                businessSelected, categorySelected, businessList,
+                businessListFiltered: businessList, categoryList, isLoading: false
+            });
 
             if (businessId > 0) {
                 this.showSelectedBusinessById(businessId);
@@ -158,7 +161,6 @@ export const BusinessStore = signalStore(
         },
 
         showSelectedBusinessById(id: number) {
-
             const businessSelected = store.businessList().find((b) => { return b.id === id; });
             if (businessSelected) {
                 this.showBusiness(businessSelected);
@@ -176,6 +178,5 @@ export const BusinessStore = signalStore(
             }
             patchState(store, { businessSelected, isBusinessShown: true });
         }
-
     }))
 );
