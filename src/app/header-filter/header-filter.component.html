@@ -5,7 +5,7 @@
         <div class="item-1">
             <header id="header">
                 <div id="brand">
-                    Can We Meet To Talk?
+                    {{store.brandName()}}
                 </div>
 
                 <div id="state-select">
@@ -25,7 +25,7 @@
                     @for(c of store.categoryList(); track $index){
 
                     @if(c.id === store.categorySelected().id){
-                    <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected" selected (click)="store.filter(c)">
+                    <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected"  (click)="store.filter(c)">
                         {{c.name}}
                     </mat-chip-option>
                     }

@@ -15,10 +15,10 @@ export class Category {
   title?: string;
 };
 
-export const categoryAll: Category = { id: 0, name: 'All', title: 'Can We Meet To Talk?', imageUrl: '/images/winery-2.png', isDefault: true, bulletPointList: safetyBulletpointList_Mock };
+export const categoryMyFavorite: Category = { id: 0, name: 'My Favorite', title: 'Can We Meet To Talk?', imageUrl: '/images/winery-2.png', isDefault: true, bulletPointList: safetyBulletpointList_Mock };
 
 export const categroryListMock: Category[] = [
-  categoryAll,
+  categoryMyFavorite,
   { id: 2, name: 'Beer', title: 'Can We Grab A Pint and Talk?', imageUrl: '/images/beer-1.png', description: mockDecriptions, bulletPointList: safetyBulletpointList_Mock },
   {
     id: 3, name: 'Winery',
@@ -35,7 +35,7 @@ export const categroryListMock: Category[] = [
 
   },
   { id: 4, name: 'Museum', title: "Can We Look At Art and Talk?", imageUrl: '/images/museum-1.png', description: mockDecriptions, bulletPointList: safetyBulletpointList_Mock },
-  { id: 5, name: 'Restaraunt', title:"Can we get a bite and talk?", imageUrl: '/images/pizza-1.png', description: mockDecriptions, bulletPointList: safetyBulletpointList_Mock },
+  { id: 5, name: 'Restaraunt', title: "Can we get a bite and talk?", imageUrl: '/images/pizza-1.png', description: mockDecriptions, bulletPointList: safetyBulletpointList_Mock },
   {
     id: 6, name: 'Arcade', description: mockDecriptions, imageUrl: '/images/arcade-1.png', bulletPointList: {
       title: 'What Experience Can We Have?', list: [{ value: "Do You Enjoy Playing Video Games?" }]

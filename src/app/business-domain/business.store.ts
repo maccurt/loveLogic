@@ -1,7 +1,7 @@
 import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { BusinessService } from "./business.service";
 import { Business, stateListMock, StateLocation } from './Business';
-import { Category } from "./categroryListMock";
+import { Category, categoryMyFavorite } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
 import { inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
@@ -9,6 +9,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface BusinessState {
+    brandName: string;
     domainUrl: string;
     isLoading: boolean;
     //business
@@ -28,6 +29,7 @@ interface BusinessState {
 };
 
 const businessInitialState: BusinessState = {
+    brandName: 'Can Meet To Talk?',
     domainUrl: '',
     categoryListUrl: '',
     businessSelected: new Business(),
@@ -53,9 +55,7 @@ export const BusinessStore = signalStore(
             businessService = inject(BusinessService),
             breakpoint = inject(BreakpointObserver)
         ) {
-
             const domainUrl = document.location.origin;
-
             businessService.locationList().subscribe((locationList) => {
                 patchState(state, { locationList, domainUrl });
             });
@@ -91,14 +91,15 @@ export const BusinessStore = signalStore(
                 c.businessListUrl = '/' + stateSelected.name + '/' + c.id;
             });
 
-            //TODO if you go back and forth to states you migh want to set it to what it was
-            //keep in mind all states (Nebraska, GA) do not share category, so time being set to first
-            const categorySelected = categoryList[0];
+            //TODO make sure all states have a favorite
+            const categorySelected = categoryMyFavorite            
 
             patchState(store, {
-                businessSelected, categorySelected, businessList,
-                businessListFiltered: businessList, categoryList, isLoading: false
+                businessSelected, categorySelected, businessList, categoryList, isLoading: false
             });
+
+            //filter to the favorite for the time being
+            this.filterByCategoryId(categorySelected.id)
 
             if (businessId > 0) {
                 this.showSelectedBusinessById(businessId);
@@ -131,23 +132,35 @@ export const BusinessStore = signalStore(
             }
         },
         async filter(categorySelected: Category): Promise<void> {
+            
             patchState(store, { isLoading: true });
 
             if (!categorySelected) {
-                categorySelected = store.categoryList()[0];
+                categorySelected = categoryMyFavorite;
             }
 
             let businessListFiltered: Business[];
 
             if (categorySelected.id === 0) {
-                businessListFiltered = store.businessList();
+                businessListFiltered = store.businessList().filter((b) => {
+                    return b.rank === 1;
+                })
+                
             }
             else {
                 businessListFiltered = store.businessList().filter((b) => {
                     return b.categoryId === categorySelected.id;
                 });
             }
+
+            if (businessListFiltered.length === 0 && store.businessList().length  >=3){
+                
+                businessListFiltered.push(store.businessList()[0])
+                businessListFiltered.push(store.businessList()[1])
+                businessListFiltered.push(store.businessList()[2])
+            }
             patchState(store, { categorySelected, showCategory: false, businessListFiltered, isLoading: false });
+          
         },
         showCategoryToggle() {
             patchState(store, { showCategory: !store.showCategory() });

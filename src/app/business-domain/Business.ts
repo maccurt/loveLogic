@@ -4,7 +4,7 @@ export class Business {
   id!: number;
   categoryId!: number;
   name!: string;
-
+  rank: number = 99;// 1 is the highest rank
   address!: Address;
   imageUrl!: string;
   // googleMapUrl!: string;
@@ -12,7 +12,7 @@ export class Business {
   url!: string;
   urlContact?: string;
   urlList!: Url[];
-  urlInvite!:Url;
+  urlInvite!: Url;
 };
 export class StateLocation {
   name!: string;
@@ -23,8 +23,8 @@ export class StateLocation {
 export class Url {
   description!: string;
   value!: string;
-  icon!:string;
-  hint!:string;
+  icon!: string;
+  hint!: string;
 }
 
 export const stateListMock: StateLocation[] = [

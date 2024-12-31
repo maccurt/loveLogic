@@ -31,6 +31,7 @@
     },
     {
         "id": 3,
+        "rank":1,
         "categoryId": 7,
         "name": "Green Beans Coffee",
         "url": "https://greenbeanscoffeeomaha.com/",
@@ -83,6 +84,7 @@
     },
     {
         "id": 6,
+        "rank":1,
         "categoryId": 2,
         "name": "Kros Strain Brewing",
         "url": "https://krosstrainbrewing.com/lavista/",
@@ -129,6 +131,7 @@
     },
     {
         "id": 8,
+        "rank":1,
         "categoryId": 5,
         "name": "Dante Omaha",
         "url": "https://www.danteomaha.com/",
@@ -158,6 +161,7 @@
     {
         "id": 9,
         "categoryId": 3,
+        "rank":1,
         "name": "Cellar 426 Winery",
         "url": "https://www.cellar426.com/",
         "imageUrl": "/images/cellar426-1.png",

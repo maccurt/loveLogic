@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
 import { Business, stateListMock, StateLocation, Url } from './Business';
 import { Category } from "./categroryListMock";
-import { categoryAll } from "./categroryListMock";
+import { categoryMyFavorite } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
 import countBy from 'lodash-es/countBy';
 import { sortBy } from 'lodash-es';
@@ -76,7 +76,7 @@ export class BusinessService {
     const categoryCount = countBy(businessList, 'categoryId');
     let categoryList: Category[] = [];
 
-    const all = categoryAll;
+    const all = categoryMyFavorite;
     all.count = businessList.length;
 
     for (const key in categoryCount) {
