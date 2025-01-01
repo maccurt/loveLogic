@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from "../business-domain/business/business.component";
 import { ActivatedRoute } from '@angular/router';
+import { MarketingComponent } from "../marketing/marketing.component";
 
 @Component({
   selector: 'll-test',
@@ -22,7 +23,8 @@ import { ActivatedRoute } from '@angular/router';
     MatChipsModule,
     MatSidenavModule,
     ClipboardModule,
-    BusinessComponent
+    BusinessComponent,
+    MarketingComponent
 ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'

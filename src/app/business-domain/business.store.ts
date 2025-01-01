@@ -31,7 +31,7 @@ interface BusinessState {
 
 const businessInitialState: BusinessState = {
     brandName: 'Can We Meet To Talk?',
-    brandTagline: 'I want to meet you so we can see if we vibe and you are of my tribe!',
+    brandTagline: 'Somewhere Public & Safe To Verify We Are Who we say we are!',
     domainUrl: '',
     categoryListUrl: '',
     businessSelected: new Business(),
