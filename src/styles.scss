@@ -1,5 +1,6 @@
 @use './styles/flex-header-footer.scss';
 @use './styles/title-header.scss';
+@use './styles/marketing.scss';
 
 .mat-card-1,
 .mat-card-success,
@@ -13,57 +14,50 @@
         margin-bottom: 12px;
     }
 }
-
 .mat-card-success {
     background-color: #e6ffe6;
     border: 1px solid #cccccc !important;
 }
-
 .mat-card-2 {
     background-color: #e6ffe6;
 }
-
 button.amazon {
     background-color: #ff9933 !important;
     color: white;
 }
-
 html,
 body {
     height: 100%;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
 b {
     font-weight: 500;
 }
+// .main-grid {
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-template-rows: 50px;
+//     background-color: aliceblue;
+//     padding-top: 10px;
+//     padding-left: 20px;
+//     padding-right: 20px;
 
+//     @media screen and (min-width: 576px) {}
 
-.main-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px;
-    background-color: aliceblue;
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+//     #header {
+//         text-align: center;
+//         grid-area: "header";
+//         border: px solid gray;
+//         background-color: aliceblue;
 
-    @media screen and (min-width: 576px) {}
+//         @media screen and (min-width: 576px) {
+//             text-align: left;
+//             padding-left: 20px;
+//         }
+//     }
 
-    #header {
-        text-align: center;
-        grid-area: "header";
-        border: px solid gray;
-        background-color: aliceblue;
-
-        @media screen and (min-width: 576px) {
-            text-align: left;
-            padding-left: 20px;
-        }
-    }
-
-}
+// }
 
 
 .header-grid {

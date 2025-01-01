@@ -10,6 +10,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface BusinessState {
     brandName: string;
+    brandTagline: string;
     domainUrl: string;
     isLoading: boolean;
     //business
@@ -29,7 +30,8 @@ interface BusinessState {
 };
 
 const businessInitialState: BusinessState = {
-    brandName: 'Can Meet To Talk?',
+    brandName: 'Can We Meet To Talk?',
+    brandTagline: 'I want to meet you so we can see if we vibe and you are of my tribe!',
     domainUrl: '',
     categoryListUrl: '',
     businessSelected: new Business(),
@@ -92,14 +94,14 @@ export const BusinessStore = signalStore(
             });
 
             //TODO make sure all states have a favorite
-            const categorySelected = categoryMyFavorite            
+            const categorySelected = categoryMyFavorite;
 
             patchState(store, {
                 businessSelected, categorySelected, businessList, categoryList, isLoading: false
             });
 
             //filter to the favorite for the time being
-            this.filterByCategoryId(categorySelected.id)
+            this.filterByCategoryId(categorySelected.id);
 
             if (businessId > 0) {
                 this.showSelectedBusinessById(businessId);
@@ -132,7 +134,7 @@ export const BusinessStore = signalStore(
             }
         },
         async filter(categorySelected: Category): Promise<void> {
-            
+
             patchState(store, { isLoading: true });
 
             if (!categorySelected) {
@@ -144,8 +146,7 @@ export const BusinessStore = signalStore(
             if (categorySelected.id === 0) {
                 businessListFiltered = store.businessList().filter((b) => {
                     return b.rank === 1;
-                })
-                
+                });
             }
             else {
                 businessListFiltered = store.businessList().filter((b) => {
@@ -154,13 +155,13 @@ export const BusinessStore = signalStore(
             }
 
             if (businessListFiltered.length === 0 && store.businessList().length  >=3){
-                
-                businessListFiltered.push(store.businessList()[0])
-                businessListFiltered.push(store.businessList()[1])
-                businessListFiltered.push(store.businessList()[2])
+
+                businessListFiltered.push(store.businessList()[0]);
+                businessListFiltered.push(store.businessList()[1]);
+                businessListFiltered.push(store.businessList()[2]);
             }
             patchState(store, { categorySelected, showCategory: false, businessListFiltered, isLoading: false });
-          
+
         },
         showCategoryToggle() {
             patchState(store, { showCategory: !store.showCategory() });

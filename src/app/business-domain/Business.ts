@@ -4,7 +4,7 @@ export class Business {
   id!: number;
   categoryId!: number;
   name!: string;
-  rank: number = 99;// 1 is the highest rank
+  rank = 99;// 1 is the highest rank
   address!: Address;
   imageUrl!: string;
   // googleMapUrl!: string;

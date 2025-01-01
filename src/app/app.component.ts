@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
   store = inject(BusinessStore);
-  title = inject(Title)
-
+  title = inject(Title);
 
 }

@@ -40,20 +40,30 @@
   <mat-drawer-content>
 
     <ll-header-filter></ll-header-filter>
+
+
     @if(!store.isLoading()){
 
-    <div class="business-grid">
-      @for (item of store.businessListFiltered(); track $index) {
-      <div>
-        <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
-      </div>
-      }
-      <div style="margin-top:5px;">
-        <ll-category [category]="store.categorySelected()"></ll-category>
-      </div>
-    </div>
+    <div class="home-page-grid">
 
-    }
+      <section class="business-section">
+        <div class="business-grid">
+          @for (item of store.businessListFiltered(); track $index) {
+          <div>
+            <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
+          </div>
+          }          
+        </div>
+      </section>
+
+      <section class="marketing-section">
+        <ll-marketing></ll-marketing>
+      </section>
+
+    </div>  
+
+    }   <!-- isLoading -->
+
 
   </mat-drawer-content>
 </mat-drawer-container>

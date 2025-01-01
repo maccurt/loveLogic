@@ -1,0 +1,66 @@
+.marketing-grid {
+    background-color: aliceblue;
+    display: grid;
+    column-gap: 32px;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'b' 't' 'i1' 'i2' 'i3';
+    margin-top: 40px;
+    @media screen and (min-width: 576px) {
+        margin-top: 40px;
+        margin-left: 25%;
+        margin-right: 25%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            'b b b'
+            't  t  t'
+            'i1 i2 i3'
+        ;
+    }
+
+    .brand {
+        grid-area: b;        
+        text-align: center;
+        margin-bottom: 0px;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    .tag {
+        grid-area: t;        
+        text-align: center;
+        margin-bottom: 8px;
+        font-size: x-large;
+        margin-bottom: 16px;
+        padding: 16px;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    .info-1 {
+        grid-area: i1;
+    }
+    .info-2 {
+        grid-area: i2;
+    }
+    .info-3 {
+        grid-area: i3;
+    }
+    .info {
+        display: grid;
+        border-bottom: 1px solid #cccccc;
+        columns: 1fr;
+        row-gap: 8px;
+        padding: 16px 16px;
+        padding-left: 32px;
+        .title {
+            font-weight: 500;
+            font-size: large;
+        }
+
+        .text {
+            font-size: large;
+        }
+
+        @media screen and (min-width: 576px) {
+            border-bottom: none;
+        }
+    }
+}
