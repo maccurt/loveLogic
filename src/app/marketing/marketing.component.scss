@@ -16,7 +16,6 @@
         border: none;
     }
 }
-
 .brand-tag-line {
     display: flex;
     color: gray;
@@ -29,14 +28,11 @@
         font-size: 18px;
         font-size: 24px;
     }
-
     padding: 8px 0px;
 }
-
 .info-grid {
     display: grid;
     grid-template-columns: 1fr;
-
     @media screen and (min-width: 768px) {
         //medium boostrap and up
         grid-template-columns: 1fr 1fr 1fr;
