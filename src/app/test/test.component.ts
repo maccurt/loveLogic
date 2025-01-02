@@ -23,7 +23,6 @@ import { MarketingComponent } from "../marketing/marketing.component";
     MatChipsModule,
     MatSidenavModule,
     ClipboardModule,
-    BusinessComponent,
     MarketingComponent
 ],
   templateUrl: './test.component.html',
