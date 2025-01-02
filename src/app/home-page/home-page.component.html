@@ -44,25 +44,23 @@
     @if(!store.isLoading()){
 
     <div class="home-page-grid">
-
+      
       <section class="business-section">
         <div class="business-grid">
           @for (item of store.businessListFiltered(); track $index) {
           <div>
             <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
           </div>
-          }          
+          }
         </div>
       </section>
 
-      <section class="marketing-section">
-        <ll-marketing></ll-marketing>
-      </section>
-      
-    </div>  
 
-    }   <!-- isLoading -->
+    </div>
 
+    } <!-- isLoading -->
+
+    <ll-marketing></ll-marketing>
 
   </mat-drawer-content>
 </mat-drawer-container>

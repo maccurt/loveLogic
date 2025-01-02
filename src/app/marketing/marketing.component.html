@@ -1,47 +1,55 @@
-<div class="marketing-grid">
-
-    <div class="brand">
+<div class="marketing-component">
+    <div class="brand-name">
         {{store.brandName()}}
     </div>
-    <div class="tag">{{store.brandTagline() | titlecase}}</div>
 
-    <div class="info-1">
-
-        <div class="info">
-            <div class="title">
-                Can We Talk In Person?
-            </div>
-            <div>
-                Texting and direct messages in dating apps are not an effective ways to communicate.
-                Relationships are better when two people engage in adult conversation face to face.
-
-            </div>
-        </div>
-    </div>
-    <div class="info-2">
-        <div class="info">
-            <div class="title">
-                Your Safety Is A Priority.
-            </div>
-            <div>
-                Your Safety is the #1 Priority. All meeting locations are well known public places to make you feel
-                safe. This app will provide you with detailed information so you can verify the address directions and
-                the legitimacy of each meeting place.
-            </div>
-        </div>
+    <div class="brand-tag-line">
+        {{store.brandTagline() | titlecase}}
     </div>
 
-    <div class="info-3">
-        <div class="info">
-            <div class="title">
-                We Are In Beta 1.0
+    <div class="info-grid">
+
+        <div>
+            <div class="info">
+                <div class="title">
+                    Can We Talk In Person?
+                </div>
+                <div>
+                    Texting and direct messages in dating apps are not an effective ways to communicate.
+                    Relationships are better when two people engage in adult conversation face to face.
+                </div>
             </div>
-            <div>
-                This application was designed to showcase our teams's skill in Angular 19 with Signals. We are releasing
-                constantly and thoroughly enjoy all constructive and negative feedback.
+
+        </div>
+
+
+        <div>
+            <div class="info">
+                <div class="title">
+                    Your Safety Is A Priority.
+                </div>
+                <div>
+                    All meeting locations are well known public places to make you feel
+                    safe. This app will provide you with detailed information so you can verify the address directions
+                    and
+                    the legitimacy of each meeting place.
+                </div>
             </div>
         </div>
+
+        <div>
+            <div class="info">
+                <div class="title">
+                    We Are In Beta 1.0
+                </div>
+                <div>
+                    This application was designed to showcase our teams's skill in Angular 19 with Signals. We are
+                    releasing
+                    constantly and thoroughly enjoy all constructive and negative feedback.
+                </div>
+            </div>
+        </div>
+
+
     </div>
-
-
 </div>

@@ -1,97 +1,78 @@
-// .example-container{
-//     height: 100vh;
-//     border: 1px solid red;
-// }
+.marketing-section {
 
+    display: grid;
+    grid-template-columns: 50%;
+    border: 5px solid red;
+    padding: 24px;
+    justify-content: center;
 
-
-
-// html,
-// body {
-//     margin: 0;
-//     height: 100%;
-//     /* can also use viewport units (height: 100vh) */
-// }
-
-
-
-
-.flex-header-footer {    
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    /* needs to take the parents height, alternative: body {display: flex} */
-    padding: 0px 8px;
-    main {
-        flex: 1;
-        /* takes the remaining height of the "container" div */
-        overflow: auto;
-        /* to scroll just the "main" div */
+    >div {
+        border: 1px dotted red;
+        padding: 8px;
     }
-
-    section {
-        //height: 100%; /* takes the visible area of the "main" div */
-        overflow: auto;
-        padding-bottom: 16px;
-    }    
-
-    header,footer {        
-        padding-top: 10px;
-        padding-bottom: 10px;        
-        text-align: center; //center button
-    }
-
-    header {        
-        border-bottom: 1px solid black;    
-        margin-bottom: 15px;
-    }
-
-    footer{
-        border-top: 1px solid black;
-        margin-top: 15px;
-    }
-
 }
 
-#container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    /* needs to take the parents height, alternative: body {display: flex} */
+.marketing-grid-1 {
 
-    main {
-        flex: 1;
-        /* takes the remaining height of the "container" div */
-        overflow: auto;
-        /* to scroll just the "main" div */
+    padding: 8px;
+    display: grid;
+    border: 1px solid green;
+    grid-template-columns: 1fr;
+
+    //small
+    @media screen and (min-width: 576px) {
+        >div {
+            background-color: pink;
+        }
     }
 
-    section {
-        //height: 100%; /* takes the visible area of the "main" div */
-        overflow: auto;
-        /* recommended */
-        border-bottom: 1px solid;
-        background: lightgreen;
+    //Medium
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        >div {
+            background-color: green;
+        }
     }
 
-    section:last-child {
-        border: none;
+    //Large
+    @media screen and (min-width: 992px) {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        >div {
+            background-color: blueviolet;
+        }
     }
 
-    header {
-        background: lightblue;
-        height: 75px;
-        text-align: center;
-        padding-top: 15px;
-        border-bottom: 1px solid black;
+    //X-Large
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        >div {
+            background-color: yellow;
+        }
     }
 
-    footer {
-        background: lightblue;
-        height: 75px;
-        text-align: center;
-        padding-top: 15px;
-        border-top: 1px solid black;
+    //XX-Large
+    @media screen and (min-width: 1400px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        // width: 50%;
 
+        >div {
+            background-color: wheat;
+        }
     }
+
+    >div {
+        //debug
+        // background-color:white;
+    }
+
+    row-gap: 16px;
+    justify-content: center;
+
+    >div {
+        border: 1px solid red;
+    }
+
 }

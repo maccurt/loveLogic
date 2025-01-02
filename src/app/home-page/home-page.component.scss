@@ -1,34 +1,17 @@
 .home-page-grid {
-
-    border: 1px solid red !important;
+    // border: 1px solid red !important;
     display: grid;
-    grid-template-areas: 'b'
-        'm';
+    grid-template-areas: 'b';
 
 
-    .marketing-section {
-        grid-area: m;
-        border-top: 1px solid #cccccc;
-        border-bottom: 1px solid #cccccc;
-        margin-top: 32px;
-        background-color: aliceblue;
-        padding-bottom: 64px;
-        border: 1px solid red !important;
-        background-color: pink;
-    }
-
-    .business-section {        
+    .business-section {
         grid-area: b;
-    }
-
-    >div,
-    section {
-        border: 1px solid green !important;
     }
 }
 
 mat-drawer {
     width: 100%;
+
     @media screen and (min-width: 576px) {
         width: 400px;
     }

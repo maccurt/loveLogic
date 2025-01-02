@@ -1,56 +1,47 @@
-.marketing-grid {
-    border: 1px solid greenyellow;
-    display: grid;
-    column-gap: 32px;
-    grid-template-columns: 1fr;
-    grid-template-areas: 'b' 't' 'i1' 'i2' 'i3';
-    margin-top: 40px;
-    @media screen and (min-width: 576px) {
-        margin-top: 40px;
-        // margin-left: 25%;
-        // margin-right: 25%;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-areas:
-            'b b b'
-            't  t  t'
-            'i1 i2 i3'
-        ;
-    }
-    .brand {
-        grid-area: b;        
-        text-align: center;
-        margin-bottom: 0px;
-        color:blue;
-        font-size: xx-large;
-        font-weight: 500;
-        border-bottom: 1px solid #cccccc;
-        @media screen and (min-width: 576px) {
-            font-size: 48px;
-            border: none;
-        }        
-    }
-    .tag {
-        grid-area: t;        
-        text-align: center;
-        margin-bottom: 8px;
-        font-size: x-large;
-        font-weight: 500;
-        margin-bottom: 16px;
-        padding: 16px;
-        border-bottom: 1px solid #cccccc;
-        @media screen and (min-width: 576px) {         
-            border: none;
-        }
-    }
+.marketing-component {
+    padding-top: 10px;
+    margin-top: 32px;
+    border-top: 1px solid black;
+}
 
-    .info-1 {
-        grid-area: i1;
+.brand-name {
+    display: flex;
+    color: blue;
+    font-size: xx-large;
+    font-weight: 500;
+    justify-content: center;
+    //Small bootstrap and up
+    @media screen and (min-width: 576px) {
+        font-size: 48px;
+        border: none;
     }
-    .info-2 {
-        grid-area: i2;
+}
+
+.brand-tag-line {
+    display: flex;
+    color: black;
+    font-size: .75rem;
+    font-weight: 500;
+    justify-content: center;
+    //Small bootstrap and up
+    border-bottom: 1px solid #cccccc;
+    @media screen and (min-width: 576px) {
+        font-size: 18px;
     }
-    .info-3 {
-        grid-area: i3;
+    padding: 16px 0px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    //medium boostrap and up
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr;     
+    }
+    //xx-large and up
+    @media screen and (min-width: 1400px) {
+        margin: 0% 25%;
     }
     .info {
         display: grid;
@@ -59,17 +50,17 @@
         row-gap: 8px;
         padding: 16px 16px;
         padding-left: 32px;
+
+        //medium and up
+        @media screen and (min-width: 768px) {
+            border-bottom: none;
+        }
         .title {
             font-weight: 500;
             font-size: large;
         }
-
         .text {
             font-size: large;
-        }
-
-        @media screen and (min-width: 576px) {
-            border-bottom: none;
         }
     }
 }
