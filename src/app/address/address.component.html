@@ -1,33 +1,31 @@
 <div class="address">
 
-    <a class="none" target="_blank" [href]="address().googleMapUrl">
-        <div class="address">
-            @if(address().googleMapUrl){
-            <div>
-                <a class="google" target="_blank" [href]="address().googleMapUrl">Google Map</a>
-            </div>
-            }
-
-            <div class="address-info">
-                <div>{{address().address1}}</div>
-                <div>
-                    @if(address().address2){
-                    {{address().address2}}
-                    }
-                </div>
-                <span>{{address().city}} </span>,
-                <span>{{address().state}} </span>
-                <span>{{address().zipcode}} </span>
-            </div>
-            <div>
-            </div>
-            <div class="phone">
-                <a href="tel:{{address().phone}}">
-                    {{address().phone | mask: '(000) 000-0000'}}
-
-                </a>
-            </div>
+    <div class="address">
+        @if(address().googleMapUrl){
+        <div>
+            <a class="google" target="_blank" [href]="address().googleMapUrl">Google Map</a>
         </div>
-    </a>
+        }
+
+        <div class="address-info">
+            <div>{{address().address1}}</div>
+            <div>
+                @if(address().address2){
+                {{address().address2}}
+                }
+            </div>
+            <span>{{address().city}} </span>,
+            <span>{{address().state}} </span>
+            <span>{{address().zipcode}} </span>
+        </div>
+        <div>
+        </div>
+        <div class="phone">
+            <a href="tel:{{address().phone}}">
+                {{address().phone | mask: '(000) 000-0000'}}
+
+            </a>
+        </div>
+    </div>
 
 </div>

@@ -3,23 +3,22 @@
     <mat-card-content>
         <div class="title-header-grid">
             <div>
-                <a class="no-decoration" target="_blank" [href]="business().url">{{business().name}}</a>
+                <a class="no-decoration" target="_blank"
+                    (click)="store.showBusiness(business())">{{business().name}}</a>
             </div>
 
             <div>
                 @if(!detailMode()){
-
                 <button color="success" mat-icon-button (click)="store.showBusiness(business())"
                     style="float: right;"><mat-icon style="color:green">open_in_new</mat-icon></button>
-                }               
+                }
 
             </div>
         </div>
         <hr>
-
         <div class="divide-grid">
             <div>
-                <a target="_blank" [href]="business().url">
+                <a target="_blank" (click)="store.showBusiness(business())">
                     <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl"
                         alt="???">
                 </a>
@@ -28,23 +27,9 @@
                 <ll-address [address]="business().address"></ll-address>
             </div>
         </div>
-
     </mat-card-content>
 
-    @if(detailMode()){
-
-    <mat-card-actions style="border-top:1px solid green;margin-top: 8px;padding-top: 4px;">
-
-        @if(business().urlInvite){
-
-        <a mat-icon-button [href]="business().url" target="_blank"><mat-icon>home</mat-icon></a>
-        <button title="click to copy invite url to clip board" [cdkCopyToClipboard]="business().urlInvite.value"
-            class="success" mat-icon-button><mat-icon style="color:green;">content_copy</mat-icon></button>
-        <button title="click to copy invite url to clip board" [cdkCopyToClipboard]="business().urlInvite.value"
-            class="success" mat-icon-button><mat-icon style="color:blue;">share</mat-icon></button>
-
-        }
-
+    <mat-card-actions style="border-top:1px solid green;margin-top: 8px;padding-top: 4px;">        
 
         @if(business().facebookUrl){
         <a mat-icon-button [href]="business().facebookUrl" target="_blank"><mat-icon>facebook</mat-icon></a>
@@ -53,7 +38,16 @@
         @if(business().address.googleMapUrl){
         <a mat-icon-button [href]="business().address.googleMapUrl" target="_blank"><mat-icon>directions</mat-icon></a>
         }
+
+        @if(business().urlInvite){
+
+            <a mat-icon-button [href]="business().url" target="_blank"><mat-icon>public</mat-icon></a>
+            <button title="click to copy invite url to clip board" (click)="copyInvite()" 
+                class="success" mat-icon-button><mat-icon style="color:green;">content_copy</mat-icon></button>
+            <button title="click to copy invite url to clip board" (click)="copyInvite()" 
+                class="success" mat-icon-button><mat-icon style="color:blue;">share</mat-icon></button>
+            }
     </mat-card-actions>
-    }
+
 
 </mat-card>

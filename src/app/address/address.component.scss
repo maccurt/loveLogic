@@ -4,13 +4,15 @@
     .address-info {
         // border: 1px solid blue;
         min-height: 60px;
-        font-size: .9rem;        
+        font-size: .9rem;  
+        color: black;      
+        font-weight: 500;
     }
 
-    .none {
-        text-decoration: none;
-        color: black;
-    }
+    // .none {
+    //     text-decoration: none;
+    //     color: black;
+    // }
     
     .google {
         margin-bottom: 0px;

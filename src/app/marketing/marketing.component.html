@@ -9,35 +9,50 @@
 
     <div class="info-grid">
 
-        <div>
+        @for(m of marketingList(); track $index){
+
+            <div>
+                <div class="info">
+                    <div class="title">
+                        {{m.title}}
+                    </div>
+                    <div class="text">                    
+                        {{m.text}}
+                    </div>
+                    <div>
+    
+                        <mat-list>
+                            @for(b of m.bulletPointList ;track $index){
+                            <mat-list-item>
+                                <mat-icon matListItemIcon>{{b.icon}}</mat-icon>
+                                <div matListItemTitle>{{b.title}}</div>                            
+                            </mat-list-item>
+                            }
+                        </mat-list>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <!-- <div>
             <div class="info">
                 <div class="title">
                     Can We Talk In Person?
                 </div>
-                <div class="text">
-                    Dating apps messaging is not effective adult communication.
-                    Relationships are better when two people engage in person.
+                <div class="text">                    
+                    Talking in person is more effective for dating than online messages and texting.                    
                 </div>
-
                 <div>
+
                     <mat-list>
+                        @for(m of brandNameList() ;track $index){
                         <mat-list-item>
-                            <mat-icon matListItemIcon>swipe_right</mat-icon>
-                            <div matListItemLine>We Swiped Right Time To Meet</div>
-                        </mat-list-item>                        
-
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>share</mat-icon>
-                            <div matListItemLine>Lorem ipsum dolor sit.</div>
-                        </mat-list-item>                        
-
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>face_retouching_natural</mat-icon>
-                            <div matListItemLine>Lorem ipsum dolor sit amet consectetur.</div>
-                        </mat-list-item>                        
+                            <mat-icon matListItemIcon>{{m.icon}}</mat-icon>
+                            <div matListItemTitle>{{m.title}}</div>                            
+                        </mat-list-item>
+                        }
                     </mat-list>
                 </div>
-
             </div>
         </div>
 
@@ -48,26 +63,16 @@
                 </div>
 
                 <div class="text">
-                    Our meeting locations are public places. We provide well-known applications to help
-                    you verify the safety of each location.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, consequuntur.                    
                 </div>
-
                 <div>
                     <mat-list>
+                        @for(s of safetyList();track $index){
                         <mat-list-item>
-                            <mat-icon matListItemIcon>directions</mat-icon>
-                            <div matListItemLine>Google Map Directions</div>
+                            <mat-icon matListItemIcon>{{s.icon}}</mat-icon>
+                            <div matListItemTitle>{{s.title}}</div>                            
                         </mat-list-item>
-
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>home</mat-icon>
-                            <div matListItemLine>Verify Their Website</div>
-                        </mat-list-item>
-
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>call</mat-icon>
-                            <div matListItemLine>Call Business To Verify</div>
-                        </mat-list-item>
+                        }
                     </mat-list>
                 </div>
 
@@ -77,48 +82,24 @@
         <div>
             <div class="info">
                 <div class="title">
-                    We Are In Beta 1.0
+                    Our Approach & Process
                 </div>
                 <div class="text">
-                    This app is designed in an interative agile approach based on customer feedback and analytics. Money is not the motivation.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, consequuntur.                                        
                 </div>
 
                 <div>
                     <mat-list>
-                        <!-- <mat-list-item>
-                            <mat-icon matListItemIcon>person_search</mat-icon>
-                            <div matListItemLine>??????????</div>
-                        </mat-list-item>                        
+                        @for(s of ourProcessList();track $index){
                         <mat-list-item>
-                            <mat-icon matListItemIcon>swipe_right</mat-icon>
-                            <div matListItemLine>??????????</div>
-                        </mat-list-item>                        
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>groups</mat-icon>
-                            <div matListItemLine>??????????</div>
-                        </mat-list-item>                         -->
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>code</mat-icon>
-                            <div matListItemLine>Lorem ipsum dolor sit.</div>
-                        </mat-list-item>                        
-
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>data_object</mat-icon>
-                            <div matListItemLine>Lorem ipsum dolor sit amet.</div>
-                        </mat-list-item>                        
-
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>construction</mat-icon>
-                            <div matListItemLine>Lorem ipsum dolor sit amet.</div>
-                        </mat-list-item>                        
-                    </mat-list>
+                            <mat-icon matListItemIcon>{{s.icon}}</mat-icon>
+                            <div matListItemTitle>{{s.title}}</div>                            
+                        </mat-list-item>
+                        }
+                    </mat-list>                    
                 </div>
 
             </div>
-
-
-        </div>
-
-
+        </div> -->
     </div>
 </div>

@@ -31,7 +31,7 @@ interface BusinessState {
 
 const businessInitialState: BusinessState = {
     brandName: 'Can We Meet To Talk?',
-    brandTagline: 'Beyond Texting & Talking On The Telephone.',
+    brandTagline: 'Beyond Texting & Messaging',
     domainUrl: '',
     categoryListUrl: '',
     businessSelected: new Business(),
@@ -154,7 +154,7 @@ export const BusinessStore = signalStore(
                 });
             }
 
-            if (businessListFiltered.length === 0 && store.businessList().length  >=3){
+            if (businessListFiltered.length === 0 && store.businessList().length >= 3) {
 
                 businessListFiltered.push(store.businessList()[0]);
                 businessListFiltered.push(store.businessList()[1]);
@@ -182,7 +182,9 @@ export const BusinessStore = signalStore(
         },
 
         showBusiness(businessSelected: Business) {
-
+            if (store.isBusinessShown()) {
+                return;
+            }
             const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
             if (businessSelectedCategory) {
                 patchState(store, { businessSelectedCategory });
