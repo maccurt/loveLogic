@@ -14,31 +14,37 @@
         margin-bottom: 12px;
     }
 }
+
 .mat-card-success {
     background-color: #e6ffe6;
     border: 1px solid #cccccc !important;
 }
+
 .mat-card-2 {
     background-color: #e6ffe6;
 }
+
 button.amazon {
     background-color: #ff9933 !important;
     color: white;
 }
+
 html,
 body {
     height: 100%;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 b {
     font-weight: 500;
 }
+
 // .main-grid {
 //     display: grid;
 //     grid-template-columns: 1fr;
 //     grid-template-rows: 50px;
-//     background-color: aliceblue;
+//     background-color: ;
 //     padding-top: 10px;
 //     padding-left: 20px;
 //     padding-right: 20px;
@@ -49,7 +55,7 @@ b {
 //         text-align: center;
 //         grid-area: "header";
 //         border: px solid gray;
-//         background-color: aliceblue;
+//         background-color: ;
 
 //         @media screen and (min-width: 576px) {
 //             text-align: left;
@@ -60,30 +66,31 @@ b {
 // }
 
 
-.header-grid {
-    // border: 1px solid green;
-    display: grid;
-    grid-template-columns: 100%;
-    background-color: aliceblue;
-    padding-bottom: 15px;
+// .header-grid {
+//     // border: 1px solid green;
+//     display: grid;
+//     grid-template-columns: 100%;
+//     background-color:
+//     background-color: red;
+//     padding-bottom: 15px;
 
-    @media screen and (min-width: 576px) {
-        padding-bottom: 0px;
-    }
-}
+//     @media screen and (min-width: 576px) {
+//         padding-bottom: 0px;
+//     }
+// }
 
-.filter-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(325px, 390px));
-    column-gap: 32px;
-    justify-content: center;
-    background-color: aliceblue;
-    padding-bottom: 15px;
-    border-bottom: 1px solid black;
-    margin-bottom: 32px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
+// .filter-container {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(325px, 390px));
+//     column-gap: 32px;
+//     justify-content: center;
+//     background-color: 
+//     padding-bottom: 15px;
+//     border-bottom: 1px solid black;
+//     margin-bottom: 32px;
+//     padding-left: 20px;
+//     padding-right: 20px;
+// }
 
 .business-grid,
 .card-grid {

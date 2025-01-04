@@ -1,4 +1,5 @@
 <div class="marketing-component">
+
     <div class="brand-name">
         {{store.brandName()}}
     </div>
@@ -6,100 +7,40 @@
     <div class="brand-tag-line">
         {{store.brandTagline() | titlecase}}
     </div>
+    
+</div>
+<div style="background-color: aliceblue;padding-bottom: 32px;padding-top:32px;">
 
     <div class="info-grid">
-
         @for(m of marketingList(); track $index){
 
-            <div>
-                <div class="info">
-                    <div class="title">
-                        {{m.title}}
-                    </div>
-                    <div class="text">                    
-                        {{m.text}}
-                    </div>
-                    <div>
-    
-                        <mat-list>
-                            @for(b of m.bulletPointList ;track $index){
-                            <mat-list-item>
-                                <mat-icon matListItemIcon>{{b.icon}}</mat-icon>
-                                <div matListItemTitle>{{b.title}}</div>                            
-                            </mat-list-item>
-                            }
-                        </mat-list>
-                    </div>
+        <div class="grid-item">
+
+            <div class="info">
+                <div class="title">
+                    {{m.title}}
+                </div>
+                <div class="text">
+                    {{m.text}}
+                </div>
+                <div>
+                    <mat-card class="bullet-point-card">
+                        <mat-card-content>
+                            <mat-list>
+                                @for(b of m.bulletPointList ;track $index){
+                                <mat-list-item>
+                                    <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>
+                                    <div matListItemTitle>{{b.title | titlecase }} </div>
+                                </mat-list-item>
+                                }
+                            </mat-list>
+                        </mat-card-content>
+                    </mat-card>
                 </div>
             </div>
+        </div>
+
         }
-
-        <!-- <div>
-            <div class="info">
-                <div class="title">
-                    Can We Talk In Person?
-                </div>
-                <div class="text">                    
-                    Talking in person is more effective for dating than online messages and texting.                    
-                </div>
-                <div>
-
-                    <mat-list>
-                        @for(m of brandNameList() ;track $index){
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>{{m.icon}}</mat-icon>
-                            <div matListItemTitle>{{m.title}}</div>                            
-                        </mat-list-item>
-                        }
-                    </mat-list>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="info">
-                <div class="title">
-                    Your Safety Is A Priority.
-                </div>
-
-                <div class="text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, consequuntur.                    
-                </div>
-                <div>
-                    <mat-list>
-                        @for(s of safetyList();track $index){
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>{{s.icon}}</mat-icon>
-                            <div matListItemTitle>{{s.title}}</div>                            
-                        </mat-list-item>
-                        }
-                    </mat-list>
-                </div>
-
-            </div>
-        </div>
-
-        <div>
-            <div class="info">
-                <div class="title">
-                    Our Approach & Process
-                </div>
-                <div class="text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, consequuntur.                                        
-                </div>
-
-                <div>
-                    <mat-list>
-                        @for(s of ourProcessList();track $index){
-                        <mat-list-item>
-                            <mat-icon matListItemIcon>{{s.icon}}</mat-icon>
-                            <div matListItemTitle>{{s.title}}</div>                            
-                        </mat-list-item>
-                        }
-                    </mat-list>                    
-                </div>
-
-            </div>
-        </div> -->
     </div>
+
 </div>
