@@ -7,6 +7,8 @@ import { inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Marketing, SafetyMarketing_MOCK } from '../marketing-domain/Marketing';
+import { MarketingService } from '../marketing-domain/marketing.service';
 
 interface BusinessState {
     brandName: string;
@@ -19,6 +21,7 @@ interface BusinessState {
     businessListFiltered: Business[],
     businessSelected: Business,
     businessSelectedCategory: Category;
+    businessSelectedMarketing: Marketing;
     stateSelected: StateLocation,
     locationList: StateLocation[];
     categorySelected: Category
@@ -33,6 +36,7 @@ const businessInitialState: BusinessState = {
     brandName: 'Can We Meet To Talk?',
     brandTagline: 'Beyond Texting & Messaging',
     domainUrl: '',
+    businessSelectedMarketing:SafetyMarketing_MOCK,
     categoryListUrl: '',
     businessSelected: new Business(),
     businessSelectedCategory: categroryListMock[0],
@@ -75,7 +79,8 @@ export const BusinessStore = signalStore(
 
     withMethods((
         store,
-        businessService = inject(BusinessService)
+        businessService = inject(BusinessService),
+        marketingService = inject(MarketingService),
     ) => ({
 
         async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
@@ -192,7 +197,10 @@ export const BusinessStore = signalStore(
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
             }
-            patchState(store, { businessSelected, isBusinessShown: true });
+
+            const businessSelectedMarketing = marketingService.getBusinessSafety(businessSelected);
+
+            patchState(store, { businessSelected ,  businessSelectedMarketing,  isBusinessShown: true });
         }
     }))
 );

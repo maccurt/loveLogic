@@ -15,40 +15,33 @@
         }
 
 
-        @if(!invite()){
+
         <mat-list>
             @for(b of marketing()?.bulletPointList ;track $index){
             <mat-list-item>
 
+                @if(b.url){
+
+                <mat-icon [class]="b.icon" (click)="goToWebsite(b)" matListItemIcon>{{b.icon}}</mat-icon>
+
+                }
+                @else {
                 <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>
-
-                <div matListItemTitle>{{b.title | titlecase }} </div>
-                @if(invite()){
-                <!-- <div matListItemLine>{{$index + 1}}. Lorem ipsum dolor sit amet.</div> -->
                 }
+
+
+                @if(b.url){
+
+                <a matListItemTitle [href]="b.url" target="_blank">{{b.title | titlecase }} </a>
+                }
+                @else {
+                <div matListItemTitle>{{b.title | titlecase }} </div>
+                }
+
+
             </mat-list-item>
             }
         </mat-list>
-        }
-        @else {
-
-        <mat-list>
-            @for(b of getBusinessMarketingBulletPoint() ;track $index){
-            <mat-list-item>
-
-                <mat-icon (click)="goto()" [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>            
-
-
-                <div matListItemTitle>{{b.title | titlecase }} </div>
-                @if(invite()){
-                <div matListItemLine>{{$index + 1}}. Lorem ipsum dolor sit amet.</div>
-                }
-            </mat-list-item>
-            }
-        </mat-list>
-
-
-        }
 
 
     </mat-card-content>

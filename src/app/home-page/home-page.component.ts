@@ -19,7 +19,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { IconTextHintComponent } from "../icon-text-hint/icon-text-hint.component";
 import { MarketingComponent } from '../marketing-domain/marketing/marketing.component';
 import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
-import { SafetyIsAPriority_MOCK } from '../marketing-domain/Marketing';
+import { SafetyMarketing_MOCK } from '../marketing-domain/Marketing';
+import { MarketingService } from '../marketing-domain/marketing.service';
 
 @Component({
   selector: 'll-home-page',
@@ -47,6 +48,7 @@ import { SafetyIsAPriority_MOCK } from '../marketing-domain/Marketing';
 })
 export class HomePageComponent implements OnInit {
 
+  readonly marketingService = inject(MarketingService)
   readonly store = inject(BusinessStore);
   readonly location = inject(Location);
   readonly route = inject(ActivatedRoute);
@@ -60,7 +62,7 @@ export class HomePageComponent implements OnInit {
 
   safetyBulletPoints = SafetyBulletpointList_Mock;
 
-  safetyIsAPriority = SafetyIsAPriority_MOCK;
+  safetyIsAPriority = SafetyMarketing_MOCK;
 
   ngOnInit(): void {
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {
