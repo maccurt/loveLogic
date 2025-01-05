@@ -16,11 +16,11 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { IconTextHintComponent } from "../icon-text-hint/icon-text-hint.component";
 import { MarketingComponent } from '../marketing-domain/marketing/marketing.component';
 import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
 import { SafetyMarketing_MOCK } from '../marketing-domain/Marketing';
 import { MarketingService } from '../marketing-domain/marketing.service';
+import { InviteComponent } from "../invite/invite.component";
 
 @Component({
   selector: 'll-home-page',
@@ -40,7 +40,8 @@ import { MarketingService } from '../marketing-domain/marketing.service';
     RouterModule,
     HeaderFilterComponent,
     MarketingComponent,
-    BulletPointListComponent
+    BulletPointListComponent,
+    InviteComponent
 ],
   providers: [],
   templateUrl: './home-page.component.html',

@@ -4,6 +4,8 @@ export class Marketing {
   title!: string;
   text!: string;
   bulletPointList!: MarketingBulletpoint[];
+  bulletPointInviteList?: MarketingBulletpoint[];
+  bulletPointMeetList?: MarketingBulletpoint[];
 }
 
 export enum SocialMedia {
@@ -26,7 +28,7 @@ export class MarketingBulletpoint {
   url?: string;
   urlIsPhone?: boolean;
   isInvite?: boolean;
-  route?:string;
+  route?: string;
 }
 
 export const CanWeTalkMarketing_Mock: Marketing = {

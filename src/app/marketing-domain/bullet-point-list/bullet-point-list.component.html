@@ -3,53 +3,85 @@
     <mat-card-header>
         <mat-card-subtitle>
             <span style="font-size: small;">
+                @switch(step()){
+                @case(1){
                 Step 1. Trust But Verify
-            </span>
-            <div class="hint">Use Social Media & Internet To Verify Location</div>
-        </mat-card-subtitle>
+                <div class="hint">Use Social Media & Internet To Verify Location</div>
+                }
+                @case(2){
+                Step 2. Copy The Invite Link
+                <div class="hint">Use Link Below To Send In Text Message</div>
+                }
+                @case(3){
+                Step 3. Meet & Smile & Laugh
+                <div class="hint">Use Link Below To Send In Text Message</div>
+                }
 
+                }
+
+            </span>
+
+        </mat-card-subtitle>
     </mat-card-header>
     }
 
     <mat-card-content>
 
         <mat-list>
+
+            @switch (step()) {
+            @case(0){
+            <!-- Step 0 Start -->
             @for(b of marketing()?.bulletPointList ;track $index){
-                <mat-list-item>
-                <!-- For the icon -->
-                @if(b.isInvite){
-
-                <mat-icon [class]="b.icon" (click)="copyInvite(store.businessSelected())"
-                    matListItemIcon>{{b.icon}}</mat-icon>
-
-                }@else if(b.url && invite()){
-                <mat-icon [class]="b.icon" (click)="goToWebsite(b)" matListItemIcon>{{b.icon}}</mat-icon>
-                }
-                @else {
+            <mat-list-item>
                 <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>
-                }
-
-                <!-- For the Item title -->
-                @if(b.isInvite){
-                <a matListItemTitle (click)="copyInvite(store.businessSelected())">{{b.title | titlecase }} </a>
-
-                } @else if(b.url && !b.urlIsPhone && invite() ){
-                <a matListItemTitle [href]="b.url" target="_blank">{{b.title | titlecase }} </a>
-                }
-                @else if (b.url && b.urlIsPhone && invite() ) {
-                <a matListItemTitle (click)="goToWebsite(b)">{{b.title | titlecase }} </a>
-                }
-
-                @else {
                 <div matListItemTitle>{{b.title | titlecase }}</div>
-                }
-                @if(b.isInvite){
-                    <div matListItemLine>Send this link to invite</div>
-                }
-
 
             </mat-list-item>
             }
+            <!-- Step 0 END -->
+            }
+            @case(1){
+            <!-- Step 1 Start -->
+            @for(b of marketing()?.bulletPointList ;track $index){
+            <mat-list-item>
+                <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>
+                <div matListItemTitle>{{b.title | titlecase }}</div>
+
+            </mat-list-item>
+            }
+            <!-- Step 1 END -->
+            }
+            @case(2){
+            <!-- Step 2 Start -->
+            @for(b of marketing()?.bulletPointInviteList ;track $index){
+            <mat-list-item>
+                <mat-icon [class]="b.icon" (click)="copyInvite(store.businessSelected())"
+                    matListItemIcon>{{b.icon}}</mat-icon>
+
+                <a matListItemTitle (click)="copyInvite(store.businessSelected())">{{b.title | titlecase }} </a>
+
+            </mat-list-item>
+            }
+            <!-- Step 2 END -->
+            }
+            @case (3) {
+            <!-- Step 2 Start -->
+            @for(b of marketing()?.bulletPointMeetList ;track $index){
+            <mat-list-item>
+                <mat-icon [class]="b.icon" (click)="copyInvite(store.businessSelected())"
+                    matListItemIcon>{{b.icon}}</mat-icon>
+
+                <a matListItemTitle (click)="copyInvite(store.businessSelected())">{{b.title | titlecase }} </a>
+
+            </mat-list-item>
+            }
+            <!-- Step 2 END -->
+
+            }
+
+            }
+
         </mat-list>
 
 

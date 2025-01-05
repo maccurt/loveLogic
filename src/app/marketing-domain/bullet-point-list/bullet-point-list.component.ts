@@ -30,9 +30,9 @@ export class BulletPointListComponent {
 
   marketing = input.required<Marketing>();
   invite = input<boolean>(false);
+  step = input.required<number>();
 
   copyInvite(business: Business) {
-
     this.clipboard.copy(business.urlInvite.value);
     this._snackBar.open('invitation copied to clipboard', 'Close', {
       horizontalPosition: 'right',
@@ -54,9 +54,7 @@ export class BulletPointListComponent {
         list.push({ ...fb })
       }
     }
-
     return list;
-
   }
 
   goToWebsite(b: MarketingBulletpoint) {

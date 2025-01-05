@@ -39,7 +39,8 @@ export class MarketingService {
     marketing.bulletPointList[phoneNumber].urlIsPhone = true;
 
 
-    marketing.bulletPointList.push(
+    marketing.bulletPointInviteList = [];
+    marketing.bulletPointInviteList.push(
       {
         title: 'Copy Invite To Clipboard',
         icon: 'content_copy',
@@ -47,6 +48,13 @@ export class MarketingService {
         route: business.urlInvite.value,
         isInvite: true
       })
+
+
+    marketing.bulletPointMeetList = [];
+    marketing.bulletPointMeetList.push(
+      { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
+      { title: 'What Makes You Happy?', icon: 'insert_emoticon', socialMedia: SocialMedia.unknown },
+    )
 
     return marketing;
   }

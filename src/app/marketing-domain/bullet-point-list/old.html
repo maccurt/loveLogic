@@ -1,0 +1,39 @@
+<mat-card-content>
+    <mat-list>
+        @for(b of marketing()?.bulletPointList ;track $index){
+        <mat-list-item>
+            <!-- For the icon -->
+            @if(b.isInvite){
+
+            <mat-icon [class]="b.icon" (click)="copyInvite(store.businessSelected())"
+                matListItemIcon>{{b.icon}}</mat-icon>
+
+            }@else if(b.url && invite()){
+            <mat-icon [class]="b.icon" (click)="goToWebsite(b)" matListItemIcon>{{b.icon}}</mat-icon>
+            }
+            @else {
+            <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>
+            }
+
+            <!-- For the Item title -->
+            @if(b.isInvite){
+            <a matListItemTitle (click)="copyInvite(store.businessSelected())">{{b.title | titlecase }} </a>
+
+            } @else if(b.url && !b.urlIsPhone && invite() ){
+            <a matListItemTitle [href]="b.url" target="_blank">{{b.title | titlecase }} </a>
+            }
+            @else if (b.url && b.urlIsPhone && invite() ) {
+            <a matListItemTitle (click)="goToWebsite(b)">{{b.title | titlecase }} </a>
+            }
+
+            @else {
+            <div matListItemTitle>{{b.title | titlecase }}</div>
+            }
+            @if(b.isInvite){
+            <div matListItemLine>Send this link to invite</div>
+            }
+
+        </mat-list-item>
+        }
+    </mat-list>
+</mat-card-content>
