@@ -12,6 +12,8 @@ export enum SocialMedia {
   phoneNumber,
   google,
   directions,
+  route,
+  invite,
   unknown = 999
 }
 export const PhoneNumberSocialMedia_enum = SocialMedia.phoneNumber;
@@ -23,6 +25,8 @@ export class MarketingBulletpoint {
   socialMedia: SocialMedia = SocialMedia.unknown;
   url?: string;
   urlIsPhone?: boolean;
+  isInvite?: boolean;
+  route?:string;
 }
 
 export const CanWeTalkMarketing_Mock: Marketing = {

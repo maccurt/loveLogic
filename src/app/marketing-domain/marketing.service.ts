@@ -18,25 +18,35 @@ export class MarketingService {
 
   }
 
-  getBusinessSafety(business: Business): Marketing {    
+  getBusinessSafety(business: Business): Marketing {
     const marketing: Marketing = { ...SafetyMarketing_MOCK };
     //SORT TO make sure enums will work with proper index
     //TODO this is dangerous so, we need a UNIT TEST FOR THIS
 
     // marketing.bulletPointList.sort((a, b) => a.socialMedia - b.socialMedia);
 
-    const fbIndex = marketing.bulletPointList.findIndex((b)=>{return b.socialMedia === SocialMedia.facebook})
+    const fbIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.facebook })
     marketing.bulletPointList[fbIndex].url = business.facebookUrl;
 
-    const direciontIndex = marketing.bulletPointList.findIndex((b)=>{return b.socialMedia === SocialMedia.directions})
+    const direciontIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.directions })
     marketing.bulletPointList[direciontIndex].url = business.address.googleMapUrl;
 
-    const websiteIndex = marketing.bulletPointList.findIndex((b)=>{return b.socialMedia === SocialMedia.website})
+    const websiteIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.website })
     marketing.bulletPointList[websiteIndex].url = business.url;
 
-    const phoneNumber = marketing.bulletPointList.findIndex((b)=>{return b.socialMedia === SocialMedia.phoneNumber})
+    const phoneNumber = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.phoneNumber })
     marketing.bulletPointList[phoneNumber].url = business.address.phone;
     marketing.bulletPointList[phoneNumber].urlIsPhone = true;
+
+
+    marketing.bulletPointList.push(
+      {
+        title: 'Copy Invite To Clipboard',
+        icon: 'content_copy',
+        socialMedia: SocialMedia.invite,
+        route: business.urlInvite.value,
+        isInvite: true
+      })
 
     return marketing;
   }

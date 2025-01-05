@@ -5,10 +5,14 @@ import { Marketing, MarketingBulletpoint, SafetyMarketing_MOCK, SocialMedia } fr
 import { DOCUMENT, TitleCasePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessStore } from '../../business-domain/business.store';
+import { Business } from '../../business-domain/Business';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'll-bullet-point-list',
   imports: [
+    ClipboardModule,
     MatCardModule,
     MatListModule,
     MatIconModule,
@@ -21,8 +25,21 @@ export class BulletPointListComponent {
   phoneNumberSocialMedia = SocialMedia.phoneNumber
   store = inject(BusinessStore);
   document = inject(DOCUMENT);
+  private readonly clipboard = inject(Clipboard);
+  private _snackBar = inject(MatSnackBar);
+
   marketing = input.required<Marketing>();
   invite = input<boolean>(false);
+
+  copyInvite(business: Business) {
+
+    this.clipboard.copy(business.urlInvite.value);
+    this._snackBar.open('invitation copied to clipboard', 'Close', {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      duration: 3000
+    });
+  }
 
   getBusinessMarketingBulletPoint(): MarketingBulletpoint[] {
     const list: MarketingBulletpoint[] = [];

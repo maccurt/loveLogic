@@ -39,7 +39,6 @@ export class BusinessComponent {
   public readonly store = inject(BusinessStore);
 
   copyInvite() {
-
     this.clipboard.copy(this.business().urlInvite.value);
 
     this._snackBar.open('invitation copied to clipboard', 'Close', {
@@ -47,6 +46,5 @@ export class BusinessComponent {
       verticalPosition: 'top',
       duration: 3000
     });
-
   }
 }
