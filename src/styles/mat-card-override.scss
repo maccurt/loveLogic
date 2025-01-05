@@ -1,15 +1,20 @@
 .bullet-point-card { 
-
-    .mat-mdc-card-header {
-        display: flex;
+    
+    background-color: white !important;
+    
+    .mat-mdc-card-header {        
         padding: 4px 16px;
         padding-bottom: 8px;
         // margin-bottom: 0px;
         border-bottom: 1px solid #cccccc; 
     }
-
     mat-card-title{
-        border: 1px solid green !important;
+        // border: 1px solid green !important;
     }
 
+    mat-card-content{
+        // border: 1px solid green;
+        padding-bottom: 0px !important;
+        
+    }
 }
