@@ -17,7 +17,7 @@
         </div>
 
       </header>
-      
+
       <main>
         <section>
           <ll-business [detailMode]="true" [business]="store.businessSelected()"></ll-business>
@@ -25,11 +25,11 @@
 
 
         <section>
-          <ll-marketing [isSafety]="true"></ll-marketing>
+            <ll-bullet-point-list [marketing]="safetyIsAPriority" ></ll-bullet-point-list>
         </section>
 
         <section>
-          <ll-icon-text-hint [mode]="3" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint>
+          <!-- <ll-icon-text-hint [mode]="3" [url]="store.businessSelected().urlInvite"></ll-icon-text-hint> -->
         </section>
 
       </main>
@@ -51,7 +51,7 @@
     @if(!store.isLoading()){
 
     <div class="home-page-grid">
-      
+
       <section class="business-section">
         <div class="business-grid">
           @for (item of store.businessListFiltered(); track $index) {

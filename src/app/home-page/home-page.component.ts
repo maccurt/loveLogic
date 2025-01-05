@@ -18,7 +18,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { IconTextHintComponent } from "../icon-text-hint/icon-text-hint.component";
 import { MarketingComponent } from '../marketing-domain/marketing/marketing.component';
-
+import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
+import { SafetyIsAPriority_MOCK } from '../marketing-domain/marketing/Marketing';
 
 @Component({
   selector: 'll-home-page',
@@ -36,11 +37,10 @@ import { MarketingComponent } from '../marketing-domain/marketing/marketing.comp
     MatDividerModule,
     MatBottomSheetModule,
     RouterModule,
-    HeaderFilterComponent,    
-    IconTextHintComponent,
-    MarketingComponent
-    
-  ],
+    HeaderFilterComponent,
+    MarketingComponent,
+    BulletPointListComponent
+],
   providers: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
@@ -59,6 +59,8 @@ export class HomePageComponent implements OnInit {
   });
 
   safetyBulletPoints = SafetyBulletpointList_Mock;
+
+  safetyIsAPriority = SafetyIsAPriority_MOCK;
 
   ngOnInit(): void {
     this.form.controls.compactMode.valueChanges.subscribe((compactMode) => {

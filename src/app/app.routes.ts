@@ -11,8 +11,8 @@ export const routes: Routes = [
     // { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '', component: HomePageComponent },
     { path: 'test', component: TestComponent },
-    { path: 'about-us', component: MarketingComponent },    
-    { path: 'marketing', component: MarketingComponent },    
+    { path: 'about-us', component: MarketingComponent },
+    { path: 'marketing', component: MarketingComponent },
     { path: ':state', component: HomePageComponent },
     { path: ':state/:businessId', component: HomePageComponent },
     { path: 'home', component: HomePageComponent },
@@ -23,6 +23,6 @@ export const routes: Routes = [
     { path: 'category-list/:state', component: CategoryListComponent },
     { path: 'category-list', component: CategoryListComponent },
     { path: ':state', component: HomePageComponent },
-    { path: ':state/:category', component: HomePageComponent },    
+    { path: ':state/:category', component: HomePageComponent },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

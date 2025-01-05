@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
-import { BusinessComponent } from "../business-domain/business/business.component";
 import { ActivatedRoute } from '@angular/router';
 import { MarketingComponent } from "../marketing-domain/marketing/marketing.component";
 

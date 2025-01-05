@@ -1,6 +1,8 @@
 export const safetyBulletpointList_Mock: BulletPointList = {
   title: 'Your Safety Is A Priority', list: [{ value: 'Choose a public place to meet.' }, { value: 'Provide your own transporation.' }, { value: 'Provide location to family or friends.' }]
 };
+
+//TODO remove this if we should be using marketing
 export const mockDecriptions = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus error iure eligendi ';
 
 export class Category {

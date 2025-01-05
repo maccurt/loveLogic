@@ -19,31 +19,19 @@ import { BulletPointListComponent } from "../bullet-point-list/bullet-point-list
     MatCardModule,
     MatExpansionModule,
     BulletPointListComponent
-],
+  ],
   templateUrl: './marketing.component.html',
   styleUrl: './marketing.component.scss'
 })
 export class MarketingComponent implements OnInit {
 
   ngOnInit(): void {
-    if (this.isSafety()) {
-
-      this.marketingList().push(
-        SafetyIsAPriority_MOCK
-      )
-    }
-    else {
-
-      this.marketingList().push(
-        CanWeTalkMarketing_Mock,
-        SafetyIsAPriority_MOCK,
-        WeAreInBeta_Mock,
-      )
-
-    }
+    this.marketingList().push(
+      CanWeTalkMarketing_Mock,
+      SafetyIsAPriority_MOCK,
+      WeAreInBeta_Mock,
+    );
   }
-
-  isSafety = input<boolean>(false)
 
   store = inject(BusinessStore);
   marketingList = signal<Marketing[]>([]);

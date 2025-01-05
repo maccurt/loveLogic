@@ -5,10 +5,10 @@ export class Marketing {
 }
 
 export class MarketingBulletpoint {
-  title!: string
+  title!: string;
   icon!: string;
-  iconCssStyle?: string = 'color:green !important;'
-  
+  iconCssStyle?: string = 'color:green !important;';
+
 }
 
 export const CanWeTalkMarketing_Mock: Marketing = {
@@ -20,7 +20,7 @@ export const CanWeTalkMarketing_Mock: Marketing = {
     { title: "Let's grab a coffee.", icon: 'coffee' },
     { title: 'What Makes You Happy?', icon: 'insert_emoticon' },
   ]
-}
+};
 
 export const SafetyIsAPriority_MOCK: Marketing = {
   title: 'Your Safety Is A Priority.',
@@ -31,7 +31,7 @@ export const SafetyIsAPriority_MOCK: Marketing = {
     { title: 'Main Website verify.', icon: 'public' },
     { title: 'Phone number verify', icon: 'phone' }
   ]
-}
+};
 
 export const WeAreInBeta_Mock: Marketing = {
   title: 'We Need Your Constructive Feedback!',
@@ -44,7 +44,7 @@ export const WeAreInBeta_Mock: Marketing = {
     // { title: 'Progress is Important', icon: 'bug_report' },
     { title: 'Warts & All.', icon: 'bug_report' },
   ]
-}
+};
 
 // export const MarketingInfoListMock: Marketing[] = [];
 
@@ -60,8 +60,6 @@ export const WeAreInBeta_Mock: Marketing = {
 //   { title: 'Security.', icon: 'security' },
 //   { title: 'Defect.', icon: 'bug_report' },
 // ];
-
-
 
 //export const brandNameMarketingListMock: MarketingBulletpoint[] = [
 
@@ -94,6 +92,5 @@ export const WeAreInBeta_Mock: Marketing = {
 // { title: 'Food 12', icon: 'cake' },
 // { title: 'Food 13', icon: 'local_drink' },
 // { title: 'Food 14', icon: 'no_drinks' },
-
 
 //];

@@ -1,7 +1,7 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { MarketingBulletpoint } from '../marketing/Marketing';
+import { Marketing, MarketingBulletpoint, SafetyIsAPriority_MOCK } from '../marketing/Marketing';
 import { TitleCasePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -15,14 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './bullet-point-list.component.html',
   styleUrl: './bullet-point-list.component.scss'
 })
-export class BulletPointListComponent implements OnInit { 
+export class BulletPointListComponent implements OnInit {
 
+  marketing = input.required<Marketing>();
+  ngOnInit(): void {    
 
-  bulletPointList = input<MarketingBulletpoint[]>([])
-
-
-  ngOnInit(): void {
-    
   }
 
 }
