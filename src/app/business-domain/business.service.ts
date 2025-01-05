@@ -57,6 +57,8 @@ export class BusinessService {
     return this.http.get<Business[]>(this.url).pipe(
       map((result) => {
 
+        //TODO it seem for the demo we do to much here
+
         const filter = result.filter((b) => {
           return b.address.state.toLocaleLowerCase() === stateCode.toLocaleLowerCase();
         });
@@ -64,6 +66,9 @@ export class BusinessService {
         filter.forEach((b) => {
           this.setGoogleMapUrl(b);
         });
+
+        
+
 
         //Sort by name in future, add others
         return sortBy(filter, ['name']);

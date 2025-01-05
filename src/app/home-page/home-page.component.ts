@@ -19,7 +19,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { IconTextHintComponent } from "../icon-text-hint/icon-text-hint.component";
 import { MarketingComponent } from '../marketing-domain/marketing/marketing.component';
 import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
-import { SafetyIsAPriority_MOCK } from '../marketing-domain/marketing/Marketing';
+import { SafetyIsAPriority_MOCK } from '../marketing-domain/Marketing';
 
 @Component({
   selector: 'll-home-page',

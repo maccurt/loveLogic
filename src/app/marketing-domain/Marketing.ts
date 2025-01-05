@@ -4,11 +4,20 @@ export class Marketing {
   bulletPointList!: MarketingBulletpoint[];
 }
 
+export enum SocialMedia {
+  unknown,
+  facebook,
+  google,
+  website,
+  phoneNumber,
+  directions
+}
+
 export class MarketingBulletpoint {
   title!: string;
   icon!: string;
   iconCssStyle?: string = 'color:green !important;';
-
+  socialMedia?: SocialMedia
 }
 
 export const CanWeTalkMarketing_Mock: Marketing = {
@@ -26,7 +35,7 @@ export const SafetyIsAPriority_MOCK: Marketing = {
   title: 'Your Safety Is A Priority.',
   text: 'We give you well known tools to verify the safety of a location.',
   bulletPointList: [
-    { title: 'Facebook Group Verify', icon: 'facebook' },
+    { title: 'Facebook Group Verify', icon: 'facebook', socialMedia: SocialMedia.facebook },
     { title: 'Google Map Directions', icon: 'directions' },
     { title: 'Main Website verify.', icon: 'public' },
     { title: 'Phone number verify', icon: 'phone' }

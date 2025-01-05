@@ -1,12 +1,55 @@
 <mat-card class="bullet-point-card">
+    @if(invite()){
+    <mat-card-header>
+        <mat-card-subtitle>
+            {{marketing().title}}
+            <div class="hint">Lorem ipsum dolor sit amet.</div>
+        </mat-card-subtitle>
+
+    </mat-card-header>
+    }
+
     <mat-card-content>
+        @if(invite()){
+        <hr>
+        }
+
+
+        @if(!invite()){
         <mat-list>
             @for(b of marketing()?.bulletPointList ;track $index){
             <mat-list-item>
+
                 <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>
+
                 <div matListItemTitle>{{b.title | titlecase }} </div>
+                @if(invite()){
+                <!-- <div matListItemLine>{{$index + 1}}. Lorem ipsum dolor sit amet.</div> -->
+                }
             </mat-list-item>
             }
         </mat-list>
+        }
+        @else {
+
+        <mat-list>
+            @for(b of getBusinessMarketingBulletPoint() ;track $index){
+            <mat-list-item>
+
+                <mat-icon (click)="goto()" [class]="b.icon" matListItemIcon>{{b.icon}}</mat-icon>            
+
+
+                <div matListItemTitle>{{b.title | titlecase }} </div>
+                @if(invite()){
+                <div matListItemLine>{{$index + 1}}. Lorem ipsum dolor sit amet.</div>
+                }
+            </mat-list-item>
+            }
+        </mat-list>
+
+
+        }
+
+
     </mat-card-content>
 </mat-card>
