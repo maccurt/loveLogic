@@ -31,13 +31,12 @@ export class MarketingService {
     const direciontIndex = marketing.bulletPointList.findIndex((b)=>{return b.socialMedia === SocialMedia.directions})
     marketing.bulletPointList[direciontIndex].url = business.address.googleMapUrl;
 
-
     const websiteIndex = marketing.bulletPointList.findIndex((b)=>{return b.socialMedia === SocialMedia.website})
     marketing.bulletPointList[websiteIndex].url = business.url;
 
-
     const phoneNumber = marketing.bulletPointList.findIndex((b)=>{return b.socialMedia === SocialMedia.phoneNumber})
     marketing.bulletPointList[phoneNumber].url = business.address.phone;
+    marketing.bulletPointList[phoneNumber].urlIsPhone = true;
 
     return marketing;
   }

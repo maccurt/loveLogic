@@ -6,7 +6,6 @@ export class Marketing {
   bulletPointList!: MarketingBulletpoint[];
 }
 
-
 export enum SocialMedia {
   facebook = 0,
   website,
@@ -15,7 +14,7 @@ export enum SocialMedia {
   directions,
   unknown = 999
 }
-export const PhoneNumberSocialMedia_enum  = SocialMedia.phoneNumber;
+export const PhoneNumberSocialMedia_enum = SocialMedia.phoneNumber;
 
 export class MarketingBulletpoint {
   title!: string;
@@ -23,6 +22,7 @@ export class MarketingBulletpoint {
   iconCssStyle?: string = 'color:green !important;';
   socialMedia: SocialMedia = SocialMedia.unknown;
   url?: string;
+  urlIsPhone?: boolean;
 }
 
 export const CanWeTalkMarketing_Mock: Marketing = {
