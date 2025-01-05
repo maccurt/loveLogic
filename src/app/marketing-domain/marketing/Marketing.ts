@@ -26,10 +26,10 @@ export const SafetyIsAPriority_MOCK: Marketing = {
   title: 'Your Safety Is A Priority.',
   text: 'We give you well known tools to verify the safety of a location.',
   bulletPointList: [
-    { title: 'Facebook Group To Verify', icon: 'facebook' },
+    { title: 'Facebook Group Verify', icon: 'facebook' },
     { title: 'Google Map Directions', icon: 'directions' },
-    { title: 'Main Website to verify.', icon: 'public' },
-    { title: 'Phone number for location', icon: 'phone' }
+    { title: 'Main Website verify.', icon: 'public' },
+    { title: 'Phone number verify', icon: 'phone' }
   ]
 }
 
@@ -37,12 +37,12 @@ export const WeAreInBeta_Mock: Marketing = {
   title: 'We Need Your Constructive Feedback!',
   text: 'This is not about money! This is about having an experience.',
   bulletPointList: [
-    { title: 'No Bull$**t Subscription To Buy', icon: 'emoji_emotions' },
+    { title: 'No Bull $**t Subscription', icon: 'emoji_emotions' },
     // { title: 'No Bullshit Subscription To Buy', icon: 'money_off' },
     { title: 'Customer Focused', icon: 'groups' },
     { title: 'Data Driven.', icon: 'pie_chart' },
     // { title: 'Progress is Important', icon: 'bug_report' },
-    { title: 'Warts & All Release Cycle.', icon: 'bug_report' },
+    { title: 'Warts & All.', icon: 'bug_report' },
   ]
 }
 

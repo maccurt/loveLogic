@@ -17,9 +17,15 @@
         </div>
 
       </header>
+      
       <main>
         <section>
           <ll-business [detailMode]="true" [business]="store.businessSelected()"></ll-business>
+        </section>
+
+
+        <section>
+          <ll-marketing [isSafety]="true"></ll-marketing>
         </section>
 
         <section>
@@ -27,6 +33,7 @@
         </section>
 
       </main>
+
       <footer>
         <!-- in the future just toggle the drawer and let the close event handle the store -->
         <button (click)="store.showBusinessToggle(false)" mat-flat-button>Close</button>

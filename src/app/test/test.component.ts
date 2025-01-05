@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
 import { BusinessComponent } from "../business-domain/business/business.component";
 import { ActivatedRoute } from '@angular/router';
-import { MarketingComponent } from "../marketing/marketing.component";
+import { MarketingComponent } from "../marketing-domain/marketing/marketing.component";
 
 @Component({
   selector: 'll-test',

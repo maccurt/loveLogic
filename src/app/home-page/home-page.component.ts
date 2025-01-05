@@ -12,13 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderFilterComponent } from "../header-filter/header-filter.component";
-import { CategoryComponent } from "../category-domain/category/category.component";
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule, Location } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { IconTextHintComponent } from "../icon-text-hint/icon-text-hint.component";
-import { MarketingComponent } from "../marketing/marketing.component";
+import { MarketingComponent } from '../marketing-domain/marketing/marketing.component';
+
 
 @Component({
   selector: 'll-home-page',
@@ -36,11 +36,11 @@ import { MarketingComponent } from "../marketing/marketing.component";
     MatDividerModule,
     MatBottomSheetModule,
     RouterModule,
-    HeaderFilterComponent,
-    CategoryComponent,
+    HeaderFilterComponent,    
     IconTextHintComponent,
     MarketingComponent
-],
+    
+  ],
   providers: [],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
