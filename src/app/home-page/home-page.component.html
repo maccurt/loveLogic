@@ -15,21 +15,11 @@
             <button (click)="store.showBusinessToggle(false)" mat-icon-button><mat-icon>close</mat-icon></button>
           </div>
         </div>
-      </header>
-
-      
+      </header>      
 
       <!-- TODO I think it has to be in here to scroll. True or NOT? -->
       <main>
-
-        <ll-invite [business]="store.businessSelected()"></ll-invite>
-        <!-- <section>
-          <ll-business [detailMode]="true" [business]="store.businessSelected()"></ll-business>
-        </section> -->
-
-        <!-- <section>
-          <ll-bullet-point-list [marketing]="store.businessSelectedMarketing()" [invite]="true"></ll-bullet-point-list>
-        </section> -->
+        <ll-invite [business]="store.businessSelected()"></ll-invite>        
       </main>
 
       <footer>

@@ -1,24 +1,23 @@
 <div class="invite-component-grid">
 
-
-    <section>
+    <div class="business-grid-item" >
         <ll-business [detailMode]="true" [business]="business()"></ll-business>
-    </section>
+    </div>
 
-    <section>
+    <div>
         <ll-bullet-point-list [step]="1" [marketing]="store.businessSelectedMarketing()"
             [invite]="true"></ll-bullet-point-list>
-    </section>
+    </div>
 
-    <section>
+    <div>
         <ll-bullet-point-list [step]="2" [marketing]="store.businessSelectedMarketing()"
             [invite]="true"></ll-bullet-point-list>
-    </section>
+    </div>
 
-    <section>
+    <div>
         <ll-bullet-point-list [step]="3" [marketing]="store.businessSelectedMarketing()"
             [invite]="true"></ll-bullet-point-list>
-    </section>
+    </div>
 
 
 </div>
