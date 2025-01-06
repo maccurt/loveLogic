@@ -1,10 +1,10 @@
-import { Component, inject, OnInit, signal, input } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BusinessStore } from '../../business-domain/business.store';
 import { TitleCasePipe } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { CanWeTalkMarketing_Mock, Marketing, MarketingBulletpoint, SafetyMarketing_MOCK, WeAreInBeta_Mock } from '../Marketing';
+import { CanWeTalkMarketing_Mock, Marketing, SafetyMarketing_MOCK, WeAreInBeta_Mock } from '../Marketing';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { BulletPointListComponent } from "../bullet-point-list/bullet-point-list.component";

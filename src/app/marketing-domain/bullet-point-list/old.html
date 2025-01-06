@@ -17,7 +17,8 @@
 
             <!-- For the Item title -->
             @if(b.isInvite){
-            <a matListItemTitle (click)="copyInvite(store.businessSelected())">{{b.title | titlecase }} </a>
+            <a matListItemTitle (keypress)="copyInvite(store.businessSelected())"
+                (click)="copyInvite(store.businessSelected())">{{b.title | titlecase }} </a>
 
             } @else if(b.url && !b.urlIsPhone && invite() ){
             <a matListItemTitle [href]="b.url" target="_blank">{{b.title | titlecase }} </a>

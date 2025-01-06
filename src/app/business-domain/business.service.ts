@@ -67,9 +67,6 @@ export class BusinessService {
           this.setGoogleMapUrl(b);
         });
 
-        
-
-
         //Sort by name in future, add others
         return sortBy(filter, ['name']);
       })

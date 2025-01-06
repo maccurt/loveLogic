@@ -49,7 +49,7 @@ import { InviteComponent } from "../invite/invite.component";
 })
 export class HomePageComponent implements OnInit {
 
-  readonly marketingService = inject(MarketingService)
+  readonly marketingService = inject(MarketingService);
   readonly store = inject(BusinessStore);
   readonly location = inject(Location);
   readonly route = inject(ActivatedRoute);

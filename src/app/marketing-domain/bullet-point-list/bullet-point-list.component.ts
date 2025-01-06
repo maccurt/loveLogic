@@ -1,14 +1,13 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { Marketing, MarketingBulletpoint, SafetyMarketing_MOCK, SocialMedia } from '../Marketing';
+import { Marketing, MarketingBulletpoint, SocialMedia } from '../Marketing';
 import { DOCUMENT, TitleCasePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessStore } from '../../business-domain/business.store';
 import { Business } from '../../business-domain/Business';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
-
 @Component({
   selector: 'll-bullet-point-list',
   imports: [
@@ -22,7 +21,7 @@ import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 })
 export class BulletPointListComponent {
 
-  phoneNumberSocialMedia = SocialMedia.phoneNumber
+  phoneNumberSocialMedia = SocialMedia.phoneNumber;
   store = inject(BusinessStore);
   document = inject(DOCUMENT);
   private readonly clipboard = inject(Clipboard);
@@ -47,11 +46,11 @@ export class BulletPointListComponent {
 
     if (businesss) {
       const fb = this.marketing().bulletPointList.find((b) => {
-        return b.socialMedia === SocialMedia.facebook
-      })
+        return b.socialMedia === SocialMedia.facebook;
+      });
 
       if (fb) {
-        list.push({ ...fb })
+        list.push({ ...fb });
       }
     }
     return list;
