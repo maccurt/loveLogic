@@ -57,6 +57,7 @@
                 <mat-icon [class]="b.icon" (click)="copyInvite(store.businessSelected())"
                     matListItemIcon>{{b.icon}}</mat-icon>
                 <a matListItemTitle (click)="copyInvite(store.businessSelected())">{{b.title | titlecase }} </a>
+                <div matListItemLine><span style="font-size: small;"> {{b.subTitle}}</span></div>
             </mat-list-item>
 
             @for(b of marketing()?.bulletPointMeetList ;track $index){

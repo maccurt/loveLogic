@@ -22,6 +22,7 @@ export const PhoneNumberSocialMedia_enum = SocialMedia.phoneNumber;
 
 export class MarketingBulletpoint {
   title!: string;
+  subTitle?: string;
   icon!: string;
   iconCssStyle?: string = 'color:green !important;';
   socialMedia: SocialMedia = SocialMedia.unknown;

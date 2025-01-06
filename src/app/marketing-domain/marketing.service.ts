@@ -29,7 +29,8 @@ export class MarketingService {
     marketing.bulletPointInviteList = [];
     marketing.bulletPointInviteList.push(
       {
-        title: 'Copy Invite To Clipboard',
+        title: 'Click To Copy Invite Link',      
+        subTitle:'copy invite from your clipboard',
         icon: 'content_copy',
         socialMedia: SocialMedia.invite,
         route: business.urlInvite.value,

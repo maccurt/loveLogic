@@ -8,9 +8,14 @@
 
 a {
     text-decoration: none;
-    font-size: smaller;
+    text-decoration: underline;
+    
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.bullet-point-card{
+    font-size: smaller !important;
 }
