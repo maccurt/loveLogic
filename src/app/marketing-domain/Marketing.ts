@@ -1,5 +1,3 @@
-import { Url } from "../business-domain/Business";
-
 export class Marketing {
   title!: string;
   text!: string;

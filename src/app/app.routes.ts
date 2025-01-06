@@ -3,7 +3,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryListComponent } from './category-domain/category-list/category-list.component';
 import { LocationListComponent } from './location-list/location-list.component';
 import { TestComponent } from './test/test.component';
-import { Marketing } from './marketing-domain/Marketing';
 import { MarketingComponent } from './marketing-domain/marketing/marketing.component';
 
 export const routes: Routes = [

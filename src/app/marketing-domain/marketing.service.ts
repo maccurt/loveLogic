@@ -29,7 +29,7 @@ export class MarketingService {
     marketing.bulletPointInviteList = [];
     marketing.bulletPointInviteList.push(
       {
-        title: 'Click To Copy Invite Link',      
+        title: 'Click To Copy Invite Link',
         subTitle:'copy invite from your clipboard',
         icon: 'content_copy',
         socialMedia: SocialMedia.invite,

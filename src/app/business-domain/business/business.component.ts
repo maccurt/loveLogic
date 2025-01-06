@@ -10,9 +10,7 @@ import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { MatChipsModule } from '@angular/material/chips';
 import { AddressComponent } from "../../address/address.component";
 import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
+  MatSnackBar
 } from '@angular/material/snack-bar';
 
 @Component({
