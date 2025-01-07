@@ -17,18 +17,46 @@
         <div class="title">
 
             @if(b.isInvite ){
-            <span class="title"> <a tabindex="0" role="button" (keypress)="copyInvite(store.businessSelected())"  (click)="copyInvite(store.businessSelected())">{{b.title}}</a> </span>
-            <!-- <span class="title">  <button mat-button>{{b.title}}</button> </span> -->
+            <span class="title"> <a tabindex="0" role="button" (keypress)="copyInvite(store.businessSelected())"
+                    (click)="copyInvite(store.businessSelected())">{{b.title}}</a> </span>
+
+            }
+            @else if(b.url){
+            @if(b.urlIsPhone){
+            <span class="title"> <a href="tel:{{b.url}}">{{b.title}}</a> </span>
+            }
+            @else{
+            <span class="title"> <a [href]="b.url" target="_blank">{{b.title}}</a> </span>
+            }
             }
             @else {
             <span class="title"> {{b.title}} </span>
             }
         </div>
 
-        @if(showSubtitle() || b.isInvite || b.subTitleShow ){
+        @if(showSubtitle() || b.isInvite || b.subTitleShow || b.url ){
 
         <div class="sub-title">
+            @if (b.url){
+            @if(b.urlIsPhone){
+            <span class="title"> <a href="tel:{{b.url}}">{{b.url | mask: '(000) 000-0000' }}</a> </span>
+            }
+            @else{
+            <span class="title"> <a [href]="b.url" target="_blank">
+                    @if(b.hideUrl){
+                        {{b.subTitle}}
+                    }
+                    @else {
+                        {{b.url | website}}
+                    }
+                 
+                </a> </span>
+            }
+            }
+            @else {
             {{b.subTitle}}
+            }
+
         </div>
         }
     </div>

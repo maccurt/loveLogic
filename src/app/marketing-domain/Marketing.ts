@@ -4,7 +4,7 @@ export class Marketing {
   bulletPointList!: MarketingBulletpoint[];
   bulletPointInviteList!: MarketingBulletpoint[];
   bulletPointMeetList!: MarketingBulletpoint[];;
-}
+};
 
 export enum SocialMedia {
   facebook = 0,
@@ -26,6 +26,7 @@ export class MarketingBulletpoint {
   iconCssStyle?: string = 'color:green !important;';
   socialMedia: SocialMedia = SocialMedia.unknown;
   url?: string;
+  hideUrl?: boolean = false;
   urlIsPhone?: boolean;
   isInvite?: boolean;
   route?: string;
@@ -50,8 +51,8 @@ export const SafetyMarketing_MOCK: Marketing = {
   bulletPointInviteList: [],
   bulletPointMeetList: [],
   bulletPointList: [
-    { title: 'Facebook Group Verify', subTitle: 'lorem', icon: 'facebook', socialMedia: SocialMedia.facebook },
-    { title: 'Google Map Directions', subTitle: 'lorem', icon: 'directions', socialMedia: SocialMedia.directions },
+    { title: 'Facebook Group Verify', subTitle: 'lorem', icon: 'facebook', socialMedia: SocialMedia.facebook, },
+    { title: 'Google Map Directions', subTitle: 'click to see driving directions', icon: 'directions', socialMedia: SocialMedia.directions, hideUrl: true },
     { title: 'Main Website verify.', subTitle: 'lorem', icon: 'public', socialMedia: SocialMedia.website },
     { title: 'Phone number verify', subTitle: 'lorem', icon: 'phone', socialMedia: SocialMedia.phoneNumber }
   ]

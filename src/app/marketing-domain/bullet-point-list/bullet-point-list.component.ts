@@ -9,6 +9,8 @@ import { Business } from '../../business-domain/Business';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxMaskPipe } from 'ngx-mask';
+import { WebsitePipe } from '../../website.pipe';
 @Component({
   selector: 'll-bullet-point-list',
   imports: [
@@ -16,7 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     MatCardModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgxMaskPipe,
+    WebsitePipe
   ],
   templateUrl: './bullet-point-list.component.html',
   styleUrl: './bullet-point-list.component.scss'
@@ -43,8 +47,7 @@ export class BulletPointListComponent {
   goToWebsite(b: MarketingBulletpoint) {
     if (b.url) {
       const link = this.document.createElement('a');
-      if (b.socialMedia === SocialMedia.phoneNumber) {
-        console.log('hello');
+      if (b.socialMedia === SocialMedia.phoneNumber) {        
         link.href = "tel:" + b.url;
       }
       else {

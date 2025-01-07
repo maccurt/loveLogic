@@ -4,7 +4,7 @@
     </div>
 
     <div>
-        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)" [expanded]="false"
+        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)" [expanded]="safetyIsExpanded()"
             [hideToggle]="false">
             <mat-expansion-panel-header>
                 <mat-panel-title style="font-size: small;">Step 1.

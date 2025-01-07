@@ -1,14 +1,44 @@
-.bullet-point-flex {    
+.bullet-point-flex {
     display: inline-flex;
-    width: 100%;   
-    padding: 12px 8px 8px 16px;    
+    width: 100%;
+    padding: 12px 8px 8px 16px;
     background-color: white;
+    font-size: medium;
+    ;
+
     div.title-subtitle {
         margin-left: 8px;
+
+
+        .title {
+
+            a {
+                text-decoration: underline;
+                color: black;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+        }
+
         .sub-title {
             height: 25px;
             font-size: small;
-            color: #000000d7
+
+            color: #000000d7 a {
+                text-decoration: none;
+                color: black;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
         }
     }
 
@@ -19,50 +49,5 @@
         justify-content: center;
     }
 
-    a {
-        text-decoration: underline;
-    }
 
-    a:hover {
-        text-decoration: none;
-    }
-}
-
-.bullet-point-grid {
-    display: grid;
-    padding: 8px 4px 0px 4px;
-    font-size: medium;
-    background-color: white;
-
-    >div {
-        display: flex;
-        align-items: center;
-        border: 1px solid red;
-    }
-
-    div.icon-title {
-        padding-left: 8px;
-        margin-top: 4px;
-        padding-bottom: 4px;
-
-        .title {
-            margin-left: 8px;
-        }
-
-    }
-
-    div.sub-title {
-        height: 12px;
-        padding-left: 48px;
-        font-size: small;
-        color: gray;
-    }
-
-    a {
-        text-decoration: underline;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
 }

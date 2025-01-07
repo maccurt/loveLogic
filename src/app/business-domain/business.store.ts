@@ -88,8 +88,7 @@ export const BusinessStore = signalStore(
             const categoryListUrl = 'category-list/' + stateSelected.name;
             patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
 
-            const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
-            console.log(businessList);
+            const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));            
 
             const businessSelected = businessList[0];
 
