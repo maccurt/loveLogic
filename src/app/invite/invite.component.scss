@@ -1,26 +1,16 @@
 .invite-component-grid {
-
-    display: grid;
-
-    >div {}
+    display: grid;    
     .business-grid-item {
         padding-bottom: 8px;
     }
 }
 
-mat-expansion-panel {
-    // border: 1px solid red !important;
+mat-expansion-panel {    
     border-top: none;
-    border-radius: 0px;
-    >{
-        border: 1px solid green;
-    }
-
-    mat-expansion-panel-header{
-        // border: 1px solid red;
+    border-radius: 0px;    
+    mat-expansion-panel-header{     
         padding-bottom: 0px !important;
     }
-
     mat-panel-title{        
         padding: 0px !important;
         margin: 0px !important;

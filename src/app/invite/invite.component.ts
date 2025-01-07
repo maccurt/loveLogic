@@ -6,6 +6,7 @@ import { BusinessStore } from '../business-domain/business.store';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ActivatedRoute } from '@angular/router';
 import { parseInt } from 'lodash-es';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'll-invite',
   imports: [
@@ -17,25 +18,22 @@ import { parseInt } from 'lodash-es';
   styleUrl: './invite.component.scss'
 })
 export class InviteComponent implements OnInit {
-  store = inject(BusinessStore);
-  business = input.required<Business>();
-  route = inject(ActivatedRoute);
+  readonly store = inject(BusinessStore);
+  readonly route = inject(ActivatedRoute);
 
+  readonly business = input.required<Business>();
   readonly panelOpenState = signal(false);
-
-  safetyIsExpanded = signal(false);
+  readonly safetyIsExpanded = signal(false);
 
   ngOnInit(): void {
-
-    //TODO find the best way to destroy this and destroy it everywhere where we subscribe
-    this.route.queryParamMap.subscribe((paramMap) => {
-
+    
+    this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((paramMap) => {
+      //TODO add all take until destroyed on all subscribes in code
       const safetyPriority = parseInt(paramMap.get('SafetyPriority') as string);
       if (safetyPriority === 1) {
         this.safetyIsExpanded.set(true);
       }
+
     });
-
   }
-
 }

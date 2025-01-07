@@ -62,7 +62,7 @@ export const BusinessStore = signalStore(
             breakpoint = inject(BreakpointObserver)
         ) {
             const domainUrl = document.location.origin;
-            businessService.locationList().subscribe((locationList) => {
+            businessService.locationList().pipe(takeUntilDestroyed()).subscribe((locationList) => {
                 patchState(state, { locationList, domainUrl });
             });
 
