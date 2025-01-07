@@ -11,7 +11,7 @@ export class MarketingService {
     return of(SafetyMarketing_MOCK);
   }
 
-  getBusinessSafety(business: Business): Marketing {    
+  getBusinessSafety(business: Business): Marketing {
 
     const marketing: Marketing = { ...SafetyMarketing_MOCK };
     //TODO what if business has no fb group,etc
@@ -32,15 +32,15 @@ export class MarketingService {
     marketing.bulletPointInviteList.push(
       {
         title: 'Click To Copy Invite Link',
-        subTitle:'copy invite from your clipboard',
+        subTitle: 'copy invite from your clipboard',
         icon: 'content_copy',
         socialMedia: SocialMedia.invite,
         route: business.urlInvite.value,
         isInvite: true
       });
 
-    
     marketing.bulletPointInviteList.push(
+      { title: "Send Link To Invite Via Text", icon: 'message', subTitle: 'Paste link into direct/tect message', subTitleShow: true, socialMedia: SocialMedia.unknown },
       { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
       { title: 'What Makes You Happy?', icon: 'insert_emoticon', socialMedia: SocialMedia.unknown },
     );

@@ -89,7 +89,7 @@ export const BusinessStore = signalStore(
             patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
 
             const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
-            console.log(businessList)
+            console.log(businessList);
 
             const businessSelected = businessList[0];
 
@@ -121,12 +121,12 @@ export const BusinessStore = signalStore(
             });
 
             if (stateSelected) {
-                
+
                 this.loadAll(stateSelected, businessId);
 
             }
             else {
-                
+
                 this.loadAll(stateListMock[0]); //todo this is a problem make this not use mock
             }
         },

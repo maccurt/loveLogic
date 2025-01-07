@@ -1,6 +1,35 @@
-.bullet-point-grid {    
+.bullet-point-flex {    
+    display: inline-flex;
+    width: 100%;   
+    padding: 12px 8px 8px 16px;    
+    background-color: white;
+    div.title-subtitle {
+        margin-left: 8px;
+        .sub-title {
+            height: 25px;
+            font-size: small;
+            color: #000000d7
+        }
+    }
+
+    div.icon {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.bullet-point-grid {
     display: grid;
-    grid-template-columns: 1fr;
     padding: 8px 4px 0px 4px;
     font-size: medium;
     background-color: white;
@@ -8,6 +37,7 @@
     >div {
         display: flex;
         align-items: center;
+        border: 1px solid red;
     }
 
     div.icon-title {

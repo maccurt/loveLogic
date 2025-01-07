@@ -1,8 +1,7 @@
 @for(b of bulletPointList() ;track $index){
 
-<div class="bullet-point-grid">
-    <div class="icon-title">
-
+<div class="bullet-point-flex">
+    <div class="icon">
         @if(b.isInvite){
         <button mat-icon-button (click)="copyInvite(store.businessSelected())">
             <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}
@@ -13,18 +12,25 @@
         <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}} </mat-icon>
         }
 
-        @if(b.isInvite ){
-        <span class="title"> <a (click)="copyInvite(store.businessSelected())">{{b.title}}</a> </span>
-        }
-        @else {
-        <span class="title"> {{b.title}} </span>
-        }
-
     </div>
-    <div class="sub-title">
-        @if(showSubtitle()){ {{b.subTitle}} }
+    <div class="title-subtitle">
+        <div class="title">
 
+            @if(b.isInvite ){
+            <span class="title"> <a tabindex="0" role="button" (keypress)="copyInvite(store.businessSelected())"  (click)="copyInvite(store.businessSelected())">{{b.title}}</a> </span>
+            <!-- <span class="title">  <button mat-button>{{b.title}}</button> </span> -->
+            }
+            @else {
+            <span class="title"> {{b.title}} </span>
+            }
+        </div>
+
+        @if(showSubtitle() || b.isInvite || b.subTitleShow ){
+
+        <div class="sub-title">
+            {{b.subTitle}}
+        </div>
+        }
     </div>
 </div>
-
 }

@@ -34,6 +34,6 @@ export class MarketingComponent implements OnInit {
       SafetyMarketing_MOCK,
       WeAreInBeta_Mock,
     );
-  }  
+  }
 
 }

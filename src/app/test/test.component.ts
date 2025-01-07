@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MarketingComponent } from "../marketing-domain/marketing/marketing.component";
 import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
 import { MarketingService } from '../marketing-domain/marketing.service';
-import { Marketing, MarketingBulletpoint } from '../marketing-domain/Marketing';
+import { Marketing } from '../marketing-domain/Marketing';
 
 @Component({
   selector: 'll-test',
@@ -38,7 +38,7 @@ export class TestComponent implements OnInit {
   marketingService = inject(MarketingService);
   showFiller = false;
 
-  marketing = signal<Marketing>(new Marketing())
+  marketing = signal<Marketing>(new Marketing());
   businessMarketing = signal<Marketing>(new Marketing());
 
   showDrawer = true;
@@ -47,9 +47,9 @@ export class TestComponent implements OnInit {
      this.store.loadAllByStateName('NE',1);
   }
 
-  ngOnInit()  {    
+  ngOnInit()  {
 
-    console.log(this.store.businessList())
+    console.log(this.store.businessList());
     // await  this.store.loadAllByStateName('NE', 1).then(()=>{
     //   console.log(this.store.businessList())
 
@@ -58,15 +58,12 @@ export class TestComponent implements OnInit {
     //   //   const b = this.store.businessList()[0];
     //   //   console.log(this.store.businessList());
     //   //   this.businessMarketing.set(this.marketingService.getBusinessSafety(b));
-  
-    //   //   console.log(this.businessMarketing)
-  
-    //   // })
-  
-      
-    // })
 
-    
+    //   //   console.log(this.businessMarketing)
+
+    //   // })
+
+    // })
 
   }
 

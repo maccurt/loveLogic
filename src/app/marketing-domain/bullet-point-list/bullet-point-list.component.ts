@@ -1,8 +1,8 @@
 import { Component, inject, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { Marketing, MarketingBulletpoint, SocialMedia } from '../Marketing';
-import { DOCUMENT, TitleCasePipe } from '@angular/common';
+import { MarketingBulletpoint, SocialMedia } from '../Marketing';
+import { DOCUMENT } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessStore } from '../../business-domain/business.store';
 import { Business } from '../../business-domain/Business';
