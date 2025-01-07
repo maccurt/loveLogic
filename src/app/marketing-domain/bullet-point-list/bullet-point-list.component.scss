@@ -1,5 +1,3 @@
-
-
 .hint {
     font-size: small;
     color: gray;
@@ -9,13 +7,36 @@
 a {
     text-decoration: none;
     text-decoration: underline;
-    
+
 }
 
 a:hover {
     text-decoration: none;
 }
 
-.bullet-point-card{
+.bullet-point-card {
     font-size: smaller !important;
+}
+
+
+.market-grid {
+    border: 0px solid red;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    > div {
+        display: flex;
+        border: 1px dotted red;
+        align-items: center;
+    }
+
+    // div.icon{
+    //     grid-area: i;
+    // }
+
+    // div.icon{
+    //     grid-area: i;
+    // }
+
+
 }

@@ -8,10 +8,13 @@ import { BusinessStore } from '../../business-domain/business.store';
 import { Business } from '../../business-domain/Business';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
+import { MatButtonModule } from '@angular/material/button';
+import { BulletPointList } from '../../business-domain/categroryListMock';
 @Component({
   selector: 'll-bullet-point-list',
   imports: [
     ClipboardModule,
+    MatButtonModule,
     MatCardModule,
     MatListModule,
     MatIconModule,
@@ -28,6 +31,7 @@ export class BulletPointListComponent {
   private _snackBar = inject(MatSnackBar);
 
   marketing = input.required<Marketing>();
+  bulletPointList = input<MarketingBulletpoint[]>([]);
   invite = input<boolean>(false);
   step = input.required<number>();
 

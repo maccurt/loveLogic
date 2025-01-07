@@ -3,8 +3,58 @@
     <div class="business-grid-item">
         <ll-business [detailMode]="true" [business]="business()"></ll-business>
     </div>
+   
+    <div>
+        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)" [expanded]="false"
+            [hideToggle]="false">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="font-size: small;">Step 1.
+                    @if(!panelOpenState()){
+                        Expand To See Verify Options
+                    }
+                    @else {
+                        Use Link To Verify Location
+                    }
+                
+                </mat-panel-title>
+
+
+            </mat-expansion-panel-header>
+            <ll-bullet-point-list [step]="1" [marketing]="store.businessSelectedMarketing()" [bulletPointList]="store.businessSelectedMarketing().bulletPointList"
+                [invite]="true"></ll-bullet-point-list>
+        </mat-expansion-panel>
+    </div>
+
+    <div>
+        <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="font-size: small;color:black">Step 2. Copy Invite Link</mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <ll-bullet-point-list [step]="2" [marketing]="store.businessSelectedMarketing()"
+                [invite]="true"></ll-bullet-point-list>
+        </mat-expansion-panel>
+    </div>
+</div>
+
+
+
 
     <!-- <div>
+        <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="font-size: small;color:black;">Step 3. Meet, Smile & Be Happy</mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <ll-bullet-point-list [step]="3" [marketing]="store.businessSelectedMarketing()"
+                [invite]="true"></ll-bullet-point-list>
+        </mat-expansion-panel>
+    </div> -->
+
+
+
+
+ <!-- <div>
         <ll-bullet-point-list [step]="1" [marketing]="store.businessSelectedMarketing()"
             [invite]="true"></ll-bullet-point-list>
     </div> -->
@@ -43,46 +93,3 @@
                 [invite]="true"></ll-bullet-point-list>
         </mat-expansion-panel>
     </mat-accordion> -->
-
-    <div>
-        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)" [expanded]="false"
-            [hideToggle]="false">
-            <mat-expansion-panel-header>
-                <mat-panel-title style="font-size: small;">Step 1.
-                    @if(!panelOpenState()){
-                        Expand To See Verify Options
-                    }
-                    @else {
-                        Use Link To Verify Location
-                    }
-                
-                </mat-panel-title>
-
-
-            </mat-expansion-panel-header>
-            <ll-bullet-point-list [step]="1" [marketing]="store.businessSelectedMarketing()"
-                [invite]="true"></ll-bullet-point-list>
-        </mat-expansion-panel>
-    </div>
-
-    <div>
-        <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
-            <mat-expansion-panel-header>
-                <mat-panel-title style="font-size: small;color:black">Step 2. Copy Invite Link</mat-panel-title>
-
-            </mat-expansion-panel-header>
-            <ll-bullet-point-list [step]="2" [marketing]="store.businessSelectedMarketing()"
-                [invite]="true"></ll-bullet-point-list>
-        </mat-expansion-panel>
-    </div>
-    <!-- <div>
-        <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
-            <mat-expansion-panel-header>
-                <mat-panel-title style="font-size: small;color:black;">Step 3. Meet, Smile & Be Happy</mat-panel-title>
-
-            </mat-expansion-panel-header>
-            <ll-bullet-point-list [step]="3" [marketing]="store.businessSelectedMarketing()"
-                [invite]="true"></ll-bullet-point-list>
-        </mat-expansion-panel>
-    </div> -->
-</div>
