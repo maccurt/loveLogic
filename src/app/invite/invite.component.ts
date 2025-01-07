@@ -19,7 +19,7 @@ import { parseInt } from 'lodash-es';
 export class InviteComponent implements OnInit {
   store = inject(BusinessStore);
   business = input.required<Business>();
-  route = inject(ActivatedRoute)
+  route = inject(ActivatedRoute);
 
   readonly panelOpenState = signal(false);
 
@@ -29,16 +29,12 @@ export class InviteComponent implements OnInit {
 
     //TODO find the best way to destroy this and destroy it everywhere where we subscribe
     this.route.queryParamMap.subscribe((paramMap) => {
-      
 
       const safetyPriority = parseInt(paramMap.get('SafetyPriority') as string);
       if (safetyPriority === 1) {
         this.safetyIsExpanded.set(true);
       }
-
-
-
-    })
+    });
 
   }
 

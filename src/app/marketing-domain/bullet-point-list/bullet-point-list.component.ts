@@ -2,7 +2,7 @@ import { Component, inject, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MarketingBulletpoint, SocialMedia } from '../Marketing';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessStore } from '../../business-domain/business.store';
 import { Business } from '../../business-domain/Business';
@@ -14,6 +14,7 @@ import { WebsitePipe } from '../../website.pipe';
 @Component({
   selector: 'll-bullet-point-list',
   imports: [
+    CommonModule,
     ClipboardModule,
     MatButtonModule,
     MatCardModule,
@@ -34,6 +35,7 @@ export class BulletPointListComponent {
   private _snackBar = inject(MatSnackBar);
   bulletPointList = input.required<MarketingBulletpoint[]>();
   showSubtitle = input<boolean>(false);
+  isInvite = input<boolean>(false);
 
   copyInvite(business: Business) {
     this.clipboard.copy(business.urlInvite.value);
@@ -47,7 +49,7 @@ export class BulletPointListComponent {
   goToWebsite(b: MarketingBulletpoint) {
     if (b.url) {
       const link = this.document.createElement('a');
-      if (b.socialMedia === SocialMedia.phoneNumber) {        
+      if (b.socialMedia === SocialMedia.phoneNumber) {
         link.href = "tel:" + b.url;
       }
       else {

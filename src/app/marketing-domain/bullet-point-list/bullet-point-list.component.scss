@@ -1,28 +1,26 @@
+
+.is-invite{
+    border: 1px solid #cccccc;
+}
+
 .bullet-point-flex {
     display: inline-flex;
     width: 100%;
     padding: 12px 8px 8px 16px;
     background-color: white;
     font-size: medium;
-    ;
 
     div.title-subtitle {
         margin-left: 8px;
-
-
         .title {
-
             a {
                 text-decoration: underline;
                 color: black;
             }
-
             a:hover {
                 text-decoration: none;
             }
-
         }
-
         .sub-title {
             height: 25px;
             font-size: small;
@@ -36,6 +34,7 @@
                 text-decoration: none;
                 color: black;
             }
+
             a:hover {
                 text-decoration: underline;
             }
@@ -48,6 +47,4 @@
         display: flex;
         justify-content: center;
     }
-
-
 }

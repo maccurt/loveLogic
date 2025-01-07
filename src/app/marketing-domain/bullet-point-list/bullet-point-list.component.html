@@ -1,64 +1,66 @@
-@for(b of bulletPointList() ;track $index){
+<div [ngClass]="{'is-invite': isInvite()}">
+    @for(b of bulletPointList() ;track $index){
 
-<div class="bullet-point-flex">
-    <div class="icon">
-        @if(b.isInvite){
-        <button mat-icon-button (click)="copyInvite(store.businessSelected())">
-            <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}
-            </mat-icon>
-        </button>
-        }
-        @else {
-        <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}} </mat-icon>
-        }
-
-    </div>
-    <div class="title-subtitle">
-        <div class="title">
-
-            @if(b.isInvite ){
-            <span class="title"> <a tabindex="0" role="button" (keypress)="copyInvite(store.businessSelected())"
-                    (click)="copyInvite(store.businessSelected())">{{b.title}}</a> </span>
-
-            }
-            @else if(b.url){
-            @if(b.urlIsPhone){
-            <span class="title"> <a href="tel:{{b.url}}">{{b.title}}</a> </span>
-            }
-            @else{
-            <span class="title"> <a [href]="b.url" target="_blank">{{b.title}}</a> </span>
-            }
+    <div class="bullet-point-flex">
+        <div class="icon">
+            @if(b.isInvite){
+            <button mat-icon-button (click)="copyInvite(store.businessSelected())">
+                <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}}
+                </mat-icon>
+            </button>
             }
             @else {
-            <span class="title"> {{b.title}} </span>
+            <mat-icon [class]="b.icon" matListItemIcon>{{b.icon}} </mat-icon>
             }
+
         </div>
+        <div class="title-subtitle">
+            <div class="title">
 
-        @if(showSubtitle() || b.isInvite || b.subTitleShow || b.url ){
+                @if(b.isInvite ){
+                <span class="title"> <a tabindex="0" role="button" (keypress)="copyInvite(store.businessSelected())"
+                        (click)="copyInvite(store.businessSelected())">{{b.title}}</a> </span>
 
-        <div class="sub-title">
-            @if (b.url){
-            @if(b.urlIsPhone){
-            <span class="title"> <a href="tel:{{b.url}}">{{b.url | mask: '(000) 000-0000' }}</a> </span>
-            }
-            @else{
-            <span class="title"> <a [href]="b.url" target="_blank">
-                    @if(b.hideUrl){
+                }
+                @else if(b.url){
+                @if(b.urlIsPhone){
+                <span class="title"> <a href="tel:{{b.url}}">{{b.title}}</a> </span>
+                }
+                @else{
+                <span class="title"> <a [href]="b.url" target="_blank">{{b.title}}</a> </span>
+                }
+                }
+                @else {
+                <span class="title"> {{b.title}} </span>
+                }
+            </div>
+
+            @if(showSubtitle() || b.isInvite || b.subTitleShow || b.url ){
+
+            <div class="sub-title">
+                @if (b.url){
+                @if(b.urlIsPhone){
+                <span class="title"> <a href="tel:{{b.url}}">{{b.url | mask: '(000) 000-0000' }}</a> </span>
+                }
+                @else{
+                <span class="title"> <a [href]="b.url" target="_blank">
+                        @if(b.hideUrl){
                         {{b.subTitle}}
-                    }
-                    @else {
+                        }
+                        @else {
                         {{b.url | website}}
-                    }
-                 
-                </a> </span>
-            }
-            }
-            @else {
-            {{b.subTitle}}
-            }
+                        }
 
+                    </a> </span>
+                }
+                }
+                @else {
+                {{b.subTitle}}
+                }
+
+            </div>
+            }
         </div>
-        }
     </div>
+    }
 </div>
-}
