@@ -10,20 +10,19 @@
     </div>
     <div class="full-width">
 
-        <div class="info-grid">
+        <div class="info-grid">            
             @for(marketing of marketingList(); track $index){
 
             <div class="grid-item">
                 <div class="info">
-
                     <div class="title">
                         {{marketing.title}}
                     </div>
                     <div class="text">
                         {{marketing.text}}
                     </div>
-                    <div class="bullet-point">
-                        <ll-bullet-point-list [step]="0" [marketing]="marketing"></ll-bullet-point-list>                 
+                    <div class="bullet-point">                        
+                        <ll-bullet-point-list [bulletPointList]="marketing.bulletPointList" ></ll-bullet-point-list>                 
                     </div>
                 </div>
             </div>

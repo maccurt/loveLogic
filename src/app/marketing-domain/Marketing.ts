@@ -2,8 +2,8 @@ export class Marketing {
   title!: string;
   text!: string;
   bulletPointList!: MarketingBulletpoint[];
-  bulletPointInviteList?: MarketingBulletpoint[];
-  bulletPointMeetList?: MarketingBulletpoint[];
+  bulletPointInviteList!: MarketingBulletpoint[];
+  bulletPointMeetList!: MarketingBulletpoint[];;
 }
 
 export enum SocialMedia {
@@ -33,6 +33,8 @@ export class MarketingBulletpoint {
 export const CanWeTalkMarketing_Mock: Marketing = {
   title: 'Can We Talk In Person?',
   text: 'Talking in person is more effective for dating than online messages and texting.',
+  bulletPointInviteList: [],
+  bulletPointMeetList: [],
   bulletPointList: [
     { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
     { title: 'We Can Get A Cocktail.', icon: 'local_bar', socialMedia: SocialMedia.unknown },
@@ -44,17 +46,21 @@ export const CanWeTalkMarketing_Mock: Marketing = {
 export const SafetyMarketing_MOCK: Marketing = {
   title: 'Your Safety Is A Priority.',
   text: 'We give you well known tools to verify the safety of a location.',
+  bulletPointInviteList: [],
+  bulletPointMeetList: [],
   bulletPointList: [
-    { title: 'Facebook Group Verify', icon: 'facebook', socialMedia: SocialMedia.facebook },
-    { title: 'Google Map Directions', icon: 'directions', socialMedia: SocialMedia.directions },
-    { title: 'Main Website verify.', icon: 'public', socialMedia: SocialMedia.website },
-    { title: 'Phone number verify', icon: 'phone', socialMedia: SocialMedia.phoneNumber }
+    { title: 'Facebook Group Verify', subTitle: 'lorem', icon: 'facebook', socialMedia: SocialMedia.facebook },
+    { title: 'Google Map Directions', subTitle: 'lorem', icon: 'directions', socialMedia: SocialMedia.directions },
+    { title: 'Main Website verify.', subTitle: 'lorem', icon: 'public', socialMedia: SocialMedia.website },
+    { title: 'Phone number verify', subTitle: 'lorem', icon: 'phone', socialMedia: SocialMedia.phoneNumber }
   ]
 };
 
 export const WeAreInBeta_Mock: Marketing = {
   title: 'We Need Your Constructive Feedback!',
   text: 'This is not about money! This is about having an experience.',
+  bulletPointInviteList: [],
+  bulletPointMeetList: [],
   bulletPointList: [
     { title: 'No Bull $**t Subscription', icon: 'emoji_emotions', socialMedia: SocialMedia.unknown },
     { title: 'Customer Focused', icon: 'groups', socialMedia: SocialMedia.unknown },

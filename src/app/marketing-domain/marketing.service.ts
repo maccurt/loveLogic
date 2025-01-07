@@ -11,8 +11,10 @@ export class MarketingService {
     return of(SafetyMarketing_MOCK);
   }
 
-  getBusinessSafety(business: Business): Marketing {
+  getBusinessSafety(business: Business): Marketing {    
+
     const marketing: Marketing = { ...SafetyMarketing_MOCK };
+    //TODO what if business has no fb group,etc
     const fbIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.facebook; });
     marketing.bulletPointList[fbIndex].url = business.facebookUrl;
 
@@ -37,8 +39,8 @@ export class MarketingService {
         isInvite: true
       });
 
-    marketing.bulletPointMeetList = [];
-    marketing.bulletPointMeetList.push(
+    
+    marketing.bulletPointInviteList.push(
       { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
       { title: 'What Makes You Happy?', icon: 'insert_emoticon', socialMedia: SocialMedia.unknown },
     );

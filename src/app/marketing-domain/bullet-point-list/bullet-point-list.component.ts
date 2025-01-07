@@ -9,7 +9,6 @@ import { Business } from '../../business-domain/Business';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { MatButtonModule } from '@angular/material/button';
-import { BulletPointList } from '../../business-domain/categroryListMock';
 @Component({
   selector: 'll-bullet-point-list',
   imports: [
@@ -17,8 +16,8 @@ import { BulletPointList } from '../../business-domain/categroryListMock';
     MatButtonModule,
     MatCardModule,
     MatListModule,
-    MatIconModule,
-    TitleCasePipe],
+    MatIconModule
+  ],
   templateUrl: './bullet-point-list.component.html',
   styleUrl: './bullet-point-list.component.scss'
 })
@@ -29,11 +28,8 @@ export class BulletPointListComponent {
   document = inject(DOCUMENT);
   private readonly clipboard = inject(Clipboard);
   private _snackBar = inject(MatSnackBar);
-
-  marketing = input.required<Marketing>();
-  bulletPointList = input<MarketingBulletpoint[]>([]);
-  invite = input<boolean>(false);
-  step = input.required<number>();
+  bulletPointList = input.required<MarketingBulletpoint[]>();
+  showSubtitle = input<boolean>(false);
 
   copyInvite(business: Business) {
     this.clipboard.copy(business.urlInvite.value);
@@ -44,26 +40,8 @@ export class BulletPointListComponent {
     });
   }
 
-  getBusinessMarketingBulletPoint(): MarketingBulletpoint[] {
-    const list: MarketingBulletpoint[] = [];
-    const businesss = this.store.businessSelected();
-
-    if (businesss) {
-      const fb = this.marketing().bulletPointList.find((b) => {
-        return b.socialMedia === SocialMedia.facebook;
-      });
-
-      if (fb) {
-        list.push({ ...fb });
-      }
-    }
-    return list;
-  }
-
   goToWebsite(b: MarketingBulletpoint) {
-    console.log(b);
     if (b.url) {
-
       const link = this.document.createElement('a');
       if (b.socialMedia === SocialMedia.phoneNumber) {
         console.log('hello');
@@ -78,5 +56,4 @@ export class BulletPointListComponent {
       link.remove();
     }
   }
-
 }

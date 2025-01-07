@@ -1,42 +1,38 @@
-.hint {
-    font-size: small;
-    color: gray;
-}
-
-
-a {
-    text-decoration: none;
-    text-decoration: underline;
-
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-.bullet-point-card {
-    font-size: smaller !important;
-}
-
-
-.market-grid {
-    border: 0px solid red;
+.bullet-point-grid {    
     display: grid;
     grid-template-columns: 1fr;
+    padding: 8px 4px 0px 4px;
+    font-size: medium;
+    background-color: white;
 
-    > div {
+    >div {
         display: flex;
-        border: 1px dotted red;
         align-items: center;
     }
 
-    // div.icon{
-    //     grid-area: i;
-    // }
+    div.icon-title {
+        padding-left: 8px;
+        margin-top: 4px;
+        padding-bottom: 4px;
 
-    // div.icon{
-    //     grid-area: i;
-    // }
+        .title {
+            margin-left: 8px;
+        }
 
+    }
 
+    div.sub-title {
+        height: 12px;
+        padding-left: 48px;
+        font-size: small;
+        color: gray;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
 }

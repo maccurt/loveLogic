@@ -25,15 +25,15 @@ import { BulletPointListComponent } from "../bullet-point-list/bullet-point-list
 })
 export class MarketingComponent implements OnInit {
 
+  store = inject(BusinessStore);
+  marketingList = signal<Marketing[]>([]);
+
   ngOnInit(): void {
     this.marketingList().push(
       CanWeTalkMarketing_Mock,
       SafetyMarketing_MOCK,
       WeAreInBeta_Mock,
     );
-  }
-
-  store = inject(BusinessStore);
-  marketingList = signal<Marketing[]>([]);
+  }  
 
 }

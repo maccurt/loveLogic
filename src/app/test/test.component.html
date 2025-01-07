@@ -1,40 +1,15 @@
-<ll-marketing></ll-marketing>
+@if(!store.isLoading()){
+
+
+    <ll-marketing></ll-marketing>
+
+
+    <ll-bullet-point-list [bulletPointList]="marketingService.getBusinessSafety(store.businessList()[0]).bulletPointInviteList"></ll-bullet-point-list>
+
+}
 
 
 
 
-<!-- <div class="marketing-section">
-    <div>
-        <div class="marketing-grid-1">
 
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita nihil in facilis asperiores neque,
-                nesciunt
-                harum eius sed doloremque natus quidem ab praesentium nemo distinctio odio ducimus doloribus maxime
-                suscipit.
-            </div>
-            <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate soluta provident labore beatae
-                nobis quasi
-                aperiam ut similique officiis reprehenderit maxime esse, quos, illo cumque.</div>
-            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus sapiente esse ad molestiae, similique
-                doloribus,
-                odio quibusdam sunt saepe at repudiandae quam numquam ea!</div>
-        </div>
-    </div>
-</div>
 
- <div>
-    <div class="marketing-grid-1">
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita nihil in facilis asperiores neque,
-            nesciunt
-            harum eius sed doloremque natus quidem ab praesentium nemo distinctio odio ducimus doloribus maxime
-            suscipit.
-        </div>
-        <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate soluta provident labore beatae
-            nobis quasi
-            aperiam ut similique officiis reprehenderit maxime esse, quos, illo cumque.</div>
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus sapiente esse ad molestiae, similique
-            doloribus,
-            odio quibusdam sunt saepe at repudiandae quam numquam ea!</div>
-    </div>
-
-</div> -->
