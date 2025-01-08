@@ -36,7 +36,7 @@ const businessInitialState: BusinessState = {
     brandName: 'Can We Meet To Talk?',
     brandTagline: 'Beyond Texting & Messaging',
     domainUrl: '',
-    businessSelectedMarketing:SafetyMarketing_MOCK,
+    businessSelectedMarketing: SafetyMarketing_MOCK,
     categoryListUrl: '',
     businessSelected: new Business(),
     businessSelectedCategory: categroryListMock[0],
@@ -81,128 +81,127 @@ export const BusinessStore = signalStore(
         store,
         businessService = inject(BusinessService),
         marketingService = inject(MarketingService),
-    ) => ({
+    ) => (
+        {
 
-        async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
+            async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
 
-            const categoryListUrl = 'category-list/' + stateSelected.name;
-            patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
+                const categoryListUrl = 'category-list/' + stateSelected.name;
+                patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
 
-            const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
+                const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
 
-            const businessSelected = businessList[0];
+                const businessSelected = businessList[0];
 
-            const categoryList = businessService.getCategoryListWithCount(businessList);
+                const categoryList = businessService.getCategoryListWithCount(businessList);
 
-            categoryList.forEach((c) => {
-                c.businessListUrl = '/' + stateSelected.name + '/' + c.id;
-            });
-
-            //TODO make sure all states have a favorite
-            const categorySelected = categoryMyFavorite;
-
-            patchState(store, {
-                businessSelected, categorySelected, businessList, categoryList, isLoading: false
-            });
-
-            //filter to the favorite for the time being
-            this.filterByCategoryId(categorySelected.id);
-
-            if (businessId > 0) {
-                this.showSelectedBusinessById(businessId);
-            }
-        },
-
-        async loadAllByStateName(state: string, businessId: number) {
-            const stateSelected = stateListMock.find((s) => {
-                return s.name.toLocaleLowerCase() === state?.toLocaleLowerCase() ||
-                    s.abbreviation.toLocaleLowerCase() === state?.toLocaleLowerCase();
-            });
-
-            if (stateSelected) {
-
-                this.loadAll(stateSelected, businessId);
-
-            }
-            else {
-
-                this.loadAll(stateListMock[0]); //todo this is a problem make this not use mock
-            }
-        },
-
-        async filterByCategoryId(categoryId: number): Promise<void> {
-
-            const category = store.categoryList().find((c) => {
-                return c.id === categoryId;
-            });
-
-            if (category) {
-                this.filter(category);
-            }
-        },
-        async filter(categorySelected: Category): Promise<void> {
-
-            patchState(store, { isLoading: true });
-
-            if (!categorySelected) {
-                categorySelected = categoryMyFavorite;
-            }
-
-            let businessListFiltered: Business[];
-
-            if (categorySelected.id === 0) {
-                businessListFiltered = store.businessList().filter((b) => {
-                    return b.rank === 1;
+                categoryList.forEach((c) => {
+                    c.businessListUrl = '/' + stateSelected.name + '/' + c.id;
                 });
-            }
-            else {
-                businessListFiltered = store.businessList().filter((b) => {
-                    return b.categoryId === categorySelected.id;
+
+                //TODO make sure all states have a favorite
+                const categorySelected = categoryMyFavorite;
+
+                patchState(store, {
+                    businessSelected, categorySelected, businessList, categoryList, isLoading: false
                 });
+
+                //filter to the favorite for the time being
+                this.filterByCategoryId(categorySelected.id);
+
+                if (businessId > 0) {
+                    this.showSelectedBusinessById(businessId);
+                }
+            },
+
+            async loadAllByStateName(state: string, businessId: number) {
+                const stateSelected = stateListMock.find((s) => {
+                    return s.name.toLocaleLowerCase() === state?.toLocaleLowerCase() ||
+                        s.abbreviation.toLocaleLowerCase() === state?.toLocaleLowerCase();
+                });
+
+                if (stateSelected) {
+
+                    this.loadAll(stateSelected, businessId);
+
+                }
+                else {
+
+                    this.loadAll(stateListMock[0]); //todo this is a problem make this not use mock
+                }
+            },
+
+            async filterByCategoryId(categoryId: number): Promise<void> {
+
+                const category = store.categoryList().find((c) => {
+                    return c.id === categoryId;
+                });
+
+                if (category) {
+                    this.filter(category);
+                }
+            },
+            async filter(categorySelected: Category): Promise<void> {
+
+                patchState(store, { isLoading: true });
+
+                if (!categorySelected) {
+                    categorySelected = categoryMyFavorite;
+                }
+
+                let businessListFiltered: Business[];
+
+                if (categorySelected.id === 0) {
+                    businessListFiltered = store.businessList().filter((b) => {
+                        return b.rank === 1;
+                    });
+                }
+                else {
+                    businessListFiltered = store.businessList().filter((b) => {
+                        return b.categoryId === categorySelected.id;
+                    });
+                }
+
+                if (businessListFiltered.length === 0 && store.businessList().length >= 3) {
+
+                    businessListFiltered.push(store.businessList()[0]);
+                    businessListFiltered.push(store.businessList()[1]);
+                    businessListFiltered.push(store.businessList()[2]);
+                }
+                patchState(store, { categorySelected, showCategory: false, businessListFiltered, isLoading: false });
+
+            },
+            showCategoryToggle() {
+                patchState(store, { showCategory: !store.showCategory() });
+            },
+            compact(compactMode: boolean) {
+                patchState(store, { compactMode });
+            },
+            showBusinessToggle(showBusiness: boolean) {
+
+                patchState(store, { isBusinessShown: showBusiness });
+            },
+            showSelectedBusinessById(id: number) {
+                const businessSelected = store.businessList().find((b) => { return b.id === id; });
+                if (businessSelected) {
+                    this.showBusiness(businessSelected);
+                }
+            },
+            showBusiness(businessSelected: Business) {
+                if (store.isBusinessShown()) {
+                    return;
+                }
+                const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
+                if (businessSelectedCategory) {
+                    patchState(store, { businessSelectedCategory });
+                }
+                else {
+                    patchState(store, { businessSelectedCategory: categroryListMock[0] });
+                }
+
+                const businessSelectedMarketing = marketingService.getBusinessMarketing(businessSelected);
+
+                patchState(store, { businessSelected, businessSelectedMarketing, isBusinessShown: true });
             }
-
-            if (businessListFiltered.length === 0 && store.businessList().length >= 3) {
-
-                businessListFiltered.push(store.businessList()[0]);
-                businessListFiltered.push(store.businessList()[1]);
-                businessListFiltered.push(store.businessList()[2]);
-            }
-            patchState(store, { categorySelected, showCategory: false, businessListFiltered, isLoading: false });
-
-        },
-        showCategoryToggle() {
-            patchState(store, { showCategory: !store.showCategory() });
-        },
-        compact(compactMode: boolean) {
-            patchState(store, { compactMode });
-        },
-        showBusinessToggle(showBusiness: boolean) {
-
-            patchState(store, { isBusinessShown: showBusiness });
-        },
-
-        showSelectedBusinessById(id: number) {
-            const businessSelected = store.businessList().find((b) => { return b.id === id; });
-            if (businessSelected) {
-                this.showBusiness(businessSelected);
-            }
-        },
-
-        showBusiness(businessSelected: Business) {
-            if (store.isBusinessShown()) {
-                return;
-            }
-            const businessSelectedCategory = store.categoryList().find((c) => { return c.id === businessSelected.categoryId; });
-            if (businessSelectedCategory) {
-                patchState(store, { businessSelectedCategory });
-            }
-            else {
-                patchState(store, { businessSelectedCategory: categroryListMock[0] });
-            }
-
-            const businessSelectedMarketing = marketingService.getBusinessSafety(businessSelected);
-
-            patchState(store, { businessSelected ,  businessSelectedMarketing,  isBusinessShown: true });
-        }
-    }))
+        }))
 );

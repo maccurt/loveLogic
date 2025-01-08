@@ -11,9 +11,9 @@ export class MarketingService {
     return of(SafetyMarketing_MOCK);
   }
 
-  getBusinessSafety(business: Business): Marketing {
+  getBusinessMarketing(business: Business): Marketing {
 
-    const marketing: Marketing =      (JSON.parse(JSON.stringify(SafetyMarketing_MOCK)));
+    const marketing: Marketing = (JSON.parse(JSON.stringify(SafetyMarketing_MOCK)));
     //TODO what if business has no fb group,etc
     const fbIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.facebook; });
     marketing.bulletPointList[fbIndex].url = business.facebookUrl;

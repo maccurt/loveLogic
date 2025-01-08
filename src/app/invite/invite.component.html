@@ -3,8 +3,8 @@
         <ll-business [detailMode]="true" [business]="business()"></ll-business>
     </div>
     <div>
-        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)" [expanded]="safetyIsExpanded()"
-            [hideToggle]="false">
+        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)"
+            [expanded]="safetyIsExpanded()" [hideToggle]="false">
             <mat-expansion-panel-header>
                 <mat-panel-title style="font-size: small;">Step 1.
                     @if(!panelOpenState()){
@@ -15,7 +15,8 @@
                     }
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ll-bullet-point-list [showSubtitle]="true" [bulletPointList]="store.businessSelectedMarketing().bulletPointList">
+            <ll-bullet-point-list [showSubtitle]="true"
+            [bulletPointList]="marketingStore.getBusinessMarketing(business()).bulletPointList">
             </ll-bullet-point-list>
         </mat-expansion-panel>
     </div>
@@ -23,10 +24,40 @@
         <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
             <mat-expansion-panel-header>
                 <mat-panel-title style="font-size: small;color:black">Step 2. Copy Invite Link</mat-panel-title>
-
             </mat-expansion-panel-header>
-            <ll-bullet-point-list [showSubtitle]="false" [isInvite]="true"  [bulletPointList]="store.businessSelectedMarketing().bulletPointInviteList">
+            <ll-bullet-point-list [showSubtitle]="false" [isInvite]="true"
+                [bulletPointList]="marketingStore.getBusinessMarketing(business()).bulletPointInviteList">
             </ll-bullet-point-list>
         </mat-expansion-panel>
     </div>
+
+
+    @if (createMode()){
+    <!-- Only the creator of invite will see this -->
+    <div>
+        <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="font-size: small;color:black">Options</mat-panel-title>
+                <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>insert_emoticon</mat-icon> </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>dialpad</mat-icon>
+                        <span>Redial</span>
+                    </button>
+                    <button mat-menu-item disabled>
+                        <mat-icon>voicemail</mat-icon>
+                        <span>Check voice mail</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>notifications_off</mat-icon>
+                        <span>Disable alerts</span>
+                    </button>
+                </mat-menu>
+            </mat-expansion-panel-header>
+
+        </mat-expansion-panel>
+    </div>
+
+    }
+
 </div>

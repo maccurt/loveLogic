@@ -40,7 +40,6 @@ import { InviteComponent } from "../invite/invite.component";
     RouterModule,
     HeaderFilterComponent,
     MarketingComponent,
-    BulletPointListComponent,
     InviteComponent
 ],
   providers: [],

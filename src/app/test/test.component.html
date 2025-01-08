@@ -1,15 +1,27 @@
 @if(!store.isLoading()){
 
 
-    <ll-marketing></ll-marketing>
+<div style="display: flex;column-gap: 32px;margin-top: 32px;justify-content: center;">
+
+    <div>
+        <h3 style="color:red;">Creator of the Invite</h3>
+        <span>Create Mode = true</span>
+        <br>
+        <br>
+        <ll-invite [business]="store.businessList()[0]"></ll-invite>
+    </div>
+
+    <div>
+        <h3 style="color:blue;">Receiver of the Invite </h3>
+        <span>Create Mode = false</span>
+        <br>
+        <br>
+        <ll-invite [createMode]="false" [business]="store.businessList()[0]"></ll-invite>
+    </div>
+
+</div>
 
 
-    <ll-bullet-point-list [bulletPointList]="marketingService.getBusinessSafety(store.businessList()[0]).bulletPointInviteList"></ll-bullet-point-list>
+
 
 }
-
-
-
-
-
-

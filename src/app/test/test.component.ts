@@ -13,6 +13,7 @@ import { MarketingComponent } from "../marketing-domain/marketing/marketing.comp
 import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
 import { MarketingService } from '../marketing-domain/marketing.service';
 import { Marketing } from '../marketing-domain/Marketing';
+import { InviteComponent } from "../invite/invite.component";
 
 @Component({
   selector: 'll-test',
@@ -26,7 +27,8 @@ import { Marketing } from '../marketing-domain/Marketing';
     MatSidenavModule,
     ClipboardModule,
     MarketingComponent,
-    BulletPointListComponent
+    BulletPointListComponent,
+    InviteComponent
   ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
@@ -44,26 +46,10 @@ export class TestComponent implements OnInit {
   showDrawer = true;
 
   constructor() {
-     this.store.loadAllByStateName('NE',1);
+    this.store.loadAllByStateName('NE', 1);
   }
 
-  ngOnInit()  {
-
-    console.log(this.store.businessList());
-    // await  this.store.loadAllByStateName('NE', 1).then(()=>{
-    //   console.log(this.store.businessList())
-
-    //   // this.marketingService.safety().subscribe((m) => {
-    //   //   this.marketing.set(m);
-    //   //   const b = this.store.businessList()[0];
-    //   //   console.log(this.store.businessList());
-    //   //   this.businessMarketing.set(this.marketingService.getBusinessSafety(b));
-
-    //   //   console.log(this.businessMarketing)
-
-    //   // })
-
-    // })
+  ngOnInit() {
 
   }
 
