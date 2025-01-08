@@ -1,5 +1,5 @@
 import { signalStore, withMethods, withState } from "@ngrx/signals";
-import { CanWeTalkMarketing_Mock, Marketing, MarketingBulletpoint } from "./Marketing";
+import { CanWeTalkMarketing_Mock, Marketing } from "./Marketing";
 import { inject } from "@angular/core";
 import { MarketingService } from "./marketing.service";
 import { Business } from "../business-domain/Business";
@@ -21,7 +21,7 @@ export const MarketingStore = signalStore(
         {
             getBusinessMarketing(business: Business): Marketing {
 
-                return marketingService.getBusinessMarketing(business)
+                return marketingService.getBusinessMarketing(business);
             }
         }
     ))

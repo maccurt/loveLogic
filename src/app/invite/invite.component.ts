@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { Business } from '../business-domain/Business';
 import { BusinessComponent } from "../business-domain/business/business.component";
 import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
@@ -25,7 +25,7 @@ import { MarketingStore } from '../marketing-domain/marketing.store';
   templateUrl: './invite.component.html',
   styleUrl: './invite.component.scss'
 })
-export class InviteComponent implements OnInit {
+export class InviteComponent  {
   readonly store = inject(BusinessStore);
   readonly marketingStore = inject(MarketingStore);
   readonly route = inject(ActivatedRoute);
@@ -47,9 +47,5 @@ export class InviteComponent implements OnInit {
         this.safetyIsExpanded.set(true);
       }
     });
-  }
-
-  ngOnInit(): void {
-
   }
 }
