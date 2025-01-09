@@ -43,11 +43,14 @@ export class BusinessService {
     );
   }
 
+  //TODO why is this called this, it is also setting the link
   setGoogleMapUrl = (b: Business) => {
+
     b.address.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
+
     const inviteUrl = new Url();
     b.urlInvite = inviteUrl;
-    inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}`;
+    inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}?isInvite=1`;
     inviteUrl.value = inviteUrl.description;
     inviteUrl.icon = 'content_copy';
     inviteUrl.hint = 'click to send invite';

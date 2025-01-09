@@ -11,9 +11,10 @@ export class MarketingService {
     return of(SafetyMarketing_MOCK);
   }
 
-  getBusinessMarketing(business: Business): Marketing {
+  getBusinessMarketing(business: Business, isCreateInvite = true): Marketing {
 
     const marketing: Marketing = (JSON.parse(JSON.stringify(SafetyMarketing_MOCK)));
+
     //TODO what if business has no fb group,etc
     const fbIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.facebook; });
     marketing.bulletPointList[fbIndex].url = business.facebookUrl;
@@ -29,18 +30,20 @@ export class MarketingService {
     marketing.bulletPointList[phoneNumber].urlIsPhone = true;
 
     marketing.bulletPointInviteList = [];
-    marketing.bulletPointInviteList.push(
-      {
-        title: 'Click To Copy Invite Link',
-        subTitle: 'Copy invite from your clipboard',
-        icon: 'content_copy',
-        socialMedia: SocialMedia.invite,
-        route: business.urlInvite.value,
-        isInvite: true
-      });
+    if (isCreateInvite) {
+
+      marketing.bulletPointInviteList.push(
+        {
+          title: 'Click To Copy Invite Link', subTitle: 'Copy invite from your clipboard', icon: 'content_copy',
+          socialMedia: SocialMedia.invite, route: business.urlInvite.value, isInvite: true
+        },
+        { title: "Send Link To Invite Via Text", icon: 'message', subTitle: 'Paste link into direct/tect message', subTitleShow: true, socialMedia: SocialMedia.unknown }
+      );
+
+    }
 
     marketing.bulletPointInviteList.push(
-      { title: "Send Link To Invite Via Text", icon: 'message', subTitle: 'Paste link into direct/tect message', subTitleShow: true, socialMedia: SocialMedia.unknown },
+
       { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
       { title: 'What Makes You Happy?', icon: 'insert_emoticon', socialMedia: SocialMedia.unknown },
     );

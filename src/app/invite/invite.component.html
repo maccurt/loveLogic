@@ -3,38 +3,43 @@
         <ll-business [detailMode]="true" [business]="business()"></ll-business>
     </div>
     <div>
+
         <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)"
             [expanded]="safetyIsExpanded()" [hideToggle]="false">
             <mat-expansion-panel-header>
                 <mat-panel-title style="font-size: small;">Step 1.
                     @if(!panelOpenState()){
-                    Expand To See Verify Options
+                    Expand for options to verify location.
                     }
                     @else {
-                    Use Link To Verify Location
+                    Follow links to verify location.
                     }
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ll-bullet-point-list [showSubtitle]="true"
-            [bulletPointList]="marketingStore.getBusinessMarketing(business()).bulletPointList">
+                [bulletPointList]="marketingStore.getBusinessMarketing(business()).bulletPointList">
             </ll-bullet-point-list>
         </mat-expansion-panel>
+
     </div>
     <div>
         <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
             <mat-expansion-panel-header>
-                <mat-panel-title style="font-size: small;color:black">Step 2. Copy Invite Link</mat-panel-title>
+                <mat-panel-title style="font-size: small;color:black">
+
+                    
+                    Step 2. {{step2Title}}</mat-panel-title>
             </mat-expansion-panel-header>
             <ll-bullet-point-list [showSubtitle]="false" [isInvite]="true"
-                [bulletPointList]="marketingStore.getBusinessMarketing(business()).bulletPointInviteList">
+                [bulletPointList]="marketingStore.getBusinessMarketing(business(),isCreateMode()).bulletPointInviteList">
             </ll-bullet-point-list>
         </mat-expansion-panel>
     </div>
 
 
-    @if (createMode()){
+    @if (isCreateMode()){
     <!-- Only the creator of invite will see this -->
-    <div>
+    <!-- <div>
         <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
             <mat-expansion-panel-header>
                 <mat-panel-title style="font-size: small;color:black">Options</mat-panel-title>
@@ -56,7 +61,7 @@
             </mat-expansion-panel-header>
 
         </mat-expansion-panel>
-    </div>
+    </div> -->
 
     }
 

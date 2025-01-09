@@ -19,9 +19,9 @@ export const MarketingStore = signalStore(
         store,
         marketingService = inject(MarketingService)) => (
         {
-            getBusinessMarketing(business: Business): Marketing {
+            getBusinessMarketing(business: Business,isCreateMode = true): Marketing {
 
-                return marketingService.getBusinessMarketing(business);
+                return marketingService.getBusinessMarketing(business,isCreateMode);
             }
         }
     ))

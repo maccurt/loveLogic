@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, model, OnInit, signal } from '@angular/core';
 import { Business } from '../business-domain/Business';
 import { BusinessComponent } from "../business-domain/business/business.component";
 import { BulletPointListComponent } from "../marketing-domain/bullet-point-list/bullet-point-list.component";
@@ -25,19 +25,21 @@ import { MarketingStore } from '../marketing-domain/marketing.store';
   templateUrl: './invite.component.html',
   styleUrl: './invite.component.scss'
 })
-export class InviteComponent  {
+export class InviteComponent implements OnInit {
   readonly store = inject(BusinessStore);
   readonly marketingStore = inject(MarketingStore);
   readonly route = inject(ActivatedRoute);
   readonly fb = inject(FormBuilder);
   //input
   readonly business = input.required<Business>();
-  readonly createMode = input<boolean>(true);
+  readonly isCreateMode = model<boolean>(true);
   //misc
   readonly panelOpenState = signal(false);
   readonly safetyIsExpanded = signal(false);
   readonly form = this.fb.group(({}));
 
+  //label,etc
+  step2Title = 'Copy Invite Link & Send To Recipient';
   constructor() {
 
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((paramMap) => {
@@ -46,6 +48,19 @@ export class InviteComponent  {
       if (safetyPriority === 1) {
         this.safetyIsExpanded.set(true);
       }
+
+      const isInvite = parseInt(paramMap.get('isInvite') as string);
+      if (isInvite === 1){
+        this.isCreateMode.set(false);
+      }
+
     });
+  }
+  ngOnInit(): void {
+
+    if (!this.isCreateMode()) {
+      this.step2Title = 'Meet me at the ' + this.business().name;
+    }
+
   }
 }
