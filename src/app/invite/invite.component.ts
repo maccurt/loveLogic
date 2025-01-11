@@ -40,6 +40,7 @@ export class InviteComponent implements OnInit {
 
   //label,etc
   step2Title = 'Copy Invite Link & Send To Recipient';
+  inviteMessage = signal<string>('Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe labore iste nobis vitae harum veritatis?.')
   constructor() {
 
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((paramMap) => {
@@ -62,5 +63,9 @@ export class InviteComponent implements OnInit {
       this.step2Title = 'Meet me at the ' + this.business().name;
     }
 
+    this.inviteMessage
+    .set(`I would like to invite you to the <b> ${this.business().name} </b> to meet to see if our personality matches. `);    
+
   }
+  
 }

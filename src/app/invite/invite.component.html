@@ -2,6 +2,20 @@
     <div class="business-grid-item">
         <ll-business [detailMode]="true" [business]="business()"></ll-business>
     </div>
+
+    @if(!isCreateMode()){
+
+    <div class="invite-message">
+        <p>
+            <!-- <mat-icon>schedule</mat-icon> -->
+            <span [innerHTML]="inviteMessage()"></span>
+            <span>Your safety is a prioriy. Please use the steps below to verify the location.</span>
+        </p>
+
+    </div>
+
+    }
+
     <div>
 
         <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)"
@@ -27,7 +41,7 @@
             <mat-expansion-panel-header>
                 <mat-panel-title style="font-size: small;color:black">
 
-                    
+
                     Step 2. {{step2Title}}</mat-panel-title>
             </mat-expansion-panel-header>
             <ll-bullet-point-list [showSubtitle]="false" [isInvite]="true"
