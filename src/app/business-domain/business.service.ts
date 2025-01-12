@@ -8,6 +8,7 @@ import { categroryListMock } from "./categroryListMock";
 import countBy from 'lodash-es/countBy';
 import { sortBy } from 'lodash-es';
 import { Address } from '../address/Adress';
+import { isInvite_QueryString } from '../invite/getFieldsFromParamMap.function';
 
 @Injectable({
   providedIn: 'root'
@@ -47,10 +48,9 @@ export class BusinessService {
   setGoogleMapUrl = (b: Business) => {
 
     b.address.googleMapUrl = this.googleMapSearchUrl(b.name, b.address);
-
     const inviteUrl = new Url();
     b.urlInvite = inviteUrl;
-    inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}?isInvite=1`;
+    inviteUrl.description = document.location.host + `/${b.address.state}/${b.id}?${isInvite_QueryString}=1`;
     inviteUrl.value = inviteUrl.description;
     inviteUrl.icon = 'content_copy';
     inviteUrl.hint = 'click to send invite';
@@ -61,7 +61,6 @@ export class BusinessService {
       map((result) => {
 
         //TODO it seem for the demo we do to much here
-
         const filter = result.filter((b) => {
           return b.address.state.toLocaleLowerCase() === stateCode.toLocaleLowerCase();
         });

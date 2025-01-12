@@ -39,16 +39,13 @@ export class MarketingService {
         },
         { title: "Send Link To Invite Via Text", icon: 'message', subTitle: 'Paste link into direct/tect message', subTitleShow: true, socialMedia: SocialMedia.unknown }
       );
-
     }
 
     marketing.bulletPointInviteList.push(
-
       { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
       { title: 'What Makes You Happy?', icon: 'insert_emoticon', socialMedia: SocialMedia.unknown },
     );
 
     return marketing;
   }
-
 }
