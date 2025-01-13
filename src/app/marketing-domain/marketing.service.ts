@@ -30,8 +30,7 @@ export class MarketingService {
     marketing.bulletPointList[phoneNumber].urlIsPhone = true;
 
     marketing.bulletPointInviteList = [];
-    if (isCreateInvite) {
-
+    if (isCreateInvite) {      
       marketing.bulletPointInviteList.push(
         {
           title: 'Click To Copy Invite Link', subTitle: 'Copy invite from your clipboard', icon: 'content_copy',
@@ -41,10 +40,12 @@ export class MarketingService {
       );
     }
 
-    marketing.bulletPointInviteList.push(
-      { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
-      { title: 'What Makes You Happy?', icon: 'insert_emoticon', socialMedia: SocialMedia.unknown },
-    );
+    if (!isCreateInvite){
+      marketing.bulletPointInviteList.push(
+        { title: "Let's see how we vibe.", icon: 'people', socialMedia: SocialMedia.unknown },
+        { title: 'What Makes You Happy?', icon: 'insert_emoticon', socialMedia: SocialMedia.unknown },
+      );
+    }    
 
     return marketing;
   }

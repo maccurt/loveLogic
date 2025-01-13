@@ -1,6 +1,6 @@
 import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { BusinessService } from "./business.service";
-import { Business, stateListMock, StateLocation } from './Business';
+import { Business, stateListMock, StateLocation, Url } from './Business';
 import { Category, categoryMyFavorite } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
 import { inject } from '@angular/core';
@@ -9,6 +9,10 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Marketing, SafetyMarketing_MOCK } from '../marketing-domain/Marketing';
 import { MarketingService } from '../marketing-domain/marketing.service';
+import {
+    isInvite_QueryString,
+    messageId_QueryString
+} from '../invite/getFieldsFromParamMap.function';
 
 interface BusinessState {
     brandName: string;
@@ -29,7 +33,8 @@ interface BusinessState {
     showCategory: boolean;
     categoryList: Category[],
     compactMode: boolean,
-    isMobile: boolean
+    isMobile: boolean,
+    messageId: number
 };
 
 const businessInitialState: BusinessState = {
@@ -50,7 +55,8 @@ const businessInitialState: BusinessState = {
     isLoading: true,
     showCategory: false,
     compactMode: true,
-    isMobile: false
+    isMobile: false,
+    messageId: 1
 };
 
 export const BusinessStore = signalStore(
@@ -83,6 +89,19 @@ export const BusinessStore = signalStore(
         marketingService = inject(MarketingService),
     ) => (
         {
+            setMessage(messageId: number) {
+                patchState(store, { messageId });
+            },
+            getInviteUrl(business: Business): Url {
+                const messageId = store.messageId();
+                const inviteUrl = new Url();
+                business.urlInvite = inviteUrl;
+                inviteUrl.description = document.location.host + `/${business.address.state}/${business.id}?${isInvite_QueryString}=1&${messageId_QueryString}=${messageId}`;
+                inviteUrl.value = inviteUrl.description;
+                inviteUrl.icon = 'content_copy';
+                inviteUrl.hint = 'click to send invite';
+                return inviteUrl
+            },
 
             async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
 

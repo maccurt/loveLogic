@@ -37,7 +37,9 @@ export class BusinessComponent {
   public readonly store = inject(BusinessStore);
 
   copyInvite() {
-    this.clipboard.copy(this.business().urlInvite.value);
+    // this.clipboard.copy(this.business().urlInvite.value);
+
+    this.clipboard.copy(this.store.getInviteUrl(this.business()).value)
 
     this._snackBar.open('invitation copied to clipboard', 'Close', {
       horizontalPosition: 'right',

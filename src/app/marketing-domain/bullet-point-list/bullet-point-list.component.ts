@@ -37,8 +37,11 @@ export class BulletPointListComponent {
   showSubtitle = input<boolean>(false);
   isInvite = input<boolean>(false);
 
-  copyInvite(business: Business) {
-    this.clipboard.copy(business.urlInvite.value);
+  copyInvite(business: Business) { 
+    
+    const url = this.store.getInviteUrl(business);
+    console.log(url);
+    this.clipboard.copy(url.value);
     this._snackBar.open('invitation copied to clipboard', 'Close', {
       horizontalPosition: 'right',
       verticalPosition: 'top',

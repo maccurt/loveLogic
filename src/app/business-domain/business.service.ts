@@ -15,7 +15,6 @@ import { isInvite_QueryString } from '../invite/getFieldsFromParamMap.function';
 
 })
 export class BusinessService {
-
   url = '/data/data.json';
   constructor(private readonly http: HttpClient) { }
 
@@ -92,17 +91,6 @@ export class BusinessService {
       if (category) {
         category.count = categoryCount[key];
         categoryList.push(category);
-
-        //if there is Image url for that category we pull one the images from the
-        //a business that has the category to represent it
-        //this in theory should never happen,
-        // if (!category.imageUrl) {
-        //   const b = businessList.find((b) => {
-        //     return b.categoryId === category.id;
-        //   });
-
-        //   category.imageUrl = b?.imageUrl;
-        // }
       }
     }
 

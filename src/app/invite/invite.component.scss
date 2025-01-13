@@ -1,24 +1,19 @@
 .invite-component-grid {
     max-width: 400px;
     display: grid;
-
     .business-grid-item {
         padding-bottom: 8px;
     }
-
-    .invite-message {
-        border: 1px solid #cccccc;
-        margin-top: 8px;
-        margin-bottom: 16px;
-        padding: 16px 32px;
-        background-color: aliceblue;
-        text-align: justify;
-
-    }
 }
 
-
-
+.tab-message {
+    padding: 16px;
+    background-color: aliceblue;
+    border: 1px solid #cccccc;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    text-align: justify;
+}
 
 mat-expansion-panel {
     border-top: none;

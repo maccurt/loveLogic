@@ -15,7 +15,7 @@ export const getFieldsFromParamMap = function (paramMap: ParamMap): {
   //default to message 1
   let messageId = parseInt(paramMap.get(messageId_QueryString) as string);
   if (!messageId) {
-    messageId = 1;
+    messageId = 0;
   }
 
   return {
