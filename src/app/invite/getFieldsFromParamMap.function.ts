@@ -26,5 +26,3 @@ export const getFieldsFromParamMap = function (paramMap: ParamMap): {
   };
 };
 
-
-

@@ -25,7 +25,7 @@ describe('query parm', () => {
             isSafetyPriority: '1',
             messageId: '2'
         };
-        
+
         const paramMap = convertToParamMap(params);
         const result = getFieldsFromParamMap(paramMap);
         expect(result.isInvite).toBe(true);
@@ -38,7 +38,7 @@ describe('query parm', () => {
         const paramMap = convertToParamMap(params);
         const result = getFieldsFromParamMap(paramMap);
         expect(result.isInvite).toBe(false);
-        expect(result.isSafeyPriority).toBe(false);        
+        expect(result.isSafeyPriority).toBe(false);
         expect(result.messageId).toBe(0);
     });
 
@@ -65,7 +65,7 @@ describe('query parm', () => {
                 isSafetyPriority: '1',
                 messageId: '2'
             };
-            
+
             const paramMap = convertToParamMap(params);
             const result = getFieldsFromParamMap(paramMap);
             expect(result.isInvite).toBe(true);
@@ -78,7 +78,7 @@ describe('query parm', () => {
             const paramMap = convertToParamMap(params);
             const result = getFieldsFromParamMap(paramMap);
             expect(result.isInvite).toBe(false);
-            expect(result.isSafeyPriority).toBe(false);        
+            expect(result.isSafeyPriority).toBe(false);
             expect(result.messageId).toBe(0);
         });
 

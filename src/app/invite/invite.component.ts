@@ -58,9 +58,8 @@ export class InviteComponent implements OnInit {
 
   //label,etc
   step2Title = 'Copy Invite Link & Send To Recipient';
-  endMessage = signal<string>('Please use steps below to verify the location.')
+  endMessage = signal<string>('Please use steps below to verify the location.');
   inviteMessage = signal<Message>(No_Message);
-  
 
   ngOnInit(): void {
     this.messageList.push(
@@ -72,7 +71,7 @@ export class InviteComponent implements OnInit {
 
     this.form.controls.messageId.valueChanges.subscribe((messageId) => {
       this.store.setMessage(messageId);
-    })
+    });
   }
 
   setParmsQueryParamMap = (paramMap: ParamMap) => {

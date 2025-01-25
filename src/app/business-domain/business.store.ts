@@ -100,7 +100,7 @@ export const BusinessStore = signalStore(
                 inviteUrl.value = inviteUrl.description;
                 inviteUrl.icon = 'content_copy';
                 inviteUrl.hint = 'click to send invite';
-                return inviteUrl
+                return inviteUrl;
             },
 
             async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
