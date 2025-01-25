@@ -1,74 +1,77 @@
-<form [formGroup]="form">
-    <div class="invite-component-grid">
-        <div class="business-grid-item">
-            <ll-business [detailMode]="true" [business]="business()"></ll-business>
+<div class="invite-component">
+    <form [formGroup]="form">
+        <div class="invite-component-grid">
+            <div class="business-grid-item">
+                <ll-business [detailMode]="true" [business]="business()"></ll-business>
+            </div>
+
+            @if(isCreateMode()){
+            <div>
+                <mat-expansion-panel expanded="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title style="font-size: small;">
+                            Step 1. Choose Invite Message
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-radio-group formControlName="messageId" aria-labelledby="example-radio-group-label"
+                        class="example-radio-group">
+                        @for(m of messageList;track $index){
+                        <mat-radio-button class="example-radio-button" [value]="m.id">
+                            @if(m.id === 0){
+                            {{m.text}}
+                            }
+                            @else{
+
+                            <ll-invite-message [isSelection]="true" [message]="m"></ll-invite-message>
+
+                            }
+                        </mat-radio-button>
+                        }
+                    </mat-radio-group>
+                </mat-expansion-panel>
+            </div>
+            }
+
+            @if(!isCreateMode() && !inviteMessage().hide ){
+            <ll-invite-message [message]="inviteMessage()"></ll-invite-message>
+            }
+
+            @if(!isCreateMode()){
+            <div>
+                <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)"
+                    [expanded]="safetyIsExpanded()" [hideToggle]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title style="font-size: small;">Step 1.
+                            @if(!panelOpenState()){
+                            Expand for options to verify location.
+                            }
+                            @else {
+                            Follow links to verify location.
+                            }
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ll-bullet-point-list [showSubtitle]="true"
+                        [bulletPointList]="marketingStore.getBusinessMarketing(business()).bulletPointList">
+                    </ll-bullet-point-list>
+                </mat-expansion-panel>
+            </div>
+            }
+
+            <div>
+                <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title style="font-size: small;color:black">
+                            Step 2. {{step2Title}}</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ll-bullet-point-list [showSubtitle]="false" [isInvite]="true"
+                        [bulletPointList]="marketingStore.getBusinessMarketing(business(),isCreateMode()).bulletPointInviteList">
+                    </ll-bullet-point-list>
+                </mat-expansion-panel>
+            </div>
+
         </div>
 
-        @if(isCreateMode()){
-        <div>
-            <mat-expansion-panel expanded="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title style="font-size: small;">
-                        Step 1. Choose Invite Message
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+    </form>
 
-                <mat-radio-group formControlName="messageId" aria-labelledby="example-radio-group-label"
-                    class="example-radio-group">
-                    @for(m of messageList;track $index){
-                    <mat-radio-button class="example-radio-button" [value]="m.id">
-                        @if(m.id === 0){
-                        {{m.text}}
-                        }
-                        @else{
-                        <ll-invite-message [message]="m"></ll-invite-message>
-                        }
-
-                    </mat-radio-button>
-                    }
-                </mat-radio-group>
-            </mat-expansion-panel>
-        </div>
-
-        }
-
-        @if(!isCreateMode() && !inviteMessage().hide ){
-        <ll-invite-message [message]="inviteMessage()"></ll-invite-message>
-        }
-
-        @if(!isCreateMode()){
-        <div>
-            <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)"
-                [expanded]="safetyIsExpanded()" [hideToggle]="false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title style="font-size: small;">Step 1.
-                        @if(!panelOpenState()){
-                        Expand for options to verify location.
-                        }
-                        @else {
-                        Follow links to verify location.
-                        }
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <ll-bullet-point-list [showSubtitle]="true"
-                    [bulletPointList]="marketingStore.getBusinessMarketing(business()).bulletPointList">
-                </ll-bullet-point-list>
-            </mat-expansion-panel>
-        </div>
-        }
-
-        <div>
-            <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title style="font-size: small;color:black">
-                        Step 2. {{step2Title}}</mat-panel-title>
-                </mat-expansion-panel-header>
-                <ll-bullet-point-list [showSubtitle]="false" [isInvite]="true"
-                    [bulletPointList]="marketingStore.getBusinessMarketing(business(),isCreateMode()).bulletPointInviteList">
-                </ll-bullet-point-list>
-            </mat-expansion-panel>
-        </div>
-
-    </div>
-
-</form>
+</div>

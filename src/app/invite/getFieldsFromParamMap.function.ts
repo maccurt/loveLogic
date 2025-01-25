@@ -3,6 +3,7 @@ import { ParamMap } from "@angular/router";
 export const isSafetyPriority_QueryString = 'isSafetyPriority';
 export const isInvite_QueryString = 'isInvite';
 export const messageId_QueryString = 'messageId';
+
 export const getFieldsFromParamMap = function (paramMap: ParamMap): {
   isSafeyPriority: boolean;
   isInvite: boolean;
@@ -24,3 +25,6 @@ export const getFieldsFromParamMap = function (paramMap: ParamMap): {
     messageId
   };
 };
+
+
+

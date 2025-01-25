@@ -60,6 +60,7 @@ export class InviteComponent implements OnInit {
   step2Title = 'Copy Invite Link & Send To Recipient';
   endMessage = signal<string>('Please use steps below to verify the location.')
   inviteMessage = signal<Message>(No_Message);
+  
 
   ngOnInit(): void {
     this.messageList.push(

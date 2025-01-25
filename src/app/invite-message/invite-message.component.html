@@ -1,3 +1,4 @@
-<div class="invite-message">
-    <p id="messsage" [innerHTML]="message().text"></p>
+<div [ngClass]="isSelection() ? 'invite-message-is-selction' : 'invite-message' ">
+    <div id="messsage" [innerHTML]="message().text"></div>
+
 </div>

@@ -1,11 +1,24 @@
 .invite-message {
-    // height: 75px;
     border: 1px solid #cccccc;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding: 8px 8px;
+    // margin-top: 8px;
+    // margin-bottom: 8px;
+    // padding: 8px 8px;
     background-color: aliceblue;
     text-align: justify;
+}
+
+
+
+.invite-message-is-selction{   
+    
+     border: 1px solid #cccccc;
+    // margin-top: 8px;
+    // margin-bottom: 8px;
+    // padding: 8px 8px;
+    background-color: aliceblue;
+    text-align: justify;
+    margin: 8px;
+    padding: 16px 16px;
 }
 
 .message {

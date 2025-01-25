@@ -219,3 +219,10 @@ b {
 // Large	lg	≥992px
 // Extra large	xl	≥1200px
 // Extra extra large	xxl	≥1400px
+
+
+.invite-component .mat-expansion-panel-body {
+    //this will give us some more room in the expansion panel
+    padding-left: 4px !important;
+    padding-right: 8px !important;
+}
