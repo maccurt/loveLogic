@@ -1,0 +1,71 @@
+
+<lib-pd-net-income-calculator></lib-pd-net-income-calculator>
+<div class="income-statement-component">
+
+    <div>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Revenue</mat-label>
+                <input formControlName="revenue" matInput placeholder="Placeholder">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                <!-- <mat-hint></mat-hint> -->
+            </mat-form-field>
+
+        </form>
+    </div>
+
+
+    <div class="income-statement-list">
+
+        @for(i of store.incomeStatementList();track $index){
+
+
+        <div>
+            <table class="income-statement">
+
+                <tr class="name">
+                    @if(i.name){
+                    <td colspan="2"> {{i.name}} </td>
+                    }
+                    @else {
+                    <td>-</td>
+                    }
+
+                </tr>
+
+                <tr>
+                    <td> Revenue </td>
+                    <td> {{i.revenue | number:'1.2-2'}} </td>
+                </tr>
+                <tr>
+                    <td> Cost of Goods Sold </td>
+                    <td> {{i.costOfGoodsSold | number:'1.2-2' }} </td>
+                </tr>
+
+
+                @for(e of i.expenseList; track $index){
+
+                <tr>
+                    <td>{{e.name}}</td>
+                    <td>{{e.value | number:'1.2-2' }}</td>
+                </tr>
+                }
+
+                <tr class="sub-total">
+                    <td> Expense </td>
+                    <td> {{i.expense | number:'1.2-2' }} </td>
+                </tr>
+
+
+                <tr class="total">
+                    <td> Gross Profit </td>
+                    <td> {{i.grossProfit | number:'1.2-2' }} </td>
+                </tr>
+            </table>
+        </div>
+
+        }
+
+    </div>
+
+</div>

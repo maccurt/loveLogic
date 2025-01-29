@@ -1,0 +1,30 @@
+.income-statement-list {
+
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr
+}
+
+.income-statement {
+    margin: 10px;
+    border: 1px solid #cccccc;
+    min-width: 300px;
+    td {
+        padding-left: 16px;
+    }
+
+    tr.name {
+        color: blue;
+        font-weight: 500;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    tr.sub-total {
+        border-top: 1px solid black;
+    }
+
+    tr.total {
+        border-top: 2px solid black;
+    }
+
+}

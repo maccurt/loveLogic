@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
 import { MarketingService } from '../marketing-domain/marketing.service';
 import { InviteComponent } from "../invite/invite.component";
+import { IncomeStatementComponent } from "../gross-profit-domain/income-statement/income-statement.component";
 
 @Component({
   selector: 'll-test',
@@ -22,7 +23,8 @@ import { InviteComponent } from "../invite/invite.component";
     MatChipsModule,
     MatSidenavModule,
     ClipboardModule,
-    InviteComponent
+    InviteComponent,
+    IncomeStatementComponent
 ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
