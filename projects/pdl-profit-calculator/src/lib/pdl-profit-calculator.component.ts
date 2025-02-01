@@ -6,39 +6,37 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ExpenseType, IncomeStatementStore } from './income-statement-store';
 import { DecimalPipe } from '@angular/common';
-import {PdNetIncomeCalculatorComponent} from 'pd-net-income-calculator'
+import { debounceTime } from 'rxjs';
 
 @Component({
-  selector: 'll-income-statement',
+  selector: 'lib-pdl-profit-calculator',
   imports: [
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule,
     MatIconModule,
-    DecimalPipe,
-    PdNetIncomeCalculatorComponent
-
+    MatInputModule,
+    DecimalPipe
   ],
-  templateUrl: './income-statement.component.html',
-  styleUrl: './income-statement.component.scss'
+  templateUrl: 'pdl-profit-calculator.component.html',
+  styleUrl: 'pdl-profit-calculator.component.scss'
 })
 export class IncomeStatementComponent implements OnInit {
   fb = inject(FormBuilder);
   store = inject(IncomeStatementStore);
 
   form = this.fb.group({
-    revenue: this.fb.nonNullable.control(1, { updateOn: 'blur' })
+    revenue: this.fb.nonNullable.control(1)
   });
 
   ngOnInit(): void {
 
     this.store.load(19.97, 11).then(() => {
-      this.store.addIncomeStatement('Ebay',[
+      this.store.addIncomeStatement('Ebay', [
         { name: "ebay % fee", modifier: 13.25, expenseType: ExpenseType.percentOfRevenue },
         { name: "per order fee", modifier: .30, expenseType: ExpenseType.fixedFee }
       ]);
-      this.store.addIncomeStatement('Etsy',[
+      this.store.addIncomeStatement('Etsy', [
         { name: "Etsy % fee", modifier: 6.5, expenseType: ExpenseType.percentOfRevenue },
         { name: "per order fee", modifier: .20, expenseType: ExpenseType.fixedFee }
       ]);
@@ -48,9 +46,11 @@ export class IncomeStatementComponent implements OnInit {
       revenue: this.store.revenue()
     });
 
-    this.form.controls.revenue.valueChanges.subscribe((x) => {
-      this.store.update(x, 11);
-    });
+    this.form.controls.revenue.valueChanges
+      .pipe(debounceTime(500)).
+      subscribe((x) => {
+        this.store.update(x, 11);
+      });
 
   }
 }

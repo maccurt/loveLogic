@@ -13,7 +13,7 @@ export class IncomeStatementService {
   }
 
   getIncomeStatement(revenue: number, cogs: number, expenseList: IncomeStatementExpense[] = []): IncomeStatement {
-
+    
     const i = new IncomeStatement();
     i.revenue = revenue;
     i.costOfGoodsSold = cogs;
@@ -31,25 +31,24 @@ export class IncomeStatementService {
     return expense;
   }
 
-  setExpenseTotal(i: IncomeStatement) {
+  setExpenseTotal(incomeStatement: IncomeStatement) {
+    
     let expenseTotal = 0;
-    i.expenseList.forEach((e) => {
+    incomeStatement.expenseList.forEach((expense) => {
 
-      e.value = 0;
-
-      switch (e.expenseType) {
+      expense.value = 0;
+      switch (expense.expenseType) {
         case ExpenseType.percentOfRevenue:
-          e.value = this.expensePercentOfRevenue(i.revenue, e.modifier)
+          expense.value = this.expensePercentOfRevenue(incomeStatement.revenue, expense.modifier)
           break;
         case ExpenseType.fixedFee:
-          e.value = e.modifier
+          expense.value = expense.modifier
       }
 
-      expenseTotal = expenseTotal + e.value;
-
+      expenseTotal = expenseTotal + expense.value;
 
     });
-    i.expense = expenseTotal;
+    incomeStatement.expense = expenseTotal;
   }
 
   grossProfit(i: IncomeStatement): number {

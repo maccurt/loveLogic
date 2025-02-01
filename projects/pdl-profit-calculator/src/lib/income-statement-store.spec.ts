@@ -39,7 +39,7 @@ describe('income statement store test', () => {
         });
 
         it('add an income statement', () => {
-            store.addIncomeStatement();
+            store.addIncomeStatement('Name of Product/etc.');
             expect(store.incomeStatementList().length).toBe(2);
             expect(store.incomeStatementList()[1].revenue).toBe(100);
             expect(store.incomeStatementList()[1].costOfGoodsSold).toBe(30);
@@ -51,7 +51,7 @@ describe('income statement store test', () => {
 
         it('add an income statement with 3% seller fee', () => {
 
-            store.addIncomeStatement([{ name: 'Ebay', modifier: 3, expenseType: ExpenseType.percentOfRevenue }]);
+            store.addIncomeStatement('some name', [{ name: 'Ebay', modifier: 3, expenseType: ExpenseType.percentOfRevenue }]);
             expect(store.incomeStatementList().length).toBe(2);
             const i = store.incomeStatementList()[1];
             expect(i.revenue).toBe(100);
@@ -63,6 +63,24 @@ describe('income statement store test', () => {
             //gross profit should be affected by expense
             expect(i.expense).toBe(3); //3% of 100 is 3
             expect(i.grossProfit).toBe(67);
+        });
+
+        describe('expenseGreatestCount', () => {
+
+            it('should return 0', () => {
+                expect(store.incomeStatementList().length).toBe(1);
+                expect(store.expenseGreatestCount()).toBe(0);
+            });
+
+            it('should return 2', () => {
+
+                store.addIncomeStatement('A', [{ name: 'Ebay', modifier: 3, expenseType: ExpenseType.percentOfRevenue }]);
+                store.addIncomeStatement('B', [
+                    { name: 'jedi', modifier: 3, expenseType: ExpenseType.percentOfRevenue },
+                    { name: 'xxx', modifier: 3, expenseType: ExpenseType.percentOfRevenue }]);
+
+                expect(store.expenseGreatestCount()).toBe(2);
+            });
 
         });
     });

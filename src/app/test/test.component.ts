@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
 import { MarketingService } from '../marketing-domain/marketing.service';
 import { InviteComponent } from "../invite/invite.component";
-import { IncomeStatementComponent } from "../gross-profit-domain/income-statement/income-statement.component";
+import { IncomeStatementComponent } from '../../../projects/pdl-profit-calculator/src/public-api';
 
 @Component({
   selector: 'll-test',
@@ -23,13 +23,12 @@ import { IncomeStatementComponent } from "../gross-profit-domain/income-statemen
     MatChipsModule,
     MatSidenavModule,
     ClipboardModule,
-    InviteComponent,
     IncomeStatementComponent
-],
+  ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
 })
-export class TestComponent  {
+export class TestComponent {
 
   readonly store = inject(BusinessStore);
   marketingService = inject(MarketingService);

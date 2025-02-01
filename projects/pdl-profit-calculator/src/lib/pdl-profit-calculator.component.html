@@ -1,7 +1,4 @@
-
-<lib-pd-net-income-calculator></lib-pd-net-income-calculator>
 <div class="income-statement-component">
-
     <div>
         <form [formGroup]="form">
             <mat-form-field appearance="outline">
@@ -30,7 +27,6 @@
                     @else {
                     <td>-</td>
                     }
-
                 </tr>
 
                 <tr>
@@ -41,8 +37,7 @@
                     <td> Cost of Goods Sold </td>
                     <td> {{i.costOfGoodsSold | number:'1.2-2' }} </td>
                 </tr>
-
-
+                
                 @for(e of i.expenseList; track $index){
 
                 <tr>

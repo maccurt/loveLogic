@@ -9,7 +9,6 @@ describe('', () => {
     i = new IncomeStatement();
     i.revenue = 10;
     i.costOfGoodsSold = 6
-
   })
 
   it('no expenses should return 0', () => {
@@ -52,6 +51,5 @@ describe('', () => {
     // 1 + .30 = 1.30
     expect(i.expense).toBe(1.30)
   });
-
 
 });
