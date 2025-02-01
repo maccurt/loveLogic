@@ -4,7 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ExpenseType, IncomeStatementStore } from './income-statement-store';
+import { IncomeStatementStore } from './income-statement-store';
+import { ExpenseType } from "./IncomeStatement";
 import { DecimalPipe } from '@angular/common';
 import { debounceTime } from 'rxjs';
 

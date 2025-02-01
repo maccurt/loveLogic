@@ -1,31 +1,7 @@
-import { computed, effect, inject } from "@angular/core";
-import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
-import { IncomeStatementService } from "./income-statement.service";
-import { orderBy, sortBy } from "lodash-es";
-
-
-export class IncomeStatement {
-    name?: string;
-    revenue!: number;
-    costOfGoodsSold!: number;
-    expenseList: IncomeStatementExpense[] = [];
-    expense!: number;
-    grossProfit!: number;
-    operatingExpenses!: number;
-    netIncome!: number;
-}
-
-export enum ExpenseType {
-    none = 0,
-    percentOfRevenue = 1,
-    fixedFee
-}
-export class IncomeStatementExpense {
-    name!: string;
-    modifier!: number;
-    value?: number = 0;
-    expenseType: ExpenseType = ExpenseType.none;
-}
+import { computed, inject } from "@angular/core";
+import { patchState, signalStore, withComputed, withMethods, withState } from "@ngrx/signals";
+import { IncomeStatementExpense, IncomeStatementService } from "./income-statement.service";
+import { IncomeStatement } from "./IncomeStatement";
 
 interface IncomeStatementState {
     revenue: number;
@@ -42,13 +18,14 @@ const incomeStatementInitialState: IncomeStatementState = {
 export const IncomeStatementStore = signalStore(
     { providedIn: 'root' },
     withState(incomeStatementInitialState),
-    //Hooks to add init,etc.
-    withHooks(
-        {
-            onInit(store) { }
+    // withHooks(
+    //     {
+    //         onInit(store) {
 
-        }
-    ),
+    //          }
+
+    //     }
+    // ),
     withMethods(
         (store, incomeStatementService = inject(IncomeStatementService)) => ({
 
@@ -77,7 +54,7 @@ export const IncomeStatementStore = signalStore(
                 const incomeStatementList = store.incomeStatementList();
 
                 const i = incomeStatementService.getIncomeStatement(store.revenue(), store.costOfGoodsSold(), expenseList);
-                i.name = name
+                i.name = name;
 
                 incomeStatementList.push(i);
 
@@ -91,17 +68,16 @@ export const IncomeStatementStore = signalStore(
             expenseGreatestCount: computed(() => {
 
                 if (state.incomeStatementList().length === 0){
-                    return 0
+                    return 0;
                 }
-                
+
                 const lengthList: number[] = [];
                 state.incomeStatementList().forEach((i) => {
-                    lengthList.push(i.expenseList.length)
-                });                
+                    lengthList.push(i.expenseList.length);
+                });
 
                 const sorted = lengthList.sort((a, b) => b - a);
-                return sorted[0]
-
+                return sorted[0];
             })
         }
     ))

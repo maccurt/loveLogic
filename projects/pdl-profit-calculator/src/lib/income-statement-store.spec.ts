@@ -1,5 +1,7 @@
 import { TestBed } from "@angular/core/testing";
-import { ExpenseType, IncomeStatement, IncomeStatementStore } from "./income-statement-store";
+import { IncomeStatementStore } from "./income-statement-store";
+import { ExpenseType } from "./IncomeStatement";
+import { IncomeStatement } from "./IncomeStatement";
 import { IncomeStatementService } from "./income-statement.service";
 
 describe('income statement store test', () => {
@@ -85,5 +87,4 @@ describe('income statement store test', () => {
         });
     });
 });
-
 

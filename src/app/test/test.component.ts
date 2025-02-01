@@ -9,7 +9,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
 import { MarketingService } from '../marketing-domain/marketing.service';
-import { InviteComponent } from "../invite/invite.component";
 import { IncomeStatementComponent } from '../../../projects/pdl-profit-calculator/src/public-api';
 
 @Component({
