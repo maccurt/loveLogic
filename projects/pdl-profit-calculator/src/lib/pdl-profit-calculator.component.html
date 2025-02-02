@@ -37,6 +37,10 @@
                     <td> Cost of Goods Sold </td>
                     <td> {{i.costOfGoodsSold | number:'1.2-2' }} </td>
                 </tr>
+                <tr class="sub-total">
+                    <td> Gross Profit </td>
+                    <td> {{i.grossProfitBeforeExpenses | number:'1.2-2' }} </td>
+                </tr>
                 
                 @for(e of i.expenseList; track $index){
 
@@ -44,17 +48,37 @@
                     <td>{{e.name}}</td>
                     <td>{{e.value | number:'1.2-2' }}</td>
                 </tr>
-                }
+                }                
+                
+                @if(i.expenseList.length < store.expenseGreatestCount()){
+                    <!-- Adding blank rows to keep expense section the same height -->
+                    @for(e of [].constructor(store.expenseGreatestCount() - i.expenseList.length);track $index){
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    }                   
+                }                
 
                 <tr class="sub-total">
-                    <td> Expense </td>
+                    <td> Expense Total </td>
                     <td> {{i.expense | number:'1.2-2' }} </td>
                 </tr>
 
 
                 <tr class="total">
                     <td> Gross Profit </td>
-                    <td> {{i.grossProfit | number:'1.2-2' }} </td>
+                    <td>$ {{i.grossProfitAfterExpense | number:'1.2-2' }} </td>
+                </tr>
+
+                <tr >
+                    <td> Taxes </td>
+                    <td> {{i.taxes | number:'1.2-2' }} </td>
+                </tr>
+
+                <tr class="total" >
+                    <td> Net Income </td>
+                    <td>$ {{i.netIncome | number:'1.2-2' }} </td>
                 </tr>
             </table>
         </div>

@@ -1,13 +1,15 @@
-
 export class IncomeStatement {
-    name?: string;
     revenue!: number;
     costOfGoodsSold!: number;
     expenseList: IncomeStatementExpense[] = [];
-    expense!: number;
-    grossProfit!: number;
-    operatingExpenses!: number;
     taxRate!: number;
+    name?: string;
+    expense!: number;    
+    grossProfitBeforeExpenses!: number;
+    grossProfitAfterExpense!: number;
+    // grossProfit!: number;
+    operatingExpenses!: number;
+    taxes!: number;
     netIncome!: number;
 }
 

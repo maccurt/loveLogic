@@ -1,40 +1,35 @@
 import { computed, inject } from "@angular/core";
 import { patchState, signalStore, withComputed, withMethods, withState } from "@ngrx/signals";
-import { IncomeStatementExpense, IncomeStatementService } from "./income-statement.service";
-import { IncomeStatement } from "./IncomeStatement";
+import { IncomeStatementService } from "./income-statement-service/income-statement.service";
+import { IncomeStatement, IncomeStatementExpense } from "./IncomeStatement";
 
 interface IncomeStatementState {
     revenue: number;
     costOfGoodsSold: number;
     incomeStatementList: IncomeStatement[]
+    taxRatePercent: number;
 }
 
 const incomeStatementInitialState: IncomeStatementState = {
     revenue: 100,
+    taxRatePercent: 0,
     costOfGoodsSold: 0,
     incomeStatementList: []
 };
 
 export const IncomeStatementStore = signalStore(
     { providedIn: 'root' },
-    withState(incomeStatementInitialState),
-    // withHooks(
-    //     {
-    //         onInit(store) {
-
-    //          }
-
-    //     }
-    // ),
+    withState(incomeStatementInitialState),    
     withMethods(
         (store, incomeStatementService = inject(IncomeStatementService)) => ({
 
-            async load(revenue: number, costOfGoodsSold: number): Promise<void> {
+            async load(revenue: number, costOfGoodsSold: number, taxRatePercent: number): Promise<void> {
                 const incomeStatementList: IncomeStatement[] = [];
 
-                const i = incomeStatementService.getIncomeStatement(revenue, costOfGoodsSold, undefined);
+
+                const i = incomeStatementService.incomeStatementFactory(revenue, costOfGoodsSold, [], taxRatePercent);
                 incomeStatementList.push(i);
-                patchState(store, { revenue, costOfGoodsSold, incomeStatementList });
+                patchState(store, { revenue, costOfGoodsSold, incomeStatementList,taxRatePercent });
             },
 
             update(revenue: number, costOfGoodsSold: number) {
@@ -43,7 +38,7 @@ export const IncomeStatementStore = signalStore(
                 incomeStatementList.forEach((i) => {
                     i.revenue = revenue;
                     i.costOfGoodsSold = costOfGoodsSold;
-                    incomeStatementService.calculateIncomeStatement(i);
+                    incomeStatementService.calculateIncomeStatmentProperties(i);
                 });
 
                 patchState(store, { revenue, costOfGoodsSold, incomeStatementList });
@@ -53,12 +48,11 @@ export const IncomeStatementStore = signalStore(
 
                 const incomeStatementList = store.incomeStatementList();
 
-                const i = incomeStatementService.getIncomeStatement(store.revenue(), store.costOfGoodsSold(), expenseList);
-                i.name = name;
+                const i = incomeStatementService.incomeStatementFactory(store.revenue(), store.costOfGoodsSold(), expenseList,store.taxRatePercent());
+                i.name = name;           
+                
 
-                incomeStatementList.push(i);
-
-                patchState(store, { incomeStatementList });
+                patchState(store, { incomeStatementList:[...incomeStatementList,i] });
             }
         })
     ),
@@ -67,16 +61,22 @@ export const IncomeStatementStore = signalStore(
             incomeStatementCount: computed(() => state.incomeStatementList().length),
             expenseGreatestCount: computed(() => {
 
-                if (state.incomeStatementList().length === 0){
-                    return 0;
-                }
 
+                console.log('expenseGreatestCount',state.incomeStatementList())
+                state.incomeStatementList()
+
+                if (state.incomeStatementList().length === 0) {
+                    return 0;
+                }                
                 const lengthList: number[] = [];
                 state.incomeStatementList().forEach((i) => {
                     lengthList.push(i.expenseList.length);
                 });
 
+                
                 const sorted = lengthList.sort((a, b) => b - a);
+
+                console.log(sorted);
                 return sorted[0];
             })
         }
