@@ -32,7 +32,7 @@ export class IncomeStatementComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.store.load(19.97, 11,35).then(() => {
+    this.store.load(14.95, 11.42,35).then(() => {
       
       this.store.addIncomeStatement('Ebay', [
         { name: "ebay % fee", modifier: 13.25, expenseType: ExpenseType.percentOfRevenue },
