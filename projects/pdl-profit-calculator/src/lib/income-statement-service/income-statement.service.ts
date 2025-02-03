@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ExpenseType, IncomeStatementExpense } from "../IncomeStatement";
 import { IncomeStatement } from "../IncomeStatement";
-
 @Injectable({
   providedIn: 'root'
 })

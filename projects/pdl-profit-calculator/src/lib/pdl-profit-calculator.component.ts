@@ -5,9 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { IncomeStatementStore } from './income-statement-store';
-import { ExpenseType } from "./IncomeStatement";
+
 import { DecimalPipe } from '@angular/common';
 import { debounceTime } from 'rxjs';
+import { incomeStatementStateMock } from './income-statement-service/mocks/mock';
 
 @Component({
   selector: 'lib-pdl-profit-calculator',
@@ -32,17 +33,7 @@ export class IncomeStatementComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.store.load(14.95, 11.42,35).then(() => {
-      
-      this.store.addIncomeStatement('Ebay', [
-        { name: "ebay % fee", modifier: 13.25, expenseType: ExpenseType.percentOfRevenue },
-        { name: "per order fee", modifier: .30, expenseType: ExpenseType.fixedFee }
-      ]);
-      this.store.addIncomeStatement('Etsy', [
-        { name: "Etsy % fee", modifier: 6.5, expenseType: ExpenseType.percentOfRevenue },
-        { name: "per order fee", modifier: .20, expenseType: ExpenseType.fixedFee }
-      ]);      
-    });
+    this.store.loadFromState(incomeStatementStateMock);    
 
     this.form.patchValue({
       revenue: this.store.revenue()
@@ -51,7 +42,8 @@ export class IncomeStatementComponent implements OnInit {
     this.form.controls.revenue.valueChanges
       .pipe(debounceTime(500)).
       subscribe((x) => {
-        this.store.update(x, 11);
+        //TODO add cogs here properly not like this
+        this.store.update(x,this.store.costOfGoodsSold())
       });
 
   }

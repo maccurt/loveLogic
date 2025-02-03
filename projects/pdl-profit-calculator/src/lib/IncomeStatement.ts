@@ -16,7 +16,8 @@ export class IncomeStatement {
 export enum ExpenseType {
     none = 0,
     percentOfRevenue = 1,
-    fixedFee
+    fixedFee,
+    shipping
 }
 
 export class IncomeStatementExpense {
