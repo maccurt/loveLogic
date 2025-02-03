@@ -40,7 +40,6 @@ export class BulletPointListComponent {
   copyInvite(business: Business) {
 
     const url = this.store.getInviteUrl(business);
-    console.log(url);
     this.clipboard.copy(url.value);
     this._snackBar.open('invitation copied to clipboard', 'Close', {
       horizontalPosition: 'right',

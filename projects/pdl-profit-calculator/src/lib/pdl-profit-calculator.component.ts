@@ -33,7 +33,7 @@ export class IncomeStatementComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.store.loadFromState(incomeStatementStateMock);    
+    this.store.loadFromState(incomeStatementStateMock);
 
     this.form.patchValue({
       revenue: this.store.revenue()
@@ -43,7 +43,7 @@ export class IncomeStatementComponent implements OnInit {
       .pipe(debounceTime(500)).
       subscribe((x) => {
         //TODO add cogs here properly not like this
-        this.store.update(x,this.store.costOfGoodsSold())
+        this.store.update(x,this.store.costOfGoodsSold());
       });
 
   }

@@ -14,6 +14,8 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      "eqeqeq": "warn",
+      "no-console": "error",
       "no-trailing-spaces": "warn",
       "no-multiple-empty-lines": ["warn", { "max": 1 }],
       "semi": [2, "always"],

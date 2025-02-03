@@ -4,7 +4,7 @@ export class IncomeStatement {
     expenseList: IncomeStatementExpense[] = [];
     taxRate!: number;
     name?: string;
-    expense!: number;    
+    expense!: number;
     grossProfitBeforeExpenses!: number;
     grossProfitAfterExpense!: number;
     // grossProfit!: number;

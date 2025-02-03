@@ -23,7 +23,7 @@ export class IncomeStatementService {
   //Test for this method are in their own file.
   calculateIncomeStatmentProperties(i: IncomeStatement) {
     i.grossProfitBeforeExpenses = this.grossProfitBeforeExpenses(i.revenue, i.costOfGoodsSold);
-    this.setExpenseTotal(i)
+    this.setExpenseTotal(i);
 
     i.grossProfitAfterExpense = this.grossProfitAfterExpense(i.revenue, i.costOfGoodsSold, i.expense);
     i.taxes = this.taxes(i.grossProfitAfterExpense, i.taxRate);
@@ -61,16 +61,6 @@ export class IncomeStatementService {
     incomeStatement.expense = expenseTotal;
   }
 
-  grossProfitByIncomeStatement(i: IncomeStatement): number {
-    this.setExpenseTotal(i);
-    return this.round(i.revenue - i.costOfGoodsSold - i.expense);
-  }
-
-  grossProfitAfterExpenses(revenue: number, costOfGoodsSold: number, expenseTotal: number) {
-    return 0;
-    // return revenue - costOfGoodsSold - e;
-  }
-
   grossProfitBeforeExpenses(revenue: number, costOfGoodsSold: number) {
     return this.round(revenue - costOfGoodsSold);
   }
@@ -80,10 +70,10 @@ export class IncomeStatementService {
   }
 
   taxes(grossProfit: number, taxRatePercent: number): number {
-    return this.round(grossProfit * taxRatePercent / 100)
+    return this.round(grossProfit * taxRatePercent / 100);
   }
 
-  netIncome(grossProfit: number, taxes: number) {    
+  netIncome(grossProfit: number, taxes: number) {
      return this.round(grossProfit - taxes);
   }
 }

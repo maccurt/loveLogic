@@ -23,19 +23,17 @@ export const IncomeStatementStore = signalStore(
     withMethods(
         (store, incomeStatementService = inject(IncomeStatementService)) => ({
 
-             loadFromState(state: IncomeStatementState) {               
-                
+             loadFromState(state: IncomeStatementState) {
 
                 state.incomeStatementList.forEach((i)=>{
-                    incomeStatementService.calculateIncomeStatmentProperties(i)    
-                })
+                    incomeStatementService.calculateIncomeStatmentProperties(i);
+                });
 
-                patchState(store, { ...state});                
+                patchState(store, { ...state});
 
             },
             async load(revenue: number, costOfGoodsSold: number, taxRatePercent: number): Promise<void> {
                 const incomeStatementList: IncomeStatement[] = [];
-
 
                 const i = incomeStatementService.incomeStatementFactory(revenue, costOfGoodsSold, [], taxRatePercent);
                 incomeStatementList.push(i);
@@ -61,7 +59,6 @@ export const IncomeStatementStore = signalStore(
                 const i = incomeStatementService.incomeStatementFactory(store.revenue(), store.costOfGoodsSold(), expenseList, store.taxRatePercent());
                 i.name = name;
 
-
                 patchState(store, { incomeStatementList: [...incomeStatementList, i] });
             }
         })
@@ -71,9 +68,7 @@ export const IncomeStatementStore = signalStore(
             incomeStatementCount: computed(() => state.incomeStatementList().length),
             expenseGreatestCount: computed(() => {
 
-
-                console.log('expenseGreatestCount', state.incomeStatementList())
-                state.incomeStatementList()
+                state.incomeStatementList();
 
                 if (state.incomeStatementList().length === 0) {
                     return 0;
@@ -83,10 +78,7 @@ export const IncomeStatementStore = signalStore(
                     lengthList.push(i.expenseList.length);
                 });
 
-
                 const sorted = lengthList.sort((a, b) => b - a);
-
-                console.log(sorted);
                 return sorted[0];
             })
         }

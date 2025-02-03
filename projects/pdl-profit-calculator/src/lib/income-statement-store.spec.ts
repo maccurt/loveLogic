@@ -35,14 +35,14 @@ describe('income statement store test', () => {
 
         it('', () => {
             store.update(110, 30);
-            expect(i1.revenue).toBe(110);            
+            expect(i1.revenue).toBe(110);
         });
 
         it('add an income statement', () => {
             store.addIncomeStatement('Name of Product/etc.');
             expect(store.incomeStatementList().length).toBe(2);
             expect(store.incomeStatementList()[1].revenue).toBe(100);
-            expect(store.incomeStatementList()[1].costOfGoodsSold).toBe(30);            
+            expect(store.incomeStatementList()[1].costOfGoodsSold).toBe(30);
             store.update(200, 70);
             expect(store.incomeStatementList()[0].revenue).toBe(200);
             expect(store.incomeStatementList()[1].revenue).toBe(200);
@@ -79,7 +79,6 @@ describe('income statement store test', () => {
 
                 expect(store.expenseGreatestCount()).toBe(2);
             });
-
 
             it('', async () => {
 

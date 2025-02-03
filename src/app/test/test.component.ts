@@ -13,9 +13,9 @@ import { IncomeStatementComponent } from '../../../projects/pdl-profit-calculato
 
 export class Exercise {
   name!: string;
-  set!:number
-  rep!:number
-  hint?:string
+  set!:number;
+  rep!:number;
+  hint?:string;
 }
 
 @Component({
@@ -51,7 +51,7 @@ export class TestComponent {
   }
 
   addExercise(){
-   
-    this.exerciseList.push({name:'I added this',set:4,rep:50, hint:'do not lift ofter head'},)
+
+    this.exerciseList.push({name:'I added this',set:4,rep:50, hint:'do not lift ofter head'},);
   }
 }
