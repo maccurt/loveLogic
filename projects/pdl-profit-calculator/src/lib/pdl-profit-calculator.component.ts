@@ -8,7 +8,7 @@ import { IncomeStatementStore } from './income-statement-store';
 
 import { DecimalPipe } from '@angular/common';
 import { debounceTime } from 'rxjs';
-import { incomeStatementStateMock } from './income-statement-service/mocks/mock';
+import { incomeStatementStateMock } from './income-statement-service/mocks/incomeStatementState_MOCK';
 
 @Component({
   selector: 'lib-pdl-profit-calculator',
