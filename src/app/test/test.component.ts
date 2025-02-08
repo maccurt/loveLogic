@@ -9,7 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BusinessStore } from '../business-domain/business.store';
 import { MarketingService } from '../marketing-domain/marketing.service';
-import { IncomeStatementComponent } from '../../../projects/pdl-profit-calculator/src/public-api';
+import { ProfitCalculatorComponent } from '../../../projects/pdl-profit-calculator/src/public-api';
+import { PdlProfitPlusComponent } from "../../../projects/pdl-profit-plus/src/lib/pdl-profit-plus.component";
 
 export class Exercise {
   name!: string;
@@ -29,8 +30,9 @@ export class Exercise {
     MatChipsModule,
     MatSidenavModule,
     ClipboardModule,
-    IncomeStatementComponent
-  ],
+    ProfitCalculatorComponent,
+    PdlProfitPlusComponent
+],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
 })

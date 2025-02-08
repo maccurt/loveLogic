@@ -1,0 +1,9 @@
+.test-2 tr {
+  border-bottom: 10px solid green;
+}
+
+table.test-2 tr {
+  border-bottom: 10px solid blue;
+}
+
+/*# sourceMappingURL=styles.css.map */

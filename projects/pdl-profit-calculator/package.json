@@ -1,12 +1,27 @@
 {
   "name": "pdl-profit-calculator",
-  "version": "0.0.1",
+  "version": "1.0.7",
   "peerDependencies": {
     "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0"
+    "@angular/core": "^19.0.0",
+    "@ngrx/signals": "^18.1.0",
+    "@angular/material": "^19.0.2",
+    "sass": "1.80.7",
+    "sass-loader": "16.0.3"
+  },
+  "ngPackage": {
+    "lib": {
+      "styleIncludePaths": [
+        "../../node_modules"
+      ]
+    }
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "scripts": {
+    "test": "ng test --browsers ChromeHeadless",
+    "build-prod": "ng build pdl-profit-calculator --configuration=production"
+  }
 }

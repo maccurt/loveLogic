@@ -8,13 +8,19 @@ export interface IncomeStatementState {
     costOfGoodsSold: number;
     incomeStatementList: IncomeStatement[]
     taxRatePercent: number;
+    imageUrl: string;
+    name: string;
+    description: string;
 }
 
 const incomeStatementInitialState: IncomeStatementState = {
     revenue: 100,
     taxRatePercent: 0,
     costOfGoodsSold: 0,
-    incomeStatementList: []
+    incomeStatementList: [],
+    imageUrl: '',
+    name: 'name from store',
+    description: ''
 };
 
 export const IncomeStatementStore = signalStore(
@@ -23,13 +29,13 @@ export const IncomeStatementStore = signalStore(
     withMethods(
         (store, incomeStatementService = inject(IncomeStatementService)) => ({
 
-             loadFromState(state: IncomeStatementState) {
+            loadFromState(state: IncomeStatementState) {
 
-                state.incomeStatementList.forEach((i)=>{
+                state.incomeStatementList.forEach((i) => {
                     incomeStatementService.calculateIncomeStatmentProperties(i);
                 });
 
-                patchState(store, { ...state});
+                patchState(store, { ...state });
 
             },
             async load(revenue: number, costOfGoodsSold: number, taxRatePercent: number): Promise<void> {

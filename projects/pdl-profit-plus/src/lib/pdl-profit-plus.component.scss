@@ -1,0 +1,21 @@
+.my-table {
+
+     border-collapse:collapse;
+    font-size: xx-large;
+
+    .total {
+        border-bottom: 3px solid black !important;
+    }
+}
+
+.name {
+    color: blue;
+}
+
+.total {
+    border-bottom: 3px solid red;
+}
+
+.total-cell {
+    border: 2px solid purple;
+}

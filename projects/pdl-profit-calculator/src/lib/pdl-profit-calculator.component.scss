@@ -1,35 +1,75 @@
-.income-statement-list {
-
-    // border: 1px solid red;
+.profit-calculator {
+    border: 1px solid #cccccc;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr
+    grid-template-columns: 1fr;
+    padding: 8px;
+    justify-content: center;
+    column-gap: 16px;
+
+    @media screen and (min-width:768px) {
+        grid-template-columns: 400px 400px;
+        // padding: 16px;
+        // margin: 24px;        
+    }
+
+    >div {
+        // place-self: center;
+        border: 2px dotted red;
+
+    }
 }
 
-.income-statement {
-    margin: 10px;
-    border: 1px solid #cccccc;
-    min-width: 300px;
-    td {
-        padding-left: 16px;
+.product-grid {
+    // border: 1px solid blue;
+    display: grid;
+    grid-template-areas:
+        'i'
+        'd';
+
+    .image-area {
+        grid-area: i;
+        // border: 1px solid black;
+        display: flex;
+        justify-content: center;
+
+        .image {
+            height: 300px;
+            width: 300px;
+
+        }
     }
 
-    tr.name {
-        color: blue;
-        font-weight: 500;
-        border-bottom: 1px solid #cccccc;
+    .description-area {
+        grid-area: d;
+        padding: 10px;
+        text-align: justify;
+        padding: 40px;
     }
 
-    tr.sub-total {
-        border-top: 1px solid black;
-        border-bottom: 1px solid #cccccc;
-        font-weight: 500;
-        
+    >div {
+        // border: 1px dotted blue;
     }
 
-    
-    tr.total {
-        border-top: 2px solid black;
-        font-weight: 500;
+}
+
+.income-statement-list-grid {
+    border: 1px solid green;
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width:768px) {
+        margin-top: 0px;
+        grid-template-columns: repeat(auto-fit, 1fr);
+        // padding: 5px;
     }
 
+    >div {
+        margin-bottom: 32px;
+
+        // border: 1px solid red;
+        @media screen and (min-width:768px) {
+            // padding: 16px;
+        }
+    }
 }

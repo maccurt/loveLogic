@@ -11,6 +11,8 @@ export class IncomeStatement {
     operatingExpenses!: number;
     taxes!: number;
     netIncome!: number;
+    url!: string;
+    show: boolean = true;
 }
 
 export enum ExpenseType {

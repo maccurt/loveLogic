@@ -17,6 +17,9 @@
     "paths": {
       "pdl-profit-calculator": [
         "./dist/pdl-profit-calculator"
+      ],
+      "pdl-profit-plus": [
+        "./dist/pdl-profit-plus"
       ]
     },
     "importHelpers": true,

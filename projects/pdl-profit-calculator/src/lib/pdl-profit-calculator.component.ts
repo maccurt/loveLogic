@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,25 +6,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { IncomeStatementStore } from './income-statement-store';
 
-import { DecimalPipe } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { debounceTime } from 'rxjs';
 import { incomeStatementStateMock } from './income-statement-service/mocks/incomeStatementState_MOCK';
+import { IncomeStatementComponent } from "./income-statement/income-statement.component";
 
 @Component({
-  selector: 'lib-pdl-profit-calculator',
+  encapsulation:ViewEncapsulation.None,
+  selector: 'pdl-profit-calculator',
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    DecimalPipe
-  ],
+    DecimalPipe,
+    IncomeStatementComponent
+],
   templateUrl: 'pdl-profit-calculator.component.html',
-  styleUrl: 'pdl-profit-calculator.component.scss'
+  styleUrls: ['pdl-profit-calculator.component.scss']
 })
-export class IncomeStatementComponent implements OnInit {
-  fb = inject(FormBuilder);
+export class ProfitCalculatorComponent  {
+   fb = inject(FormBuilder);
   store = inject(IncomeStatementStore);
 
   form = this.fb.group({

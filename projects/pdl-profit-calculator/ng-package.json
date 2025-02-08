@@ -3,5 +3,6 @@
   "dest": "../../dist/pdl-profit-calculator",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": []
 }

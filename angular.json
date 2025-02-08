@@ -156,6 +156,49 @@
           }
         }
       }
+    },
+    "pdl-profit-plus": {
+      "projectType": "library",
+      "root": "projects/pdl-profit-plus",
+      "sourceRoot": "projects/pdl-profit-plus/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pdl-profit-plus/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pdl-profit-plus/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pdl-profit-plus/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/pdl-profit-plus/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/pdl-profit-plus/**/*.ts",
+              "projects/pdl-profit-plus/**/*.html"
+            ],
+            "eslintConfig": "projects/pdl-profit-plus/eslint.config.js"
+          }
+        }
+      }
     }
   },
   "cli": {

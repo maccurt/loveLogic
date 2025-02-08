@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "build:sass": "sass styles/styles.scss assets/styles.css",
+    "build-prod": "ng build pdl-profit-plus --configuration=production"
+  },
+  "name": "pdl-profit-plus",
+  "version": "1.0.5",
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@ngrx/signals": "^18.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

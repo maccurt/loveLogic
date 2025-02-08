@@ -1,90 +1,38 @@
-<div class="income-statement-component">
-    <div>
-        <form [formGroup]="form">
-            <mat-form-field appearance="outline">
-                <mat-label>Revenue</mat-label>
-                <input formControlName="revenue" matInput placeholder="Placeholder">
-                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                <!-- <mat-hint></mat-hint> -->
-            </mat-form-field>
+<div class="profit-calculator">
 
-        </form>
-    </div>
+    <!-- show the product -->
+    @if(true){
 
+    <div class="grid-item">
+        <div class="product-grid">
 
-    <div class="income-statement-list">
+            <div class="image-area">
+                <a target="_blank" [href]="store.incomeStatementList()[0].url">
+                    <img class="image" [src]="store.imageUrl()">
+                </a>
+            </div>
 
-        @for(i of store.incomeStatementList();track $index){
-
-
-        <div>
-            <table class="income-statement">
-
-                <tr class="name">
-                    @if(i.name){
-                    <td colspan="2"> {{i.name}} </td>
-                    }
-                    @else {
-                    <td>-</td>
-                    }
-                </tr>
-
-                <tr>
-                    <td> Revenue </td>
-                    <td> {{i.revenue | number:'1.2-2'}} </td>
-                </tr>
-                <tr>
-                    <td> Cost of Goods Sold </td>
-                    <td> {{i.costOfGoodsSold | number:'1.2-2' }} </td>
-                </tr>
-                <tr class="sub-total">
-                    <td> Gross Profit </td>
-                    <td> {{i.grossProfitBeforeExpenses | number:'1.2-2' }} </td>
-                </tr>
-                
-                @for(e of i.expenseList; track $index){
-
-                <tr>
-                    <td>{{e.name}}</td>
-                    <td>{{e.value | number:'1.2-2' }}</td>
-                </tr>
-                }                
-                
-                @if(i.expenseList.length < store.expenseGreatestCount()){
-                    <!-- Adding blank rows to keep expense section the same height -->
-                    @for(e of [].constructor(store.expenseGreatestCount() - i.expenseList.length);track $index){
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    }                   
-                }                
-
-                <tr class="sub-total">
-                    <td> Expense Total </td>
-                    <td> {{i.expense | number:'1.2-2' }} </td>
-                </tr>
-
-
-                <tr class="total">
-                    <td> Gross Profit </td>
-                    <td>$ {{i.grossProfitAfterExpense | number:'1.2-2' }} </td>
-                </tr>
-
-                <tr >
-                    <td> Taxes </td>
-                    <td> {{i.taxes | number:'1.2-2' }} </td>
-                </tr>
-
-                <tr class="total" >
-                    <td> Net Income </td>
-                    <td>$ {{i.netIncome | number:'1.2-2' }} </td>
-                </tr>
-            </table>
+            <div class="description-area">
+                <div class="description">{{store.description()}}</div>
+            </div>
         </div>
-
-        }
-
     </div>
 
+    }
+
+    <!-- show the income statement list -->
+    @if(true){
+    <div class="grid-item">
+        <div class="income-statement-list-grid">
+
+            @for(i of store.incomeStatementList();track $index){
+
+            <div class="grid-item" *ngIf="i.show">
+                <lib-income-statement [i]="i"></lib-income-statement>
+            </div>
+            }
+
+        </div>
+    </div>
+    }
 </div>

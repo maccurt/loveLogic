@@ -1,0 +1,69 @@
+<table class="income-statement">
+
+    <tr class="name">
+
+        @if(i().name && i().url){
+
+        <td> <a class="name" target="_blank" [href]="i().url">{{i().name}}</a> </td>
+        <td> <a class="buy" target="_blank" [href]="i().url">buy now...</a> </td>
+        }
+
+        @else if (i().name) {
+
+        <td colspan="2"><span class="name"> {{i().name}}</span></td>
+        }
+        @else {
+        <td colspan="2">-</td>
+        }
+    </tr>
+
+    <tr>
+        <td> Revenue </td>
+        <td> {{i().revenue | number:'1.2-2'}} </td>
+    </tr>
+    <tr>
+        <td> Cost of Goods Sold </td>
+        <td> {{i().costOfGoodsSold | number:'1.2-2' }} </td>
+    </tr>
+    <tr class="sub-total">
+        <td> Gross Profit </td>
+        <td> {{i().grossProfitBeforeExpenses | number:'1.2-2' }} </td>
+    </tr>
+
+    @for(e of i().expenseList; track $index){
+
+    <tr>
+        <td>{{e.name}}</td>
+        <td>{{e.value | number:'1.2-2' }}</td>
+    </tr>
+    }
+
+    @if(i().expenseList.length < store.expenseGreatestCount()){ @for(e of
+        [].constructor(store.expenseGreatestCount() - i().expenseList.length);track $index){ <tr>
+        <td>-</td>
+        <td>-</td>
+        </tr>
+        }
+        }
+
+        <tr class="sub-total">
+            <td> Expense Total </td>
+            <td> {{i().expense | number:'1.2-2' }} </td>
+        </tr>
+
+
+        <tr class="total">
+            <td> Gross Profit </td>
+            <td>$ {{i().grossProfitAfterExpense | number:'1.2-2' }} </td>
+        </tr>
+
+        <tr>
+            <td> Taxes </td>
+            <td> {{i().taxes | number:'1.2-2' }} </td>
+        </tr>
+
+        <tr class="total">
+            <td> Net Income </td>
+            <td>$ {{i().netIncome | number:'1.2-2' }} </td>
+        </tr>
+</table>
