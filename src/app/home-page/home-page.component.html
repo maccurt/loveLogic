@@ -1,35 +1,23 @@
 <mat-drawer-container class="mat-drawer-container">
+
   @if(!store.isLoading()){
 
   <mat-drawer (closed)="store.showBusinessToggle(false)" mode="push" class="mat-drawe"
     [opened]="store.isBusinessShown()" #drawer>
 
-    <div *ngIf="store.businessSelected()" class="flex-header-footer">
+    @if (store.businessSelected()) {
+    <div class="flex-header-footer">
 
-      <!-- <header>
-        <div class="title-header-grid-drawer">
-          <div>
-            <span style="text-align: center;">{{store.brandName()}}</span>
-          </div>
-          <div>
-            <button (click)="store.showBusinessToggle(false)" mat-icon-button><mat-icon>close</mat-icon></button>
-          </div>
-        </div>
-      </header>       -->
-
-      <!-- TODO I think it has to be in here to scroll. True or NOT? -->
       <main>
-        <ll-invite [business]="store.businessSelected()"></ll-invite>        
+        <ll-invite [business]="store.businessSelected()"></ll-invite>
       </main>
-
       <footer>
-        <!-- in the future just toggle the drawer and let the close event handle the store -->
         <button (click)="store.showBusinessToggle(false)" mat-flat-button>Close</button>
       </footer>
     </div>
+    }
 
   </mat-drawer>
-
   }
 
   <mat-drawer-content>
