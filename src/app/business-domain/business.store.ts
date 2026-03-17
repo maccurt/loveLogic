@@ -7,21 +7,18 @@ import { inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Marketing, SafetyMarketing_MOCK } from '../marketing-domain/Marketing';
 import { MarketingService } from '../marketing-domain/marketing.service';
 
-interface BusinessState {
+type BusinessState = {
     brandName: string;
     brandTagline: string;
     domainUrl: string;
     isLoading: boolean;
-    //business
     isBusinessShown: boolean;
     businessList: Business[],
     businessListFiltered: Business[],
     businessSelected: Business,
     businessSelectedCategory: Category;
-    businessSelectedMarketing: Marketing;
     stateSelected: StateLocation,
     locationList: StateLocation[];
     categorySelected: Category
@@ -36,7 +33,8 @@ const businessInitialState: BusinessState = {
     brandName: 'Can We Meet To Talk?',
     brandTagline: 'Beyond Texting & Messaging',
     domainUrl: '',
-    businessSelectedMarketing:SafetyMarketing_MOCK,
+
+
     categoryListUrl: '',
     businessSelected: new Business(),
     businessSelectedCategory: categroryListMock[0],
@@ -55,6 +53,7 @@ const businessInitialState: BusinessState = {
 
 export const BusinessStore = signalStore(
     { providedIn: 'root' },
+    withState(businessInitialState),
     withHooks({
         //We init the store here regardless of user options (state location,etc)
         onInit(state,
@@ -75,7 +74,6 @@ export const BusinessStore = signalStore(
                 });
         }
     }),
-    withState(businessInitialState),
 
     withMethods((
         store,
@@ -196,11 +194,9 @@ export const BusinessStore = signalStore(
             }
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
-            }
+            }            
 
-            const businessSelectedMarketing = marketingService.getBusinessSafety(businessSelected);
-
-            patchState(store, { businessSelected ,  businessSelectedMarketing,  isBusinessShown: true });
+            patchState(store, { businessSelected, isBusinessShown: true });
         }
     }))
 );
