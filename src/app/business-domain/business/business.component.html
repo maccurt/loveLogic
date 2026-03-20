@@ -16,7 +16,8 @@
             </div>
         </div>
         <hr>
-        <div class="divide-grid">
+        
+        <!-- <div class="divide-grid">
             <div>
                 <a target="_blank" (click)="store.showBusiness(business())">
                     <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl"
@@ -26,7 +27,17 @@
             <div>
                 <ll-address [address]="business().address"></ll-address>
             </div>
+        </div> -->
+
+        <div>
+            <div>
+                <a target="_blank" (click)="store.showBusiness(business())">
+                    <img style="border:1px solid black;" width="100%" mat-card-image [src]="business().imageUrl"
+                        alt="???">
+                </a>
+            </div>
         </div>
+
     </mat-card-content>
 
     @if(true){
@@ -51,3 +62,4 @@
 
 
 </mat-card>
+

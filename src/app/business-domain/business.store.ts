@@ -30,7 +30,7 @@ type BusinessState = {
 };
 
 const businessInitialState: BusinessState = {
-    brandName: 'Can We Meet To Talk?',
+    brandName: 'Can We Meet To Talk?',    
     brandTagline: 'Beyond Texting & Messaging',
     domainUrl: '',
 
