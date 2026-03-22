@@ -8,10 +8,12 @@
         }
 
         <div class="address-info">
-            <div>{{address().address1}}</div>
-            <div>
+            <div>{{address().address1}}
+
                 @if(address().address2){
-                {{address().address2}}
+                <span>
+                    {{address().address2}}
+                </span>
                 }
             </div>
             <span>{{address().city}} </span>,

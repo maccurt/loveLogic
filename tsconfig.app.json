@@ -9,8 +9,6 @@
     "src/main.ts"
   ],
   "include": [
-    "src/**/*.d.ts",
-    "src/**/*.html"
-
+    "src/**/*.d.ts"    
   ]
 }

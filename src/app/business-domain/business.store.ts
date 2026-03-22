@@ -5,13 +5,10 @@ import { Category, categoryMyFavorite } from "./categroryListMock";
 import { categroryListMock } from "./categroryListMock";
 import { inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { MarketingService } from '../marketing-domain/marketing.service';
 
-type BusinessState = {
-    brandName: string;
-    brandTagline: string;
+type BusinessState = {    
     domainUrl: string;
     isLoading: boolean;
     isBusinessShown: boolean;
@@ -25,16 +22,11 @@ type BusinessState = {
     categoryListUrl: string
     showCategory: boolean;
     categoryList: Category[],
-    compactMode: boolean,
-    isMobile: boolean
+    compactMode: boolean    
 };
 
-const businessInitialState: BusinessState = {
-    brandName: 'Can We Meet To Talk?',    
-    brandTagline: 'Beyond Texting & Messaging',
+const businessInitialState: BusinessState = {    
     domainUrl: '',
-
-
     categoryListUrl: '',
     businessSelected: new Business(),
     businessSelectedCategory: categroryListMock[0],
@@ -48,7 +40,6 @@ const businessInitialState: BusinessState = {
     isLoading: true,
     showCategory: false,
     compactMode: true,
-    isMobile: false
 };
 
 export const BusinessStore = signalStore(
@@ -57,21 +48,12 @@ export const BusinessStore = signalStore(
     withHooks({
         //We init the store here regardless of user options (state location,etc)
         onInit(state,
-            businessService = inject(BusinessService),
-            breakpoint = inject(BreakpointObserver)
+            businessService = inject(BusinessService)            
         ) {
             const domainUrl = document.location.origin;
             businessService.locationList().subscribe((locationList) => {
                 patchState(state, { locationList, domainUrl });
             });
-
-            breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small])
-                .pipe(
-                    map((b) => b.matches),
-                    takeUntilDestroyed()
-                ).subscribe((isMobile) => {
-                    patchState(state, { isMobile });
-                });
         }
     }),
 
@@ -194,7 +176,7 @@ export const BusinessStore = signalStore(
             }
             else {
                 patchState(store, { businessSelectedCategory: categroryListMock[0] });
-            }            
+            }
 
             patchState(store, { businessSelected, isBusinessShown: true });
         }

@@ -8,6 +8,7 @@ import { CanWeTalkMarketing_Mock, Marketing, SafetyMarketing_MOCK, WeAreInBeta_M
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { BulletPointListComponent } from "../bullet-point-list/bullet-point-list.component";
+import { AppStore } from '../../app.store';
 
 @Component({
   selector: 'll-marketing',
@@ -34,6 +35,8 @@ export class MarketingComponent implements OnInit {
   }
 
   store = inject(BusinessStore);
+  appStore = inject(AppStore);
+
   marketingList = signal<Marketing[]>([]);
 
 }

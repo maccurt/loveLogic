@@ -1,11 +1,10 @@
 .home-page-grid {
-    // border: 1px solid red !important;
+    background-color: white;
     display: grid;
     grid-template-areas: 'b';
 
-
-    .business-section {
-        grid-area: b;
+    .business-section {        
+        grid-area: b;        
     }
 }
 

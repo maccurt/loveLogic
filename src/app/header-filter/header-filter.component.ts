@@ -11,6 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import {
   MatDialog,
 } from '@angular/material/dialog';
+import { AppStore } from '../app.store';
 
 @Component({
   selector: 'll-header-filter',
@@ -28,6 +29,7 @@ import {
 export class HeaderFilterComponent implements OnInit {
   readonly fb = inject(FormBuilder);
   readonly store = inject(BusinessStore);
+  readonly appStore = inject(AppStore);
   readonly route = inject(ActivatedRoute);
   readonly dialog = inject(MatDialog);
 
@@ -60,7 +62,7 @@ export class HeaderFilterComponent implements OnInit {
       }
 
       if (state) {
-        await this.store.loadAllByStateName(state,businessId);
+        await this.store.loadAllByStateName(state, businessId);
       }
       else {
         await this.store.loadAll(this.store.stateSelected());

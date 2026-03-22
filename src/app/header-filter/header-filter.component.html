@@ -5,9 +5,10 @@
         <div class="item-1">
             <header id="header">
                 <div id="brand">
-                    {{store.brandName()}}
+                    {{appStore.brandName()}}
                 </div>
 
+                @if (appStore.showStateSelection()){
                 <div id="state-select">
                     <select id="location" class="select" formControlName="stateLocation">
                         @for(state of store.locationList(); track $index){
@@ -15,6 +16,8 @@
                         }
                     </select>
                 </div>
+                }
+
             </header>
         </div>
 
@@ -25,12 +28,14 @@
                     @for(c of store.categoryList(); track $index){
 
                     @if(c.id === store.categorySelected().id){
-                    <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected"  (click)="store.filter(c)">
+                    <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected"
+                        (click)="store.filter(c)">
                         {{c.name}}
                     </mat-chip-option>
                     }
                     @else{
-                    <mat-chip-option title="click to filter by category"  class="category-chip" (click)="store.filter(c)">
+                    <mat-chip-option title="click to filter by category" class="category-chip"
+                        (click)="store.filter(c)">
                         {{c.name}}
                     </mat-chip-option>
                     }

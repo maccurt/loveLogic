@@ -4,6 +4,7 @@ import { BusinessStore } from './business-domain/business.store';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { AppStore } from './app.store';
 
 @Component({
   selector: 'll-root',
@@ -19,12 +20,12 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    this.title.setTitle(this.store.brandName());
+    this.title.setTitle(this.appStore.brandName());
 
   }
   router = inject(Router);
-  route = inject(ActivatedRoute);
-  store = inject(BusinessStore);
+  route = inject(ActivatedRoute);  
   title = inject(Title);
+  appStore = inject(AppStore);
 
 }
