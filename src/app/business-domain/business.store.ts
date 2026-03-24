@@ -18,7 +18,10 @@ type BusinessState = {
     businessSelectedCategory: Category;
     stateSelected: StateLocation,
     locationList: StateLocation[];
+    //this is only the categories for the business in the store
+    //TOOD perhaps I should renamne it
     categoryListUrl: string
+    
     showCategory: boolean;
     categoryList: Category[]
 };
