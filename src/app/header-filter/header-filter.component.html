@@ -1,3 +1,9 @@
+@if(categoryStore){
+
+    {{categoryStore.businessCategoryList().length}}
+
+
+
 <form [formGroup]="form">
 
     <div id="header-main-container">
@@ -11,7 +17,7 @@
                 @if (appStore.showStateSelection()){
                 <div id="state-select">
                     <select id="location" class="select" formControlName="stateLocation">
-                        @for(state of store.locationList(); track $index){
+                        @for(state of businessStore.locationList(); track $index){
                         <option [ngValue]="state"> {{state.name}} </option>
                         }
                     </select>
@@ -22,26 +28,31 @@
         </div>
 
         <div class="item-2">
-            <div id="category-filter">
+            <div id="category-filter">                
 
                 <mat-chip-listbox aria-orientation="horizontal">
-                    @for(c of store.categoryList(); track $index){
+                    <!-- TODO calling the business store will prevent categories with no business from being shown
+                    I would prefer this category store handle this if possible, maybe not
+                    //I don't want business store in the component.. dang!! 
+                    -->
+                    @for(c of businessStore.categoryList(); track $index){
 
-                    @if(c.id === store.categorySelected().id){
+                    @if(c.id === categoryStore.categorySelected().id){
                     <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected"
-                        (click)="store.filter(c)">
+                        (click)="categoryStore.categorySelectedEvent(c)">
                         {{c.name}}
                     </mat-chip-option>
                     }
                     @else{
                     <mat-chip-option title="click to filter by category" class="category-chip"
-                        (click)="store.filter(c)">
+                        (click)="categoryStore.categorySelectedEvent(c)">
                         {{c.name}}
                     </mat-chip-option>
                     }
 
                     }
                 </mat-chip-listbox>
+
             </div>
 
         </div>
@@ -50,3 +61,5 @@
 
 
 </form>
+
+}

@@ -1,5 +1,4 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { BusinessStore } from '../../business-domain/business.store';
 import { TitleCasePipe } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
@@ -33,10 +32,8 @@ export class MarketingComponent implements OnInit {
       WeAreInBeta_Mock,
     );
   }
-
-  store = inject(BusinessStore);
+  
   appStore = inject(AppStore);
-
   marketingList = signal<Marketing[]>([]);
 
 }

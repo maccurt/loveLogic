@@ -1,6 +1,11 @@
 import { Address } from "../address/Adress";
 
-export class Business {
+export interface CategoryId {
+  categoryId: number;
+  
+}
+
+export class Business implements CategoryId {
   id!: number;
   categoryId!: number;
   name!: string;

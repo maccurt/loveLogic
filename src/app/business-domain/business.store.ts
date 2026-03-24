@@ -1,45 +1,40 @@
-import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
+import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from '@ngrx/signals';
 import { BusinessService } from "./business.service";
 import { Business, stateListMock, StateLocation } from './Business';
-import { Category, categoryMyFavorite } from "./categroryListMock";
-import { categroryListMock } from "./categroryListMock";
-import { inject } from '@angular/core';
+import { Category } from "../category-domain/category/Category";
+import { computed, inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { MarketingService } from '../marketing-domain/marketing.service';
+import { CategoryStore } from '../category-domain/category.store';
+import { categoryMyFavorite, CategoryService } from '../category-domain/category.service';
+import { businessCategoryListChanged } from '../category-domain/category-events';
+import { Dispatcher } from '@ngrx/signals/events';
 
-type BusinessState = {    
+type BusinessState = {
     domainUrl: string;
     isLoading: boolean;
     isBusinessShown: boolean;
     businessList: Business[],
-    businessListFiltered: Business[],
     businessSelected: Business,
     businessSelectedCategory: Category;
     stateSelected: StateLocation,
     locationList: StateLocation[];
-    categorySelected: Category
     categoryListUrl: string
     showCategory: boolean;
-    categoryList: Category[],
-    compactMode: boolean    
+    categoryList: Category[]
 };
 
-const businessInitialState: BusinessState = {    
+const businessInitialState: BusinessState = {
     domainUrl: '',
     categoryListUrl: '',
     businessSelected: new Business(),
-    businessSelectedCategory: categroryListMock[0],
+    businessSelectedCategory: new Category(),
     isBusinessShown: false,
     businessList: [],
-    businessListFiltered: [],
-    categoryList: categroryListMock,
-    categorySelected: categroryListMock[0],
+    categoryList: [],
     locationList: [],
     stateSelected: stateListMock[0],
     isLoading: true,
-    showCategory: false,
-    compactMode: true,
+    showCategory: false
 };
 
 export const BusinessStore = signalStore(
@@ -48,7 +43,7 @@ export const BusinessStore = signalStore(
     withHooks({
         //We init the store here regardless of user options (state location,etc)
         onInit(state,
-            businessService = inject(BusinessService)            
+            businessService = inject(BusinessService)
         ) {
             const domainUrl = document.location.origin;
             businessService.locationList().subscribe((locationList) => {
@@ -56,24 +51,26 @@ export const BusinessStore = signalStore(
             });
         }
     }),
-
     withMethods((
         store,
         businessService = inject(BusinessService),
-        marketingService = inject(MarketingService),
+        categoryService = inject(CategoryService),
+        dispatcher = inject(Dispatcher)
     ) => ({
 
         async loadAll(stateSelected: StateLocation, businessId = 0): Promise<void> {
 
             const categoryListUrl = 'category-list/' + stateSelected.name;
             patchState(store, { isLoading: true, stateSelected: stateSelected, categoryListUrl });
-
             const businessList = await lastValueFrom(businessService.businessList(stateSelected.abbreviation));
-
             const businessSelected = businessList[0];
+            const categoryList = categoryService.getDistinctCategoryForEnityList(businessList);
 
-            const categoryList = businessService.getCategoryListWithCount(businessList);
+            //This will tell the CATEGORY store that the list was updated
+            dispatcher.dispatch(businessCategoryListChanged.listChanged(categoryList))
 
+
+            //TODO 
             categoryList.forEach((c) => {
                 c.businessListUrl = '/' + stateSelected.name + '/' + c.id;
             });
@@ -82,11 +79,11 @@ export const BusinessStore = signalStore(
             const categorySelected = categoryMyFavorite;
 
             patchState(store, {
-                businessSelected, categorySelected, businessList, categoryList, isLoading: false
+                businessSelected, businessList, categoryList, isLoading: false
             });
 
             //filter to the favorite for the time being
-            this.filterByCategoryId(categorySelected.id);
+            //this.filterByCategoryId(categorySelected.id);
 
             if (businessId > 0) {
                 this.showSelectedBusinessById(businessId);
@@ -108,52 +105,10 @@ export const BusinessStore = signalStore(
             }
         },
 
-        async filterByCategoryId(categoryId: number): Promise<void> {
 
-            const category = store.categoryList().find((c) => {
-                return c.id === categoryId;
-            });
-
-            if (category) {
-                this.filter(category);
-            }
-        },
-        async filter(categorySelected: Category): Promise<void> {
-
-            patchState(store, { isLoading: true });
-
-            if (!categorySelected) {
-                categorySelected = categoryMyFavorite;
-            }
-
-            let businessListFiltered: Business[];
-
-            if (categorySelected.id === 0) {
-                businessListFiltered = store.businessList().filter((b) => {
-                    return b.rank === 1;
-                });
-            }
-            else {
-                businessListFiltered = store.businessList().filter((b) => {
-                    return b.categoryId === categorySelected.id;
-                });
-            }
-
-            if (businessListFiltered.length === 0 && store.businessList().length >= 3) {
-
-                businessListFiltered.push(store.businessList()[0]);
-                businessListFiltered.push(store.businessList()[1]);
-                businessListFiltered.push(store.businessList()[2]);
-            }
-            patchState(store, { categorySelected, showCategory: false, businessListFiltered, isLoading: false });
-
-        },
-        showCategoryToggle() {
-            patchState(store, { showCategory: !store.showCategory() });
-        },
-        compact(compactMode: boolean) {
-            patchState(store, { compactMode });
-        },
+        // compact(compactMode: boolean) {
+        //     patchState(store, { compactMode });
+        // },
         showBusinessToggle(showBusiness: boolean) {
 
             patchState(store, { isBusinessShown: showBusiness });
@@ -175,10 +130,40 @@ export const BusinessStore = signalStore(
                 patchState(store, { businessSelectedCategory });
             }
             else {
-                patchState(store, { businessSelectedCategory: categroryListMock[0] });
+                throw new Error('why wold this ever happen');
+                // patchState(store, { businessSelectedCategory: categroryListMock[0] });
             }
 
             patchState(store, { businessSelected, isBusinessShown: true });
         }
-    }))
+    })),
+    withComputed((store) => {
+
+        const categoryStore = inject(CategoryStore);
+
+        return {
+
+            businessListFiltered: computed(() => {
+
+                const category = categoryStore.categorySelected();
+
+                let filtered: Business[];
+
+                if (category.id === 0) {
+                    filtered = store.businessList().filter((b) => {
+                        return b.rank === 1;
+                    });
+                }
+                else {
+                    filtered = store.businessList().filter((b) => {
+                        return b.categoryId === category.id;
+                    });
+                }
+
+                return filtered;
+
+            })
+
+        }
+    })
 );

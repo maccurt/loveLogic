@@ -25,8 +25,7 @@ import {
   styleUrl: './business.component.scss'
 })
 export class BusinessComponent {
-  business = input.required<Business>();
-  compactMode = input<boolean>();
+  business = input.required<Business>();  
   detailMode = input<boolean>(false);
   private readonly clipboard = inject(Clipboard);
   private _snackBar = inject(MatSnackBar);

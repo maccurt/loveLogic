@@ -32,7 +32,7 @@
         <div class="business-grid">
           @for (item of store.businessListFiltered(); track $index) {
           <div>
-            <ll-business [compactMode]="store.compactMode()" [business]="item"></ll-business>
+            <ll-business  [business]="item"></ll-business>
           </div>
           }
         </div>
