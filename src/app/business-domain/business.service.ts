@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
-import { Business, stateListMock, StateLocation, Url } from './Business';
+import { Business, STATE_LIST_MOCK, StateLocation, Url } from './Business';
 import countBy from 'lodash-es/countBy';
 import { sortBy } from 'lodash-es';
 import { Address } from '../address/Adress';
@@ -27,7 +27,7 @@ export class BusinessService {
         const locationList: StateLocation[] = [];
         for (const key in stateCountList) {
           const businessCount = stateCountList[key];
-          const state = stateListMock.find((s) => {
+          const state = STATE_LIST_MOCK.find((s) => {
             return s.abbreviation.toLocaleLowerCase() == key.toLocaleLowerCase();
           });
           if (state) {

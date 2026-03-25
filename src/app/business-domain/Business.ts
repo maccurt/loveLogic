@@ -2,7 +2,7 @@ import { Address } from "../address/Adress";
 
 export interface CategoryId {
   categoryId: number;
-  
+
 }
 
 export class Business implements CategoryId {
@@ -32,7 +32,8 @@ export class Url {
   hint!: string;
 }
 
-export const stateListMock: StateLocation[] = [
-  { name: 'Nebraska', abbreviation: 'NE' },
+export const NEBRASKA_STATE: StateLocation = { name: 'Nebraska', abbreviation: 'NE' };
+export const STATE_LIST_MOCK: StateLocation[] = [
+  NEBRASKA_STATE,
   { name: 'Georgia', abbreviation: 'GA' }
 ];

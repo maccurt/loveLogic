@@ -6,9 +6,6 @@ import { StateLocation } from '../business-domain/Business';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
 import { AppStore } from '../app.store';
 import { CategoryStore } from '../category-domain/category.store';
 import { Category } from '../category-domain/category/Category';
@@ -29,25 +26,23 @@ import { Category } from '../category-domain/category/Category';
 export class HeaderFilterComponent implements OnInit {
   readonly fb = inject(FormBuilder);
   //TODO remove business store from here and use app or category
-  readonly businessStore = inject(BusinessStore);
+  //readonly businessStore = inject(BusinessStore);
   readonly categoryStore = inject(CategoryStore);
   readonly appStore = inject(AppStore);
   readonly route = inject(ActivatedRoute);
-  readonly dialog = inject(MatDialog);
 
   form = this.fb.group({
-    stateLocation: this.fb.nonNullable.control<StateLocation>(this.businessStore.stateSelected()),
+    stateLocation: this.fb.nonNullable.control<StateLocation>(this.appStore.stateSelected()),
     category: this.fb.nonNullable.control<Category>(this.categoryStore.categorySelected())
   });
 
   constructor() {
-
     effect(() => {
       this.form.controls.category.setValue(this.categoryStore.categorySelected(), { emitEvent: false });
     });
 
     effect(() => {
-      this.form.controls.stateLocation.setValue(this.businessStore.stateSelected(), { emitEvent: false });
+      this.form.controls.stateLocation.setValue(this.appStore.stateSelected(), { emitEvent: false });
     });
   }
 
@@ -63,12 +58,12 @@ export class HeaderFilterComponent implements OnInit {
         businessId = parseInt(id);
       }
 
-      if (state) {
-        await this.businessStore.loadAllByStateName(state, businessId);
-      }
-      else {
-        await this.businessStore.loadAll(this.businessStore.stateSelected());
-      }
+      // if (state) {
+      //   await this.businessStore.loadAllByStateName(state, businessId);
+      // }
+      // else {
+      //   await this.businessStore.loadAll(this.appStore.stateSelected());
+      // }
 
       this.route.queryParamMap.subscribe((query) => {
         const categoryId = query.get('category');
@@ -84,7 +79,8 @@ export class HeaderFilterComponent implements OnInit {
     });
 
     this.form.controls.stateLocation.valueChanges.subscribe((state) => {
-      this.businessStore.loadAll(state);
+      //TODO we do not want the business store in here remove it
+      //this.businessStore.loadAll(state);
     });
   }
 }

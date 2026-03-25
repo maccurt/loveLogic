@@ -1,25 +1,34 @@
+import { NEBRASKA_STATE, STATE_LIST_MOCK, StateLocation, } from './business-domain/Business';
 import { inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { patchState, signalStore, withHooks, withState } from "@ngrx/signals"
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
 type AppState = {
     brandName: string;
     brandTagline: string;
     showStateSelection: boolean;
+    //
     isMobile: boolean;
+    stateSelected: StateLocation,
+    locationList: StateLocation[],
 }
 
 const AppStateInitial: AppState = {
     brandName: 'Can We Meet To Talk?',
     brandTagline: 'Beyond Texting & Messaging',
     isMobile: false,
-    showStateSelection: false // this will remove the Nebraska, Georgia select
+    //
+    showStateSelection: false,
+    stateSelected: NEBRASKA_STATE,
+    locationList: STATE_LIST_MOCK
 }
 
 export const AppStore = signalStore(
     { providedIn: 'root' },
+    withDevtools('appStore'),
     withState(AppStateInitial),
     withHooks({
         onInit(state, breakpoint = inject(BreakpointObserver)) {

@@ -19,13 +19,16 @@ import { AppStore } from './app.store';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+  title = inject(Title);
+  appStore = inject(AppStore);
   ngOnInit(): void {
     this.title.setTitle(this.appStore.brandName());
 
   }
-  router = inject(Router);
-  route = inject(ActivatedRoute);  
-  title = inject(Title);
-  appStore = inject(AppStore);
+
+  doSomething() { }
+
 
 }

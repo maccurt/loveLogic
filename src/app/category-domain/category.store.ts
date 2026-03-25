@@ -8,28 +8,24 @@ import { type } from '@ngrx/signals';
 import { eventGroup, withReducer, on, withEventHandlers, Events } from '@ngrx/signals/events';
 import { businessCategoryListChanged } from "./category-events";
 
-
-
 type CategoryState = {
     categorySelected: Category;
     categoryList: Category[];
-    businessCategoryList: Category[];
+    //businessCategoryList: Category[];
 }
 
 const categoryStateInitial: CategoryState = {
     categorySelected: new Category(),
     categoryList: [],
-    businessCategoryList: [],
+    //businessCategoryList: [],
 }
-
-
 
 export const CategoryStore = signalStore(
     { providedIn: 'root' },
     withState(categoryStateInitial),    
     withReducer(
         on(businessCategoryListChanged.listChanged, ({ payload: list }) => ({
-            businessCategoryList: list
+            categoryList: list
         })),
     ),
 
@@ -66,14 +62,15 @@ export const CategoryStore = signalStore(
         }
     }),
 
-    withEventHandlers(
-        (store, events = inject(Events)) => ({
+    //TODO remove this if we won't use this was a learning thing
+    // withEventHandlers(
+    //     (store, events = inject(Events)) => ({
 
-            businessCategory$:events.on(
-                businessCategoryListChanged.listChanged
-            ).pipe(
-                tap(console.log)
-            )
-        })
-    )
+    //         businessCategory$:events.on(
+    //             businessCategoryListChanged.listChanged
+    //         ).pipe(
+    //             tap(console.log)
+    //         )
+    //     })
+    // )
 )

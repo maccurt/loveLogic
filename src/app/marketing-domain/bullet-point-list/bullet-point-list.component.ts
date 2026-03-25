@@ -56,13 +56,11 @@ export class BulletPointListComponent {
     return list;
   }
 
-  goToWebsite(b: MarketingBulletpoint) {
-    console.log(b);
+  goToWebsite(b: MarketingBulletpoint) {    
     if (b.url) {
 
       const link = this.document.createElement('a');
-      if (b.socialMedia === SocialMedia.phoneNumber) {
-        console.log('hello');
+      if (b.socialMedia === SocialMedia.phoneNumber) {        
         link.href = "tel:" + b.url;
       }
       else {

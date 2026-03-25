@@ -37,7 +37,7 @@ export class TestComponent implements OnInit {
 
   constructor() {
 
-    this.store.loadAllByStateName('NE',1);
+    //this.store.loadAllByStateName('NE',1);
 
   }
   ngOnInit(): void {

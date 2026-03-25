@@ -12,12 +12,14 @@ export class MarketingService {
   }
 
   getBusinessSafety(business: Business): Marketing {
+
     const marketing: Marketing = { ...SafetyMarketing_MOCK };
     const fbIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.facebook; });
     
     marketing.bulletPointList[fbIndex].url = business.facebookUrl;
 
-    const direciontIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.directions; });
+    const direciontIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.directions; });    
+    
     marketing.bulletPointList[direciontIndex].url = business.address.googleMapUrl;
 
     const websiteIndex = marketing.bulletPointList.findIndex((b) => { return b.socialMedia === SocialMedia.website; });
