@@ -1,22 +1,19 @@
-.selected {
-    background-color: #ff9933 !important;
-    //todo use the amazon variable,constant,etc..
-}
-
-
 #header-main-container {
     display: grid;
     grid-template-columns: 1fr;
     border-bottom: 2px solid black;
-    .item-1 {
-        background-color: aliceblue;        
+
+    .brand-header {
+        background-color: aliceblue;
     }
 
-    .item-2 {
+    .category-filter {
+        padding: 16px 0px;
+
         //desktop
         @media screen and (min-width: 576px) {
-            //center the chip categories in the middle
-            justify-items: center;
+            display: flex;
+            justify-content: center;
         }
     }
 }
@@ -45,7 +42,7 @@
         justify-items: center;
         grid-area: 'brand';
         font-weight: 500;
-        font-size: x-large;        
+        font-size: x-large;
     }
 
     #state-select {
@@ -55,13 +52,4 @@
             width: 200px;
         }
     }
-}
-
-.category-chip {
-    width: 108px;
-}
-
-#category-filter {
-    
-    padding: 8px;
 }

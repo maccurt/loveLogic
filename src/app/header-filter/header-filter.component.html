@@ -4,7 +4,8 @@
 
     <div id="header-main-container">
 
-        <div class="item-1">
+        <div class="brand-header">
+
             <header id="header">
                 <div id="brand">
                     {{appStore.brandName()}}
@@ -23,36 +24,11 @@
             </header>
         </div>
 
-        <div class="item-2">
-            <div id="category-filter">
-
-                <mat-chip-listbox aria-orientation="horizontal">
-
-                    @for(c of categoryStore.categoryList(); track $index){
-
-                    @if(c.id === categoryStore.categorySelected().id){
-                    <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected"
-                        (click)="categoryStore.categorySelectedEvent(c)">
-                        {{c.name}}
-                    </mat-chip-option>
-                    }
-                    @else{
-                    <mat-chip-option title="click to filter by category" class="category-chip"
-                        (click)="categoryStore.categorySelectedEvent(c)">
-                        {{c.name}}
-                    </mat-chip-option>
-                    }
-
-                    }
-                </mat-chip-listbox>
-
-            </div>
-
+        <div class="category-filter">
+            <ll-category-list></ll-category-list>
         </div>
 
     </div>
-
-
 </form>
 
 }

@@ -1,14 +1,20 @@
-<div class="card-grid">
+<div class="category-list-component">
+    <mat-chip-listbox aria-orientation="horizontal">
+        @for(c of categoryStore.categoryList(); track $index){
 
-    @for(c of store.categoryList();track $index){
-    @if(c.id !== 0){
-    <div>
-        <ll-category [category]="c"></ll-category>
-    </div>
-    }
-    }
-    <!-- <div>
-        <ll-safety></ll-safety>
-    </div> -->
-    
+        @if(c.id === categoryStore.categorySelected().id){
+        <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected"
+            (click)="categoryStore.categorySelectedEvent(c)">
+            {{c.name}}
+        </mat-chip-option>
+        }
+        @else{
+        <mat-chip-option title="click to filter by category" class="category-chip"
+            (click)="categoryStore.categorySelectedEvent(c)">
+            {{c.name}}
+        </mat-chip-option>
+        }
+
+        }
+    </mat-chip-listbox>
 </div>

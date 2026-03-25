@@ -1,23 +1,19 @@
 import { Component, effect, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { BusinessStore } from '../business-domain/business.store';
 import { StateLocation } from '../business-domain/Business';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
 import { AppStore } from '../app.store';
 import { CategoryStore } from '../category-domain/category.store';
 import { Category } from '../category-domain/category/Category';
+import { CategoryListComponent } from "../category-domain/category-list/category-list.component";
+
 
 @Component({
   selector: 'll-header-filter',
   imports: [
     RouterModule,
     ReactiveFormsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatChipsModule
+    CategoryListComponent
   ],
   templateUrl: './header-filter.component.html',
   styleUrl: './header-filter.component.scss'
@@ -25,8 +21,6 @@ import { Category } from '../category-domain/category/Category';
 })
 export class HeaderFilterComponent implements OnInit {
   readonly fb = inject(FormBuilder);
-  //TODO remove business store from here and use app or category
-  //readonly businessStore = inject(BusinessStore);
   readonly categoryStore = inject(CategoryStore);
   readonly appStore = inject(AppStore);
   readonly route = inject(ActivatedRoute);
@@ -37,6 +31,7 @@ export class HeaderFilterComponent implements OnInit {
   });
 
   constructor() {
+
     effect(() => {
       this.form.controls.category.setValue(this.categoryStore.categorySelected(), { emitEvent: false });
     });
@@ -58,20 +53,14 @@ export class HeaderFilterComponent implements OnInit {
         businessId = parseInt(id);
       }
 
-      // if (state) {
-      //   await this.businessStore.loadAllByStateName(state, businessId);
-      // }
-      // else {
-      //   await this.businessStore.loadAll(this.appStore.stateSelected());
-      // }
 
+      //TODO remove this or find a better way
       this.route.queryParamMap.subscribe((query) => {
         const categoryId = query.get('category');
         if (categoryId) {
           this.categoryStore.filterByCategoryId(parseInt(categoryId));
         }
       });
-
     });
 
     this.form.controls.category.valueChanges.subscribe((category) => {

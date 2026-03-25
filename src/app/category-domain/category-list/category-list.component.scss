@@ -1,2 +1,19 @@
+.category-list-component {
+    padding: 8px;
+
+    @media screen and (min-width: 576px) {
+        
+    }
+}
 
 
+.selected {
+    background-color: #ff9933 !important;
+}
+
+.category-chip {
+    width: 125px;
+    @media screen and (min-width: 576px) {
+        width: 150px;
+    }
+}
