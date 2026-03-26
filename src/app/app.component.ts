@@ -24,13 +24,8 @@ export class AppComponent implements OnInit {
   title = inject(Title);
   appStore = inject(AppStore);
   ngOnInit(): void {
-    this.title.setTitle(this.appStore.brandName());
-
-    //this.appStore.load();
+    this.title.setTitle(this.appStore.brandName()); 
 
   }
-
-  doSomething() { }
-
 
 }

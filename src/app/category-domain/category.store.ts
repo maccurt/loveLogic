@@ -11,16 +11,14 @@ import { withDevtools } from "@angular-architects/ngrx-toolkit"
 
 type CategoryState = {
     categorySelected: Category;
-    categoryList: Category[];
-    categoryListFiltered: Category[];
+    categoryList: Category[];    
     entityCategoryList: CategoryId[];
 }
 
 const categoryStateInitial: CategoryState = {
     categorySelected: new Category(),
     categoryList: [],
-    entityCategoryList: [],
-    categoryListFiltered: []
+    entityCategoryList: [],    
 }
 
 export const CategoryStore = signalStore(
@@ -35,15 +33,11 @@ export const CategoryStore = signalStore(
 
     withMethods((store,
         service = inject(CategoryService)) => ({
-
-            //LOAD***************
+           
             async loadCategories() {
-
-                console.log('hello');
+                
                 const categoryList = await firstValueFrom(service.getCategoryList());
-                const categorySelected = categoryList[0];
-
-                console.log(categoryList);
+                const categorySelected = categoryList[0];                
                 patchState(store, { categorySelected, categoryList });
             },
 
@@ -62,70 +56,23 @@ export const CategoryStore = signalStore(
                     this.categorySelectedEvent(category);
                 }
             },
-
-
         })),
 
     withHooks({
-        onInit: (store) => {            
+        onInit: (store) => {
             store.loadCategories();
 
         }
     }),
-    withComputed((store,categoryService = inject(CategoryService)) => (
+    withComputed((store, categoryService = inject(CategoryService)) => (
         {
-            count: computed(() => store.entityCategoryList().length),
-            categoryListFiltered: computed(() => { 
-                
-                const x =store.entityCategoryList()
-                console.log(x);
-
-                const cat = new Category();
-                cat.name = x[0].categoryId.toString();
-                return [cat]
-
-                
-            
+            categoryListFiltered: computed(() => {
+                //this will be a list of business objects that have a categoryId,etc
+                //in the future it could be articles, etc                                
+                const categoriesForEnity = store.entityCategoryList()
+                const filter = categoryService.getDistinctCategoryForEnityList(categoriesForEnity, store.categoryList());
+                return filter;
             }),
 
-        })      
-    ))
-
-
-      // withComputed(
-        //     (store, categoryService = inject(CategoryService)) => {
-
-
-
-        //         return {
-
-        //             categoryCount:computed(()=>{
-        //                 console.log('xxxxxxxxx')
-        //                 return store.categoryList().length
-        //             }),                
-        //             filteredCategoryList: computed(() => {
-        //                 const x = store.entityCategoryList();
-        //                 const p =store.categoryList()
-        //                 console.log(p)
-
-        //                 console.log('???')
-
-        //                 return [new Category()];
-
-        //                 //return categoryService.getDistinctCategoryForEnityList(cat, store.categoryList())
-        //             })
-        //         }
-        //     }
-        // ),
-
-        //TODO remove this if we won't use this was a learning thing
-        // withEventHandlers(
-        //     (store, events = inject(Events)) => ({
-
-        //         businessCategory$:events.on(
-        //             businessCategoryListChanged.listChanged
-        //         ).pipe(
-        //             tap(console.log)
-        //         )
-        //     })
-        // )
+        })
+    ))     
