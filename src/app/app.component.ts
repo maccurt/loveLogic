@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.title.setTitle(this.appStore.brandName());
 
+    //this.appStore.load();
+
   }
 
   doSomething() { }

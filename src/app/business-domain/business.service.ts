@@ -12,7 +12,7 @@ import { Address } from '../address/Adress';
 })
 export class BusinessService {
 
-  url = '/data/data.json';
+  businessListUrl = '/data/business-list.json';
   constructor(private readonly http: HttpClient) { }
 
   cityList(): Observable<StateLocation[]> {
@@ -20,7 +20,7 @@ export class BusinessService {
   }
 
   locationList(): Observable<StateLocation[]> {
-    return this.http.get<Business[]>(this.url).pipe(
+    return this.http.get<Business[]>(this.businessListUrl).pipe(
       map((result) => {
 
         const stateCountList = countBy(result, 'address.state');
@@ -51,7 +51,7 @@ export class BusinessService {
   };
 
   businessList(stateCode: string): Observable<Business[]> {
-    return this.http.get<Business[]>(this.url).pipe(
+    return this.http.get<Business[]>(this.businessListUrl).pipe(
       map((result) => {
 
         //TODO it seem for the demo we do to much here

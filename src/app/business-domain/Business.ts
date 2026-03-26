@@ -1,9 +1,5 @@
 import { Address } from "../address/Adress";
-
-export interface CategoryId {
-  categoryId: number;
-
-}
+import { CategoryId } from "../category-domain/category/Category";
 
 export class Business implements CategoryId {
   id!: number;

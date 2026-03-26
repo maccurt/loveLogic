@@ -18,3 +18,8 @@ export class Bulletpoint {
   value!: string;
   string?: string;
 }
+
+
+export interface CategoryId {
+  categoryId: number;
+}

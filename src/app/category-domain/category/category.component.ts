@@ -1,10 +1,10 @@
 import { Component, inject, input } from '@angular/core';
-import { Category } from "../../business-domain/categroryListMock";
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { BusinessStore } from '../../business-domain/business.store';
 import { TitleCasePipe } from '@angular/common';
+import { Category } from './Category';
 
 @Component({
     selector: 'll-category',

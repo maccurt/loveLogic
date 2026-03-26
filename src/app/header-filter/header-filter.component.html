@@ -1,5 +1,8 @@
 @if(categoryStore){
 
+    
+    
+
 <form [formGroup]="form">
 
     <div id="header-main-container">
@@ -13,8 +16,7 @@
 
                 @if (appStore.showStateSelection()){
                 <div id="state-select">
-                    <select id="location" class="select" formControlName="stateLocation">
-                        <!-- TODO We do not want the business store in HERE-->
+                    <select id="location" class="select" formControlName="stateLocation">                        
                         @for(state of appStore.locationList(); track $index){
                         <option [ngValue]="state"> {{state.name}} </option>
                         }

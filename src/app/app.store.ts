@@ -1,10 +1,12 @@
 import { NEBRASKA_STATE, STATE_LIST_MOCK, StateLocation, } from './business-domain/Business';
 import { inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { patchState, signalStore, withHooks, withState } from "@ngrx/signals"
+import { patchState, signalStore, type, withHooks, withMethods, withState } from "@ngrx/signals"
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
+import { Dispatcher, event, eventGroup } from '@ngrx/signals/events';
+import { CategoryStore } from './category-domain/category.store';
 
 type AppState = {
     brandName: string;
@@ -30,6 +32,20 @@ export const AppStore = signalStore(
     { providedIn: 'root' },
     withDevtools('appStore'),
     withState(AppStateInitial),
+    withMethods(
+        (store, categoryStore = inject(CategoryStore), dispatcher = inject(Dispatcher)) => (
+            {
+                async load() {
+
+                    await categoryStore.loadCategories()
+                },
+                stateLocationChange(stateSelected: StateLocation) {
+                    patchState(store, { stateSelected })
+                    dispatcher.dispatch(stateLocationEvents.stateLocationChanged(stateSelected))
+                }
+            }
+        )
+    ),
     withHooks({
         onInit(state, breakpoint = inject(BreakpointObserver)) {
 
@@ -43,3 +59,10 @@ export const AppStore = signalStore(
         }
     })
 )
+
+export const stateLocationEvents = eventGroup({
+    source: 'State Location',
+    events: {
+        stateLocationChanged: type<StateLocation>()
+    },
+});

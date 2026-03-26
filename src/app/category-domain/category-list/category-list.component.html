@@ -1,6 +1,8 @@
+
+
 <div class="category-list-component">
     <mat-chip-listbox aria-orientation="horizontal">
-        @for(c of categoryStore.categoryList(); track $index){
+        @for(c of categoryStore.categoryListFiltered(); track $index){
 
         @if(c.id === categoryStore.categorySelected().id){
         <mat-chip-option title="click to filter by category" color="orange" class="category-chip selected"

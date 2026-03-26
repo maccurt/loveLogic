@@ -68,8 +68,8 @@ export class HeaderFilterComponent implements OnInit {
     });
 
     this.form.controls.stateLocation.valueChanges.subscribe((state) => {
-      //TODO we do not want the business store in here remove it
-      //this.businessStore.loadAll(state);
+      //TODO could this be done without a form and in the template?
+      this.appStore.stateLocationChange(state);
     });
   }
 }

@@ -1,34 +1,5 @@
 [
-    {
-        "id": 1,
-        "categoryId": 4,
-        "name": "High Museum of Art",
-        "url": "https://high.org/",
-        "imageUrl": "/images/HighMuseumofArt-1.png",
-        "facebookUrl": "https://www.facebook.com/HighMuseumofArt",
-        "address": {
-            "address1": "1280 Peachtree St NE ",
-            "city": "Atlanta",
-            "state": "GA",
-            "zipcode": "30309",
-            "phone": "4047334400"
-        }
-    },
-    {
-        "id": 2,
-        "categoryId": 7,
-        "name": "Night Sky Coffee Roasters",
-        "url": "https://www.nightskycoffeeroasters.com/",
-        "facebookUrl": "https://www.facebook.com/nightskycoffee",
-        "imageUrl": "/images/nightskycoffee-1.png",
-        "address": {
-            "address1": "47 N Jackson",
-            "city": "St Winder",
-            "state": "GA",
-            "zipcode": "30680",
-            "phone": "6784214057"
-        }
-    },
+
     {
         "id": 3,
         "rank": 1,
@@ -270,6 +241,36 @@
             "state": "NE",
             "zipcode": "68137",
             "phone": "7066840686"
+        }
+    },
+        {
+        "id": 1,
+        "categoryId": 4,
+        "name": "High Museum of Art",
+        "url": "https://high.org/",
+        "imageUrl": "/images/HighMuseumofArt-1.png",
+        "facebookUrl": "https://www.facebook.com/HighMuseumofArt",
+        "address": {
+            "address1": "1280 Peachtree St NE ",
+            "city": "Atlanta",
+            "state": "GA",
+            "zipcode": "30309",
+            "phone": "4047334400"
+        }
+    },
+    {
+        "id": 2,
+        "categoryId": 7,
+        "name": "Night Sky Coffee Roasters",
+        "url": "https://www.nightskycoffeeroasters.com/",
+        "facebookUrl": "https://www.facebook.com/nightskycoffee",
+        "imageUrl": "/images/nightskycoffee-1.png",
+        "address": {
+            "address1": "47 N Jackson",
+            "city": "St Winder",
+            "state": "GA",
+            "zipcode": "30680",
+            "phone": "6784214057"
         }
     }
 ]

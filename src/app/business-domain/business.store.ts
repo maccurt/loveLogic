@@ -1,28 +1,31 @@
-import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from '@ngrx/signals';
+import { lastValueFrom, tap } from 'rxjs';
+import { patchState, signalStore, withComputed, withHooks, withMethods, withState, } from '@ngrx/signals';
+import { Dispatcher, Events, withEventHandlers } from '@ngrx/signals/events';
+
+
 import { BusinessService } from "./business.service";
 import { Business, NEBRASKA_STATE } from './Business';
 import { Category } from "../category-domain/category/Category";
-import { computed, inject } from '@angular/core';
-import { lastValueFrom, map } from 'rxjs';
+import { computed, Inject, inject } from '@angular/core';
 import { CategoryStore } from '../category-domain/category.store';
 import { CategoryService } from '../category-domain/category.service';
 import { businessCategoryListChanged } from '../category-domain/category-events';
-import { Dispatcher } from '@ngrx/signals/events';
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
+import { stateLocationEvents } from '../app.store';
 
 type BusinessState = {
     domainUrl: string;
     isLoading: boolean;
     isBusinessShown: boolean;
     businessList: Business[],
-    businessSelected: Business,    
+    businessSelected: Business,
     showCategory: boolean;
     categoryList: Category[]
 };
 
 const businessInitialState: BusinessState = {
     domainUrl: '',
-    businessSelected: new Business(),    
+    businessSelected: new Business(),
     isBusinessShown: false,
     businessList: [],
     categoryList: [],
@@ -34,24 +37,34 @@ export const BusinessStore = signalStore(
     { providedIn: 'root' },
     withDevtools('businessStore'),
     withState(businessInitialState),
+    withEventHandlers(
+        (
+            store,
+            events = inject(Events)
+
+        ) => ({
+            locationChange$: events
+                .on(stateLocationEvents.stateLocationChanged).pipe(tap((c) => {
+                    console.log(c.payload);
+                }))
+
+        })
+    ),
     withMethods((
         store,
-        businessService = inject(BusinessService),
-        categoryService = inject(CategoryService),
+        businessService = inject(BusinessService),        
         dispatcher = inject(Dispatcher)
     ) => ({
 
         async load(): Promise<void> {
 
             const businessList = await lastValueFrom(businessService.businessList(NEBRASKA_STATE.abbreviation));
-
-            //TODO this will tell the filter what categories to show
-            const categoryList = categoryService.getDistinctCategoryForEnityList(businessList);
-            dispatcher.dispatch(businessCategoryListChanged.listChanged(categoryList))
-
+      
+            
             //What is this doing?
             const domainUrl = document.location.origin;
             patchState(store, { isLoading: false, businessList, domainUrl, businessSelected: businessList[0] })
+                  dispatcher.dispatch(businessCategoryListChanged.listChanged(businessList));
         },
 
         showBusinessToggle(showBusiness: boolean) {
@@ -99,7 +112,9 @@ export const BusinessStore = signalStore(
                 return filtered;
             })
         }
-    })
+    }),
+
+
 );
 
 //Remove all this to refactor, kept until we are fully tested.. it did something (awful!!!)
