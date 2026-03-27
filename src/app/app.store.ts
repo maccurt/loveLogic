@@ -23,7 +23,7 @@ const AppStateInitial: AppState = {
     brandTagline: 'Beyond Texting & Messaging',
     isMobile: false,
     //
-    showStateSelection: true,
+    showStateSelection: false,
     stateSelected: NEBRASKA_STATE,
     locationList: STATE_LIST_MOCK
 }

@@ -22,8 +22,8 @@
     },
     {
         "id": 2,
-        "name": "Beer",
-        "title": "Can We Grab A Pint and Talk?",
+        "name": "Cocktail/ Beer",
+        "title": "Can We Grab A Drink and Talk?",
         "imageUrl": "/images/beer-1.png",
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus error iure eligendi ",
         "bulletPointList": {

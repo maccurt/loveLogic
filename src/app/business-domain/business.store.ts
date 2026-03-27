@@ -52,19 +52,18 @@ export const BusinessStore = signalStore(
     ),
     withMethods((
         store,
-        businessService = inject(BusinessService),        
+        businessService = inject(BusinessService),
         dispatcher = inject(Dispatcher)
     ) => ({
 
         async load(): Promise<void> {
 
             const businessList = await lastValueFrom(businessService.businessList(NEBRASKA_STATE.abbreviation));
-      
-            
+
             //What is this doing?
             const domainUrl = document.location.origin;
             patchState(store, { isLoading: false, businessList, domainUrl, businessSelected: businessList[0] })
-                  dispatcher.dispatch(businessCategoryListChanged.listChanged(businessList));
+            dispatcher.dispatch(businessCategoryListChanged.listChanged(businessList));
         },
 
         showBusinessToggle(showBusiness: boolean) {

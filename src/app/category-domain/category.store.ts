@@ -2,23 +2,21 @@ import { patchState, signalStore, withComputed, withHooks, withMethods, withStat
 import { Category, CategoryId } from "./category/Category"
 import { CategoryService } from "./category.service"
 import { computed, inject } from "@angular/core"
-import { firstValueFrom, switchMap, tap } from "rxjs"
-import { BusinessStore } from "../business-domain/business.store"
-import { type } from '@ngrx/signals';
-import { eventGroup, withReducer, on, withEventHandlers, Events } from '@ngrx/signals/events';
+import { firstValueFrom } from "rxjs"
+import { withReducer, on } from '@ngrx/signals/events';
 import { businessCategoryListChanged } from "./category-events";
 import { withDevtools } from "@angular-architects/ngrx-toolkit"
 
 type CategoryState = {
     categorySelected: Category;
-    categoryList: Category[];    
+    categoryList: Category[];
     entityCategoryList: CategoryId[];
 }
 
 const categoryStateInitial: CategoryState = {
     categorySelected: new Category(),
     categoryList: [],
-    entityCategoryList: [],    
+    entityCategoryList: [],
 }
 
 export const CategoryStore = signalStore(
@@ -30,33 +28,40 @@ export const CategoryStore = signalStore(
             entityCategoryList
         }))
     ),
+    withMethods(
+        (
+            store,
+            service = inject(CategoryService)
+        ) => (
+            {
 
-    withMethods((store,
-        service = inject(CategoryService)) => ({
-           
-            async loadCategories() {
-                
-                const categoryList = await firstValueFrom(service.getCategoryList());
-                const categorySelected = categoryList[0];                
-                patchState(store, { categorySelected, categoryList });
-            },
+                async loadCategories() {
 
-            categorySelectedEvent(categorySelected: Category) {
-                patchState(store, { categorySelected });
+                    const categoryList = await firstValueFrom(service.getCategoryList());
+                    
+                    const categorySelected = categoryList[0];
+                    
+                    patchState(store, { categorySelected, categoryList });
+                },
 
-            },
-            //TODO I do not like this, look in component and make it send it? Maybe this is ok
-            async filterByCategoryId(categoryId: number): Promise<void> {
+                categorySelectedEvent(categorySelected: Category) {
+                    patchState(store, { categorySelected });
 
-                const category = store.categoryList().find((c) => {
-                    return c.id === categoryId;
-                });
+                },
+                //TODO I do not like this, look in component and make it send it? Maybe this is ok
+                //This is to come through the route, not sure we even want that
+                async filterByCategoryId(categoryId: number): Promise<void> {
 
-                if (category) {
-                    this.categorySelectedEvent(category);
-                }
-            },
-        })),
+                    const category = store.categoryList().find((c) => {
+                        return c.id === categoryId;
+                    });
+
+                    if (category) {
+                        this.categorySelectedEvent(category);
+                    }
+                },
+            }
+        )),
 
     withHooks({
         onInit: (store) => {

@@ -23,10 +23,15 @@
         <div>
         </div>
         <div class="phone">
+            @if(address().phone){
             <a href="tel:{{address().phone}}">
                 {{address().phone | mask: '(000) 000-0000'}}
-
             </a>
+            }
+            @else{
+                <span style="color:Red">No telephone listed</span>
+            }
+
         </div>
     </div>
 
